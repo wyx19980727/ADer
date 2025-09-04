@@ -1,0 +1,7 @@
+2025-07-14 11:07:11,660 - ==> Logging on master GPU: 0
+2025-07-14 11:07:11,660 - ==> Running Trainer: ViTADTrainer
+2025-07-14 11:07:11,660 - ==> Using GPU: [0] for Training
+2025-07-14 11:07:11,660 - ==> Building model
+2025-07-14 11:07:11,843 - Loading pretrained weights from Hugging Face hub (timm/vit_small_patch16_224.dino)
+2025-07-14 11:07:12,098 - [timm/vit_small_patch16_224.dino] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
+2025-07-14 11:07:12,102 - Resized position embedding: (14, 14) to (16, 16).

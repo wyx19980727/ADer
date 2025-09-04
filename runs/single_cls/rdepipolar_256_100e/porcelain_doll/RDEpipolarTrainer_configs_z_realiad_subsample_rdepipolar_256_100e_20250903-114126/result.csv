@@ -1,0 +1,2 @@
+     Name     , S_AUROC , S_AUPR , mAUROC_sp_max , mAP_sp_max , mF1_max_sp_max , mAUROC_px , mAP_px , mF1_max_px , mAUPRO_px , mIoU_max_px
+porcelain_doll, 86.262  , 92.817 ,    66.744     ,   47.082   ,     53.295     ,  95.729   , 1.172  ,   3.035    ,  82.990   ,    1.541

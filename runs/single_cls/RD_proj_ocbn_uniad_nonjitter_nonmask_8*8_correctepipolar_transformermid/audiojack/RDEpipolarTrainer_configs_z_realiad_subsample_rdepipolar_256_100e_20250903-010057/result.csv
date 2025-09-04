@@ -1,0 +1,2 @@
+  Name   , S_AUROC , S_AUPR , mAUROC_sp_max , mAP_sp_max , mF1_max_sp_max , mAUROC_px , mAP_px , mF1_max_px , mAUPRO_px , mIoU_max_px
+audiojack, 93.252  , 96.370 ,    77.426     ,   54.791   ,     64.019     ,  96.267   , 2.631  ,   6.786    ,  81.713   ,    3.512

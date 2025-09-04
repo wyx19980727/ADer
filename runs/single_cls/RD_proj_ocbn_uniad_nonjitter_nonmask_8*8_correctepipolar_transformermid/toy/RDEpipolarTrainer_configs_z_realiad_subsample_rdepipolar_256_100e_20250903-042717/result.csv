@@ -1,0 +1,2 @@
+ Name , S_AUROC , S_AUPR , mAUROC_sp_max , mAP_sp_max , mF1_max_sp_max , mAUROC_px , mAP_px , mF1_max_px , mAUPRO_px , mIoU_max_px
+ toy  , 86.169  , 90.826 ,    76.522     ,   79.897   ,     79.223     ,  94.708   , 5.428  ,   12.490   ,  81.063   ,    6.661

@@ -1,0 +1,600 @@
+2024-10-22 02:07:12,632 - ==> Logging on master GPU: 0
+2024-10-22 02:07:12,632 - ==> Running Trainer: UniADTrainer
+2024-10-22 02:07:12,632 - ==> Using GPU: [0] for Training
+2024-10-22 02:07:12,632 - ==> Building model
+2024-10-22 02:07:12,786 - Loading pretrained weights from Hugging Face hub (timm/tf_efficientnet_b4.aa_in1k)
+2024-10-22 02:07:13,028 - [timm/tf_efficientnet_b4.aa_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
+2024-10-22 02:07:14,692 - 
+------------------------------------ UniAD ------------------------------------
+| module                                             | #parameters or shape   | #flops       |
+|:---------------------------------------------------|:-----------------------|:-------------|
+| model                                              | 24.522M                | 3.364G       |
+|  net_backbone                                      |  16.742M               |  1.241G      |
+|   net_backbone.conv_stem                           |   1.296K               |   21.234M    |
+|    net_backbone.conv_stem.weight                   |    (48, 3, 3, 3)       |              |
+|   net_backbone.bn1                                 |   96                   |   1.573M     |
+|    net_backbone.bn1.weight                         |    (48,)               |              |
+|    net_backbone.bn1.bias                           |    (48,)               |              |
+|   net_backbone.blocks                              |   16.741M              |   1.218G     |
+|    net_backbone.blocks.0                           |    4.146K              |    42.862M   |
+|     net_backbone.blocks.0.0                        |     2.94K              |     28.313M  |
+|      net_backbone.blocks.0.0.conv_dw               |      0.432K            |      7.078M  |
+|      net_backbone.blocks.0.0.bn1                   |      96                |      1.573M  |
+|      net_backbone.blocks.0.0.se                    |      1.212K            |      1.152K  |
+|      net_backbone.blocks.0.0.conv_pw               |      1.152K            |      18.874M |
+|      net_backbone.blocks.0.0.bn2                   |      48                |      0.786M  |
+|     net_backbone.blocks.0.1                        |     1.206K             |     14.549M  |
+|      net_backbone.blocks.0.1.conv_dw               |      0.216K            |      3.539M  |
+|      net_backbone.blocks.0.1.bn1                   |      48                |      0.786M  |
+|      net_backbone.blocks.0.1.se                    |      0.318K            |      0.288K  |
+|      net_backbone.blocks.0.1.conv_pw               |      0.576K            |      9.437M  |
+|      net_backbone.blocks.0.1.bn2                   |      48                |      0.786M  |
+|    net_backbone.blocks.1                           |    66.238K             |    0.269G    |
+|     net_backbone.blocks.1.0                        |     11.878K            |     86.968M  |
+|      net_backbone.blocks.1.0.conv_pw               |      3.456K            |      56.623M |
+|      net_backbone.blocks.1.0.bn1                   |      0.288K            |      4.719M  |
+|      net_backbone.blocks.1.0.conv_dw               |      1.296K            |      5.308M  |
+|      net_backbone.blocks.1.0.bn2                   |      0.288K            |      1.18M   |
+|      net_backbone.blocks.1.0.se                    |      1.878K            |      1.728K  |
+|      net_backbone.blocks.1.0.conv_pwl              |      4.608K            |      18.874M |
+|      net_backbone.blocks.1.0.bn3                   |      64                |      0.262M  |
+|     net_backbone.blocks.1.1                        |     18.12K             |     60.82M   |
+|      net_backbone.blocks.1.1.conv_pw               |      6.144K            |      25.166M |
+|      net_backbone.blocks.1.1.bn1                   |      0.384K            |      1.573M  |
+|      net_backbone.blocks.1.1.conv_dw               |      1.728K            |      7.078M  |
+|      net_backbone.blocks.1.1.bn2                   |      0.384K            |      1.573M  |
+|      net_backbone.blocks.1.1.se                    |      3.272K            |      3.072K  |
+|      net_backbone.blocks.1.1.conv_pwl              |      6.144K            |      25.166M |
+|      net_backbone.blocks.1.1.bn3                   |      64                |      0.262M  |
+|     net_backbone.blocks.1.2                        |     18.12K             |     60.82M   |
+|      net_backbone.blocks.1.2.conv_pw               |      6.144K            |      25.166M |
+|      net_backbone.blocks.1.2.bn1                   |      0.384K            |      1.573M  |
+|      net_backbone.blocks.1.2.conv_dw               |      1.728K            |      7.078M  |
+|      net_backbone.blocks.1.2.bn2                   |      0.384K            |      1.573M  |
+|      net_backbone.blocks.1.2.se                    |      3.272K            |      3.072K  |
+|      net_backbone.blocks.1.2.conv_pwl              |      6.144K            |      25.166M |
+|      net_backbone.blocks.1.2.bn3                   |      64                |      0.262M  |
+|     net_backbone.blocks.1.3                        |     18.12K             |     60.82M   |
+|      net_backbone.blocks.1.3.conv_pw               |      6.144K            |      25.166M |
+|      net_backbone.blocks.1.3.bn1                   |      0.384K            |      1.573M  |
+|      net_backbone.blocks.1.3.conv_dw               |      1.728K            |      7.078M  |
+|      net_backbone.blocks.1.3.bn2                   |      0.384K            |      1.573M  |
+|      net_backbone.blocks.1.3.se                    |      3.272K            |      3.072K  |
+|      net_backbone.blocks.1.3.conv_pwl              |      6.144K            |      25.166M |
+|      net_backbone.blocks.1.3.bn3                   |      64                |      0.262M  |
+|    net_backbone.blocks.2                           |    0.198M              |    0.189G    |
+|     net_backbone.blocks.2.0                        |     25.848K            |     43.175M  |
+|      net_backbone.blocks.2.0.conv_pw               |      6.144K            |      25.166M |
+|      net_backbone.blocks.2.0.bn1                   |      0.384K            |      1.573M  |
+|      net_backbone.blocks.2.0.conv_dw               |      4.8K              |      4.915M  |
+|      net_backbone.blocks.2.0.bn2                   |      0.384K            |      0.393M  |
+|      net_backbone.blocks.2.0.se                    |      3.272K            |      3.072K  |
+|      net_backbone.blocks.2.0.conv_pwl              |      10.752K           |      11.01M  |
+|      net_backbone.blocks.2.0.bn3                   |      0.112K            |      0.115M  |
+|     net_backbone.blocks.2.1                        |     57.246K            |     48.637M  |
+|      net_backbone.blocks.2.1.conv_pw               |      18.816K           |      19.268M |
+|      net_backbone.blocks.2.1.bn1                   |      0.672K            |      0.688M  |
+|      net_backbone.blocks.2.1.conv_dw               |      8.4K              |      8.602M  |
+|      net_backbone.blocks.2.1.bn2                   |      0.672K            |      0.688M  |
+|      net_backbone.blocks.2.1.se                    |      9.758K            |      9.408K  |
+|      net_backbone.blocks.2.1.conv_pwl              |      18.816K           |      19.268M |
+|      net_backbone.blocks.2.1.bn3                   |      0.112K            |      0.115M  |
+|     net_backbone.blocks.2.2                        |     57.246K            |     48.637M  |
+|      net_backbone.blocks.2.2.conv_pw               |      18.816K           |      19.268M |
+|      net_backbone.blocks.2.2.bn1                   |      0.672K            |      0.688M  |
+|      net_backbone.blocks.2.2.conv_dw               |      8.4K              |      8.602M  |
+|      net_backbone.blocks.2.2.bn2                   |      0.672K            |      0.688M  |
+|      net_backbone.blocks.2.2.se                    |      9.758K            |      9.408K  |
+|      net_backbone.blocks.2.2.conv_pwl              |      18.816K           |      19.268M |
+|      net_backbone.blocks.2.2.bn3                   |      0.112K            |      0.115M  |
+|     net_backbone.blocks.2.3                        |     57.246K            |     48.637M  |
+|      net_backbone.blocks.2.3.conv_pw               |      18.816K           |      19.268M |
+|      net_backbone.blocks.2.3.bn1                   |      0.672K            |      0.688M  |
+|      net_backbone.blocks.2.3.conv_dw               |      8.4K              |      8.602M  |
+|      net_backbone.blocks.2.3.bn2                   |      0.672K            |      0.688M  |
+|      net_backbone.blocks.2.3.se                    |      9.758K            |      9.408K  |
+|      net_backbone.blocks.2.3.conv_pwl              |      18.816K           |      19.268M |
+|      net_backbone.blocks.2.3.bn3                   |      0.112K            |      0.115M  |
+|    net_backbone.blocks.3                           |    1.06M               |    0.235G    |
+|     net_backbone.blocks.3.0                        |     70.798K            |     30.602M  |
+|      net_backbone.blocks.3.0.conv_pw               |      18.816K           |      19.268M |
+|      net_backbone.blocks.3.0.bn1                   |      0.672K            |      0.688M  |
+|      net_backbone.blocks.3.0.conv_dw               |      3.024K            |      0.774M  |
+|      net_backbone.blocks.3.0.bn2                   |      0.672K            |      0.172M  |
+|      net_backbone.blocks.3.0.se                    |      9.758K            |      9.408K  |
+|      net_backbone.blocks.3.0.conv_pwl              |      37.632K           |      9.634M  |
+|      net_backbone.blocks.3.0.bn3                   |      0.224K            |      57.344K |
+|     net_backbone.blocks.3.1                        |     0.198M             |     40.867M  |
+|      net_backbone.blocks.3.1.conv_pw               |      75.264K           |      19.268M |
+|      net_backbone.blocks.3.1.bn1                   |      1.344K            |      0.344M  |
+|      net_backbone.blocks.3.1.conv_dw               |      6.048K            |      1.548M  |
+|      net_backbone.blocks.3.1.bn2                   |      1.344K            |      0.344M  |
+|      net_backbone.blocks.3.1.se                    |      38.332K           |      37.632K |
+|      net_backbone.blocks.3.1.conv_pwl              |      75.264K           |      19.268M |
+|      net_backbone.blocks.3.1.bn3                   |      0.224K            |      57.344K |
+|     net_backbone.blocks.3.2                        |     0.198M             |     40.867M  |
+|      net_backbone.blocks.3.2.conv_pw               |      75.264K           |      19.268M |
+|      net_backbone.blocks.3.2.bn1                   |      1.344K            |      0.344M  |
+|      net_backbone.blocks.3.2.conv_dw               |      6.048K            |      1.548M  |
+|      net_backbone.blocks.3.2.bn2                   |      1.344K            |      0.344M  |
+|      net_backbone.blocks.3.2.se                    |      38.332K           |      37.632K |
+|      net_backbone.blocks.3.2.conv_pwl              |      75.264K           |      19.268M |
+|      net_backbone.blocks.3.2.bn3                   |      0.224K            |      57.344K |
+|     net_backbone.blocks.3.3                        |     0.198M             |     40.867M  |
+|      net_backbone.blocks.3.3.conv_pw               |      75.264K           |      19.268M |
+|      net_backbone.blocks.3.3.bn1                   |      1.344K            |      0.344M  |
+|      net_backbone.blocks.3.3.conv_dw               |      6.048K            |      1.548M  |
+|      net_backbone.blocks.3.3.bn2                   |      1.344K            |      0.344M  |
+|      net_backbone.blocks.3.3.se                    |      38.332K           |      37.632K |
+|      net_backbone.blocks.3.3.conv_pwl              |      75.264K           |      19.268M |
+|      net_backbone.blocks.3.3.bn3                   |      0.224K            |      57.344K |
+|     net_backbone.blocks.3.4                        |     0.198M             |     40.867M  |
+|      net_backbone.blocks.3.4.conv_pw               |      75.264K           |      19.268M |
+|      net_backbone.blocks.3.4.bn1                   |      1.344K            |      0.344M  |
+|      net_backbone.blocks.3.4.conv_dw               |      6.048K            |      1.548M  |
+|      net_backbone.blocks.3.4.bn2                   |      1.344K            |      0.344M  |
+|      net_backbone.blocks.3.4.se                    |      38.332K           |      37.632K |
+|      net_backbone.blocks.3.4.conv_pwl              |      75.264K           |      19.268M |
+|      net_backbone.blocks.3.4.bn3                   |      0.224K            |      57.344K |
+|     net_backbone.blocks.3.5                        |     0.198M             |     40.867M  |
+|      net_backbone.blocks.3.5.conv_pw               |      75.264K           |      19.268M |
+|      net_backbone.blocks.3.5.bn1                   |      1.344K            |      0.344M  |
+|      net_backbone.blocks.3.5.conv_dw               |      6.048K            |      1.548M  |
+|      net_backbone.blocks.3.5.bn2                   |      1.344K            |      0.344M  |
+|      net_backbone.blocks.3.5.se                    |      38.332K           |      37.632K |
+|      net_backbone.blocks.3.5.conv_pwl              |      75.264K           |      19.268M |
+|      net_backbone.blocks.3.5.bn3                   |      0.224K            |      57.344K |
+|    net_backbone.blocks.4                           |    2.307M              |    0.482G    |
+|     net_backbone.blocks.4.0                        |     0.241M             |     51.901M  |
+|      net_backbone.blocks.4.0.conv_pw               |      75.264K           |      19.268M |
+|      net_backbone.blocks.4.0.bn1                   |      1.344K            |      0.344M  |
+|      net_backbone.blocks.4.0.conv_dw               |      16.8K             |      4.301M  |
+|      net_backbone.blocks.4.0.bn2                   |      1.344K            |      0.344M  |
+|      net_backbone.blocks.4.0.se                    |      38.332K           |      37.632K |
+|      net_backbone.blocks.4.0.conv_pwl              |      0.108M            |      27.525M |
+|      net_backbone.blocks.4.0.bn3                   |      0.32K             |      81.92K  |
+|     net_backbone.blocks.4.1                        |     0.413M             |     85.929M  |
+|      net_backbone.blocks.4.1.conv_pw               |      0.154M            |      39.322M |
+|      net_backbone.blocks.4.1.bn1                   |      1.92K             |      0.492M  |
+|      net_backbone.blocks.4.1.conv_dw               |      24K               |      6.144M  |
+|      net_backbone.blocks.4.1.bn2                   |      1.92K             |      0.492M  |
+|      net_backbone.blocks.4.1.se                    |      77.8K             |      76.8K   |
+|      net_backbone.blocks.4.1.conv_pwl              |      0.154M            |      39.322M |
+|      net_backbone.blocks.4.1.bn3                   |      0.32K             |      81.92K  |
+|     net_backbone.blocks.4.2                        |     0.413M             |     85.929M  |
+|      net_backbone.blocks.4.2.conv_pw               |      0.154M            |      39.322M |
+|      net_backbone.blocks.4.2.bn1                   |      1.92K             |      0.492M  |
+|      net_backbone.blocks.4.2.conv_dw               |      24K               |      6.144M  |
+|      net_backbone.blocks.4.2.bn2                   |      1.92K             |      0.492M  |
+|      net_backbone.blocks.4.2.se                    |      77.8K             |      76.8K   |
+|      net_backbone.blocks.4.2.conv_pwl              |      0.154M            |      39.322M |
+|      net_backbone.blocks.4.2.bn3                   |      0.32K             |      81.92K  |
+|     net_backbone.blocks.4.3                        |     0.413M             |     85.929M  |
+|      net_backbone.blocks.4.3.conv_pw               |      0.154M            |      39.322M |
+|      net_backbone.blocks.4.3.bn1                   |      1.92K             |      0.492M  |
+|      net_backbone.blocks.4.3.conv_dw               |      24K               |      6.144M  |
+|      net_backbone.blocks.4.3.bn2                   |      1.92K             |      0.492M  |
+|      net_backbone.blocks.4.3.se                    |      77.8K             |      76.8K   |
+|      net_backbone.blocks.4.3.conv_pwl              |      0.154M            |      39.322M |
+|      net_backbone.blocks.4.3.bn3                   |      0.32K             |      81.92K  |
+|     net_backbone.blocks.4.4                        |     0.413M             |     85.929M  |
+|      net_backbone.blocks.4.4.conv_pw               |      0.154M            |      39.322M |
+|      net_backbone.blocks.4.4.bn1                   |      1.92K             |      0.492M  |
+|      net_backbone.blocks.4.4.conv_dw               |      24K               |      6.144M  |
+|      net_backbone.blocks.4.4.bn2                   |      1.92K             |      0.492M  |
+|      net_backbone.blocks.4.4.se                    |      77.8K             |      76.8K   |
+|      net_backbone.blocks.4.4.conv_pwl              |      0.154M            |      39.322M |
+|      net_backbone.blocks.4.4.bn3                   |      0.32K             |      81.92K  |
+|     net_backbone.blocks.4.5                        |     0.413M             |     85.929M  |
+|      net_backbone.blocks.4.5.conv_pw               |      0.154M            |      39.322M |
+|      net_backbone.blocks.4.5.bn1                   |      1.92K             |      0.492M  |
+|      net_backbone.blocks.4.5.conv_dw               |      24K               |      6.144M  |
+|      net_backbone.blocks.4.5.bn2                   |      1.92K             |      0.492M  |
+|      net_backbone.blocks.4.5.se                    |      77.8K             |      76.8K   |
+|      net_backbone.blocks.4.5.conv_pwl              |      0.154M            |      39.322M |
+|      net_backbone.blocks.4.5.bn3                   |      0.32K             |      81.92K  |
+|    net_backbone.blocks.5                           |    8.636M              |              |
+|     net_backbone.blocks.5.0                        |     0.521M             |              |
+|      net_backbone.blocks.5.0.conv_pw               |      0.154M            |              |
+|      net_backbone.blocks.5.0.bn1                   |      1.92K             |              |
+|      net_backbone.blocks.5.0.conv_dw               |      24K               |              |
+|      net_backbone.blocks.5.0.bn2                   |      1.92K             |              |
+|      net_backbone.blocks.5.0.se                    |      77.8K             |              |
+|      net_backbone.blocks.5.0.conv_pwl              |      0.261M            |              |
+|      net_backbone.blocks.5.0.bn3                   |      0.544K            |              |
+|     net_backbone.blocks.5.1                        |     1.159M             |              |
+|      net_backbone.blocks.5.1.conv_pw               |      0.444M            |              |
+|      net_backbone.blocks.5.1.bn1                   |      3.264K            |              |
+|      net_backbone.blocks.5.1.conv_dw               |      40.8K             |              |
+|      net_backbone.blocks.5.1.bn2                   |      3.264K            |              |
+|      net_backbone.blocks.5.1.se                    |      0.224M            |              |
+|      net_backbone.blocks.5.1.conv_pwl              |      0.444M            |              |
+|      net_backbone.blocks.5.1.bn3                   |      0.544K            |              |
+|     net_backbone.blocks.5.2                        |     1.159M             |              |
+|      net_backbone.blocks.5.2.conv_pw               |      0.444M            |              |
+|      net_backbone.blocks.5.2.bn1                   |      3.264K            |              |
+|      net_backbone.blocks.5.2.conv_dw               |      40.8K             |              |
+|      net_backbone.blocks.5.2.bn2                   |      3.264K            |              |
+|      net_backbone.blocks.5.2.se                    |      0.224M            |              |
+|      net_backbone.blocks.5.2.conv_pwl              |      0.444M            |              |
+|      net_backbone.blocks.5.2.bn3                   |      0.544K            |              |
+|     net_backbone.blocks.5.3                        |     1.159M             |              |
+|      net_backbone.blocks.5.3.conv_pw               |      0.444M            |              |
+|      net_backbone.blocks.5.3.bn1                   |      3.264K            |              |
+|      net_backbone.blocks.5.3.conv_dw               |      40.8K             |              |
+|      net_backbone.blocks.5.3.bn2                   |      3.264K            |              |
+|      net_backbone.blocks.5.3.se                    |      0.224M            |              |
+|      net_backbone.blocks.5.3.conv_pwl              |      0.444M            |              |
+|      net_backbone.blocks.5.3.bn3                   |      0.544K            |              |
+|     net_backbone.blocks.5.4                        |     1.159M             |              |
+|      net_backbone.blocks.5.4.conv_pw               |      0.444M            |              |
+|      net_backbone.blocks.5.4.bn1                   |      3.264K            |              |
+|      net_backbone.blocks.5.4.conv_dw               |      40.8K             |              |
+|      net_backbone.blocks.5.4.bn2                   |      3.264K            |              |
+|      net_backbone.blocks.5.4.se                    |      0.224M            |              |
+|      net_backbone.blocks.5.4.conv_pwl              |      0.444M            |              |
+|      net_backbone.blocks.5.4.bn3                   |      0.544K            |              |
+|     net_backbone.blocks.5.5                        |     1.159M             |              |
+|      net_backbone.blocks.5.5.conv_pw               |      0.444M            |              |
+|      net_backbone.blocks.5.5.bn1                   |      3.264K            |              |
+|      net_backbone.blocks.5.5.conv_dw               |      40.8K             |              |
+|      net_backbone.blocks.5.5.bn2                   |      3.264K            |              |
+|      net_backbone.blocks.5.5.se                    |      0.224M            |              |
+|      net_backbone.blocks.5.5.conv_pwl              |      0.444M            |              |
+|      net_backbone.blocks.5.5.bn3                   |      0.544K            |              |
+|     net_backbone.blocks.5.6                        |     1.159M             |              |
+|      net_backbone.blocks.5.6.conv_pw               |      0.444M            |              |
+|      net_backbone.blocks.5.6.bn1                   |      3.264K            |              |
+|      net_backbone.blocks.5.6.conv_dw               |      40.8K             |              |
+|      net_backbone.blocks.5.6.bn2                   |      3.264K            |              |
+|      net_backbone.blocks.5.6.se                    |      0.224M            |              |
+|      net_backbone.blocks.5.6.conv_pwl              |      0.444M            |              |
+|      net_backbone.blocks.5.6.bn3                   |      0.544K            |              |
+|     net_backbone.blocks.5.7                        |     1.159M             |              |
+|      net_backbone.blocks.5.7.conv_pw               |      0.444M            |              |
+|      net_backbone.blocks.5.7.bn1                   |      3.264K            |              |
+|      net_backbone.blocks.5.7.conv_dw               |      40.8K             |              |
+|      net_backbone.blocks.5.7.bn2                   |      3.264K            |              |
+|      net_backbone.blocks.5.7.se                    |      0.224M            |              |
+|      net_backbone.blocks.5.7.conv_pwl              |      0.444M            |              |
+|      net_backbone.blocks.5.7.bn3                   |      0.544K            |              |
+|    net_backbone.blocks.6                           |    4.47M               |              |
+|     net_backbone.blocks.6.0                        |     1.421M             |              |
+|      net_backbone.blocks.6.0.conv_pw               |      0.444M            |              |
+|      net_backbone.blocks.6.0.bn1                   |      3.264K            |              |
+|      net_backbone.blocks.6.0.conv_dw               |      14.688K           |              |
+|      net_backbone.blocks.6.0.bn2                   |      3.264K            |              |
+|      net_backbone.blocks.6.0.se                    |      0.224M            |              |
+|      net_backbone.blocks.6.0.conv_pwl              |      0.731M            |              |
+|      net_backbone.blocks.6.0.bn3                   |      0.896K            |              |
+|     net_backbone.blocks.6.1                        |     3.049M             |              |
+|      net_backbone.blocks.6.1.conv_pw               |      1.204M            |              |
+|      net_backbone.blocks.6.1.bn1                   |      5.376K            |              |
+|      net_backbone.blocks.6.1.conv_dw               |      24.192K           |              |
+|      net_backbone.blocks.6.1.bn2                   |      5.376K            |              |
+|      net_backbone.blocks.6.1.se                    |      0.605M            |              |
+|      net_backbone.blocks.6.1.conv_pwl              |      1.204M            |              |
+|      net_backbone.blocks.6.1.bn3                   |      0.896K            |              |
+|  net_ad                                            |  7.779M                |  2.123G      |
+|   net_ad.pos_embed                                 |   4.096K               |   0          |
+|    net_ad.pos_embed.row_embed                      |    2.048K              |    0         |
+|     net_ad.pos_embed.row_embed.weight              |     (16, 128)          |              |
+|    net_ad.pos_embed.col_embed                      |    2.048K              |    0         |
+|     net_ad.pos_embed.col_embed.weight              |     (16, 128)          |              |
+|   net_ad.transformer                               |   7.635M               |   2.087G     |
+|    net_ad.transformer.encoder.layers               |    3.159M              |    0.875G    |
+|     net_ad.transformer.encoder.layers.0            |     0.79M              |     0.219G   |
+|      net_ad.transformer.encoder.layers.0.self_attn |      0.263M            |      83.886M |
+|      net_ad.transformer.encoder.layers.0.linear1   |      0.263M            |      67.109M |
+|      net_ad.transformer.encoder.layers.0.linear2   |      0.262M            |      67.109M |
+|      net_ad.transformer.encoder.layers.0.norm1     |      0.512K            |      0.328M  |
+|      net_ad.transformer.encoder.layers.0.norm2     |      0.512K            |      0.328M  |
+|     net_ad.transformer.encoder.layers.1            |     0.79M              |     0.219G   |
+|      net_ad.transformer.encoder.layers.1.self_attn |      0.263M            |      83.886M |
+|      net_ad.transformer.encoder.layers.1.linear1   |      0.263M            |      67.109M |
+|      net_ad.transformer.encoder.layers.1.linear2   |      0.262M            |      67.109M |
+|      net_ad.transformer.encoder.layers.1.norm1     |      0.512K            |      0.328M  |
+|      net_ad.transformer.encoder.layers.1.norm2     |      0.512K            |      0.328M  |
+|     net_ad.transformer.encoder.layers.2            |     0.79M              |     0.219G   |
+|      net_ad.transformer.encoder.layers.2.self_attn |      0.263M            |      83.886M |
+|      net_ad.transformer.encoder.layers.2.linear1   |      0.263M            |      67.109M |
+|      net_ad.transformer.encoder.layers.2.linear2   |      0.262M            |      67.109M |
+|      net_ad.transformer.encoder.layers.2.norm1     |      0.512K            |      0.328M  |
+|      net_ad.transformer.encoder.layers.2.norm2     |      0.512K            |      0.328M  |
+|     net_ad.transformer.encoder.layers.3            |     0.79M              |     0.219G   |
+|      net_ad.transformer.encoder.layers.3.self_attn |      0.263M            |      83.886M |
+|      net_ad.transformer.encoder.layers.3.linear1   |      0.263M            |      67.109M |
+|      net_ad.transformer.encoder.layers.3.linear2   |      0.262M            |      67.109M |
+|      net_ad.transformer.encoder.layers.3.norm1     |      0.512K            |      0.328M  |
+|      net_ad.transformer.encoder.layers.3.norm2     |      0.512K            |      0.328M  |
+|    net_ad.transformer.decoder                      |    4.476M              |    1.212G    |
+|     net_ad.transformer.decoder.layers              |     4.476M             |     1.212G   |
+|      net_ad.transformer.decoder.layers.0           |      1.119M            |      0.303G  |
+|      net_ad.transformer.decoder.layers.1           |      1.119M            |      0.303G  |
+|      net_ad.transformer.decoder.layers.2           |      1.119M            |      0.303G  |
+|      net_ad.transformer.decoder.layers.3           |      1.119M            |      0.303G  |
+|     net_ad.transformer.decoder.norm                |     0.512K             |     0.328M   |
+|      net_ad.transformer.decoder.norm.weight        |      (256,)            |              |
+|      net_ad.transformer.decoder.norm.bias          |      (256,)            |              |
+|   net_ad.input_proj                                |   69.888K              |   17.826M    |
+|    net_ad.input_proj.weight                        |    (256, 272)          |              |
+|    net_ad.input_proj.bias                          |    (256,)              |              |
+|   net_ad.output_proj                               |   69.904K              |   17.826M    |
+|    net_ad.output_proj.weight                       |    (272, 256)          |              |
+|    net_ad.output_proj.bias                         |    (272,)              |              |
+|   net_ad.upsample                                  |                        |   0.262M     |
+|  net_merge                                         |                        |  0.279M      |
+-------------------------------------------------------------------------------
+2024-10-22 02:07:14,693 - ==> Creating optimizer
+2024-10-22 02:07:14,694 - ==> Loading dataset: RealIAD
+2024-10-22 02:07:14,705 - ==> ********** cfg ********** 
+fvcore_is                            : True                                
+fvcore_b                             : 1                                   
+fvcore_c                             : 3                                   
+epoch_full                           : 100                                 
+metrics                              : ['mAUROC_sp_max', 'mAP_sp_max', 'mF1_max_sp_max', 'mAUPRO_px', 'mAUROC_px', 'mAP_px', 'mF1_max_px', 'mF1_px_0.2_0.8_0.1', 'mAcc_px_0.2_0.8_0.1', 'mIoU_px_0.2_0.8_0.1', 'mIoU_max_px']
+use_adeval                           : True                                
+evaluator.kwargs                     : {'metrics': ['mAUROC_sp_max', 'mAP_sp_max', 'mF1_max_sp_max', 'mAUPRO_px', 'mAUROC_px', 'mAP_px', 'mF1_max_px', 'mF1_px_0.2_0.8_0.1', 'mAcc_px_0.2_0.8_0.1', 'mIoU_px_0.2_0.8_0.1', 'mIoU_max_px'], 'pooling_ks': [16, 16], 'max_step_aupro': 100, 'use_adeval': True}
+optim.lr                             : 0.0001                              
+optim.kwargs                         : {'name': 'adamw', 'betas': (0.9, 0.999), 'eps': 1e-08, 'weight_decay': 0.0001, 'amsgrad': False}
+trainer.name                         : UniADTrainer                        
+trainer.checkpoint                   : runs                                
+trainer.logdir_sub                   :                                     
+trainer.resume_dir                   :                                     
+trainer.cuda_deterministic           : False                               
+trainer.epoch_full                   : 100                                 
+trainer.scheduler_kwargs             : {'name': 'step', 'lr_noise': None, 'noise_pct': 0.67, 'noise_std': 1.0, 'noise_seed': 42, 'lr_min': 1e-06, 'warmup_lr': 1.0000000000000001e-07, 'warmup_iters': -1, 'cooldown_iters': 0, 'warmup_epochs': 0, 'cooldown_epochs': 0, 'use_iters': True, 'patience_iters': 0, 'patience_epochs': 0, 'decay_iters': 0, 'decay_epochs': 80, 'cycle_decay': 0.1, 'decay_rate': 0.1}
+trainer.mixup_kwargs                 : {'mixup_alpha': 0.8, 'cutmix_alpha': 1.0, 'cutmix_minmax': None, 'prob': 0.0, 'switch_prob': 0.5, 'mode': 'batch', 'correct_lam': True, 'label_smoothing': 0.1}
+trainer.test_start_epoch             : 100                                 
+trainer.test_per_epoch               : 100                                 
+trainer.find_unused_parameters       : False                               
+trainer.sync_BN                      : apex                                
+trainer.dist_BN                      :                                     
+trainer.scaler                       : none                                
+trainer.data.batch_size              : 8                                   
+trainer.data.batch_size_per_gpu      : 8                                   
+trainer.data.batch_size_test         : 8                                   
+trainer.data.batch_size_per_gpu_test : 8                                   
+trainer.data.num_workers_per_gpu     : 8                                   
+trainer.data.drop_last               : True                                
+trainer.data.pin_memory              : True                                
+trainer.data.persistent_workers      : False                               
+trainer.data.num_workers             : 8                                   
+trainer.iter                         : 0                                   
+trainer.epoch                        : 0                                   
+trainer.iter_full                    : 3000                                
+trainer.metric_recorder              : {'mAUROC_sp_max_audiojack': [], 'mAP_sp_max_audiojack': [], 'mF1_max_sp_max_audiojack': [], 'mAUPRO_px_audiojack': [], 'mAUROC_px_audiojack': [], 'mAP_px_audiojack': [], 'mF1_max_px_audiojack': [], 'mF1_px_0.2_0.8_0.1_audiojack': [], 'mAcc_px_0.2_0.8_0.1_audiojack': [], 'mIoU_px_0.2_0.8_0.1_audiojack': [], 'mIoU_max_px_audiojack': []}
+loss.loss_terms                      : [{'type': 'L2Loss', 'name': 'pixel', 'lam': 1.0}]
+loss.clip_grad                       : 5.0                                 
+loss.create_graph                    : False                               
+loss.retain_graph                    : False                               
+adv                                  : False                               
+logging.log_terms_train              : [{'name': 'batch_t', 'fmt': ':>5.3f', 'add_name': 'avg'}, {'name': 'data_t', 'fmt': ':>5.3f'}, {'name': 'optim_t', 'fmt': ':>5.3f'}, {'name': 'lr', 'fmt': ':>7.6f'}, {'name': 'pixel', 'suffixes': [''], 'fmt': ':>5.3f', 'add_name': 'avg'}]
+logging.log_terms_test               : [{'name': 'batch_t', 'fmt': ':>5.3f', 'add_name': 'avg'}, {'name': 'pixel', 'suffixes': [''], 'fmt': ':>5.3f', 'add_name': 'avg'}]
+logging.train_reset_log_per          : 50                                  
+logging.train_log_per                : 50                                  
+logging.test_log_per                 : 50                                  
+data.sampler                         : naive                               
+data.loader_type                     : pil                                 
+data.loader_type_target              : pil_L                               
+data.type                            : RealIAD                             
+data.root                            : /home/albus/DataSets/REAL-IAD/realiad_256
+data.meta                            : meta.json                           
+data.cls_names                       : ['audiojack']                       
+data.train_transforms                : [{'type': 'Resize', 'size': (256, 256), 'interpolation': <InterpolationMode.BILINEAR: 'bilinear'>}, {'type': 'CenterCrop', 'size': (256, 256)}, {'type': 'ToTensor'}, {'type': 'Normalize', 'mean': (0.485, 0.456, 0.406), 'std': (0.229, 0.224, 0.225), 'inplace': True}]
+data.test_transforms                 : [{'type': 'Resize', 'size': (256, 256), 'interpolation': <InterpolationMode.BILINEAR: 'bilinear'>}, {'type': 'CenterCrop', 'size': (256, 256)}, {'type': 'ToTensor'}, {'type': 'Normalize', 'mean': (0.485, 0.456, 0.406), 'std': (0.229, 0.224, 0.225), 'inplace': True}]
+data.target_transforms               : [{'type': 'Resize', 'size': (256, 256), 'interpolation': <InterpolationMode.BILINEAR: 'bilinear'>}, {'type': 'CenterCrop', 'size': (256, 256)}, {'type': 'ToTensor'}]
+data.use_sample                      : True                                
+data.views                           : []                                  
+data.train_size                      : 30                                  
+data.test_size                       : 96                                  
+data.train_length                    : 247                                 
+data.test_length                     : 763                                 
+model_backbone.name                  : timm_tf_efficientnet_b4             
+model_backbone.kwargs                : {'pretrained': True, 'checkpoint_path': '', 'strict': False, 'hf': None, 'features_only': True, 'out_indices': [0, 1, 2, 3]}
+model_decoder                        : {'inplanes': [24, 32, 56, 160], 'outplanes': [272], 'instrides': [16], 'feature_size': [16, 16], 'neighbor_size': [8, 8]}
+model.name                           : uniad                               
+model.kwargs                         : {'pretrained': False, 'checkpoint_path': '', 'strict': True, 'model_backbone': Namespace(kwargs={'pretrained': True, 'checkpoint_path': '', 'strict': False, 'hf': None, 'features_only': True, 'out_indices': [0, 1, 2, 3]}, name='timm_tf_efficientnet_b4'), 'model_decoder': {'inplanes': [24, 32, 56, 160], 'outplanes': [272], 'instrides': [16], 'feature_size': [16, 16], 'neighbor_size': [8, 8]}}
+seed                                 : 42                                  
+size                                 : 256                                 
+warmup_epochs                        : 0                                   
+test_start_epoch                     : 100                                 
+test_per_epoch                       : 100                                 
+batch_train                          : 8                                   
+batch_test_per                       : 8                                   
+lr                                   : 0.0001                              
+weight_decay                         : 0.0001                              
+cfg_path                             : configs.uniad.uniad_realiad         
+mode                                 : train                               
+sleep                                : -1                                  
+memory                               : -1                                  
+dist_url                             : env://                              
+logger_rank                          : 0                                   
+opts                                 : []                                  
+command                              : python3 -m torch.distributed.launch --nproc_per_node=$nproc_per_node --nnodes=$nnodes --node_rank=$node_rank --master_addr=$master_addr --master_port=$master_port --use_env run.py -c configs.uniad.uniad_realiad -m train --sleep -1 --memory -1 --dist_url env:// --logger_rank 0 
+task_start_time                      : 554227.539118351                    
+dist                                 : False                               
+world_size                           : 1                                   
+rank                                 : 0                                   
+local_rank                           : 0                                   
+ngpus_per_node                       : 1                                   
+nnodes                               : 1                                   
+master                               : True                                
+logdir                               : runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712
+logger.filters                       : []                                  
+logger.name                          : root                                
+logger.level                         : 20                                  
+logger.parent                        : None                                
+logger.propagate                     : True                                
+logger.disabled                      : False                               
+logdir_train                         : runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712/show_train
+logdir_test                          : runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712/show_test
+2024-10-22 02:07:14,705 - ==> Starting training with 1 nodes x 1 GPUs
+2024-10-22 02:07:20,231 - ==> Total time: 0:00:07	 Eta: 0:12:32 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:07:23,926 - Train: 1.67% [50/3000]  [1.7/100.0] [batch_t 0.153 (0.165)] [data_t 0.003] [optim_t 0.150] [lr 0.000100] [pixel 27.826 (28.547)]
+2024-10-22 02:07:25,463 - ==> Total time: 0:00:12	 Eta: 0:10:28 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:07:30,786 - ==> Total time: 0:00:18	 Eta: 0:09:47 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:07:33,122 - Train: 3.33% [100/3000]  [3.3/100.0] [batch_t 0.154 (0.177)] [data_t 0.003] [optim_t 0.150] [lr 0.000100] [pixel 24.964 (25.207)]
+2024-10-22 02:07:36,199 - ==> Total time: 0:00:23	 Eta: 0:09:25 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:07:41,653 - Train: 5.00% [150/3000]  [5.0/100.0] [batch_t 0.154 (0.163)] [data_t 0.003] [optim_t 0.150] [lr 0.000100] [pixel 23.602 (23.930)]
+2024-10-22 02:07:41,656 - ==> Total time: 0:00:29	 Eta: 0:09:11 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:07:46,941 - ==> Total time: 0:00:34	 Eta: 0:08:57 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:07:50,714 - Train: 6.67% [200/3000]  [6.7/100.0] [batch_t 0.154 (0.164)] [data_t 0.003] [optim_t 0.151] [lr 0.000100] [pixel 21.498 (22.024)]
+2024-10-22 02:07:52,257 - ==> Total time: 0:00:39	 Eta: 0:08:46 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:07:57,612 - ==> Total time: 0:00:44	 Eta: 0:08:37 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:07:59,978 - Train: 8.33% [250/3000]  [8.3/100.0] [batch_t 0.154 (0.179)] [data_t 0.003] [optim_t 0.151] [lr 0.000100] [pixel 19.562 (19.801)]
+2024-10-22 02:08:03,066 - ==> Total time: 0:00:50	 Eta: 0:08:29 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:08:08,455 - Train: 10.00% [300/3000]  [10.0/100.0] [batch_t 0.154 (0.163)] [data_t 0.003] [optim_t 0.151] [lr 0.000100] [pixel 18.253 (18.590)]
+2024-10-22 02:08:08,458 - ==> Total time: 0:00:55	 Eta: 0:08:22 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:08:13,923 - ==> Total time: 0:01:01	 Eta: 0:08:15 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:08:17,746 - Train: 11.67% [350/3000]  [11.7/100.0] [batch_t 0.155 (0.167)] [data_t 0.003] [optim_t 0.151] [lr 0.000100] [pixel 16.993 (17.251)]
+2024-10-22 02:08:19,297 - ==> Total time: 0:01:06	 Eta: 0:08:08 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:08:24,720 - ==> Total time: 0:01:12	 Eta: 0:08:02 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:08:27,084 - Train: 13.33% [400/3000]  [13.3/100.0] [batch_t 0.155 (0.180)] [data_t 0.003] [optim_t 0.152] [lr 0.000100] [pixel 16.051 (16.133)]
+2024-10-22 02:08:30,190 - ==> Total time: 0:01:17	 Eta: 0:07:56 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:08:35,637 - Train: 15.00% [450/3000]  [15.0/100.0] [batch_t 0.155 (0.163)] [data_t 0.003] [optim_t 0.152] [lr 0.000100] [pixel 15.236 (15.448)]
+2024-10-22 02:08:35,640 - ==> Total time: 0:01:23	 Eta: 0:07:50 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:08:41,091 - ==> Total time: 0:01:28	 Eta: 0:07:44 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:08:45,113 - Train: 16.67% [500/3000]  [16.7/100.0] [batch_t 0.155 (0.168)] [data_t 0.003] [optim_t 0.152] [lr 0.000100] [pixel 14.524 (14.612)]
+2024-10-22 02:08:46,667 - ==> Total time: 0:01:34	 Eta: 0:07:39 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:08:52,123 - ==> Total time: 0:01:39	 Eta: 0:07:33 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:08:54,342 - Train: 18.33% [550/3000]  [18.3/100.0] [batch_t 0.156 (0.171)] [data_t 0.003] [optim_t 0.152] [lr 0.000100] [pixel 13.756 (13.878)]
+2024-10-22 02:08:57,449 - ==> Total time: 0:01:44	 Eta: 0:07:26 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:09:02,867 - Train: 20.00% [600/3000]  [20.0/100.0] [batch_t 0.155 (0.164)] [data_t 0.003] [optim_t 0.152] [lr 0.000100] [pixel 13.205 (13.390)]
+2024-10-22 02:09:02,870 - ==> Total time: 0:01:50	 Eta: 0:07:20 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:09:08,355 - ==> Total time: 0:01:55	 Eta: 0:07:15 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:09:12,260 - Train: 21.67% [650/3000]  [21.7/100.0] [batch_t 0.155 (0.167)] [data_t 0.003] [optim_t 0.152] [lr 0.000100] [pixel 12.573 (12.811)]
+2024-10-22 02:09:13,817 - ==> Total time: 0:02:01	 Eta: 0:07:09 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:09:19,163 - ==> Total time: 0:02:06	 Eta: 0:07:03 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:09:21,520 - Train: 23.33% [700/3000]  [23.3/100.0] [batch_t 0.156 (0.177)] [data_t 0.003] [optim_t 0.153] [lr 0.000100] [pixel 12.268 (12.252)]
+2024-10-22 02:09:24,633 - ==> Total time: 0:02:12	 Eta: 0:06:58 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:09:30,096 - Train: 25.00% [750/3000]  [25.0/100.0] [batch_t 0.156 (0.164)] [data_t 0.003] [optim_t 0.152] [lr 0.000100] [pixel 11.762 (11.923)]
+2024-10-22 02:09:30,099 - ==> Total time: 0:02:17	 Eta: 0:06:52 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:09:35,528 - ==> Total time: 0:02:22	 Eta: 0:06:46 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:09:39,406 - Train: 26.67% [800/3000]  [26.7/100.0] [batch_t 0.156 (0.166)] [data_t 0.003] [optim_t 0.152] [lr 0.000100] [pixel 11.390 (11.485)]
+2024-10-22 02:09:40,967 - ==> Total time: 0:02:28	 Eta: 0:06:41 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:09:46,354 - ==> Total time: 0:02:33	 Eta: 0:06:35 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:09:48,701 - Train: 28.33% [850/3000]  [28.3/100.0] [batch_t 0.156 (0.182)] [data_t 0.003] [optim_t 0.153] [lr 0.000100] [pixel 11.283 (11.088)]
+2024-10-22 02:09:51,823 - ==> Total time: 0:02:39	 Eta: 0:06:29 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:09:57,281 - Train: 30.00% [900/3000]  [30.0/100.0] [batch_t 0.156 (0.163)] [data_t 0.003] [optim_t 0.153] [lr 0.000100] [pixel 10.614 (10.814)]
+2024-10-22 02:09:57,285 - ==> Total time: 0:02:44	 Eta: 0:06:24 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:10:02,782 - ==> Total time: 0:02:50	 Eta: 0:06:18 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:10:06,669 - Train: 31.67% [950/3000]  [31.7/100.0] [batch_t 0.156 (0.167)] [data_t 0.003] [optim_t 0.153] [lr 0.000100] [pixel 10.303 (10.481)]
+2024-10-22 02:10:08,233 - ==> Total time: 0:02:55	 Eta: 0:06:13 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:10:13,673 - ==> Total time: 0:03:01	 Eta: 0:06:07 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:10:15,928 - Train: 33.33% [1000/3000]  [33.3/100.0] [batch_t 0.156 (0.176)] [data_t 0.003] [optim_t 0.153] [lr 0.000100] [pixel 10.038 (10.108)]
+2024-10-22 02:10:19,056 - ==> Total time: 0:03:06	 Eta: 0:06:01 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:10:24,580 - Train: 35.00% [1050/3000]  [35.0/100.0] [batch_t 0.156 (0.164)] [data_t 0.003] [optim_t 0.153] [lr 0.000100] [pixel 9.698 (9.930)]
+2024-10-22 02:10:24,583 - ==> Total time: 0:03:11	 Eta: 0:05:56 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:10:30,095 - ==> Total time: 0:03:17	 Eta: 0:05:51 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:10:34,180 - Train: 36.67% [1100/3000]  [36.7/100.0] [batch_t 0.156 (0.170)] [data_t 0.003] [optim_t 0.153] [lr 0.000100] [pixel 9.693 (9.635)]
+2024-10-22 02:10:35,745 - ==> Total time: 0:03:23	 Eta: 0:05:45 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:10:41,257 - ==> Total time: 0:03:28	 Eta: 0:05:40 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:10:43,440 - Train: 38.33% [1150/3000]  [38.3/100.0] [batch_t 0.157 (0.168)] [data_t 0.003] [optim_t 0.153] [lr 0.000100] [pixel 9.372 (9.368)]
+2024-10-22 02:10:46,570 - ==> Total time: 0:03:33	 Eta: 0:05:34 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:10:52,013 - Train: 40.00% [1200/3000]  [40.0/100.0] [batch_t 0.156 (0.164)] [data_t 0.003] [optim_t 0.153] [lr 0.000100] [pixel 9.195 (9.183)]
+2024-10-22 02:10:52,016 - ==> Total time: 0:03:39	 Eta: 0:05:29 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:10:57,528 - ==> Total time: 0:03:44	 Eta: 0:05:23 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:11:01,364 - Train: 41.67% [1250/3000]  [41.7/100.0] [batch_t 0.156 (0.166)] [data_t 0.003] [optim_t 0.153] [lr 0.000100] [pixel 8.887 (8.954)]
+2024-10-22 02:11:02,932 - ==> Total time: 0:03:50	 Eta: 0:05:18 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:11:08,415 - ==> Total time: 0:03:55	 Eta: 0:05:12 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:11:10,799 - Train: 43.33% [1300/3000]  [43.3/100.0] [batch_t 0.157 (0.183)] [data_t 0.003] [optim_t 0.153] [lr 0.000100] [pixel 8.840 (8.723)]
+2024-10-22 02:11:13,932 - ==> Total time: 0:04:01	 Eta: 0:05:07 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:11:19,488 - Train: 45.00% [1350/3000]  [45.0/100.0] [batch_t 0.156 (0.165)] [data_t 0.003] [optim_t 0.153] [lr 0.000100] [pixel 8.636 (8.560)]
+2024-10-22 02:11:19,490 - ==> Total time: 0:04:06	 Eta: 0:05:01 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:11:24,949 - ==> Total time: 0:04:12	 Eta: 0:04:56 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:11:28,885 - Train: 46.67% [1400/3000]  [46.7/100.0] [batch_t 0.156 (0.169)] [data_t 0.003] [optim_t 0.153] [lr 0.000100] [pixel 8.316 (8.357)]
+2024-10-22 02:11:30,453 - ==> Total time: 0:04:17	 Eta: 0:04:50 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:11:35,929 - ==> Total time: 0:04:23	 Eta: 0:04:45 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:11:38,324 - Train: 48.33% [1450/3000]  [48.3/100.0] [batch_t 0.157 (0.182)] [data_t 0.003] [optim_t 0.153] [lr 0.000100] [pixel 8.104 (8.170)]
+2024-10-22 02:11:41,459 - ==> Total time: 0:04:28	 Eta: 0:04:39 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:11:46,997 - Train: 50.00% [1500/3000]  [50.0/100.0] [batch_t 0.156 (0.165)] [data_t 0.003] [optim_t 0.153] [lr 0.000100] [pixel 7.979 (8.022)]
+2024-10-22 02:11:47,001 - ==> Total time: 0:04:34	 Eta: 0:04:34 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:11:52,502 - ==> Total time: 0:04:39	 Eta: 0:04:28 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:11:56,390 - Train: 51.67% [1550/3000]  [51.7/100.0] [batch_t 0.156 (0.170)] [data_t 0.003] [optim_t 0.153] [lr 0.000100] [pixel 8.058 (7.874)]
+2024-10-22 02:11:57,959 - ==> Total time: 0:04:45	 Eta: 0:04:23 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:12:03,430 - ==> Total time: 0:04:50	 Eta: 0:04:17 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:12:05,801 - Train: 53.33% [1600/3000]  [53.3/100.0] [batch_t 0.157 (0.180)] [data_t 0.003] [optim_t 0.154] [lr 0.000100] [pixel 7.858 (7.749)]
+2024-10-22 02:12:08,939 - ==> Total time: 0:04:56	 Eta: 0:04:12 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:12:14,480 - Train: 55.00% [1650/3000]  [55.0/100.0] [batch_t 0.157 (0.165)] [data_t 0.003] [optim_t 0.154] [lr 0.000100] [pixel 7.472 (7.569)]
+2024-10-22 02:12:14,483 - ==> Total time: 0:05:01	 Eta: 0:04:06 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:12:20,022 - ==> Total time: 0:05:07	 Eta: 0:04:01 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:12:23,969 - Train: 56.67% [1700/3000]  [56.7/100.0] [batch_t 0.156 (0.169)] [data_t 0.003] [optim_t 0.153] [lr 0.000100] [pixel 7.313 (7.423)]
+2024-10-22 02:12:25,539 - ==> Total time: 0:05:12	 Eta: 0:03:56 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:12:30,985 - ==> Total time: 0:05:18	 Eta: 0:03:50 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:12:33,315 - Train: 58.33% [1750/3000]  [58.3/100.0] [batch_t 0.157 (0.181)] [data_t 0.003] [optim_t 0.153] [lr 0.000100] [pixel 7.225 (7.287)]
+2024-10-22 02:12:36,451 - ==> Total time: 0:05:23	 Eta: 0:03:45 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:12:41,914 - Train: 60.00% [1800/3000]  [60.0/100.0] [batch_t 0.157 (0.166)] [data_t 0.003] [optim_t 0.153] [lr 0.000100] [pixel 7.021 (7.170)]
+2024-10-22 02:12:41,917 - ==> Total time: 0:05:29	 Eta: 0:03:39 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:12:47,425 - ==> Total time: 0:05:34	 Eta: 0:03:34 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:12:51,308 - Train: 61.67% [1850/3000]  [61.7/100.0] [batch_t 0.157 (0.166)] [data_t 0.003] [optim_t 0.153] [lr 0.000100] [pixel 7.184 (7.038)]
+2024-10-22 02:12:52,879 - ==> Total time: 0:05:40	 Eta: 0:03:28 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:12:58,402 - ==> Total time: 0:05:45	 Eta: 0:03:23 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:13:00,799 - Train: 63.33% [1900/3000]  [63.3/100.0] [batch_t 0.159 (0.181)] [data_t 0.003] [optim_t 0.155] [lr 0.000100] [pixel 6.974 (6.947)]
+2024-10-22 02:13:03,938 - ==> Total time: 0:05:51	 Eta: 0:03:17 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:13:09,344 - Train: 65.00% [1950/3000]  [65.0/100.0] [batch_t 0.157 (0.163)] [data_t 0.003] [optim_t 0.154] [lr 0.000100] [pixel 6.782 (6.832)]
+2024-10-22 02:13:09,346 - ==> Total time: 0:05:56	 Eta: 0:03:12 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:13:14,743 - ==> Total time: 0:06:02	 Eta: 0:03:06 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:13:18,677 - Train: 66.67% [2000/3000]  [66.7/100.0] [batch_t 0.157 (0.169)] [data_t 0.003] [optim_t 0.153] [lr 0.000100] [pixel 6.604 (6.685)]
+2024-10-22 02:13:20,248 - ==> Total time: 0:06:07	 Eta: 0:03:01 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:13:25,782 - ==> Total time: 0:06:13	 Eta: 0:02:55 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:13:28,174 - Train: 68.33% [2050/3000]  [68.3/100.0] [batch_t 0.158 (0.181)] [data_t 0.003] [optim_t 0.154] [lr 0.000100] [pixel 6.642 (6.578)]
+2024-10-22 02:13:31,318 - ==> Total time: 0:06:18	 Eta: 0:02:50 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:13:36,784 - Train: 70.00% [2100/3000]  [70.0/100.0] [batch_t 0.157 (0.163)] [data_t 0.003] [optim_t 0.153] [lr 0.000100] [pixel 6.532 (6.509)]
+2024-10-22 02:13:36,786 - ==> Total time: 0:06:24	 Eta: 0:02:44 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:13:42,238 - ==> Total time: 0:06:29	 Eta: 0:02:39 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:13:46,125 - Train: 71.67% [2150/3000]  [71.7/100.0] [batch_t 0.157 (0.169)] [data_t 0.003] [optim_t 0.153] [lr 0.000100] [pixel 6.482 (6.433)]
+2024-10-22 02:13:47,698 - ==> Total time: 0:06:35	 Eta: 0:02:33 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:13:53,175 - ==> Total time: 0:06:40	 Eta: 0:02:28 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:13:55,556 - Train: 73.33% [2200/3000]  [73.3/100.0] [batch_t 0.157 (0.174)] [data_t 0.003] [optim_t 0.154] [lr 0.000100] [pixel 6.259 (6.376)]
+2024-10-22 02:13:58,698 - ==> Total time: 0:06:46	 Eta: 0:02:22 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:14:04,260 - Train: 75.00% [2250/3000]  [75.0/100.0] [batch_t 0.157 (0.165)] [data_t 0.003] [optim_t 0.153] [lr 0.000100] [pixel 6.045 (6.243)]
+2024-10-22 02:14:04,263 - ==> Total time: 0:06:51	 Eta: 0:02:17 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:14:09,803 - ==> Total time: 0:06:57	 Eta: 0:02:11 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:14:13,792 - Train: 76.67% [2300/3000]  [76.7/100.0] [batch_t 0.157 (0.168)] [data_t 0.003] [optim_t 0.153] [lr 0.000100] [pixel 6.180 (6.156)]
+2024-10-22 02:14:15,365 - ==> Total time: 0:07:02	 Eta: 0:02:06 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:14:20,820 - ==> Total time: 0:07:08	 Eta: 0:02:00 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:14:23,129 - Train: 78.33% [2350/3000]  [78.3/100.0] [batch_t 0.157 (0.181)] [data_t 0.003] [optim_t 0.154] [lr 0.000100] [pixel 5.881 (6.032)]
+2024-10-22 02:14:26,271 - ==> Total time: 0:07:13	 Eta: 0:01:55 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:14:31,629 - Train: 80.00% [2400/3000]  [80.0/100.0] [batch_t 0.157 (0.161)] [data_t 0.003] [optim_t 0.154] [lr 0.000100] [pixel 5.974 (6.005)]
+2024-10-22 02:14:31,632 - ==> Total time: 0:07:19	 Eta: 0:01:49 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:14:37,165 - ==> Total time: 0:07:24	 Eta: 0:01:44 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:14:41,131 - Train: 81.67% [2450/3000]  [81.7/100.0] [batch_t 0.157 (0.169)] [data_t 0.003] [optim_t 0.153] [lr 0.000010] [pixel 5.956 (5.953)]
+2024-10-22 02:14:42,705 - ==> Total time: 0:07:30	 Eta: 0:01:38 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:14:48,224 - ==> Total time: 0:07:35	 Eta: 0:01:33 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:14:50,534 - Train: 83.33% [2500/3000]  [83.3/100.0] [batch_t 0.157 (0.179)] [data_t 0.003] [optim_t 0.154] [lr 0.000010] [pixel 6.016 (5.966)]
+2024-10-22 02:14:53,678 - ==> Total time: 0:07:41	 Eta: 0:01:27 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:14:59,135 - Train: 85.00% [2550/3000]  [85.0/100.0] [batch_t 0.157 (0.165)] [data_t 0.003] [optim_t 0.154] [lr 0.000010] [pixel 5.844 (5.940)]
+2024-10-22 02:14:59,138 - ==> Total time: 0:07:46	 Eta: 0:01:22 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:15:04,637 - ==> Total time: 0:07:52	 Eta: 0:01:16 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:15:08,602 - Train: 86.67% [2600/3000]  [86.7/100.0] [batch_t 0.157 (0.170)] [data_t 0.003] [optim_t 0.154] [lr 0.000010] [pixel 6.018 (5.966)]
+2024-10-22 02:15:10,174 - ==> Total time: 0:07:57	 Eta: 0:01:11 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:15:15,654 - ==> Total time: 0:08:03	 Eta: 0:01:05 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:15:18,044 - Train: 88.33% [2650/3000]  [88.3/100.0] [batch_t 0.157 (0.182)] [data_t 0.004] [optim_t 0.154] [lr 0.000010] [pixel 6.153 (5.976)]
+2024-10-22 02:15:21,186 - ==> Total time: 0:08:08	 Eta: 0:01:00 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:15:26,658 - Train: 90.00% [2700/3000]  [90.0/100.0] [batch_t 0.157 (0.166)] [data_t 0.003] [optim_t 0.154] [lr 0.000010] [pixel 5.855 (5.915)]
+2024-10-22 02:15:26,661 - ==> Total time: 0:08:14	 Eta: 0:00:54 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:15:32,114 - ==> Total time: 0:08:19	 Eta: 0:00:49 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:15:36,103 - Train: 91.67% [2750/3000]  [91.7/100.0] [batch_t 0.157 (0.169)] [data_t 0.003] [optim_t 0.154] [lr 0.000010] [pixel 5.972 (5.880)]
+2024-10-22 02:15:37,676 - ==> Total time: 0:08:25	 Eta: 0:00:43 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:15:43,242 - ==> Total time: 0:08:30	 Eta: 0:00:38 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:15:45,698 - Train: 93.33% [2800/3000]  [93.3/100.0] [batch_t 0.157 (0.181)] [data_t 0.003] [optim_t 0.154] [lr 0.000010] [pixel 6.031 (5.884)]
+2024-10-22 02:15:48,844 - ==> Total time: 0:08:36	 Eta: 0:00:32 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:15:54,249 - Train: 95.00% [2850/3000]  [95.0/100.0] [batch_t 0.157 (0.161)] [data_t 0.003] [optim_t 0.154] [lr 0.000010] [pixel 5.770 (5.891)]
+2024-10-22 02:15:54,252 - ==> Total time: 0:08:41	 Eta: 0:00:27 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:15:59,660 - ==> Total time: 0:08:47	 Eta: 0:00:21 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:16:03,554 - Train: 96.67% [2900/3000]  [96.7/100.0] [batch_t 0.157 (0.169)] [data_t 0.003] [optim_t 0.154] [lr 0.000010] [pixel 5.874 (5.849)]
+2024-10-22 02:16:05,126 - ==> Total time: 0:08:52	 Eta: 0:00:16 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:16:10,667 - ==> Total time: 0:08:58	 Eta: 0:00:10 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:16:13,035 - Train: 98.33% [2950/3000]  [98.3/100.0] [batch_t 0.157 (0.179)] [data_t 0.003] [optim_t 0.154] [lr 0.000010] [pixel 5.910 (5.893)]
+2024-10-22 02:16:16,182 - ==> Total time: 0:09:03	 Eta: 0:00:05 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:16:21,684 - Train: 100.00% [3000/3000]  [100.0/100.0] [batch_t 0.157 (0.164)] [data_t 0.003] [optim_t 0.153] [lr 0.000010] [pixel 5.912 (5.865)]
+2024-10-22 02:16:27,088 - Test: 52.08% [50/96] [batch_t 0.100 (0.106)] [pixel 6.207 (5.525)]
+2024-10-22 02:16:32,035 - Test: 100.00% [96/96] [batch_t 0.414 (0.107)] [pixel 6.587 (6.404)]
+2024-10-22 02:17:16,736 - ==> Metric Time for audiojack      :   0.002 (mAUROC_sp_max)	  0.001 (mAP_sp_max)	  0.001 (mF1_max_sp_max)	  0.000 (mAUPRO_px)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	  9.474 (mF1_max_px)	  3.247 (mF1_px_0.2_0.8_0.1)	  3.259 (mAcc_px_0.2_0.8_0.1)	  3.247 (mIoU_px_0.2_0.8_0.1)	  9.505 (mIoU_max_px)	
+2024-10-22 02:17:16,767 - 
+|   Name    |  mAUROC_sp_max  |  mAUROC_sp_max (Max)  |  mAP_sp_max  |  mAP_sp_max (Max)  |  mF1_max_sp_max  |  mF1_max_sp_max (Max)  |  mAUPRO_px  |  mAUPRO_px (Max)   |  mAUROC_px  |  mAUROC_px (Max)   |  mAP_px  |    mAP_px (Max)    |  mF1_max_px  |  mF1_max_px (Max)  |  mF1_px_0.2_0.8_0.1  |  mF1_px_0.2_0.8_0.1 (Max)  |  mAcc_px_0.2_0.8_0.1  |  mAcc_px_0.2_0.8_0.1 (Max)  |  mIoU_px_0.2_0.8_0.1  |  mIoU_px_0.2_0.8_0.1 (Max)  |  mIoU_max_px  |  mIoU_max_px (Max)  |
+|:---------:|:---------------:|:---------------------:|:------------:|:------------------:|:----------------:|:----------------------:|:-----------:|:------------------:|:-----------:|:------------------:|:--------:|:------------------:|:------------:|:------------------:|:--------------------:|:--------------------------:|:---------------------:|:---------------------------:|:---------------------:|:---------------------------:|:-------------:|:-------------------:|
+| audiojack |     73.356      |  73.356 (100 epoch)   |    59.448    | 59.448 (100 epoch) |      59.379      |   59.379 (100 epoch)   |   81.274    | 81.274 (100 epoch) |   96.357    | 96.357 (100 epoch) |  12.489  | 12.489 (100 epoch) |    20.930    | 20.930 (100 epoch) |        6.215         |     6.215 (100 epoch)      |        44.968         |     44.968 (100 epoch)      |         3.335         |      3.335 (100 epoch)      |    11.688     | 11.688 (100 epoch)  |
+2024-10-22 02:17:16,796 - ==> Total time: 0:10:04	 Eta: 0:00:00 	Logged in 'runs/UniADTrainer_configs_uniad_uniad_realiad_20241022-020712'
+2024-10-22 02:17:17,499 - finish training

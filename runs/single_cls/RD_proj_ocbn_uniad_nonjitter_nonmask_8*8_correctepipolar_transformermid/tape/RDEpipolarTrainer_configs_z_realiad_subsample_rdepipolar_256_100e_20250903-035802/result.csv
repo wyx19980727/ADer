@@ -1,0 +1,2 @@
+ Name , S_AUROC , S_AUPR , mAUROC_sp_max , mAP_sp_max , mF1_max_sp_max , mAUROC_px , mAP_px , mF1_max_px , mAUPRO_px , mIoU_max_px
+ tape , 99.051  , 99.526 ,    95.598     ,   94.226   ,     86.778     ,  99.496   , 37.851 ,   41.859   ,  97.854   ,   26.470

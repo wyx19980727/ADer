@@ -1,0 +1,607 @@
+import torch
+import torch.nn as nn
+try:
+    from torch.hub import load_state_dict_from_url
+except ImportError:
+    from torch.utils.model_zoo import load_url as load_state_dict_from_url
+from timm.models.resnet import Bottleneck, BasicBlock
+
+from model import get_model
+from model import MODEL
+import torch.utils.checkpoint as checkpoint
+import torch.nn.functional as F
+
+import cv2 as cv
+import numpy as np
+
+import copy
+
+from util.net import get_timepc
+
+# ========== Decoder ==========
+def conv3x3(in_planes, out_planes, stride = 1, groups = 1, dilation = 1):
+    return nn.Conv2d(in_planes, out_planes, kernel_size=3, stride=stride, padding=dilation, groups=groups, bias=False, dilation=dilation)
+
+def conv1x1(in_planes, out_planes, stride = 1) -> nn.Conv2d:
+    return nn.Conv2d(in_planes, out_planes, kernel_size=1, stride=stride, bias=False)
+
+def deconv2x2(in_planes, out_planes, stride = 1, groups = 1, dilation = 1):
+    return nn.ConvTranspose2d(in_planes, out_planes, kernel_size=2, stride=stride, groups=groups, bias=False, dilation=dilation)
+
+
+class DeBasicBlock(nn.Module):
+    expansion = 1
+
+    def __init__(self, inplanes, planes, stride = 1, upsample = None, groups = 1, base_width = 64,
+        dilation = 1, norm_layer = None):
+        super(DeBasicBlock, self).__init__()
+        if norm_layer is None:
+            norm_layer = nn.BatchNorm2d
+        if groups != 1 or base_width != 64:
+            raise ValueError('BasicBlock only supports groups=1 and base_width=64')
+        if dilation > 1:
+            raise NotImplementedError("Dilation > 1 not supported in BasicBlock")
+        # Both self.conv1 and self.downsample layers downsample the input when stride != 1
+        if stride == 2:
+            self.conv1 = deconv2x2(inplanes, planes, stride)
+        else:
+            self.conv1 = conv3x3(inplanes, planes, stride)
+        self.bn1 = norm_layer(planes)
+        self.relu = nn.ReLU(inplace=True)
+        self.conv2 = conv3x3(planes, planes)
+        self.bn2 = norm_layer(planes)
+        self.upsample = upsample
+        self.stride = stride
+
+    def forward(self, x):
+        identity = x
+
+        out = self.conv1(x)
+        out = self.bn1(out)
+        out = self.relu(out)
+
+        out = self.conv2(out)
+        out = self.bn2(out)
+
+        if self.upsample is not None:
+            identity = self.upsample(x)
+
+        out += identity
+        out = self.relu(out)
+
+        return out
+
+
+class DeBottleneck(nn.Module):
+    expansion = 4
+
+    def __init__(self, inplanes, planes, stride = 1, upsample = None, groups = 1, base_width = 64,
+        dilation = 1, norm_layer = None):
+        super(DeBottleneck, self).__init__()
+        if norm_layer is None:
+            norm_layer = nn.BatchNorm2d
+        width = int(planes * (base_width / 64.)) * groups
+        # Both self.conv2 and self.downsample layers downsample the input when stride != 1
+        self.conv1 = conv1x1(inplanes, width)
+        self.bn1 = norm_layer(width)
+        if stride == 2:
+            self.conv2 = deconv2x2(width, width, stride, groups, dilation)
+        else:
+            self.conv2 = conv3x3(width, width, stride, groups, dilation)
+        self.bn2 = norm_layer(width)
+        self.conv3 = conv1x1(width, planes * self.expansion)
+        self.bn3 = norm_layer(planes * self.expansion)
+        self.relu = nn.ReLU(inplace=True)
+        self.upsample = upsample
+        self.stride = stride
+
+    def forward(self, x):
+        identity = x
+
+        out = self.conv1(x)
+        out = self.bn1(out)
+        out = self.relu(out)
+
+        out = self.conv2(out)
+        out = self.bn2(out)
+        out = self.relu(out)
+
+        out = self.conv3(out)
+        out = self.bn3(out)
+
+        if self.upsample is not None:
+            identity = self.upsample(x)
+
+        out += identity
+        out = self.relu(out)
+
+        return out
+
+
+class ResNet(nn.Module):
+
+    def __init__(self, block, layers, num_classes = 1000,
+                 zero_init_residual = False, groups = 1, width_per_group = 64, replace_stride_with_dilation = None,
+                 norm_layer = None ):
+        super(ResNet, self).__init__()
+        if norm_layer is None:
+            norm_layer = nn.BatchNorm2d
+        self._norm_layer = norm_layer
+
+        self.inplanes = 512 * block.expansion
+        self.dilation = 1
+        if replace_stride_with_dilation is None:
+            replace_stride_with_dilation = [False, False, False]
+        if len(replace_stride_with_dilation) != 3:
+            raise ValueError("replace_stride_with_dilation should be None or a 3-element tuple, got {}".format(replace_stride_with_dilation))
+        self.groups = groups
+        self.base_width = width_per_group
+        self.layer1 = self._make_layer(block, 256, layers[0], stride=2)
+        self.layer2 = self._make_layer(block, 128, layers[1], stride=2, dilate=replace_stride_with_dilation[0])
+        self.layer3 = self._make_layer(block, 64, layers[2], stride=2, dilate=replace_stride_with_dilation[1])
+
+        for m in self.modules():
+            if isinstance(m, nn.Conv2d):
+                nn.init.kaiming_normal_(m.weight, mode='fan_out', nonlinearity='relu')
+            elif isinstance(m, (nn.BatchNorm2d, nn.GroupNorm)):
+                nn.init.constant_(m.weight, 1)
+                nn.init.constant_(m.bias, 0)
+        # Zero-initialize the last BN in each residual branch,
+        # so that the residual branch starts with zeros, and each residual block behaves like an identity.
+        # This improves the model by 0.2~0.3% according to https://arxiv.org/abs/1706.02677
+        if zero_init_residual:
+            for m in self.modules():
+                if isinstance(m, DeBottleneck):
+                    nn.init.constant_(m.bn3.weight, 0)  # type: ignore[arg-type]
+                elif isinstance(m, DeBasicBlock):
+                    nn.init.constant_(m.bn2.weight, 0)  # type: ignore[arg-type]
+
+    def _make_layer(self, block, planes, blocks, stride = 1, dilate = False):
+        norm_layer = self._norm_layer
+        upsample = None
+        previous_dilation = self.dilation
+        if dilate:
+            self.dilation *= stride
+            stride = 1
+        if stride != 1 or self.inplanes != planes * block.expansion:
+            upsample = nn.Sequential(deconv2x2(self.inplanes, planes * block.expansion, stride),
+                                     norm_layer(planes * block.expansion),)
+        layers = []
+        layers.append(block(self.inplanes, planes, stride, upsample, self.groups, self.base_width, previous_dilation, norm_layer))
+        self.inplanes = planes * block.expansion
+        for _ in range(1, blocks):
+            layers.append(block(self.inplanes, planes, groups=self.groups, base_width=self.base_width, dilation=self.dilation, norm_layer=norm_layer))
+        return nn.Sequential(*layers)
+
+    def _forward_impl(self, x):
+        feature_a = self.layer1(x)  # 512*8*8->256*16*16
+        feature_b = self.layer2(feature_a)  # 256*16*16->128*32*32
+        feature_c = self.layer3(feature_b)  # 128*32*32->64*64*64
+        # feature_a = checkpoint.checkpoint(self.layer1, x)
+        # feature_b = checkpoint.checkpoint(self.layer2, feature_a)
+        # feature_c = checkpoint.checkpoint(self.layer3, feature_b)
+        return [feature_c, feature_b, feature_a]
+
+    def forward(self, x):
+        return self._forward_impl(x)
+
+
+def _resnet(arch, block, layers, pretrained, progress, **kwargs):
+    model = ResNet(block, layers, **kwargs)
+    # if pretrained:
+        # state_dict = load_state_dict_from_url(model_urls[arch], progress=progress)
+        # model.load_state_dict(state_dict)
+    return model
+
+@MODEL.register_module
+def de_resnet18(pretrained = False, progress = True, **kwargs):
+    return _resnet('resnet18', DeBasicBlock, [2, 2, 2, 2], pretrained, progress, **kwargs)
+
+@MODEL.register_module
+def de_resnet34(pretrained = False, progress = True, **kwargs):
+    return _resnet('resnet34', DeBasicBlock, [3, 4, 6, 3], pretrained, progress, **kwargs)
+
+@MODEL.register_module
+def de_resnet50(pretrained = False, progress = True, **kwargs):
+    return _resnet('resnet50', DeBottleneck, [3, 4, 6, 3], pretrained, progress, **kwargs)
+
+@MODEL.register_module
+def de_resnet101(pretrained = False, progress = True, **kwargs):
+    return _resnet('resnet101', DeBottleneck, [3, 4, 23, 3], pretrained, progress, **kwargs)
+
+@MODEL.register_module
+def de_resnet152(pretrained = False, progress = True, **kwargs):
+    return _resnet('resnet152', DeBottleneck, [3, 8, 36, 3], pretrained, progress, **kwargs)
+
+@MODEL.register_module
+def de_resnext50_32x4d(pretrained = False, progress = True, **kwargs):
+    kwargs['groups'] = 32
+    kwargs['width_per_group'] = 4
+    return _resnet('resnext50_32x4d', DeBottleneck, [3, 4, 6, 3], pretrained, progress, **kwargs)
+
+@MODEL.register_module
+def de_resnext101_32x8d(pretrained = False, progress = True, **kwargs):
+    kwargs['groups'] = 32
+    kwargs['width_per_group'] = 8
+    return _resnet('resnext101_32x8d', DeBottleneck, [3, 4, 23, 3], pretrained, progress, **kwargs)
+
+@MODEL.register_module
+def de_wide_resnet50_2(pretrained = False, progress = True, **kwargs):
+    kwargs['width_per_group'] = 64 * 2
+    return _resnet('wide_resnet50_2', DeBottleneck, [3, 4, 6, 3], pretrained, progress, **kwargs)
+
+@MODEL.register_module
+def de_wide_resnet50_3(pretrained = False, progress = True, **kwargs):
+    kwargs['width_per_group'] = 64 * 2
+    # return _resnet('wide_resnet50_3', DeBottleneck, [3, 4, 6, 3], pretrained, progress, **kwargs)
+    return _resnet('wide_resnet50_3', DeBottleneck, [6, 4, 3, 3], pretrained, progress, **kwargs)
+
+@MODEL.register_module
+def de_wide_resnet101_2(pretrained = False, progress = True, **kwargs):
+    kwargs['width_per_group'] = 64 * 2
+    return _resnet('wide_resnet101_2', DeBottleneck, [3, 4, 23, 3], pretrained, progress, **kwargs)
+
+
+# ========== MFF & OCE ==========
+class MFF_OCE(nn.Module):
+    def __init__(self, block, layers, width_per_group = 64, norm_layer = None, ):
+        super(MFF_OCE, self).__init__()
+        if norm_layer is None:
+            norm_layer = nn.BatchNorm2d
+        self._norm_layer = norm_layer
+        self.base_width = width_per_group
+        self.inplanes = 256 * block.expansion
+        self.dilation = 1
+        self.bn_layer = self._make_layer(block, 512, layers, stride=2)
+
+        self.conv1 = conv3x3(64 * block.expansion, 128 * block.expansion, 2)
+        self.bn1 = norm_layer(128 * block.expansion)
+        self.relu = nn.ReLU(inplace=True)
+        self.conv2 = conv3x3(128 * block.expansion, 256 * block.expansion, 2)
+        self.bn2 = norm_layer(256 * block.expansion)
+        self.conv3 = conv3x3(128 * block.expansion, 256 * block.expansion, 2)
+        self.bn3 = norm_layer(256 * block.expansion)
+        for m in self.modules():
+            if isinstance(m, nn.Conv2d):
+                nn.init.kaiming_normal_(m.weight, mode='fan_out', nonlinearity='relu')
+            elif isinstance(m, (nn.BatchNorm2d, nn.GroupNorm)):
+                nn.init.constant_(m.weight, 1)
+                nn.init.constant_(m.bias, 0)
+
+    def _make_layer(self, block, planes, blocks, stride = 1, dilate = False):
+        norm_layer = self._norm_layer
+        downsample = None
+        previous_dilation = self.dilation
+        if dilate:
+            self.dilation *= stride
+            stride = 1
+        if stride != 1 or self.inplanes != planes * block.expansion:
+            downsample = nn.Sequential(conv1x1(self.inplanes*3, planes * block.expansion, stride),
+                                       norm_layer(planes * block.expansion), )
+        layers = []
+        layers.append(block(self.inplanes*3, planes, stride, downsample, base_width=self.base_width, dilation=previous_dilation, norm_layer=norm_layer))
+        self.inplanes = planes * block.expansion
+        for _ in range(1, blocks):
+            layers.append(block(self.inplanes, planes, base_width=self.base_width, dilation=self.dilation, norm_layer=norm_layer))
+        return nn.Sequential(*layers)
+
+    def _forward_impl(self, x):
+        #import ipdb; ipdb.set_trace()
+        l1 = self.relu(self.bn2(self.conv2(self.relu(self.bn1(self.conv1(x[0]))))))
+        l2 = self.relu(self.bn3(self.conv3(x[1])))
+        feature = torch.cat([l1,l2,x[2]],1)
+        output = self.bn_layer(feature)
+
+        return output.contiguous()
+
+    def forward(self, x):
+        return self._forward_impl(x)
+
+class ProjLayer(nn.Module):
+    '''
+    inputs: features of encoder block
+    outputs: projected features
+    '''
+
+    def __init__(self, in_c, out_c):
+        super(ProjLayer, self).__init__()
+        self.proj = nn.Sequential(nn.Conv2d(in_c, in_c // 2, kernel_size=3, stride=1, padding=1),
+                                  nn.InstanceNorm2d(in_c // 2),
+                                  torch.nn.LeakyReLU(),
+                                  nn.Conv2d(in_c // 2, in_c // 4, kernel_size=3, stride=1, padding=1),
+                                  nn.InstanceNorm2d(in_c // 4),
+                                  torch.nn.LeakyReLU(),
+                                  nn.Conv2d(in_c // 4, in_c // 2, kernel_size=3, stride=1, padding=1),
+                                  nn.InstanceNorm2d(in_c // 2),
+                                  torch.nn.LeakyReLU(),
+                                  nn.Conv2d(in_c // 2, out_c, kernel_size=3, stride=1, padding=1),
+                                  nn.InstanceNorm2d(out_c),
+                                  torch.nn.LeakyReLU(),
+                                  )
+
+    def forward(self, x):
+        return self.proj(x)
+
+class MultiProjectionLayer(nn.Module):
+    def __init__(self, base=64):
+        super(MultiProjectionLayer, self).__init__()
+        self.proj_a = ProjLayer(base * 4, base * 4)
+        self.proj_b = ProjLayer(base * 8, base * 8)
+        self.proj_c = ProjLayer(base * 16, base * 16)
+
+    def forward(self, features):
+        return [self.proj_a(features[0]), self.proj_b(features[1]), self.proj_c(features[2])]
+
+class RDEpipolar(nn.Module):
+    def __init__(self, model_t, model_s):
+        super(RDEpipolar, self).__init__()
+        self.net_t = get_model(model_t)
+        # self.mff_oce = MFF_OCE(Bottleneck, 3)
+        self.mff_oce = MFF_OCE(BasicBlock, 3)
+        self.net_s = get_model(model_s)
+
+        self.proj_layer = MultiProjectionLayer(base=16)
+
+        self.frozen_layers = ['net_t']
+        
+        num_views = 5
+        class_indices = torch.arange(1, num_views) # exclude top-view
+        index_combinations = torch.cartesian_prod(class_indices, class_indices) # Generate all possible pairs (including self-pairs and ordered pairs)
+        mask = index_combinations[:, 0] != index_combinations[:, 1] # Create a mask to filter out pairs where i == j
+        self.index_combinations = index_combinations[mask]
+  
+
+
+    def freeze_layer(self, module):
+        module.eval()
+        for param in module.parameters():
+            param.requires_grad = False
+
+    def train(self, mode=True):
+        self.training = mode
+        for mname, module in self.named_children():
+            if mname in self.frozen_layers:
+                self.freeze_layer(module)
+            else:
+                module.train(mode)
+        return self
+
+    def forward(self, imgs, img_path=None):
+        # if not self.training:
+        #     # If not training, just return the features from the teacher network
+        #     if len(imgs.shape) == 4:
+        #         feats_t = self.net_t(imgs)
+        #         feats_t = [f.detach() for f in feats_t]
+        #         feats_t_grid = self.proj_layer(feats_t)
+        #     else:
+        #         imgs = imgs.flatten(0, 1)
+        #         feats_t = self.net_t(imgs)
+        #         feats_t = [f.detach() for f in feats_t]
+        #         feats_t_grid = self.proj_layer(feats_t)
+        #     feats_s = self.net_s(self.mff_oce(feats_t_grid))
+        #     return feats_t, feats_s
+        
+        if len(imgs.shape)==4:
+            feats_t = self.net_t(imgs)
+            feats_t = [f.detach() for f in feats_t]
+            
+            feats_t_grid = self.proj_layer(feats_t)
+
+            # feats_s = self.net_s(self.mff_oce(feats_t))
+            feats_s = self.net_s(self.mff_oce(feats_t_grid))
+            return feats_t, feats_s
+        else:
+            B, num_views, C_img, H_img, W_img = imgs.shape
+            
+            # 0.1 Extract teacher features and project features
+            imgs = imgs.flatten(0, 1)
+            feats_t = self.net_t(imgs)
+            feats_t = [f.detach() for f in feats_t]
+            feats_t_grid = self.proj_layer(feats_t) # [B*num_views, C, H_feat, W_feat]
+            mid = self.mff_oce(feats_t_grid)
+            
+            # 0.2 Extract candidate coords and query points
+            
+            _, C_feat, H_feat, W_feat = mid.shape
+            mid = mid.view(B, num_views, C_feat, H_feat, W_feat)
+            enhanced_feature = mid.clone()
+            
+            patch_size_h, patch_size_w = H_img // H_feat, W_img // W_feat
+            y_centers = torch.arange(H_feat, dtype=imgs.dtype, device=imgs.device) * patch_size_h + patch_size_h / 2 - 0.5  # [H_feat]
+            x_centers = torch.arange(W_feat, dtype=imgs.dtype, device=imgs.device) * patch_size_w + patch_size_w / 2 - 0.5  # [W_feat]
+            v_coord, u_coord = torch.meshgrid(y_centers, x_centers, indexing='ij')  # [H_feat, W_feat]，分别是y和x
+            query_points = torch.stack([u_coord, v_coord], dim=0).unsqueeze(0)  # [1, 2, H_feat, W_feat]
+            
+            # 1. homogeneous coords of query points
+            num_query = H_feat * W_feat
+            x1 = query_points[0, 0].reshape(-1)  # [num_query]
+            y1 = query_points[0, 1].reshape(-1)  # [num_query]
+            ones = torch.ones_like(x1)
+            pts1 = torch.stack([x1, y1, ones], dim=1)  # [num_query, 3]
+            # 2. feat2 coords
+            v2_coord, u2_coord = copy.deepcopy(v_coord).reshape(-1), copy.deepcopy(u_coord).reshape(-1)  # both [H_feat*W_feat]
+            
+            
+            #import ipdb; ipdb.set_trace()
+            # enhanced_feats_t_grid = []
+            # for feat_t_grid in feats_t_grid:
+            #     # 获取当前特征张量的通道数C和空间维度H_feat, W_feat
+            #     _, C_feat, H_feat, W_feat = feat_t_grid.shape
+            #     # 重塑为 [B, num_views, C, H_feat, W_feat]
+            #     reshaped_feat = feat_t_grid.clone().reshape(B, num_views, C_feat, H_feat, W_feat)
+            #     enhanced_feats_t_grid.append(reshaped_feat)
+            
+            # 0.3 Reshape image back to original shape
+            imgs = imgs.view(B, num_views, C_img, H_img, W_img)  # B x N x C x H x W
+            
+            '''
+            Epipolar Attention Module
+            '''
+            
+            # 0.4 Prepare image pairs
+            index_combinations = self.index_combinations
+            
+            # 1. for each pair, extract the corresponding images
+            for index_pair in index_combinations:
+                # 1.1 prepare the two images
+                i, j = index_pair
+                img_i_path = img_path[:, i]
+                img_j_path = img_path[:, j]
+                
+                for batch in range(B):
+                    try:
+                        # 1.2 calculate fundamental matrix
+                        Fundamental_matrix = calculate_fundamental_matrix(img_i_path[batch], img_j_path[batch])
+                        Fundamental_matrix = torch.tensor(Fundamental_matrix, dtype=imgs.dtype, device=imgs.device) if not isinstance(Fundamental_matrix, torch.Tensor) else Fundamental_matrix
+                        # import ipdb; ipdb.set_trace()
+                        # 1.3 prepare all the query points of all the img1 patches of every level of teacher features
+                        #for feat_idx, feat_t_grid in enumerate(feats_t_grid):
+                        feat_t_grid = mid
+                        #C_feat, H_feat, W_feat = feat_t_grid.shape[1], feat_t_grid.shape[2], feat_t_grid.shape[3]
+                        feat_t_grid = feat_t_grid.view(B, num_views, C_feat, H_feat * W_feat)  # [B, num_views, C_feat, H_feat*W_feat]
+                        
+                        # 3. Epipolar line
+                        # l = F @ pt1.T, 结果 shape [3, num_query]，转置后 [num_query, 3]
+                        l = torch.matmul(Fundamental_matrix, pts1.t()).t()  # [num_query, 3]
+                        a = l[:, 0].unsqueeze(1)  # [num_query, 1]
+                        b = l[:, 1].unsqueeze(1)  # [num_query, 1]
+                        c = l[:, 2].unsqueeze(1)  # [num_query, 1]
+                        # 4. Epipolar distance
+                        # 计算所有query和所有img2 patch中心的距离，利用广播
+                        # dist = |a*x + b*y + c| / sqrt(a^2 + b^2)
+                        # a,b,c: [num_query, 1], u2_grid/v2_grid: [1, H_feat*W_feat]
+                        dist = torch.abs(a * u2_coord + b * v2_coord + c) / (a.pow(2) + b.pow(2)).sqrt()  # [num_query, H_feat*W_feat]
+                        dist = dist.reshape(num_query, H_feat, W_feat)  # [num_query, H_feat, W_feat]
+                        # 距离小于阈值的patch视为在极线上
+                        masks = dist < max(patch_size_h, patch_size_w) / 2  # [num_query, H_feat, W_feat]
+                        
+                        # 1. Extract query embedding and image patches
+                        query_embedding = feat_t_grid[batch, i, :, :].reshape(C_feat, num_query).transpose(0, 1)   # [num_query, C]
+                        img2_patches = feat_t_grid[batch, j, :, :].reshape(C_feat, num_query).transpose(0, 1)  # [num_query, C]
+                        masks_flat = masks.reshape(num_query, -1)  # [num_query, 1024]
+                        
+                        # 2. Construct Q,K,V
+                        Q = query_embedding.unsqueeze(1)  # [num_query, 1, C]
+                        K = img2_patches.unsqueeze(0).expand(num_query, -1, -1)  # [num_query, 1024, C]
+                        V = K  # [num_query, 1024, C]
+                        
+                        # 3. 对mask为False的位置赋极小值，防止被softmax
+                        attn_mask = ~masks_flat  # [num_query, 1024], True为需要mask掉
+                        # scaled_dot_product_attention 支持 attn_mask: [num_query, 1, 1024]
+                        attn_out = F.scaled_dot_product_attention(Q, K, V, attn_mask=attn_mask.unsqueeze(1))  # [num_query, 1, C]
+                        attn_out = attn_out.squeeze(1)  # [num_query, C]
+                        
+                        # 若某query没有极线patch（全mask），其attn_out为nan，可用原特征替换
+                        nan_mask = torch.isnan(attn_out).any(dim=1)
+                        attn_out[nan_mask] = query_embedding[nan_mask]
+                        
+                        # 恢复回[1, C, H_feat, H_feat]
+                        enhanced_query_feature = attn_out.transpose(0, 1).reshape(1, C_feat, H_feat, W_feat)
+                        # 将enhanced_query_feature存储到对应的img1 patch位置
+                        # enhanced_feats_t_grid[feat_idx][batch, i, :, :] = enhanced_query_feature.squeeze(0)
+                        #import ipdb; ipdb.set_trace()
+                        # feats_t_grid[-1][batch, i, :, :] = enhanced_query_feature.squeeze(0)
+                        # 修改克隆后的特征图
+                        enhanced_feature[batch, i, :, :] = enhanced_query_feature.squeeze(0)
+                    except:
+                        continue
+
+            '''
+            Epipolar Attention Module
+            '''
+            #import ipdb; ipdb.set_trace()
+            # t2 = get_timepc()
+            # print("Epipolar Attention Module Calculate Time: ", t2-t1)
+            # feats_s = self.net_s(self.mff_oce(feats_t))
+            # enhanced_feats_t_grid = [enhanced_feat_t_grid.flatten(0, 1) for enhanced_feat_t_grid in enhanced_feats_t_grid]
+            mid = enhanced_feature.flatten(0,1)
+            feats_s = self.net_s(mid)
+            # t3 = get_timepc()
+            # print("Fuse and Decoder Calculate Time: ", t3-t2)
+            return feats_t, feats_s
+
+@MODEL.register_module
+def rdepipolar(pretrained=False, **kwargs):
+    model = RDEpipolar(**kwargs)
+    return model
+
+def calculate_fundamental_matrix(img1_path, img2_path):
+	img1 = cv.imread(img1_path, cv.IMREAD_GRAYSCALE)
+	img2 = cv.imread(img2_path, cv.IMREAD_GRAYSCALE)
+	sift = cv.SIFT_create()
+	# find the keypoints and descriptors with SIFT
+	kp1, des1 = sift.detectAndCompute(img1, None)
+	kp2, des2 = sift.detectAndCompute(img2, None)
+	# FLANN parameters
+	# FLANN parameters
+	FLANN_INDEX_KDTREE = 1
+	index_params = dict(algorithm=FLANN_INDEX_KDTREE, trees=5)
+	search_params = dict(checks=50)
+	flann = cv.FlannBasedMatcher(index_params, search_params)
+	matches = flann.knnMatch(des1, des2, k=2)
+	good = []
+	pts1 = []
+	pts2 = []
+	# ratio test as per Lowe's paper
+	for i, (m, n) in enumerate(matches):
+		if m.distance < 0.8 * n.distance:
+			good.append(m)
+			pts2.append(kp2[m.trainIdx].pt)
+			pts1.append(kp1[m.queryIdx].pt)
+	pts1 = np.int32(pts1)
+	pts2 = np.int32(pts2)
+	Fundamental_matrix, mask = cv.findFundamentalMat(pts1, pts2, cv.FM_8POINT)
+	return Fundamental_matrix
+
+
+if __name__ == '__main__':
+    from argparse import Namespace as _Namespace
+    model_t = _Namespace()
+    model_t.name = 'timm_wide_resnet50_2'
+    model_t.kwargs = dict(pretrained=False, checkpoint_path=None,strict=False, features_only=True, out_indices=[1, 2, 3])
+    model_s = _Namespace()
+    model_s.name = 'de_wide_resnet50_2'
+    model_s.kwargs = dict(pretrained=False, checkpoint_path=None, strict=False)
+    
+    net = RDEpipolar(model_t, model_s)
+    
+    input = torch.rand((8, 3, 256, 256))  # 示例输入
+    feats_t, feats_s = net(input)
+    import ipdb; ipdb.set_trace()
+    
+    
+    
+    
+# 	from fvcore.nn import FlopCountAnalysis, flop_count_table, parameter_count
+# 	from util.util import get_timepc, get_net_params
+# 	from argparse import Namespace as _Namespace
+
+# 	bs = 2
+# 	reso = 256
+# 	x = torch.randn(bs, 3, reso, reso).cuda()
+
+# 	model_t = _Namespace()
+# 	model_t.name = 'timm_wide_resnet50_2'
+# 	model_t.kwargs = dict(pretrained=False, checkpoint_path='model/pretrain/wide_resnet50_racm-8234f177.pth', strict=False, features_only=True, out_indices=[1, 2, 3])
+# 	model_s = _Namespace()
+# 	model_s.name = 'de_wide_resnet50_2'
+# 	model_s.kwargs = dict(pretrained=False, checkpoint_path='', strict=True)
+
+# 	net = RD(model_t, model_s).cuda()
+# 	net.eval()
+# 	y = net(x)
+
+# 	Flops = FlopCountAnalysis(net, x)
+# 	print(flop_count_table(Flops, max_depth=5))
+# 	flops = Flops.total() / bs / 1e9
+# 	params = parameter_count(net)[''] / 1e6
+# 	with torch.no_grad():
+# 		pre_cnt, cnt = 5, 10
+# 		for _ in range(pre_cnt):
+# 			y = net(x)
+# 		t_s = get_timepc()
+# 		for _ in range(cnt):
+# 			y = net(x)
+# 		t_e = get_timepc()
+# 	print('[GFLOPs: {:>6.3f}G]\t[Params: {:>6.3f}M]\t[Speed: {:>7.3f}]\n'.format(flops, params, bs * cnt / (t_e - t_s)))
+# # print(flop_count_table(FlopCountAnalysis(fn, x), max_depth=3))

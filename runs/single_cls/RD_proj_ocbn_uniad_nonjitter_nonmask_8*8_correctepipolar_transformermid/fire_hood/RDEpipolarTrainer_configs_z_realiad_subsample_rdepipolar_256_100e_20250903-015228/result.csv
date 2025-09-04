@@ -1,0 +1,2 @@
+  Name   , S_AUROC , S_AUPR , mAUROC_sp_max , mAP_sp_max , mF1_max_sp_max , mAUROC_px , mAP_px , mF1_max_px , mAUPRO_px , mIoU_max_px
+fire_hood, 86.271  , 92.541 ,    80.745     ,   72.111   ,     65.428     ,  98.124   , 22.331 ,   29.443   ,  88.064   ,   17.263

@@ -1,0 +1,2 @@
+   Name   , S_AUROC , S_AUPR , mAUROC_sp_max , mAP_sp_max , mF1_max_sp_max , mAUROC_px , mAP_px , mF1_max_px , mAUPRO_px , mIoU_max_px
+bottle_cap, 91.782  , 95.502 ,    86.421     ,   84.052   ,     76.756     ,  99.256   , 33.231 ,   35.275   ,  95.885   ,   21.415

@@ -1,0 +1,2 @@
+ Name , S_AUROC , S_AUPR , mAUROC_sp_max , mAP_sp_max , mF1_max_sp_max , mAUROC_px , mAP_px , mF1_max_px , mAUPRO_px , mIoU_max_px
+zipper, 99.489  , 99.432 ,    97.897     ,   98.370   ,     94.822     ,  96.429   , 11.432 ,   21.503   ,  87.105   ,   12.046

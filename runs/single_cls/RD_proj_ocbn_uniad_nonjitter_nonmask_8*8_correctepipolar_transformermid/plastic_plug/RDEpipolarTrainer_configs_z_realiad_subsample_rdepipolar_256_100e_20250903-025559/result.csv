@@ -1,0 +1,2 @@
+    Name    , S_AUROC , S_AUPR , mAUROC_sp_max , mAP_sp_max , mF1_max_sp_max , mAUROC_px , mAP_px , mF1_max_px , mAUPRO_px , mIoU_max_px
+plastic_plug, 82.873  , 91.960 ,    80.404     ,   75.632   ,     66.535     ,  97.790   , 15.851 ,   28.855   ,  88.709   ,   16.860

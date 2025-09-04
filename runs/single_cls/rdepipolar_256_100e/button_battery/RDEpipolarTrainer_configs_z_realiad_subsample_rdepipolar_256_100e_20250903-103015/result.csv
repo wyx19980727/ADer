@@ -1,0 +1,2 @@
+     Name     , S_AUROC , S_AUPR , mAUROC_sp_max , mAP_sp_max , mF1_max_sp_max , mAUROC_px , mAP_px , mF1_max_px , mAUPRO_px , mIoU_max_px
+button_battery, 81.424  , 88.781 ,    78.126     ,   80.401   ,     79.048     ,  95.695   , 23.721 ,   33.819   ,  79.365   ,   20.351

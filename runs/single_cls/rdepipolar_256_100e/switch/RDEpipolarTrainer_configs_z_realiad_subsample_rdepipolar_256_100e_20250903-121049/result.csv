@@ -1,0 +1,2 @@
+ Name , S_AUROC , S_AUPR , mAUROC_sp_max , mAP_sp_max , mF1_max_sp_max , mAUROC_px , mAP_px , mF1_max_px , mAUPRO_px , mIoU_max_px
+switch, 92.542  , 96.603 ,    87.844     ,   90.364   ,     80.716     ,  99.332   , 60.111 ,   63.872   ,  93.264   ,   46.921

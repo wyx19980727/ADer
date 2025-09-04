@@ -1,0 +1,2 @@
+   Name   , S_AUROC , S_AUPR , mAUROC_sp_max , mAP_sp_max , mF1_max_sp_max , mAUROC_px , mAP_px , mF1_max_px , mAUPRO_px , mIoU_max_px
+toothbrush, 94.604  , 96.661 ,    86.747     ,   86.950   ,     82.978     ,  97.074   , 25.364 ,   33.090   ,  89.634   ,   19.825

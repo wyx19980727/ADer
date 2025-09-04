@@ -1,0 +1,2 @@
+ Name , S_AUROC , S_AUPR , mAUROC_sp_max , mAP_sp_max , mF1_max_sp_max , mAUROC_px , mAP_px , mF1_max_px , mAUPRO_px , mIoU_max_px
+ pcb  , 88.489  , 94.093 ,    85.153     ,   90.352   ,     82.008     ,  96.103   , 2.765  ,   6.004    ,  80.765   ,    3.095

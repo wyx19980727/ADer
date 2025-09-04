@@ -1,0 +1,2 @@
+ Name , S_AUROC , S_AUPR , mAUROC_sp_max , mAP_sp_max , mF1_max_sp_max , mAUROC_px , mAP_px , mF1_max_px , mAUPRO_px , mIoU_max_px
+ mint , 69.285  , 91.760 ,    64.578     ,   63.563   ,     64.247     ,  93.255   , 5.361  ,   14.225   ,  66.900   ,    7.657

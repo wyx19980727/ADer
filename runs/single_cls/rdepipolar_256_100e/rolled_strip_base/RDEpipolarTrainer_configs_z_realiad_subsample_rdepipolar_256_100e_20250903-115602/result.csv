@@ -1,0 +1,2 @@
+      Name       , S_AUROC , S_AUPR , mAUROC_sp_max , mAP_sp_max , mF1_max_sp_max , mAUROC_px , mAP_px , mF1_max_px , mAUPRO_px , mIoU_max_px
+rolled_strip_base, 99.621  , 99.833 ,    98.190     ,   99.120   ,     94.878     ,  99.003   , 20.078 ,   28.135   ,  97.106   ,   16.370

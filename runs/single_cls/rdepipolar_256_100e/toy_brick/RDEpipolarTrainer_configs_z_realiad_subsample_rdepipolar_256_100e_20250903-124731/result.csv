@@ -1,0 +1,2 @@
+  Name   , S_AUROC , S_AUPR , mAUROC_sp_max , mAP_sp_max , mF1_max_sp_max , mAUROC_px , mAP_px , mF1_max_px , mAUPRO_px , mIoU_max_px
+toy_brick, 84.444  , 92.226 ,    77.165     ,   69.492   ,     66.914     ,  97.036   , 14.127 ,   21.179   ,  87.508   ,   11.844

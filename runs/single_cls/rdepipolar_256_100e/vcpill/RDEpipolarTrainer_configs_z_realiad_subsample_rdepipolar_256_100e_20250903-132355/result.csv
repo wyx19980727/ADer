@@ -1,0 +1,2 @@
+ Name , S_AUROC , S_AUPR , mAUROC_sp_max , mAP_sp_max , mF1_max_sp_max , mAUROC_px , mAP_px , mF1_max_px , mAUPRO_px , mIoU_max_px
+vcpill, 93.102  , 96.632 ,    77.613     ,   71.003   ,     65.528     ,  97.862   , 29.602 ,   36.212   ,  88.041   ,   22.109

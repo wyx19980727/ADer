@@ -1,0 +1,2 @@
+    Name    , S_AUROC , S_AUPR , mAUROC_sp_max , mAP_sp_max , mF1_max_sp_max , mAUROC_px , mAP_px , mF1_max_px , mAUPRO_px , mIoU_max_px
+sim_card_set, 97.584  , 98.767 ,    89.784     ,   87.733   ,     84.315     ,  95.726   , 4.026  ,   8.154    ,  79.702   ,    4.250

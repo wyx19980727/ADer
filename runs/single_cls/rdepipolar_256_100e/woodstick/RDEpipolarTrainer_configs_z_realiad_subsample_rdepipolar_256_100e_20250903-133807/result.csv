@@ -1,0 +1,2 @@
+  Name   , S_AUROC , S_AUPR , mAUROC_sp_max , mAP_sp_max , mF1_max_sp_max , mAUROC_px , mAP_px , mF1_max_px , mAUPRO_px , mIoU_max_px
+woodstick, 74.272  , 87.663 ,    79.352     ,   69.596   ,     62.530     ,  96.958   , 39.117 ,   45.518   ,  84.176   ,   29.465

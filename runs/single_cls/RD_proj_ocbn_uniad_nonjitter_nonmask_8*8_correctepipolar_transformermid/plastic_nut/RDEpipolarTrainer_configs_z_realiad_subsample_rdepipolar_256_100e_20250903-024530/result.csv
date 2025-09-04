@@ -1,0 +1,2 @@
+   Name    , S_AUROC , S_AUPR , mAUROC_sp_max , mAP_sp_max , mF1_max_sp_max , mAUROC_px , mAP_px , mF1_max_px , mAUPRO_px , mIoU_max_px
+plastic_nut, 94.253  , 95.978 ,    85.099     ,   73.717   ,     68.591     ,  98.620   , 22.183 ,   26.914   ,  93.936   ,   15.549

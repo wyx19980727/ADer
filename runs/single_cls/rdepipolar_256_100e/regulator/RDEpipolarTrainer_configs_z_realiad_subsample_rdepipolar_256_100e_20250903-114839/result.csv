@@ -1,0 +1,2 @@
+  Name   , S_AUROC , S_AUPR , mAUROC_sp_max , mAP_sp_max , mF1_max_sp_max , mAUROC_px , mAP_px , mF1_max_px , mAUPRO_px , mIoU_max_px
+regulator, 66.607  , 81.824 ,    61.878     ,   44.279   ,     45.837     ,  95.446   , 13.168 ,   21.316   ,  81.322   ,   11.929

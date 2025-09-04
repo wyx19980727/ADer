@@ -1,0 +1,2 @@
+ Name , S_AUROC , S_AUPR , mAUROC_sp_max , mAP_sp_max , mF1_max_sp_max , mAUROC_px , mAP_px , mF1_max_px , mAUPRO_px , mIoU_max_px
+mounts, 96.765  , 98.389 ,    83.324     ,   74.556   ,     69.828     ,  98.947   , 35.431 ,   38.030   ,  93.396   ,   23.479

@@ -1,0 +1,2 @@
+   Name    , S_AUROC , S_AUPR , mAUROC_sp_max , mAP_sp_max , mF1_max_sp_max , mAUROC_px , mAP_px , mF1_max_px , mAUPRO_px , mIoU_max_px
+usb_adaptor, 86.341  , 92.231 ,    78.984     ,   71.714   ,     66.402     ,  97.381   , 10.244 ,   17.906   ,  86.576   ,    9.834

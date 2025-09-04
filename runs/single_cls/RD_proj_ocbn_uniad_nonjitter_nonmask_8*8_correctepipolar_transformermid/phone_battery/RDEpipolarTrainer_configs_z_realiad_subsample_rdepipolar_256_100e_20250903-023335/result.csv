@@ -1,0 +1,2 @@
+    Name     , S_AUROC , S_AUPR , mAUROC_sp_max , mAP_sp_max , mF1_max_sp_max , mAUROC_px , mAP_px , mF1_max_px , mAUPRO_px , mIoU_max_px
+phone_battery, 98.221  , 99.108 ,    80.869     ,   67.168   ,     74.635     ,  94.742   , 2.568  ,   5.636    ,  80.724   ,    2.899
