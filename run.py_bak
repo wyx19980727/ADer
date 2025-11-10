@@ -1,0 +1,96 @@
+import argparse
+from configs import get_cfg
+from util.net import init_training
+from util.util import run_pre, init_checkpoint
+from trainer import get_trainer
+import warnings
+import logging # 导入logging模块
+import os # 导入os模块，用于路径操作
+import copy # 1. 导入copy模块
+
+warnings.filterwarnings("ignore")
+# import torch.multiprocessing
+# torch.multiprocessing.set_sharing_strategy('file_system')
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    # parser.add_argument('-c', '--cfg_path', default='configs/rd_mvtec_debug.py')
+    # parser.add_argument('-c', '--cfg_path', default='configs/invad_mvtec_debug.py')
+    parser.add_argument('-c', '--cfg_path', default='configs/vitad_mvtec_debug.py')
+    parser.add_argument('-m', '--mode', default='train', choices=['train', 'test'])
+    parser.add_argument('--sleep', type=int, default=-1)
+    parser.add_argument('--memory', type=int, default=-1)
+    parser.add_argument('--dist_url', default='env://', type=str, help='url used to set up distributed training')
+    parser.add_argument('--logger_rank', default=0, type=int, help='GPU id to use.')
+    parser.add_argument('opts', help='path.key=value', default=None, nargs=argparse.REMAINDER,)
+    cfg_terminal = parser.parse_args()
+    
+    # 基础配置只加载一次
+    base_cfg = get_cfg(cfg_terminal)
+
+    '''add multiple runs'''
+    num_blocks = 12
+    divide_terms = [1, 2, 3, 4, 6, 12]
+    
+ 
+    for divide_term in divide_terms:
+        for i in range(divide_term, num_blocks + 1, divide_term):
+            # --- 每次循环开始时，重置为原始配置 ---
+            cfg = copy.deepcopy(base_cfg)
+
+            target_layers = [num_blocks-1-j for j in range(i)][::-1]
+            num_decoder_blocks = len(target_layers)
+            fuse_layer_encoder = []
+            
+            # 按divide_term为步长切片，每个子列表包含divide_term个元素
+            for start in range(0, num_decoder_blocks, divide_term):
+                # 从start开始取divide_term个元素，组成子列表
+                sublist = list(range(start, start + divide_term))
+                fuse_layer_encoder.append(sublist)
+            fuse_layer_decoder = fuse_layer_encoder.copy()
+            
+            lengths = [len(temp_list) for temp_list in fuse_layer_decoder]
+            postfix = ''.join(map(str, lengths)) 
+            
+            print("--------------------------------------------------")
+            print(f"Starting new run with divide_term: {divide_term}, num_decoder_blocks: {num_decoder_blocks}")
+            print("postfix:", postfix)
+            print("--------------------------------------------------")
+
+            # --- 更新当前运行的特定配置 ---
+            cfg.model.kwargs['target_layers'] = target_layers
+            cfg.model.kwargs['fuse_layer_encoder'] = fuse_layer_encoder
+            cfg.model.kwargs['fuse_layer_decoder'] = fuse_layer_decoder
+            cfg.model.kwargs['num_decoder_blocks'] = num_decoder_blocks
+            
+            # --- 为每次运行设置独立的日志和检查点目录 ---
+            cfg.logdir = os.path.join("runs", "Dinomaly_small_loosecosloss_size256_dinov3_officialloadhub_freeze_decodernorope_drop0_fusefinallayers_" + postfix)
+            
+            # --- 在循环内部为每次运行执行完整的初始化 ---
+            
+            # 1. 重置Python的root logger，避免日志累加
+            # 这会移除所有之前添加的handlers
+            for handler in logging.root.handlers[:]:
+                logging.root.removeHandler(handler)
+
+            # 2. 运行预处理和分布式训练设置
+            run_pre(cfg)
+            init_training(cfg) # 这个函数很可能配置了日志记录器，需要在循环内调用
+            
+            # 3. 初始化检查点目录
+            # 这个函数可能会创建目录，如果目录已存在，需要确保它不会加载旧的检查点
+            init_checkpoint(cfg, cfg.logdir)
+            
+            # 4. 创建新的trainer实例
+            # get_trainer(cfg) 应该在内部根据更新后的cfg来创建全新的模型和优化器
+            trainer = get_trainer(cfg)
+            
+            # 5. 开始独立的训练
+            trainer.run()
+            print(f"Finished run with postfix: {postfix}")
+            print("\n\n")
+
+
+if __name__ == '__main__':
+    main()

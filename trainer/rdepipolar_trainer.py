@@ -33,6 +33,7 @@ from ._base_trainer import BaseTrainer
 from . import TRAINER
 from util.vis import vis_rgb_gt_amp
 import cv2 as cv
+from model import MODEL
 
 real_iad_classes = [
     'audiojack', 'bottle_cap', 'button_battery', 'end_cap', 'eraser',
@@ -123,10 +124,10 @@ class RDEpipolarTrainer(BaseTrainer):
             # 	break
             t1 = get_timepc()
             # batch_idx += 1
-            #import ipdb; ipdb.set_trace()
             test_data = next(test_loader)
             self.set_input(test_data)
             self.forward()
+            
             loss_cos = self.loss_terms['cos'](self.feats_t, self.feats_s)
             update_log_term(self.log_terms.get('cos'), reduce_tensor(loss_cos, self.world_size).clone().detach().item(), 1, self.master)
             # get anomaly maps

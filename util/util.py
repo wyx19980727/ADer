@@ -50,7 +50,7 @@ def makedirs(dirs, exist_ok=False):
         os.makedirs(dir, exist_ok=exist_ok)
 
 
-def init_checkpoint(cfg):
+def init_checkpoint(cfg, logdir=None):
     def rm_zero_size_file(path):
         files = os.listdir(path)
         for file in files:
@@ -72,17 +72,22 @@ def init_checkpoint(cfg):
         cfg.trainer.metric_recorder = state_dict['metric_recorder']
     else:
         if cfg.master:
-            logdir_sub = cfg.trainer.logdir_sub if cfg.trainer.logdir_sub != '' else time.strftime("%Y%m%d-%H%M%S")
-            # logdir_exp = '{}_{}_{}_{}'.format(cfg.trainer.name, cfg.model.name, cfg.data.type, logdir_sub)
-            logdir_exp = f"{cfg.trainer.name}_{cfg.cfg_path.replace('.', '_')}_{logdir_sub}"
-            logdir = logdir_exp
-            idx = 0
-            while os.path.exists(logdir):
-                logdir = f'{logdir_exp}_{idx}'
-                idx += 1
-            cfg.logdir = '{}/{}'.format(cfg.trainer.checkpoint, logdir)
-            os.makedirs(cfg.logdir, exist_ok=True)
-            shutil.copy(f"{cfg.cfg_path.replace('.', '/')}.py", '{}/{}.py'.format(cfg.logdir, cfg.cfg_path.split('.')[-1]))
+            if logdir is None:
+                logdir_sub = cfg.trainer.logdir_sub if cfg.trainer.logdir_sub != '' else time.strftime("%Y%m%d-%H%M%S")
+                # logdir_exp = '{}_{}_{}_{}'.format(cfg.trainer.name, cfg.model.name, cfg.data.type, logdir_sub)
+                logdir_exp = f"{cfg.trainer.name}_{cfg.cfg_path.replace('.', '_')}_{logdir_sub}"
+                logdir = logdir_exp
+                idx = 0
+                while os.path.exists(logdir):
+                    logdir = f'{logdir_exp}_{idx}'
+                    idx += 1
+                cfg.logdir = '{}/{}'.format(cfg.trainer.checkpoint, logdir)
+                os.makedirs(cfg.logdir, exist_ok=True)
+                shutil.copy(f"{cfg.cfg_path.replace('.', '/')}.py", '{}/{}.py'.format(cfg.logdir, cfg.cfg_path.split('.')[-1]))
+            else:
+                cfg.logdir = logdir
+                os.makedirs(cfg.logdir, exist_ok=True)
+                shutil.copy(f"{cfg.cfg_path.replace('.', '/')}.py", '{}/{}.py'.format(cfg.logdir, cfg.cfg_path.split('.')[-1]))
         else:
             cfg.logdir = None
         cfg.trainer.iter, cfg.trainer.epoch = 0, 0

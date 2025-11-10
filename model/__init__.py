@@ -31,7 +31,9 @@ def get_model(cfg_model):
 			pretrained_cfg = None
 		with set_layer_config(scriptable=None, exportable=None, no_jit=None):
 			model = model_fn(pretrained=pretrained, pretrained_cfg=pretrained_cfg, **kwargs)
-		if not pretrained and pretrained_cfg is None and checkpoint_path is not None:
+		# if not pretrained and pretrained_cfg is None and checkpoint_path is not None:
+		# 	load_checkpoint(model, checkpoint_path, strict=strict)
+		if checkpoint_path:
 			load_checkpoint(model, checkpoint_path, strict=strict)
 	else:
 		model = model_fn(pretrained=pretrained, **kwargs)

@@ -1,0 +1,648 @@
+2025-09-30 17:32:24,780 - ==> Logging on master GPU: 0
+2025-09-30 17:32:24,780 - ==> Running Trainer: ConvnextRDTrainer
+2025-09-30 17:32:24,780 - ==> Using GPU: [0] for Training
+2025-09-30 17:32:24,780 - ==> Building model
+2025-09-30 17:32:25,168 - Loading pretrained weights from Hugging Face hub (timm/convnext_tiny.fb_in22k)
+2025-09-30 17:32:27,028 - [timm/convnext_tiny.fb_in22k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
+2025-09-30 17:32:27,045 - Missing keys (head.fc.weight, head.fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
+2025-09-30 17:32:27,371 - ==> Creating optimizer
+2025-09-30 17:32:27,372 - ==> Loading dataset: RealIAD
+2025-09-30 17:32:27,400 - ==> ********** cfg ********** 
+fvcore_is                            : True                                
+fvcore_b                             : 1                                   
+fvcore_c                             : 3                                   
+epoch_full                           : 100                                 
+metrics                              : ['S_AUROC', 'S_AUPR', 'mAUROC_sp_max', 'mAP_sp_max', 'mF1_max_sp_max', 'mAUROC_px', 'mAP_px', 'mF1_max_px', 'mAUPRO_px', 'mIoU_max_px']
+use_adeval                           : True                                
+evaluator.kwargs                     : {'metrics': ['S_AUROC', 'S_AUPR', 'mAUROC_sp_max', 'mAP_sp_max', 'mF1_max_sp_max', 'mAUROC_px', 'mAP_px', 'mF1_max_px', 'mAUPRO_px', 'mIoU_max_px'], 'pooling_ks': [16, 16], 'max_step_aupro': 100, 'use_adeval': True}
+optim.lr                             : 5e-05                               
+optim.kwargs                         : {'name': 'adamw', 'betas': (0.9, 0.999), 'eps': 1e-08, 'weight_decay': 0.0001, 'amsgrad': False}
+trainer.name                         : ConvnextRDTrainer                   
+trainer.checkpoint                   : runs                                
+trainer.logdir_sub                   :                                     
+trainer.resume_dir                   :                                     
+trainer.cuda_deterministic           : False                               
+trainer.epoch_full                   : 100                                 
+trainer.scheduler_kwargs             : {'name': 'step', 'lr_noise': None, 'noise_pct': 0.67, 'noise_std': 1.0, 'noise_seed': 42, 'lr_min': 5e-07, 'warmup_lr': 5.0000000000000004e-08, 'warmup_iters': -1, 'cooldown_iters': 0, 'warmup_epochs': 0, 'cooldown_epochs': 0, 'use_iters': True, 'patience_iters': 0, 'patience_epochs': 0, 'decay_iters': 0, 'decay_epochs': 80, 'cycle_decay': 0.1, 'decay_rate': 0.1}
+trainer.mixup_kwargs                 : {'mixup_alpha': 0.8, 'cutmix_alpha': 1.0, 'cutmix_minmax': None, 'prob': 0.0, 'switch_prob': 0.5, 'mode': 'batch', 'correct_lam': True, 'label_smoothing': 0.1}
+trainer.test_start_epoch             : 100                                 
+trainer.test_per_epoch               : 100                                 
+trainer.find_unused_parameters       : False                               
+trainer.sync_BN                      : apex                                
+trainer.dist_BN                      :                                     
+trainer.scaler                       : none                                
+trainer.data.batch_size              : 4                                   
+trainer.data.batch_size_per_gpu      : 4                                   
+trainer.data.batch_size_test         : 4                                   
+trainer.data.batch_size_per_gpu_test : 4                                   
+trainer.data.num_workers_per_gpu     : 8                                   
+trainer.data.drop_last               : True                                
+trainer.data.pin_memory              : True                                
+trainer.data.persistent_workers      : False                               
+trainer.data.num_workers             : 8                                   
+trainer.iter                         : 0                                   
+trainer.epoch                        : 0                                   
+trainer.iter_full                    : 17900                               
+trainer.metric_recorder              : {'S_AUROC_audiojack': [], 'S_AUPR_audiojack': [], 'mAUROC_sp_max_audiojack': [], 'mAP_sp_max_audiojack': [], 'mF1_max_sp_max_audiojack': [], 'mAUROC_px_audiojack': [], 'mAP_px_audiojack': [], 'mF1_max_px_audiojack': [], 'mAUPRO_px_audiojack': [], 'mIoU_max_px_audiojack': [], 'S_AUROC_bottle_cap': [], 'S_AUPR_bottle_cap': [], 'mAUROC_sp_max_bottle_cap': [], 'mAP_sp_max_bottle_cap': [], 'mF1_max_sp_max_bottle_cap': [], 'mAUROC_px_bottle_cap': [], 'mAP_px_bottle_cap': [], 'mF1_max_px_bottle_cap': [], 'mAUPRO_px_bottle_cap': [], 'mIoU_max_px_bottle_cap': [], 'S_AUROC_button_battery': [], 'S_AUPR_button_battery': [], 'mAUROC_sp_max_button_battery': [], 'mAP_sp_max_button_battery': [], 'mF1_max_sp_max_button_battery': [], 'mAUROC_px_button_battery': [], 'mAP_px_button_battery': [], 'mF1_max_px_button_battery': [], 'mAUPRO_px_button_battery': [], 'mIoU_max_px_button_battery': [], 'S_AUROC_end_cap': [], 'S_AUPR_end_cap': [], 'mAUROC_sp_max_end_cap': [], 'mAP_sp_max_end_cap': [], 'mF1_max_sp_max_end_cap': [], 'mAUROC_px_end_cap': [], 'mAP_px_end_cap': [], 'mF1_max_px_end_cap': [], 'mAUPRO_px_end_cap': [], 'mIoU_max_px_end_cap': [], 'S_AUROC_eraser': [], 'S_AUPR_eraser': [], 'mAUROC_sp_max_eraser': [], 'mAP_sp_max_eraser': [], 'mF1_max_sp_max_eraser': [], 'mAUROC_px_eraser': [], 'mAP_px_eraser': [], 'mF1_max_px_eraser': [], 'mAUPRO_px_eraser': [], 'mIoU_max_px_eraser': [], 'S_AUROC_fire_hood': [], 'S_AUPR_fire_hood': [], 'mAUROC_sp_max_fire_hood': [], 'mAP_sp_max_fire_hood': [], 'mF1_max_sp_max_fire_hood': [], 'mAUROC_px_fire_hood': [], 'mAP_px_fire_hood': [], 'mF1_max_px_fire_hood': [], 'mAUPRO_px_fire_hood': [], 'mIoU_max_px_fire_hood': [], 'S_AUROC_mint': [], 'S_AUPR_mint': [], 'mAUROC_sp_max_mint': [], 'mAP_sp_max_mint': [], 'mF1_max_sp_max_mint': [], 'mAUROC_px_mint': [], 'mAP_px_mint': [], 'mF1_max_px_mint': [], 'mAUPRO_px_mint': [], 'mIoU_max_px_mint': [], 'S_AUROC_mounts': [], 'S_AUPR_mounts': [], 'mAUROC_sp_max_mounts': [], 'mAP_sp_max_mounts': [], 'mF1_max_sp_max_mounts': [], 'mAUROC_px_mounts': [], 'mAP_px_mounts': [], 'mF1_max_px_mounts': [], 'mAUPRO_px_mounts': [], 'mIoU_max_px_mounts': [], 'S_AUROC_pcb': [], 'S_AUPR_pcb': [], 'mAUROC_sp_max_pcb': [], 'mAP_sp_max_pcb': [], 'mF1_max_sp_max_pcb': [], 'mAUROC_px_pcb': [], 'mAP_px_pcb': [], 'mF1_max_px_pcb': [], 'mAUPRO_px_pcb': [], 'mIoU_max_px_pcb': [], 'S_AUROC_phone_battery': [], 'S_AUPR_phone_battery': [], 'mAUROC_sp_max_phone_battery': [], 'mAP_sp_max_phone_battery': [], 'mF1_max_sp_max_phone_battery': [], 'mAUROC_px_phone_battery': [], 'mAP_px_phone_battery': [], 'mF1_max_px_phone_battery': [], 'mAUPRO_px_phone_battery': [], 'mIoU_max_px_phone_battery': [], 'S_AUROC_plastic_nut': [], 'S_AUPR_plastic_nut': [], 'mAUROC_sp_max_plastic_nut': [], 'mAP_sp_max_plastic_nut': [], 'mF1_max_sp_max_plastic_nut': [], 'mAUROC_px_plastic_nut': [], 'mAP_px_plastic_nut': [], 'mF1_max_px_plastic_nut': [], 'mAUPRO_px_plastic_nut': [], 'mIoU_max_px_plastic_nut': [], 'S_AUROC_plastic_plug': [], 'S_AUPR_plastic_plug': [], 'mAUROC_sp_max_plastic_plug': [], 'mAP_sp_max_plastic_plug': [], 'mF1_max_sp_max_plastic_plug': [], 'mAUROC_px_plastic_plug': [], 'mAP_px_plastic_plug': [], 'mF1_max_px_plastic_plug': [], 'mAUPRO_px_plastic_plug': [], 'mIoU_max_px_plastic_plug': [], 'S_AUROC_porcelain_doll': [], 'S_AUPR_porcelain_doll': [], 'mAUROC_sp_max_porcelain_doll': [], 'mAP_sp_max_porcelain_doll': [], 'mF1_max_sp_max_porcelain_doll': [], 'mAUROC_px_porcelain_doll': [], 'mAP_px_porcelain_doll': [], 'mF1_max_px_porcelain_doll': [], 'mAUPRO_px_porcelain_doll': [], 'mIoU_max_px_porcelain_doll': [], 'S_AUROC_regulator': [], 'S_AUPR_regulator': [], 'mAUROC_sp_max_regulator': [], 'mAP_sp_max_regulator': [], 'mF1_max_sp_max_regulator': [], 'mAUROC_px_regulator': [], 'mAP_px_regulator': [], 'mF1_max_px_regulator': [], 'mAUPRO_px_regulator': [], 'mIoU_max_px_regulator': [], 'S_AUROC_rolled_strip_base': [], 'S_AUPR_rolled_strip_base': [], 'mAUROC_sp_max_rolled_strip_base': [], 'mAP_sp_max_rolled_strip_base': [], 'mF1_max_sp_max_rolled_strip_base': [], 'mAUROC_px_rolled_strip_base': [], 'mAP_px_rolled_strip_base': [], 'mF1_max_px_rolled_strip_base': [], 'mAUPRO_px_rolled_strip_base': [], 'mIoU_max_px_rolled_strip_base': [], 'S_AUROC_sim_card_set': [], 'S_AUPR_sim_card_set': [], 'mAUROC_sp_max_sim_card_set': [], 'mAP_sp_max_sim_card_set': [], 'mF1_max_sp_max_sim_card_set': [], 'mAUROC_px_sim_card_set': [], 'mAP_px_sim_card_set': [], 'mF1_max_px_sim_card_set': [], 'mAUPRO_px_sim_card_set': [], 'mIoU_max_px_sim_card_set': [], 'S_AUROC_switch': [], 'S_AUPR_switch': [], 'mAUROC_sp_max_switch': [], 'mAP_sp_max_switch': [], 'mF1_max_sp_max_switch': [], 'mAUROC_px_switch': [], 'mAP_px_switch': [], 'mF1_max_px_switch': [], 'mAUPRO_px_switch': [], 'mIoU_max_px_switch': [], 'S_AUROC_tape': [], 'S_AUPR_tape': [], 'mAUROC_sp_max_tape': [], 'mAP_sp_max_tape': [], 'mF1_max_sp_max_tape': [], 'mAUROC_px_tape': [], 'mAP_px_tape': [], 'mF1_max_px_tape': [], 'mAUPRO_px_tape': [], 'mIoU_max_px_tape': [], 'S_AUROC_terminalblock': [], 'S_AUPR_terminalblock': [], 'mAUROC_sp_max_terminalblock': [], 'mAP_sp_max_terminalblock': [], 'mF1_max_sp_max_terminalblock': [], 'mAUROC_px_terminalblock': [], 'mAP_px_terminalblock': [], 'mF1_max_px_terminalblock': [], 'mAUPRO_px_terminalblock': [], 'mIoU_max_px_terminalblock': [], 'S_AUROC_toothbrush': [], 'S_AUPR_toothbrush': [], 'mAUROC_sp_max_toothbrush': [], 'mAP_sp_max_toothbrush': [], 'mF1_max_sp_max_toothbrush': [], 'mAUROC_px_toothbrush': [], 'mAP_px_toothbrush': [], 'mF1_max_px_toothbrush': [], 'mAUPRO_px_toothbrush': [], 'mIoU_max_px_toothbrush': [], 'S_AUROC_toy': [], 'S_AUPR_toy': [], 'mAUROC_sp_max_toy': [], 'mAP_sp_max_toy': [], 'mF1_max_sp_max_toy': [], 'mAUROC_px_toy': [], 'mAP_px_toy': [], 'mF1_max_px_toy': [], 'mAUPRO_px_toy': [], 'mIoU_max_px_toy': [], 'S_AUROC_toy_brick': [], 'S_AUPR_toy_brick': [], 'mAUROC_sp_max_toy_brick': [], 'mAP_sp_max_toy_brick': [], 'mF1_max_sp_max_toy_brick': [], 'mAUROC_px_toy_brick': [], 'mAP_px_toy_brick': [], 'mF1_max_px_toy_brick': [], 'mAUPRO_px_toy_brick': [], 'mIoU_max_px_toy_brick': [], 'S_AUROC_transistor1': [], 'S_AUPR_transistor1': [], 'mAUROC_sp_max_transistor1': [], 'mAP_sp_max_transistor1': [], 'mF1_max_sp_max_transistor1': [], 'mAUROC_px_transistor1': [], 'mAP_px_transistor1': [], 'mF1_max_px_transistor1': [], 'mAUPRO_px_transistor1': [], 'mIoU_max_px_transistor1': [], 'S_AUROC_u_block': [], 'S_AUPR_u_block': [], 'mAUROC_sp_max_u_block': [], 'mAP_sp_max_u_block': [], 'mF1_max_sp_max_u_block': [], 'mAUROC_px_u_block': [], 'mAP_px_u_block': [], 'mF1_max_px_u_block': [], 'mAUPRO_px_u_block': [], 'mIoU_max_px_u_block': [], 'S_AUROC_usb': [], 'S_AUPR_usb': [], 'mAUROC_sp_max_usb': [], 'mAP_sp_max_usb': [], 'mF1_max_sp_max_usb': [], 'mAUROC_px_usb': [], 'mAP_px_usb': [], 'mF1_max_px_usb': [], 'mAUPRO_px_usb': [], 'mIoU_max_px_usb': [], 'S_AUROC_usb_adaptor': [], 'S_AUPR_usb_adaptor': [], 'mAUROC_sp_max_usb_adaptor': [], 'mAP_sp_max_usb_adaptor': [], 'mF1_max_sp_max_usb_adaptor': [], 'mAUROC_px_usb_adaptor': [], 'mAP_px_usb_adaptor': [], 'mF1_max_px_usb_adaptor': [], 'mAUPRO_px_usb_adaptor': [], 'mIoU_max_px_usb_adaptor': [], 'S_AUROC_vcpill': [], 'S_AUPR_vcpill': [], 'mAUROC_sp_max_vcpill': [], 'mAP_sp_max_vcpill': [], 'mF1_max_sp_max_vcpill': [], 'mAUROC_px_vcpill': [], 'mAP_px_vcpill': [], 'mF1_max_px_vcpill': [], 'mAUPRO_px_vcpill': [], 'mIoU_max_px_vcpill': [], 'S_AUROC_wooden_beads': [], 'S_AUPR_wooden_beads': [], 'mAUROC_sp_max_wooden_beads': [], 'mAP_sp_max_wooden_beads': [], 'mF1_max_sp_max_wooden_beads': [], 'mAUROC_px_wooden_beads': [], 'mAP_px_wooden_beads': [], 'mF1_max_px_wooden_beads': [], 'mAUPRO_px_wooden_beads': [], 'mIoU_max_px_wooden_beads': [], 'S_AUROC_woodstick': [], 'S_AUPR_woodstick': [], 'mAUROC_sp_max_woodstick': [], 'mAP_sp_max_woodstick': [], 'mF1_max_sp_max_woodstick': [], 'mAUROC_px_woodstick': [], 'mAP_px_woodstick': [], 'mF1_max_px_woodstick': [], 'mAUPRO_px_woodstick': [], 'mIoU_max_px_woodstick': [], 'S_AUROC_zipper': [], 'S_AUROC_Avg': [], 'S_AUPR_zipper': [], 'S_AUPR_Avg': [], 'mAUROC_sp_max_zipper': [], 'mAUROC_sp_max_Avg': [], 'mAP_sp_max_zipper': [], 'mAP_sp_max_Avg': [], 'mF1_max_sp_max_zipper': [], 'mF1_max_sp_max_Avg': [], 'mAUROC_px_zipper': [], 'mAUROC_px_Avg': [], 'mAP_px_zipper': [], 'mAP_px_Avg': [], 'mF1_max_px_zipper': [], 'mF1_max_px_Avg': [], 'mAUPRO_px_zipper': [], 'mAUPRO_px_Avg': [], 'mIoU_max_px_zipper': [], 'mIoU_max_px_Avg': []}
+loss.loss_terms                      : [{'type': 'CosLoss', 'name': 'cos', 'avg': False, 'lam': 1.0}]
+loss.clip_grad                       : 5.0                                 
+loss.create_graph                    : False                               
+loss.retain_graph                    : False                               
+adv                                  : False                               
+logging.log_terms_train              : [{'name': 'batch_t', 'fmt': ':>5.3f', 'add_name': 'avg'}, {'name': 'data_t', 'fmt': ':>5.3f'}, {'name': 'optim_t', 'fmt': ':>5.3f'}, {'name': 'lr', 'fmt': ':>7.6f'}, {'name': 'cos', 'suffixes': [''], 'fmt': ':>5.3f', 'add_name': 'avg'}]
+logging.log_terms_test               : [{'name': 'batch_t', 'fmt': ':>5.3f', 'add_name': 'avg'}, {'name': 'cos', 'suffixes': [''], 'fmt': ':>5.3f', 'add_name': 'avg'}]
+logging.train_reset_log_per          : 50                                  
+logging.train_log_per                : 50                                  
+logging.test_log_per                 : 50                                  
+data.sampler                         : naive                               
+data.loader_type                     : pil                                 
+data.loader_type_target              : pil_L                               
+data.type                            : RealIAD                             
+data.root                            : /home/albus/DataSets/REAL-IAD/realiad_256
+data.meta                            : meta.json                           
+data.cls_names                       : []                                  
+data.train_transforms                : [{'type': 'ToTensor'}, {'type': 'Normalize', 'mean': (0.485, 0.456, 0.406), 'std': (0.229, 0.224, 0.225), 'inplace': True}]
+data.test_transforms                 : [{'type': 'ToTensor'}, {'type': 'Normalize', 'mean': (0.485, 0.456, 0.406), 'std': (0.229, 0.224, 0.225), 'inplace': True}]
+data.target_transforms               : [{'type': 'ToTensor'}]              
+data.use_sample                      : True                                
+data.views                           : []                                  
+data.train_size                      : 179                                 
+data.test_size                       : 567                                 
+data.train_length                    : 717                                 
+data.test_length                     : 2266                                
+model_t.name                         : timm_wide_resnet50_2                
+model_t.kwargs                       : {'pretrained': False, 'checkpoint_path': 'model/pretrain/wide_resnet50_racm-8234f177.pth', 'strict': False, 'features_only': True, 'out_indices': [1, 2, 3]}
+model_s.name                         : de_wide_resnet50_2                  
+model_s.kwargs                       : {'pretrained': False, 'checkpoint_path': '', 'strict': False}
+model.name                           : convnextrd                          
+model.kwargs                         : {'pretrained': False, 'checkpoint_path': '', 'strict': True}
+seed                                 : 42                                  
+size                                 : 256                                 
+warmup_epochs                        : 0                                   
+test_start_epoch                     : 100                                 
+test_per_epoch                       : 100                                 
+batch_train                          : 4                                   
+batch_test_per                       : 4                                   
+lr                                   : 5e-05                               
+weight_decay                         : 0.0001                              
+cfg_path                             : configs.z_realiad_subsample.convnextad_256_100e
+mode                                 : train                               
+sleep                                : -1                                  
+memory                               : -1                                  
+dist_url                             : env://                              
+logger_rank                          : 0                                   
+opts                                 : []                                  
+command                              : python3 -m torch.distributed.launch --nproc_per_node=$nproc_per_node --nnodes=$nnodes --node_rank=$node_rank --master_addr=$master_addr --master_port=$master_port --use_env run.py -c configs.z_realiad_subsample.convnextad_256_100e -m train --sleep -1 --memory -1 --dist_url env:// --logger_rank 0 
+task_start_time                      : 4245835.692765229                   
+dist                                 : False                               
+world_size                           : 1                                   
+rank                                 : 0                                   
+local_rank                           : 0                                   
+ngpus_per_node                       : 1                                   
+nnodes                               : 1                                   
+master                               : True                                
+logdir                               : runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224
+logger.filters                       : []                                  
+logger.name                          : root                                
+logger.level                         : 20                                  
+logger.parent                        : None                                
+logger.propagate                     : True                                
+logger.disabled                      : False                               
+logdir_train                         : runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224/show_train
+logdir_test                          : runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224/show_test
+2025-09-30 17:32:27,400 - ==> Starting training with 1 nodes x 1 GPUs
+2025-09-30 17:32:34,342 - Train: 0.28% [50/17900]  [0.3/100.0] [batch_t 0.116 (0.137)] [data_t 0.002] [optim_t 0.115] [lr 0.000050] [cos 1.004 (1.803)]
+2025-09-30 17:32:40,184 - Train: 0.56% [100/17900]  [0.6/100.0] [batch_t 0.117 (0.117)] [data_t 0.002] [optim_t 0.115] [lr 0.000050] [cos 0.532 (0.722)]
+2025-09-30 17:32:46,036 - Train: 0.84% [150/17900]  [0.8/100.0] [batch_t 0.117 (0.117)] [data_t 0.002] [optim_t 0.115] [lr 0.000050] [cos 0.357 (0.439)]
+2025-09-30 17:32:49,431 - ==> Total time: 0:00:24	 Eta: 0:40:40 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:32:52,263 - Train: 1.12% [200/17900]  [1.1/100.0] [batch_t 0.117 (0.122)] [data_t 0.002] [optim_t 0.115] [lr 0.000050] [cos 0.282 (0.296)]
+2025-09-30 17:32:58,133 - Train: 1.40% [250/17900]  [1.4/100.0] [batch_t 0.117 (0.117)] [data_t 0.002] [optim_t 0.116] [lr 0.000050] [cos 0.228 (0.247)]
+2025-09-30 17:33:04,015 - Train: 1.68% [300/17900]  [1.7/100.0] [batch_t 0.117 (0.118)] [data_t 0.002] [optim_t 0.116] [lr 0.000050] [cos 0.188 (0.199)]
+2025-09-30 17:33:09,908 - Train: 1.96% [350/17900]  [2.0/100.0] [batch_t 0.118 (0.118)] [data_t 0.002] [optim_t 0.116] [lr 0.000050] [cos 0.156 (0.169)]
+2025-09-30 17:33:10,852 - ==> Total time: 0:00:46	 Eta: 0:37:37 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:33:16,252 - Train: 2.23% [400/17900]  [2.2/100.0] [batch_t 0.118 (0.120)] [data_t 0.002] [optim_t 0.116] [lr 0.000050] [cos 0.137 (0.146)]
+2025-09-30 17:33:22,164 - Train: 2.51% [450/17900]  [2.5/100.0] [batch_t 0.118 (0.118)] [data_t 0.002] [optim_t 0.116] [lr 0.000050] [cos 0.143 (0.134)]
+2025-09-30 17:33:28,095 - Train: 2.79% [500/17900]  [2.8/100.0] [batch_t 0.119 (0.119)] [data_t 0.002] [optim_t 0.117] [lr 0.000050] [cos 0.105 (0.122)]
+2025-09-30 17:33:32,482 - ==> Total time: 0:01:07	 Eta: 0:36:29 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:33:34,438 - Train: 3.07% [550/17900]  [3.1/100.0] [batch_t 0.118 (0.125)] [data_t 0.002] [optim_t 0.117] [lr 0.000050] [cos 0.115 (0.097)]
+2025-09-30 17:33:40,374 - Train: 3.35% [600/17900]  [3.4/100.0] [batch_t 0.119 (0.119)] [data_t 0.002] [optim_t 0.117] [lr 0.000050] [cos 0.115 (0.103)]
+2025-09-30 17:33:46,316 - Train: 3.63% [650/17900]  [3.6/100.0] [batch_t 0.119 (0.119)] [data_t 0.002] [optim_t 0.117] [lr 0.000050] [cos 0.101 (0.102)]
+2025-09-30 17:33:52,264 - Train: 3.91% [700/17900]  [3.9/100.0] [batch_t 0.119 (0.119)] [data_t 0.002] [optim_t 0.117] [lr 0.000050] [cos 0.093 (0.095)]
+2025-09-30 17:33:54,167 - ==> Total time: 0:01:29	 Eta: 0:35:45 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:33:58,583 - Train: 4.19% [750/17900]  [4.2/100.0] [batch_t 0.119 (0.120)] [data_t 0.002] [optim_t 0.117] [lr 0.000050] [cos 0.093 (0.089)]
+2025-09-30 17:34:04,549 - Train: 4.47% [800/17900]  [4.5/100.0] [batch_t 0.119 (0.119)] [data_t 0.002] [optim_t 0.117] [lr 0.000050] [cos 0.083 (0.088)]
+2025-09-30 17:34:10,522 - Train: 4.75% [850/17900]  [4.7/100.0] [batch_t 0.119 (0.119)] [data_t 0.002] [optim_t 0.117] [lr 0.000050] [cos 0.082 (0.082)]
+2025-09-30 17:34:15,902 - ==> Total time: 0:01:51	 Eta: 0:35:11 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:34:16,871 - Train: 5.03% [900/17900]  [5.0/100.0] [batch_t 0.119 (0.127)] [data_t 0.002] [optim_t 0.117] [lr 0.000050] [cos 0.079 (0.078)]
+2025-09-30 17:34:22,855 - Train: 5.31% [950/17900]  [5.3/100.0] [batch_t 0.120 (0.120)] [data_t 0.002] [optim_t 0.118] [lr 0.000050] [cos 0.078 (0.077)]
+2025-09-30 17:34:28,841 - Train: 5.59% [1000/17900]  [5.6/100.0] [batch_t 0.120 (0.120)] [data_t 0.002] [optim_t 0.118] [lr 0.000050] [cos 0.084 (0.079)]
+2025-09-30 17:34:34,840 - Train: 5.87% [1050/17900]  [5.9/100.0] [batch_t 0.120 (0.120)] [data_t 0.002] [optim_t 0.118] [lr 0.000050] [cos 0.057 (0.073)]
+2025-09-30 17:34:37,717 - ==> Total time: 0:02:12	 Eta: 0:34:42 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:34:41,214 - Train: 6.15% [1100/17900]  [6.1/100.0] [batch_t 0.120 (0.122)] [data_t 0.002] [optim_t 0.118] [lr 0.000050] [cos 0.060 (0.073)]
+2025-09-30 17:34:47,212 - Train: 6.42% [1150/17900]  [6.4/100.0] [batch_t 0.120 (0.120)] [data_t 0.002] [optim_t 0.118] [lr 0.000050] [cos 0.076 (0.071)]
+2025-09-30 17:34:53,212 - Train: 6.70% [1200/17900]  [6.7/100.0] [batch_t 0.120 (0.120)] [data_t 0.002] [optim_t 0.118] [lr 0.000050] [cos 0.069 (0.071)]
+2025-09-30 17:34:59,212 - Train: 6.98% [1250/17900]  [7.0/100.0] [batch_t 0.120 (0.120)] [data_t 0.002] [optim_t 0.118] [lr 0.000050] [cos 0.065 (0.066)]
+2025-09-30 17:34:59,573 - ==> Total time: 0:02:34	 Eta: 0:34:16 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:35:05,624 - Train: 7.26% [1300/17900]  [7.3/100.0] [batch_t 0.120 (0.122)] [data_t 0.002] [optim_t 0.118] [lr 0.000050] [cos 0.060 (0.067)]
+2025-09-30 17:35:11,629 - Train: 7.54% [1350/17900]  [7.5/100.0] [batch_t 0.120 (0.120)] [data_t 0.002] [optim_t 0.118] [lr 0.000050] [cos 0.063 (0.065)]
+2025-09-30 17:35:17,633 - Train: 7.82% [1400/17900]  [7.8/100.0] [batch_t 0.120 (0.120)] [data_t 0.002] [optim_t 0.118] [lr 0.000050] [cos 0.068 (0.067)]
+2025-09-30 17:35:21,482 - ==> Total time: 0:02:56	 Eta: 0:33:52 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:35:24,071 - Train: 8.10% [1450/17900]  [8.1/100.0] [batch_t 0.120 (0.125)] [data_t 0.002] [optim_t 0.118] [lr 0.000050] [cos 0.069 (0.064)]
+2025-09-30 17:35:30,087 - Train: 8.38% [1500/17900]  [8.4/100.0] [batch_t 0.120 (0.120)] [data_t 0.002] [optim_t 0.118] [lr 0.000050] [cos 0.071 (0.061)]
+2025-09-30 17:35:36,104 - Train: 8.66% [1550/17900]  [8.7/100.0] [batch_t 0.120 (0.120)] [data_t 0.002] [optim_t 0.118] [lr 0.000050] [cos 0.058 (0.063)]
+2025-09-30 17:35:42,121 - Train: 8.94% [1600/17900]  [8.9/100.0] [batch_t 0.120 (0.120)] [data_t 0.002] [optim_t 0.118] [lr 0.000050] [cos 0.079 (0.061)]
+2025-09-30 17:35:43,445 - ==> Total time: 0:03:18	 Eta: 0:33:28 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:35:48,576 - Train: 9.22% [1650/17900]  [9.2/100.0] [batch_t 0.120 (0.123)] [data_t 0.002] [optim_t 0.119] [lr 0.000050] [cos 0.050 (0.061)]
+2025-09-30 17:35:54,600 - Train: 9.50% [1700/17900]  [9.5/100.0] [batch_t 0.120 (0.120)] [data_t 0.002] [optim_t 0.118] [lr 0.000050] [cos 0.063 (0.060)]
+2025-09-30 17:36:00,625 - Train: 9.78% [1750/17900]  [9.8/100.0] [batch_t 0.121 (0.120)] [data_t 0.002] [optim_t 0.119] [lr 0.000050] [cos 0.059 (0.059)]
+2025-09-30 17:36:05,446 - ==> Total time: 0:03:40	 Eta: 0:33:06 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:36:07,086 - Train: 10.06% [1800/17900]  [10.1/100.0] [batch_t 0.121 (0.128)] [data_t 0.002] [optim_t 0.119] [lr 0.000050] [cos 0.056 (0.057)]
+2025-09-30 17:36:13,114 - Train: 10.34% [1850/17900]  [10.3/100.0] [batch_t 0.121 (0.120)] [data_t 0.002] [optim_t 0.119] [lr 0.000050] [cos 0.070 (0.058)]
+2025-09-30 17:36:19,158 - Train: 10.61% [1900/17900]  [10.6/100.0] [batch_t 0.121 (0.121)] [data_t 0.002] [optim_t 0.119] [lr 0.000050] [cos 0.056 (0.057)]
+2025-09-30 17:36:25,208 - Train: 10.89% [1950/17900]  [10.9/100.0] [batch_t 0.121 (0.121)] [data_t 0.002] [optim_t 0.119] [lr 0.000050] [cos 0.057 (0.057)]
+2025-09-30 17:36:27,506 - ==> Total time: 0:04:02	 Eta: 0:32:43 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:36:31,683 - Train: 11.17% [2000/17900]  [11.2/100.0] [batch_t 0.121 (0.123)] [data_t 0.002] [optim_t 0.119] [lr 0.000050] [cos 0.047 (0.056)]
+2025-09-30 17:36:37,735 - Train: 11.45% [2050/17900]  [11.5/100.0] [batch_t 0.121 (0.121)] [data_t 0.002] [optim_t 0.119] [lr 0.000050] [cos 0.055 (0.055)]
+2025-09-30 17:36:43,788 - Train: 11.73% [2100/17900]  [11.7/100.0] [batch_t 0.121 (0.121)] [data_t 0.002] [optim_t 0.119] [lr 0.000050] [cos 0.046 (0.057)]
+2025-09-30 17:36:49,603 - ==> Total time: 0:04:24	 Eta: 0:32:22 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:36:50,271 - Train: 12.01% [2150/17900]  [12.0/100.0] [batch_t 0.121 (0.166)] [data_t 0.002] [optim_t 0.119] [lr 0.000050] [cos 0.073 (0.064)]
+2025-09-30 17:36:56,328 - Train: 12.29% [2200/17900]  [12.3/100.0] [batch_t 0.121 (0.121)] [data_t 0.002] [optim_t 0.119] [lr 0.000050] [cos 0.077 (0.054)]
+2025-09-30 17:37:02,386 - Train: 12.57% [2250/17900]  [12.6/100.0] [batch_t 0.121 (0.121)] [data_t 0.002] [optim_t 0.119] [lr 0.000050] [cos 0.054 (0.052)]
+2025-09-30 17:37:08,447 - Train: 12.85% [2300/17900]  [12.8/100.0] [batch_t 0.121 (0.121)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.056 (0.054)]
+2025-09-30 17:37:11,720 - ==> Total time: 0:04:46	 Eta: 0:32:00 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:37:14,940 - Train: 13.13% [2350/17900]  [13.1/100.0] [batch_t 0.121 (0.125)] [data_t 0.002] [optim_t 0.119] [lr 0.000050] [cos 0.051 (0.052)]
+2025-09-30 17:37:21,002 - Train: 13.41% [2400/17900]  [13.4/100.0] [batch_t 0.121 (0.121)] [data_t 0.002] [optim_t 0.119] [lr 0.000050] [cos 0.043 (0.052)]
+2025-09-30 17:37:27,069 - Train: 13.69% [2450/17900]  [13.7/100.0] [batch_t 0.121 (0.121)] [data_t 0.002] [optim_t 0.119] [lr 0.000050] [cos 0.045 (0.052)]
+2025-09-30 17:37:33,133 - Train: 13.97% [2500/17900]  [14.0/100.0] [batch_t 0.121 (0.121)] [data_t 0.002] [optim_t 0.119] [lr 0.000050] [cos 0.063 (0.053)]
+2025-09-30 17:37:33,862 - ==> Total time: 0:05:09	 Eta: 0:31:38 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:37:39,632 - Train: 14.25% [2550/17900]  [14.2/100.0] [batch_t 0.121 (0.123)] [data_t 0.002] [optim_t 0.119] [lr 0.000050] [cos 0.056 (0.052)]
+2025-09-30 17:37:45,699 - Train: 14.53% [2600/17900]  [14.5/100.0] [batch_t 0.122 (0.121)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.051 (0.052)]
+2025-09-30 17:37:51,768 - Train: 14.80% [2650/17900]  [14.8/100.0] [batch_t 0.122 (0.121)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.054 (0.050)]
+2025-09-30 17:37:56,017 - ==> Total time: 0:05:31	 Eta: 0:31:17 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:37:58,232 - Train: 15.08% [2700/17900]  [15.1/100.0] [batch_t 0.121 (0.123)] [data_t 0.002] [optim_t 0.119] [lr 0.000050] [cos 0.031 (0.055)]
+2025-09-30 17:38:04,302 - Train: 15.36% [2750/17900]  [15.4/100.0] [batch_t 0.121 (0.121)] [data_t 0.002] [optim_t 0.119] [lr 0.000050] [cos 0.045 (0.050)]
+2025-09-30 17:38:10,374 - Train: 15.64% [2800/17900]  [15.6/100.0] [batch_t 0.121 (0.121)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.057 (0.049)]
+2025-09-30 17:38:16,455 - Train: 15.92% [2850/17900]  [15.9/100.0] [batch_t 0.121 (0.121)] [data_t 0.002] [optim_t 0.119] [lr 0.000050] [cos 0.063 (0.050)]
+2025-09-30 17:38:18,155 - ==> Total time: 0:05:53	 Eta: 0:30:55 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:38:22,944 - Train: 16.20% [2900/17900]  [16.2/100.0] [batch_t 0.121 (0.124)] [data_t 0.002] [optim_t 0.119] [lr 0.000050] [cos 0.050 (0.049)]
+2025-09-30 17:38:29,014 - Train: 16.48% [2950/17900]  [16.5/100.0] [batch_t 0.121 (0.121)] [data_t 0.002] [optim_t 0.119] [lr 0.000050] [cos 0.040 (0.048)]
+2025-09-30 17:38:35,088 - Train: 16.76% [3000/17900]  [16.8/100.0] [batch_t 0.122 (0.121)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.058 (0.050)]
+2025-09-30 17:38:40,310 - ==> Total time: 0:06:15	 Eta: 0:30:33 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:38:41,577 - Train: 17.04% [3050/17900]  [17.0/100.0] [batch_t 0.121 (0.132)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.053 (0.049)]
+2025-09-30 17:38:47,650 - Train: 17.32% [3100/17900]  [17.3/100.0] [batch_t 0.122 (0.121)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.031 (0.046)]
+2025-09-30 17:38:53,722 - Train: 17.60% [3150/17900]  [17.6/100.0] [batch_t 0.122 (0.121)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.061 (0.049)]
+2025-09-30 17:38:59,795 - Train: 17.88% [3200/17900]  [17.9/100.0] [batch_t 0.122 (0.121)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.053 (0.047)]
+2025-09-30 17:39:02,469 - ==> Total time: 0:06:37	 Eta: 0:30:11 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:39:06,286 - Train: 18.16% [3250/17900]  [18.2/100.0] [batch_t 0.121 (0.124)] [data_t 0.002] [optim_t 0.119] [lr 0.000050] [cos 0.045 (0.047)]
+2025-09-30 17:39:12,359 - Train: 18.44% [3300/17900]  [18.4/100.0] [batch_t 0.121 (0.121)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.048 (0.047)]
+2025-09-30 17:39:18,434 - Train: 18.72% [3350/17900]  [18.7/100.0] [batch_t 0.121 (0.121)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.059 (0.047)]
+2025-09-30 17:39:24,509 - Train: 18.99% [3400/17900]  [19.0/100.0] [batch_t 0.122 (0.121)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.031 (0.047)]
+2025-09-30 17:39:24,631 - ==> Total time: 0:06:59	 Eta: 0:29:49 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:39:31,021 - Train: 19.27% [3450/17900]  [19.3/100.0] [batch_t 0.121 (0.123)] [data_t 0.002] [optim_t 0.119] [lr 0.000050] [cos 0.034 (0.045)]
+2025-09-30 17:39:37,095 - Train: 19.55% [3500/17900]  [19.6/100.0] [batch_t 0.121 (0.121)] [data_t 0.002] [optim_t 0.119] [lr 0.000050] [cos 0.043 (0.047)]
+2025-09-30 17:39:43,170 - Train: 19.83% [3550/17900]  [19.8/100.0] [batch_t 0.121 (0.121)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.046 (0.046)]
+2025-09-30 17:39:46,814 - ==> Total time: 0:07:22	 Eta: 0:29:28 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:39:49,649 - Train: 20.11% [3600/17900]  [20.1/100.0] [batch_t 0.121 (0.125)] [data_t 0.002] [optim_t 0.119] [lr 0.000050] [cos 0.049 (0.047)]
+2025-09-30 17:39:55,726 - Train: 20.39% [3650/17900]  [20.4/100.0] [batch_t 0.122 (0.121)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.036 (0.045)]
+2025-09-30 17:40:01,804 - Train: 20.67% [3700/17900]  [20.7/100.0] [batch_t 0.121 (0.122)] [data_t 0.002] [optim_t 0.119] [lr 0.000050] [cos 0.046 (0.045)]
+2025-09-30 17:40:07,880 - Train: 20.95% [3750/17900]  [20.9/100.0] [batch_t 0.121 (0.121)] [data_t 0.002] [optim_t 0.119] [lr 0.000050] [cos 0.044 (0.045)]
+2025-09-30 17:40:08,974 - ==> Total time: 0:07:44	 Eta: 0:29:06 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:40:14,397 - Train: 21.23% [3800/17900]  [21.2/100.0] [batch_t 0.121 (0.124)] [data_t 0.002] [optim_t 0.119] [lr 0.000050] [cos 0.031 (0.045)]
+2025-09-30 17:40:20,474 - Train: 21.51% [3850/17900]  [21.5/100.0] [batch_t 0.121 (0.121)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.033 (0.043)]
+2025-09-30 17:40:26,552 - Train: 21.79% [3900/17900]  [21.8/100.0] [batch_t 0.121 (0.122)] [data_t 0.002] [optim_t 0.119] [lr 0.000050] [cos 0.050 (0.045)]
+2025-09-30 17:40:31,169 - ==> Total time: 0:08:06	 Eta: 0:28:44 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:40:33,061 - Train: 22.07% [3950/17900]  [22.1/100.0] [batch_t 0.121 (0.129)] [data_t 0.002] [optim_t 0.119] [lr 0.000050] [cos 0.036 (0.043)]
+2025-09-30 17:40:39,137 - Train: 22.35% [4000/17900]  [22.3/100.0] [batch_t 0.122 (0.121)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.041 (0.044)]
+2025-09-30 17:40:45,215 - Train: 22.63% [4050/17900]  [22.6/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.053 (0.044)]
+2025-09-30 17:40:51,294 - Train: 22.91% [4100/17900]  [22.9/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.056 (0.043)]
+2025-09-30 17:40:53,360 - ==> Total time: 0:08:28	 Eta: 0:28:22 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:40:57,746 - Train: 23.18% [4150/17900]  [23.2/100.0] [batch_t 0.121 (0.123)] [data_t 0.002] [optim_t 0.119] [lr 0.000050] [cos 0.048 (0.044)]
+2025-09-30 17:41:03,823 - Train: 23.46% [4200/17900]  [23.5/100.0] [batch_t 0.121 (0.121)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.055 (0.042)]
+2025-09-30 17:41:09,904 - Train: 23.74% [4250/17900]  [23.7/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.042 (0.043)]
+2025-09-30 17:41:15,496 - ==> Total time: 0:08:50	 Eta: 0:28:00 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:41:16,371 - Train: 24.02% [4300/17900]  [24.0/100.0] [batch_t 0.122 (0.135)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.045 (0.045)]
+2025-09-30 17:41:22,450 - Train: 24.30% [4350/17900]  [24.3/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.038 (0.042)]
+2025-09-30 17:41:28,531 - Train: 24.58% [4400/17900]  [24.6/100.0] [batch_t 0.121 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.040 (0.042)]
+2025-09-30 17:41:34,611 - Train: 24.86% [4450/17900]  [24.9/100.0] [batch_t 0.121 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.043 (0.041)]
+2025-09-30 17:41:37,651 - ==> Total time: 0:09:12	 Eta: 0:27:38 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:41:41,117 - Train: 25.14% [4500/17900]  [25.1/100.0] [batch_t 0.122 (0.125)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.045 (0.042)]
+2025-09-30 17:41:47,198 - Train: 25.42% [4550/17900]  [25.4/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.034 (0.042)]
+2025-09-30 17:41:53,277 - Train: 25.70% [4600/17900]  [25.7/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.042 (0.042)]
+2025-09-30 17:41:59,356 - Train: 25.98% [4650/17900]  [26.0/100.0] [batch_t 0.121 (0.122)] [data_t 0.002] [optim_t 0.119] [lr 0.000050] [cos 0.046 (0.042)]
+2025-09-30 17:41:59,843 - ==> Total time: 0:09:35	 Eta: 0:27:16 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:42:05,876 - Train: 26.26% [4700/17900]  [26.3/100.0] [batch_t 0.121 (0.124)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.043 (0.041)]
+2025-09-30 17:42:11,960 - Train: 26.54% [4750/17900]  [26.5/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.033 (0.039)]
+2025-09-30 17:42:18,041 - Train: 26.82% [4800/17900]  [26.8/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.050 (0.041)]
+2025-09-30 17:42:22,056 - ==> Total time: 0:09:57	 Eta: 0:26:54 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:42:24,561 - Train: 27.09% [4850/17900]  [27.1/100.0] [batch_t 0.121 (0.127)] [data_t 0.002] [optim_t 0.119] [lr 0.000050] [cos 0.044 (0.040)]
+2025-09-30 17:42:30,643 - Train: 27.37% [4900/17900]  [27.4/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.046 (0.041)]
+2025-09-30 17:42:36,728 - Train: 27.65% [4950/17900]  [27.7/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.035 (0.041)]
+2025-09-30 17:42:42,814 - Train: 27.93% [5000/17900]  [27.9/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.036 (0.040)]
+2025-09-30 17:42:44,276 - ==> Total time: 0:10:19	 Eta: 0:26:32 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:42:49,276 - Train: 28.21% [5050/17900]  [28.2/100.0] [batch_t 0.122 (0.123)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.030 (0.041)]
+2025-09-30 17:42:55,364 - Train: 28.49% [5100/17900]  [28.5/100.0] [batch_t 0.121 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.045 (0.040)]
+2025-09-30 17:43:01,453 - Train: 28.77% [5150/17900]  [28.8/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.037 (0.041)]
+2025-09-30 17:43:06,443 - ==> Total time: 0:10:41	 Eta: 0:26:10 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:43:07,902 - Train: 29.05% [5200/17900]  [29.1/100.0] [batch_t 0.122 (0.124)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.040 (0.036)]
+2025-09-30 17:43:13,987 - Train: 29.33% [5250/17900]  [29.3/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.036 (0.040)]
+2025-09-30 17:43:20,073 - Train: 29.61% [5300/17900]  [29.6/100.0] [batch_t 0.121 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.034 (0.039)]
+2025-09-30 17:43:26,160 - Train: 29.89% [5350/17900]  [29.9/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.043 (0.040)]
+2025-09-30 17:43:28,594 - ==> Total time: 0:11:03	 Eta: 0:25:48 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:43:32,671 - Train: 30.17% [5400/17900]  [30.2/100.0] [batch_t 0.121 (0.125)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.042 (0.041)]
+2025-09-30 17:43:38,758 - Train: 30.45% [5450/17900]  [30.4/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.043 (0.038)]
+2025-09-30 17:43:44,847 - Train: 30.73% [5500/17900]  [30.7/100.0] [batch_t 0.121 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.032 (0.040)]
+2025-09-30 17:43:50,813 - ==> Total time: 0:11:26	 Eta: 0:25:26 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:43:51,376 - Train: 31.01% [5550/17900]  [31.0/100.0] [batch_t 0.222 (0.222)] [data_t 0.104] [optim_t 0.119] [lr 0.000050] [cos 0.037 (0.037)]
+2025-09-30 17:43:57,461 - Train: 31.28% [5600/17900]  [31.3/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.033 (0.038)]
+2025-09-30 17:44:03,550 - Train: 31.56% [5650/17900]  [31.6/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.039 (0.039)]
+2025-09-30 17:44:09,639 - Train: 31.84% [5700/17900]  [31.8/100.0] [batch_t 0.121 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.041 (0.038)]
+2025-09-30 17:44:13,047 - ==> Total time: 0:11:48	 Eta: 0:25:05 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:44:16,124 - Train: 32.12% [5750/17900]  [32.1/100.0] [batch_t 0.122 (0.124)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.044 (0.037)]
+2025-09-30 17:44:22,214 - Train: 32.40% [5800/17900]  [32.4/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.053 (0.038)]
+2025-09-30 17:44:28,306 - Train: 32.68% [5850/17900]  [32.7/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.029 (0.037)]
+2025-09-30 17:44:34,394 - Train: 32.96% [5900/17900]  [33.0/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.042 (0.040)]
+2025-09-30 17:44:35,248 - ==> Total time: 0:12:10	 Eta: 0:24:43 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:44:40,933 - Train: 33.24% [5950/17900]  [33.2/100.0] [batch_t 0.122 (0.124)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.038 (0.036)]
+2025-09-30 17:44:47,023 - Train: 33.52% [6000/17900]  [33.5/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.042 (0.038)]
+2025-09-30 17:44:53,111 - Train: 33.80% [6050/17900]  [33.8/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.033 (0.039)]
+2025-09-30 17:44:57,497 - ==> Total time: 0:12:32	 Eta: 0:24:21 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:44:59,632 - Train: 34.08% [6100/17900]  [34.1/100.0] [batch_t 0.122 (0.128)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.035 (0.037)]
+2025-09-30 17:45:05,723 - Train: 34.36% [6150/17900]  [34.4/100.0] [batch_t 0.121 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.039 (0.038)]
+2025-09-30 17:45:11,815 - Train: 34.64% [6200/17900]  [34.6/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.035 (0.038)]
+2025-09-30 17:45:17,907 - Train: 34.92% [6250/17900]  [34.9/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.032 (0.038)]
+2025-09-30 17:45:19,735 - ==> Total time: 0:12:54	 Eta: 0:23:59 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:45:24,420 - Train: 35.20% [6300/17900]  [35.2/100.0] [batch_t 0.122 (0.124)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.027 (0.041)]
+2025-09-30 17:45:30,512 - Train: 35.47% [6350/17900]  [35.5/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.041 (0.036)]
+2025-09-30 17:45:36,606 - Train: 35.75% [6400/17900]  [35.8/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.036 (0.036)]
+2025-09-30 17:45:41,965 - ==> Total time: 0:13:17	 Eta: 0:23:37 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:45:43,133 - Train: 36.03% [6450/17900]  [36.0/100.0] [batch_t 0.122 (0.137)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.029 (0.036)]
+2025-09-30 17:45:49,226 - Train: 36.31% [6500/17900]  [36.3/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.038 (0.036)]
+2025-09-30 17:45:55,318 - Train: 36.59% [6550/17900]  [36.6/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.025 (0.037)]
+2025-09-30 17:46:01,411 - Train: 36.87% [6600/17900]  [36.9/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.024 (0.036)]
+2025-09-30 17:46:04,213 - ==> Total time: 0:13:39	 Eta: 0:23:15 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:46:07,920 - Train: 37.15% [6650/17900]  [37.2/100.0] [batch_t 0.122 (0.124)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.034 (0.036)]
+2025-09-30 17:46:14,015 - Train: 37.43% [6700/17900]  [37.4/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.038 (0.038)]
+2025-09-30 17:46:20,109 - Train: 37.71% [6750/17900]  [37.7/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.032 (0.034)]
+2025-09-30 17:46:26,201 - Train: 37.99% [6800/17900]  [38.0/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.028 (0.036)]
+2025-09-30 17:46:26,445 - ==> Total time: 0:14:01	 Eta: 0:22:53 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:46:32,724 - Train: 38.27% [6850/17900]  [38.3/100.0] [batch_t 0.122 (0.124)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.030 (0.036)]
+2025-09-30 17:46:38,817 - Train: 38.55% [6900/17900]  [38.5/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.037 (0.037)]
+2025-09-30 17:46:44,910 - Train: 38.83% [6950/17900]  [38.8/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.042 (0.035)]
+2025-09-30 17:46:48,688 - ==> Total time: 0:14:23	 Eta: 0:22:31 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:46:51,573 - Train: 39.11% [7000/17900]  [39.1/100.0] [batch_t 0.122 (0.127)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.037 (0.037)]
+2025-09-30 17:46:57,667 - Train: 39.39% [7050/17900]  [39.4/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.041 (0.034)]
+2025-09-30 17:47:03,761 - Train: 39.66% [7100/17900]  [39.7/100.0] [batch_t 0.121 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.040 (0.035)]
+2025-09-30 17:47:09,855 - Train: 39.94% [7150/17900]  [39.9/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.046 (0.036)]
+2025-09-30 17:47:11,075 - ==> Total time: 0:14:46	 Eta: 0:22:09 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:47:16,377 - Train: 40.22% [7200/17900]  [40.2/100.0] [batch_t 0.122 (0.123)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.035 (0.035)]
+2025-09-30 17:47:22,473 - Train: 40.50% [7250/17900]  [40.5/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.029 (0.034)]
+2025-09-30 17:47:28,566 - Train: 40.78% [7300/17900]  [40.8/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.046 (0.035)]
+2025-09-30 17:47:33,318 - ==> Total time: 0:15:08	 Eta: 0:21:47 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:47:35,055 - Train: 41.06% [7350/17900]  [41.1/100.0] [batch_t 0.122 (0.127)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.047 (0.036)]
+2025-09-30 17:47:41,149 - Train: 41.34% [7400/17900]  [41.3/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.034 (0.035)]
+2025-09-30 17:47:47,244 - Train: 41.62% [7450/17900]  [41.6/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.042 (0.035)]
+2025-09-30 17:47:53,339 - Train: 41.90% [7500/17900]  [41.9/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.039 (0.035)]
+2025-09-30 17:47:55,533 - ==> Total time: 0:15:30	 Eta: 0:21:25 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:47:59,884 - Train: 42.18% [7550/17900]  [42.2/100.0] [batch_t 0.122 (0.125)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.041 (0.034)]
+2025-09-30 17:48:05,982 - Train: 42.46% [7600/17900]  [42.5/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.038 (0.036)]
+2025-09-30 17:48:12,080 - Train: 42.74% [7650/17900]  [42.7/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.036 (0.035)]
+2025-09-30 17:48:17,808 - ==> Total time: 0:15:53	 Eta: 0:21:03 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:48:18,587 - Train: 43.02% [7700/17900]  [43.0/100.0] [batch_t 0.122 (0.145)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.032 (0.034)]
+2025-09-30 17:48:24,682 - Train: 43.30% [7750/17900]  [43.3/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.023 (0.034)]
+2025-09-30 17:48:30,779 - Train: 43.58% [7800/17900]  [43.6/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.029 (0.034)]
+2025-09-30 17:48:36,877 - Train: 43.85% [7850/17900]  [43.9/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.023 (0.034)]
+2025-09-30 17:48:40,047 - ==> Total time: 0:16:15	 Eta: 0:20:41 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:48:43,393 - Train: 44.13% [7900/17900]  [44.1/100.0] [batch_t 0.122 (0.124)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.038 (0.035)]
+2025-09-30 17:48:49,489 - Train: 44.41% [7950/17900]  [44.4/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.028 (0.033)]
+2025-09-30 17:48:55,583 - Train: 44.69% [8000/17900]  [44.7/100.0] [batch_t 0.121 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.026 (0.034)]
+2025-09-30 17:49:01,680 - Train: 44.97% [8050/17900]  [45.0/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.039 (0.033)]
+2025-09-30 17:49:02,291 - ==> Total time: 0:16:37	 Eta: 0:20:19 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:49:08,200 - Train: 45.25% [8100/17900]  [45.3/100.0] [batch_t 0.122 (0.124)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.036 (0.034)]
+2025-09-30 17:49:14,296 - Train: 45.53% [8150/17900]  [45.5/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.032 (0.034)]
+2025-09-30 17:49:20,396 - Train: 45.81% [8200/17900]  [45.8/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.033 (0.034)]
+2025-09-30 17:49:24,541 - ==> Total time: 0:16:59	 Eta: 0:19:57 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:49:26,917 - Train: 46.09% [8250/17900]  [46.1/100.0] [batch_t 0.122 (0.127)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.027 (0.034)]
+2025-09-30 17:49:33,015 - Train: 46.37% [8300/17900]  [46.4/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.033 (0.034)]
+2025-09-30 17:49:39,114 - Train: 46.65% [8350/17900]  [46.6/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.044 (0.032)]
+2025-09-30 17:49:45,214 - Train: 46.93% [8400/17900]  [46.9/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.036 (0.034)]
+2025-09-30 17:49:46,801 - ==> Total time: 0:17:22	 Eta: 0:19:35 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:49:51,762 - Train: 47.21% [8450/17900]  [47.2/100.0] [batch_t 0.122 (0.125)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.029 (0.032)]
+2025-09-30 17:49:57,859 - Train: 47.49% [8500/17900]  [47.5/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.032 (0.034)]
+2025-09-30 17:50:03,956 - Train: 47.77% [8550/17900]  [47.8/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.027 (0.033)]
+2025-09-30 17:50:09,077 - ==> Total time: 0:17:44	 Eta: 0:19:12 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:50:10,492 - Train: 48.04% [8600/17900]  [48.0/100.0] [batch_t 0.122 (0.134)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.036 (0.031)]
+2025-09-30 17:50:16,589 - Train: 48.32% [8650/17900]  [48.3/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.033 (0.032)]
+2025-09-30 17:50:22,692 - Train: 48.60% [8700/17900]  [48.6/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.032 (0.033)]
+2025-09-30 17:50:28,790 - Train: 48.88% [8750/17900]  [48.9/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.035 (0.032)]
+2025-09-30 17:50:31,351 - ==> Total time: 0:18:06	 Eta: 0:18:50 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:50:35,316 - Train: 49.16% [8800/17900]  [49.2/100.0] [batch_t 0.122 (0.125)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.025 (0.033)]
+2025-09-30 17:50:41,417 - Train: 49.44% [8850/17900]  [49.4/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.034 (0.032)]
+2025-09-30 17:50:47,514 - Train: 49.72% [8900/17900]  [49.7/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.021 (0.032)]
+2025-09-30 17:50:53,608 - Train: 50.00% [8950/17900]  [50.0/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.021 (0.033)]
+2025-09-30 17:50:53,610 - ==> Total time: 0:18:28	 Eta: 0:18:28 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:51:00,162 - Train: 50.28% [9000/17900]  [50.3/100.0] [batch_t 0.121 (0.124)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.026 (0.032)]
+2025-09-30 17:51:06,259 - Train: 50.56% [9050/17900]  [50.6/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.028 (0.033)]
+2025-09-30 17:51:12,358 - Train: 50.84% [9100/17900]  [50.8/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.024 (0.032)]
+2025-09-30 17:51:15,895 - ==> Total time: 0:18:51	 Eta: 0:18:06 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:51:18,891 - Train: 51.12% [9150/17900]  [51.1/100.0] [batch_t 0.122 (0.125)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.032 (0.032)]
+2025-09-30 17:51:24,990 - Train: 51.40% [9200/17900]  [51.4/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.047 (0.032)]
+2025-09-30 17:51:31,090 - Train: 51.68% [9250/17900]  [51.7/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.026 (0.032)]
+2025-09-30 17:51:37,190 - Train: 51.96% [9300/17900]  [52.0/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.036 (0.032)]
+2025-09-30 17:51:38,167 - ==> Total time: 0:19:13	 Eta: 0:17:44 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:51:43,720 - Train: 52.23% [9350/17900]  [52.2/100.0] [batch_t 0.122 (0.124)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.027 (0.031)]
+2025-09-30 17:51:49,819 - Train: 52.51% [9400/17900]  [52.5/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.024 (0.031)]
+2025-09-30 17:51:55,917 - Train: 52.79% [9450/17900]  [52.8/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.031 (0.032)]
+2025-09-30 17:52:00,429 - ==> Total time: 0:19:35	 Eta: 0:17:22 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:52:02,458 - Train: 53.07% [9500/17900]  [53.1/100.0] [batch_t 0.122 (0.130)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.031 (0.030)]
+2025-09-30 17:52:08,558 - Train: 53.35% [9550/17900]  [53.4/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.027 (0.032)]
+2025-09-30 17:52:14,660 - Train: 53.63% [9600/17900]  [53.6/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.039 (0.032)]
+2025-09-30 17:52:20,759 - Train: 53.91% [9650/17900]  [53.9/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.033 (0.031)]
+2025-09-30 17:52:22,713 - ==> Total time: 0:19:57	 Eta: 0:17:00 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:52:27,300 - Train: 54.19% [9700/17900]  [54.2/100.0] [batch_t 0.122 (0.125)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.030 (0.032)]
+2025-09-30 17:52:33,398 - Train: 54.47% [9750/17900]  [54.5/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.026 (0.031)]
+2025-09-30 17:52:39,496 - Train: 54.75% [9800/17900]  [54.7/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.032 (0.030)]
+2025-09-30 17:52:44,984 - ==> Total time: 0:20:20	 Eta: 0:16:38 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:52:46,034 - Train: 55.03% [9850/17900]  [55.0/100.0] [batch_t 0.122 (0.139)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.025 (0.031)]
+2025-09-30 17:52:52,133 - Train: 55.31% [9900/17900]  [55.3/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.028 (0.029)]
+2025-09-30 17:52:58,231 - Train: 55.59% [9950/17900]  [55.6/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.034 (0.031)]
+2025-09-30 17:53:04,329 - Train: 55.87% [10000/17900]  [55.9/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.038 (0.032)]
+2025-09-30 17:53:07,257 - ==> Total time: 0:20:42	 Eta: 0:16:16 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:53:10,862 - Train: 56.15% [10050/17900]  [56.1/100.0] [batch_t 0.122 (0.125)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.037 (0.032)]
+2025-09-30 17:53:16,962 - Train: 56.42% [10100/17900]  [56.4/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.024 (0.032)]
+2025-09-30 17:53:23,060 - Train: 56.70% [10150/17900]  [56.7/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.024 (0.031)]
+2025-09-30 17:53:29,157 - Train: 56.98% [10200/17900]  [57.0/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.028 (0.030)]
+2025-09-30 17:53:29,525 - ==> Total time: 0:21:04	 Eta: 0:15:54 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:53:35,692 - Train: 57.26% [10250/17900]  [57.3/100.0] [batch_t 0.122 (0.124)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.036 (0.031)]
+2025-09-30 17:53:41,790 - Train: 57.54% [10300/17900]  [57.5/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.025 (0.030)]
+2025-09-30 17:53:47,891 - Train: 57.82% [10350/17900]  [57.8/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.036 (0.031)]
+2025-09-30 17:53:51,794 - ==> Total time: 0:21:27	 Eta: 0:15:31 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:53:54,421 - Train: 58.10% [10400/17900]  [58.1/100.0] [batch_t 0.122 (0.127)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.026 (0.030)]
+2025-09-30 17:54:00,518 - Train: 58.38% [10450/17900]  [58.4/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.029 (0.030)]
+2025-09-30 17:54:06,620 - Train: 58.66% [10500/17900]  [58.7/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.020 (0.031)]
+2025-09-30 17:54:12,719 - Train: 58.94% [10550/17900]  [58.9/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.034 (0.031)]
+2025-09-30 17:54:14,061 - ==> Total time: 0:21:49	 Eta: 0:15:09 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:54:19,258 - Train: 59.22% [10600/17900]  [59.2/100.0] [batch_t 0.122 (0.124)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.036 (0.031)]
+2025-09-30 17:54:25,359 - Train: 59.50% [10650/17900]  [59.5/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.039 (0.030)]
+2025-09-30 17:54:31,458 - Train: 59.78% [10700/17900]  [59.8/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.018 (0.030)]
+2025-09-30 17:54:36,336 - ==> Total time: 0:22:11	 Eta: 0:14:47 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:54:38,032 - Train: 60.06% [10750/17900]  [60.1/100.0] [batch_t 0.122 (0.131)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.039 (0.032)]
+2025-09-30 17:54:44,131 - Train: 60.34% [10800/17900]  [60.3/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.023 (0.031)]
+2025-09-30 17:54:50,232 - Train: 60.61% [10850/17900]  [60.6/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.027 (0.030)]
+2025-09-30 17:54:56,331 - Train: 60.89% [10900/17900]  [60.9/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.035 (0.030)]
+2025-09-30 17:54:58,648 - ==> Total time: 0:22:33	 Eta: 0:14:25 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:55:02,850 - Train: 61.17% [10950/17900]  [61.2/100.0] [batch_t 0.122 (0.125)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.035 (0.030)]
+2025-09-30 17:55:08,950 - Train: 61.45% [11000/17900]  [61.5/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.020 (0.029)]
+2025-09-30 17:55:15,049 - Train: 61.73% [11050/17900]  [61.7/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.023 (0.030)]
+2025-09-30 17:55:20,903 - ==> Total time: 0:22:56	 Eta: 0:14:03 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:55:21,565 - Train: 62.01% [11100/17900]  [62.0/100.0] [batch_t 0.122 (0.161)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.023 (0.033)]
+2025-09-30 17:55:27,661 - Train: 62.29% [11150/17900]  [62.3/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.023 (0.030)]
+2025-09-30 17:55:33,761 - Train: 62.57% [11200/17900]  [62.6/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.032 (0.029)]
+2025-09-30 17:55:39,859 - Train: 62.85% [11250/17900]  [62.8/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.027 (0.030)]
+2025-09-30 17:55:43,151 - ==> Total time: 0:23:18	 Eta: 0:13:41 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:55:46,361 - Train: 63.13% [11300/17900]  [63.1/100.0] [batch_t 0.122 (0.125)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.033 (0.030)]
+2025-09-30 17:55:52,460 - Train: 63.41% [11350/17900]  [63.4/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.028 (0.029)]
+2025-09-30 17:55:58,559 - Train: 63.69% [11400/17900]  [63.7/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.034 (0.030)]
+2025-09-30 17:56:04,660 - Train: 63.97% [11450/17900]  [64.0/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.037 (0.031)]
+2025-09-30 17:56:05,393 - ==> Total time: 0:23:40	 Eta: 0:13:19 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:56:11,162 - Train: 64.25% [11500/17900]  [64.2/100.0] [batch_t 0.122 (0.123)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.024 (0.028)]
+2025-09-30 17:56:17,261 - Train: 64.53% [11550/17900]  [64.5/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.021 (0.029)]
+2025-09-30 17:56:23,362 - Train: 64.80% [11600/17900]  [64.8/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.019 (0.030)]
+2025-09-30 17:56:27,630 - ==> Total time: 0:24:02	 Eta: 0:12:56 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:56:29,862 - Train: 65.08% [11650/17900]  [65.1/100.0] [batch_t 0.122 (0.127)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.016 (0.029)]
+2025-09-30 17:56:35,962 - Train: 65.36% [11700/17900]  [65.4/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.023 (0.028)]
+2025-09-30 17:56:42,066 - Train: 65.64% [11750/17900]  [65.6/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.024 (0.030)]
+2025-09-30 17:56:48,167 - Train: 65.92% [11800/17900]  [65.9/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.025 (0.029)]
+2025-09-30 17:56:49,874 - ==> Total time: 0:24:25	 Eta: 0:12:34 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:56:54,700 - Train: 66.20% [11850/17900]  [66.2/100.0] [batch_t 0.122 (0.125)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.035 (0.029)]
+2025-09-30 17:57:00,804 - Train: 66.48% [11900/17900]  [66.5/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.026 (0.029)]
+2025-09-30 17:57:06,906 - Train: 66.76% [11950/17900]  [66.8/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.022 (0.029)]
+2025-09-30 17:57:12,152 - ==> Total time: 0:24:47	 Eta: 0:12:12 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:57:13,438 - Train: 67.04% [12000/17900]  [67.0/100.0] [batch_t 0.122 (0.136)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.033 (0.028)]
+2025-09-30 17:57:19,537 - Train: 67.32% [12050/17900]  [67.3/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.021 (0.029)]
+2025-09-30 17:57:25,639 - Train: 67.60% [12100/17900]  [67.6/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.036 (0.029)]
+2025-09-30 17:57:31,742 - Train: 67.88% [12150/17900]  [67.9/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.033 (0.028)]
+2025-09-30 17:57:34,426 - ==> Total time: 0:25:09	 Eta: 0:11:50 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:57:38,262 - Train: 68.16% [12200/17900]  [68.2/100.0] [batch_t 0.122 (0.125)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.023 (0.027)]
+2025-09-30 17:57:44,363 - Train: 68.44% [12250/17900]  [68.4/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.025 (0.030)]
+2025-09-30 17:57:50,463 - Train: 68.72% [12300/17900]  [68.7/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.027 (0.028)]
+2025-09-30 17:57:56,561 - Train: 68.99% [12350/17900]  [69.0/100.0] [batch_t 0.121 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.024 (0.029)]
+2025-09-30 17:57:56,685 - ==> Total time: 0:25:31	 Eta: 0:11:28 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:58:03,083 - Train: 69.27% [12400/17900]  [69.3/100.0] [batch_t 0.122 (0.123)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.032 (0.029)]
+2025-09-30 17:58:09,184 - Train: 69.55% [12450/17900]  [69.6/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.027 (0.029)]
+2025-09-30 17:58:15,284 - Train: 69.83% [12500/17900]  [69.8/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.046 (0.028)]
+2025-09-30 17:58:18,943 - ==> Total time: 0:25:54	 Eta: 0:11:06 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:58:21,788 - Train: 70.11% [12550/17900]  [70.1/100.0] [batch_t 0.122 (0.126)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.018 (0.028)]
+2025-09-30 17:58:27,888 - Train: 70.39% [12600/17900]  [70.4/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.044 (0.029)]
+2025-09-30 17:58:33,988 - Train: 70.67% [12650/17900]  [70.7/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.023 (0.028)]
+2025-09-30 17:58:40,090 - Train: 70.95% [12700/17900]  [70.9/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.028 (0.029)]
+2025-09-30 17:58:41,189 - ==> Total time: 0:26:16	 Eta: 0:10:43 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:58:46,633 - Train: 71.23% [12750/17900]  [71.2/100.0] [batch_t 0.122 (0.124)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.035 (0.030)]
+2025-09-30 17:58:52,735 - Train: 71.51% [12800/17900]  [71.5/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.025 (0.028)]
+2025-09-30 17:58:58,835 - Train: 71.79% [12850/17900]  [71.8/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.031 (0.027)]
+2025-09-30 17:59:03,471 - ==> Total time: 0:26:38	 Eta: 0:10:21 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:59:05,356 - Train: 72.07% [12900/17900]  [72.1/100.0] [batch_t 0.122 (0.130)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.027 (0.031)]
+2025-09-30 17:59:11,458 - Train: 72.35% [12950/17900]  [72.3/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.032 (0.028)]
+2025-09-30 17:59:17,559 - Train: 72.63% [13000/17900]  [72.6/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.017 (0.027)]
+2025-09-30 17:59:23,663 - Train: 72.91% [13050/17900]  [72.9/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.038 (0.029)]
+2025-09-30 17:59:25,737 - ==> Total time: 0:27:00	 Eta: 0:09:59 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:59:30,158 - Train: 73.18% [13100/17900]  [73.2/100.0] [batch_t 0.122 (0.123)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.031 (0.030)]
+2025-09-30 17:59:36,258 - Train: 73.46% [13150/17900]  [73.5/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.036 (0.028)]
+2025-09-30 17:59:42,362 - Train: 73.74% [13200/17900]  [73.7/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.030 (0.027)]
+2025-09-30 17:59:47,976 - ==> Total time: 0:27:23	 Eta: 0:09:37 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 17:59:48,848 - Train: 74.02% [13250/17900]  [74.0/100.0] [batch_t 0.122 (0.126)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.029 (0.027)]
+2025-09-30 17:59:54,946 - Train: 74.30% [13300/17900]  [74.3/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.036 (0.029)]
+2025-09-30 18:00:01,044 - Train: 74.58% [13350/17900]  [74.6/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.032 (0.028)]
+2025-09-30 18:00:07,145 - Train: 74.86% [13400/17900]  [74.9/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.021 (0.027)]
+2025-09-30 18:00:10,195 - ==> Total time: 0:27:45	 Eta: 0:09:15 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 18:00:13,620 - Train: 75.14% [13450/17900]  [75.1/100.0] [batch_t 0.122 (0.123)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.032 (0.028)]
+2025-09-30 18:00:19,721 - Train: 75.42% [13500/17900]  [75.4/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.030 (0.027)]
+2025-09-30 18:00:25,824 - Train: 75.70% [13550/17900]  [75.7/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.030 (0.029)]
+2025-09-30 18:00:31,926 - Train: 75.98% [13600/17900]  [76.0/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.035 (0.029)]
+2025-09-30 18:00:32,414 - ==> Total time: 0:28:07	 Eta: 0:08:52 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 18:00:38,454 - Train: 76.26% [13650/17900]  [76.3/100.0] [batch_t 0.122 (0.124)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.024 (0.029)]
+2025-09-30 18:00:44,555 - Train: 76.54% [13700/17900]  [76.5/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.025 (0.028)]
+2025-09-30 18:00:50,656 - Train: 76.82% [13750/17900]  [76.8/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.039 (0.027)]
+2025-09-30 18:00:54,682 - ==> Total time: 0:28:29	 Eta: 0:08:30 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 18:00:57,194 - Train: 77.09% [13800/17900]  [77.1/100.0] [batch_t 0.122 (0.128)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.029 (0.027)]
+2025-09-30 18:01:03,292 - Train: 77.37% [13850/17900]  [77.4/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.025 (0.029)]
+2025-09-30 18:01:09,392 - Train: 77.65% [13900/17900]  [77.7/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.036 (0.029)]
+2025-09-30 18:01:15,491 - Train: 77.93% [13950/17900]  [77.9/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.033 (0.026)]
+2025-09-30 18:01:16,955 - ==> Total time: 0:28:52	 Eta: 0:08:08 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 18:01:22,021 - Train: 78.21% [14000/17900]  [78.2/100.0] [batch_t 0.122 (0.125)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.030 (0.029)]
+2025-09-30 18:01:28,122 - Train: 78.49% [14050/17900]  [78.5/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.036 (0.028)]
+2025-09-30 18:01:34,224 - Train: 78.77% [14100/17900]  [78.8/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.030 (0.028)]
+2025-09-30 18:01:39,227 - ==> Total time: 0:29:14	 Eta: 0:07:46 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 18:01:40,687 - Train: 79.05% [14150/17900]  [79.1/100.0] [batch_t 0.122 (0.125)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.033 (0.029)]
+2025-09-30 18:01:46,788 - Train: 79.33% [14200/17900]  [79.3/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.032 (0.027)]
+2025-09-30 18:01:52,891 - Train: 79.61% [14250/17900]  [79.6/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.016 (0.028)]
+2025-09-30 18:01:58,994 - Train: 79.89% [14300/17900]  [79.9/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000050] [cos 0.022 (0.028)]
+2025-09-30 18:02:01,435 - ==> Total time: 0:29:36	 Eta: 0:07:24 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 18:02:05,486 - Train: 80.17% [14350/17900]  [80.2/100.0] [batch_t 0.122 (0.124)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.031 (0.028)]
+2025-09-30 18:02:11,589 - Train: 80.45% [14400/17900]  [80.4/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.048 (0.028)]
+2025-09-30 18:02:17,694 - Train: 80.73% [14450/17900]  [80.7/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.020 (0.026)]
+2025-09-30 18:02:23,675 - ==> Total time: 0:29:58	 Eta: 0:07:01 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 18:02:24,243 - Train: 81.01% [14500/17900]  [81.0/100.0] [batch_t 0.210 (0.210)] [data_t 0.091] [optim_t 0.119] [lr 0.000005] [cos 0.027 (0.027)]
+2025-09-30 18:02:30,345 - Train: 81.28% [14550/17900]  [81.3/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.034 (0.026)]
+2025-09-30 18:02:36,451 - Train: 81.56% [14600/17900]  [81.6/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.027 (0.027)]
+2025-09-30 18:02:42,557 - Train: 81.84% [14650/17900]  [81.8/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.023 (0.028)]
+2025-09-30 18:02:45,976 - ==> Total time: 0:30:21	 Eta: 0:06:39 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 18:02:49,029 - Train: 82.12% [14700/17900]  [82.1/100.0] [batch_t 0.122 (0.123)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.029 (0.026)]
+2025-09-30 18:02:55,132 - Train: 82.40% [14750/17900]  [82.4/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.025 (0.027)]
+2025-09-30 18:03:01,239 - Train: 82.68% [14800/17900]  [82.7/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.026 (0.027)]
+2025-09-30 18:03:07,344 - Train: 82.96% [14850/17900]  [83.0/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.026 (0.027)]
+2025-09-30 18:03:08,199 - ==> Total time: 0:30:43	 Eta: 0:06:17 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 18:03:13,834 - Train: 83.24% [14900/17900]  [83.2/100.0] [batch_t 0.122 (0.123)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.026 (0.027)]
+2025-09-30 18:03:19,938 - Train: 83.52% [14950/17900]  [83.5/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.037 (0.027)]
+2025-09-30 18:03:26,042 - Train: 83.80% [15000/17900]  [83.8/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.030 (0.027)]
+2025-09-30 18:03:30,435 - ==> Total time: 0:31:05	 Eta: 0:05:55 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 18:03:32,586 - Train: 84.08% [15050/17900]  [84.1/100.0] [batch_t 0.122 (0.129)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.023 (0.027)]
+2025-09-30 18:03:38,688 - Train: 84.36% [15100/17900]  [84.4/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.031 (0.027)]
+2025-09-30 18:03:44,794 - Train: 84.64% [15150/17900]  [84.6/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.029 (0.027)]
+2025-09-30 18:03:50,901 - Train: 84.92% [15200/17900]  [84.9/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.026 (0.028)]
+2025-09-30 18:03:52,731 - ==> Total time: 0:31:27	 Eta: 0:05:33 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 18:03:57,395 - Train: 85.20% [15250/17900]  [85.2/100.0] [batch_t 0.122 (0.123)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.015 (0.027)]
+2025-09-30 18:04:03,498 - Train: 85.47% [15300/17900]  [85.5/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.017 (0.027)]
+2025-09-30 18:04:09,603 - Train: 85.75% [15350/17900]  [85.8/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.024 (0.027)]
+2025-09-30 18:04:14,974 - ==> Total time: 0:31:50	 Eta: 0:05:10 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 18:04:16,135 - Train: 86.03% [15400/17900]  [86.0/100.0] [batch_t 0.122 (0.135)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.023 (0.027)]
+2025-09-30 18:04:22,239 - Train: 86.31% [15450/17900]  [86.3/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.031 (0.027)]
+2025-09-30 18:04:28,344 - Train: 86.59% [15500/17900]  [86.6/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.024 (0.025)]
+2025-09-30 18:04:34,448 - Train: 86.87% [15550/17900]  [86.9/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.023 (0.028)]
+2025-09-30 18:04:37,256 - ==> Total time: 0:32:12	 Eta: 0:04:48 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 18:04:40,982 - Train: 87.15% [15600/17900]  [87.2/100.0] [batch_t 0.122 (0.124)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.032 (0.027)]
+2025-09-30 18:04:47,087 - Train: 87.43% [15650/17900]  [87.4/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.022 (0.026)]
+2025-09-30 18:04:53,192 - Train: 87.71% [15700/17900]  [87.7/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.028 (0.028)]
+2025-09-30 18:04:59,295 - Train: 87.99% [15750/17900]  [88.0/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.032 (0.027)]
+2025-09-30 18:04:59,540 - ==> Total time: 0:32:34	 Eta: 0:04:26 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 18:05:05,823 - Train: 88.27% [15800/17900]  [88.3/100.0] [batch_t 0.122 (0.124)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.025 (0.027)]
+2025-09-30 18:05:11,927 - Train: 88.55% [15850/17900]  [88.5/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.042 (0.027)]
+2025-09-30 18:05:18,032 - Train: 88.83% [15900/17900]  [88.8/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.121] [lr 0.000005] [cos 0.023 (0.026)]
+2025-09-30 18:05:21,815 - ==> Total time: 0:32:57	 Eta: 0:04:04 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 18:05:24,567 - Train: 89.11% [15950/17900]  [89.1/100.0] [batch_t 0.122 (0.127)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.025 (0.027)]
+2025-09-30 18:05:30,671 - Train: 89.39% [16000/17900]  [89.4/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.031 (0.026)]
+2025-09-30 18:05:36,775 - Train: 89.66% [16050/17900]  [89.7/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.121] [lr 0.000005] [cos 0.031 (0.027)]
+2025-09-30 18:05:42,879 - Train: 89.94% [16100/17900]  [89.9/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.028 (0.027)]
+2025-09-30 18:05:44,099 - ==> Total time: 0:33:19	 Eta: 0:03:42 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 18:05:49,413 - Train: 90.22% [16150/17900]  [90.2/100.0] [batch_t 0.122 (0.124)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.019 (0.025)]
+2025-09-30 18:05:55,515 - Train: 90.50% [16200/17900]  [90.5/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.038 (0.027)]
+2025-09-30 18:06:01,621 - Train: 90.78% [16250/17900]  [90.8/100.0] [batch_t 0.123 (0.122)] [data_t 0.002] [optim_t 0.121] [lr 0.000005] [cos 0.028 (0.027)]
+2025-09-30 18:06:06,381 - ==> Total time: 0:33:41	 Eta: 0:03:19 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 18:06:08,146 - Train: 91.06% [16300/17900]  [91.1/100.0] [batch_t 0.122 (0.130)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.026 (0.026)]
+2025-09-30 18:06:14,248 - Train: 91.34% [16350/17900]  [91.3/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.025 (0.027)]
+2025-09-30 18:06:20,352 - Train: 91.62% [16400/17900]  [91.6/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.029 (0.026)]
+2025-09-30 18:06:26,458 - Train: 91.90% [16450/17900]  [91.9/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.020 (0.027)]
+2025-09-30 18:06:28,655 - ==> Total time: 0:34:03	 Eta: 0:02:57 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 18:06:32,993 - Train: 92.18% [16500/17900]  [92.2/100.0] [batch_t 0.122 (0.125)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.028 (0.027)]
+2025-09-30 18:06:39,097 - Train: 92.46% [16550/17900]  [92.5/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.028 (0.026)]
+2025-09-30 18:06:45,203 - Train: 92.74% [16600/17900]  [92.7/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.030 (0.026)]
+2025-09-30 18:06:50,943 - ==> Total time: 0:34:26	 Eta: 0:02:35 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 18:06:51,745 - Train: 93.02% [16650/17900]  [93.0/100.0] [batch_t 0.122 (0.141)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.031 (0.024)]
+2025-09-30 18:06:57,850 - Train: 93.30% [16700/17900]  [93.3/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.026 (0.027)]
+2025-09-30 18:07:03,955 - Train: 93.58% [16750/17900]  [93.6/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.021 (0.027)]
+2025-09-30 18:07:10,069 - Train: 93.85% [16800/17900]  [93.9/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.028 (0.027)]
+2025-09-30 18:07:13,243 - ==> Total time: 0:34:48	 Eta: 0:02:13 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 18:07:16,603 - Train: 94.13% [16850/17900]  [94.1/100.0] [batch_t 0.122 (0.125)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.020 (0.027)]
+2025-09-30 18:07:22,707 - Train: 94.41% [16900/17900]  [94.4/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.036 (0.027)]
+2025-09-30 18:07:28,811 - Train: 94.69% [16950/17900]  [94.7/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.016 (0.026)]
+2025-09-30 18:07:34,915 - Train: 94.97% [17000/17900]  [95.0/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.023 (0.027)]
+2025-09-30 18:07:35,525 - ==> Total time: 0:35:10	 Eta: 0:01:51 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 18:07:41,463 - Train: 95.25% [17050/17900]  [95.3/100.0] [batch_t 0.122 (0.124)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.025 (0.026)]
+2025-09-30 18:07:47,567 - Train: 95.53% [17100/17900]  [95.5/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.025 (0.026)]
+2025-09-30 18:07:53,671 - Train: 95.81% [17150/17900]  [95.8/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.025 (0.027)]
+2025-09-30 18:07:57,819 - ==> Total time: 0:35:33	 Eta: 0:01:28 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 18:08:00,178 - Train: 96.09% [17200/17900]  [96.1/100.0] [batch_t 0.122 (0.126)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.029 (0.025)]
+2025-09-30 18:08:06,279 - Train: 96.37% [17250/17900]  [96.4/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.030 (0.027)]
+2025-09-30 18:08:12,382 - Train: 96.65% [17300/17900]  [96.6/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.034 (0.028)]
+2025-09-30 18:08:18,486 - Train: 96.93% [17350/17900]  [96.9/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.030 (0.025)]
+2025-09-30 18:08:20,071 - ==> Total time: 0:35:55	 Eta: 0:01:06 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 18:08:25,028 - Train: 97.21% [17400/17900]  [97.2/100.0] [batch_t 0.122 (0.125)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.024 (0.025)]
+2025-09-30 18:08:31,134 - Train: 97.49% [17450/17900]  [97.5/100.0] [batch_t 0.123 (0.122)] [data_t 0.002] [optim_t 0.121] [lr 0.000005] [cos 0.026 (0.028)]
+2025-09-30 18:08:37,238 - Train: 97.77% [17500/17900]  [97.8/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.024 (0.026)]
+2025-09-30 18:08:42,364 - ==> Total time: 0:36:17	 Eta: 0:00:44 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 18:08:43,749 - Train: 98.04% [17550/17900]  [98.0/100.0] [batch_t 0.122 (0.128)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.029 (0.028)]
+2025-09-30 18:08:49,854 - Train: 98.32% [17600/17900]  [98.3/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.024 (0.027)]
+2025-09-30 18:08:55,958 - Train: 98.60% [17650/17900]  [98.6/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.023 (0.027)]
+2025-09-30 18:09:02,069 - Train: 98.88% [17700/17900]  [98.9/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.027 (0.027)]
+2025-09-30 18:09:04,633 - ==> Total time: 0:36:39	 Eta: 0:00:22 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 18:09:08,595 - Train: 99.16% [17750/17900]  [99.2/100.0] [batch_t 0.122 (0.125)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.024 (0.026)]
+2025-09-30 18:09:14,699 - Train: 99.44% [17800/17900]  [99.4/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.021 (0.027)]
+2025-09-30 18:09:20,805 - Train: 99.72% [17850/17900]  [99.7/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.031 (0.027)]
+2025-09-30 18:09:26,908 - Train: 100.00% [17900/17900]  [100.0/100.0] [batch_t 0.122 (0.122)] [data_t 0.002] [optim_t 0.120] [lr 0.000005] [cos 0.038 (0.026)]
+2025-09-30 18:09:32,047 - Test: 8.82% [50/567] [batch_t 0.096 (0.100)] [cos 0.017 (0.019)]
+2025-09-30 18:09:36,878 - Test: 17.64% [100/567] [batch_t 0.096 (0.098)] [cos 0.016 (0.020)]
+2025-09-30 18:09:41,706 - Test: 26.46% [150/567] [batch_t 0.096 (0.098)] [cos 0.025 (0.024)]
+2025-09-30 18:09:46,532 - Test: 35.27% [200/567] [batch_t 0.096 (0.097)] [cos 0.028 (0.024)]
+2025-09-30 18:09:51,418 - Test: 44.09% [250/567] [batch_t 0.096 (0.097)] [cos 0.036 (0.024)]
+2025-09-30 18:09:56,344 - Test: 52.91% [300/567] [batch_t 0.097 (0.098)] [cos 0.044 (0.027)]
+2025-09-30 18:10:01,195 - Test: 61.73% [350/567] [batch_t 0.096 (0.098)] [cos 0.025 (0.026)]
+2025-09-30 18:10:06,036 - Test: 70.55% [400/567] [batch_t 0.097 (0.097)] [cos 0.041 (0.027)]
+2025-09-30 18:10:10,877 - Test: 79.37% [450/567] [batch_t 0.096 (0.097)] [cos 0.019 (0.027)]
+2025-09-30 18:10:15,727 - Test: 88.18% [500/567] [batch_t 0.099 (0.097)] [cos 0.014 (0.027)]
+2025-09-30 18:10:20,572 - Test: 97.00% [550/567] [batch_t 0.097 (0.097)] [cos 0.028 (0.027)]
+2025-09-30 18:10:22,412 - Test: 100.00% [567/567] [batch_t 0.300 (0.098)] [cos 0.028 (0.027)]
+2025-09-30 18:10:25,776 - ==> Metric Time for audiojack      :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.002 (mAUROC_sp_max)	  0.001 (mAP_sp_max)	  0.000 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	  0.854 (mF1_max_px)	  0.000 (mAUPRO_px)	  0.843 (mIoU_max_px)	
+2025-09-30 18:10:29,141 - ==> Metric Time for bottle_cap     :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.000 (mAP_sp_max)	  0.000 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	  0.862 (mF1_max_px)	  0.000 (mAUPRO_px)	  0.837 (mIoU_max_px)	
+2025-09-30 18:10:32,551 - ==> Metric Time for button_battery :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.000 (mAP_sp_max)	  0.000 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	  0.852 (mF1_max_px)	  0.000 (mAUPRO_px)	  0.853 (mIoU_max_px)	
+2025-09-30 18:10:35,906 - ==> Metric Time for end_cap        :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.000 (mAP_sp_max)	  0.000 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	  0.847 (mF1_max_px)	  0.000 (mAUPRO_px)	  0.807 (mIoU_max_px)	
+2025-09-30 18:10:39,269 - ==> Metric Time for eraser         :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.000 (mAP_sp_max)	  0.000 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	  0.833 (mF1_max_px)	  0.000 (mAUPRO_px)	  0.857 (mIoU_max_px)	
+2025-09-30 18:10:42,690 - ==> Metric Time for fire_hood      :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.001 (mAP_sp_max)	  0.000 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	  0.936 (mF1_max_px)	  0.000 (mAUPRO_px)	  0.840 (mIoU_max_px)	
+2025-09-30 18:10:46,703 - ==> Metric Time for mint           :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.000 (mAP_sp_max)	  0.000 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	  1.001 (mF1_max_px)	  0.000 (mAUPRO_px)	  0.982 (mIoU_max_px)	
+2025-09-30 18:10:50,079 - ==> Metric Time for mounts         :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.001 (mAP_sp_max)	  0.000 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	  0.861 (mF1_max_px)	  0.000 (mAUPRO_px)	  0.864 (mIoU_max_px)	
+2025-09-30 18:10:53,438 - ==> Metric Time for pcb            :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.001 (mAP_sp_max)	  0.000 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	  0.841 (mF1_max_px)	  0.000 (mAUPRO_px)	  0.841 (mIoU_max_px)	
+2025-09-30 18:10:56,818 - ==> Metric Time for phone_battery  :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.000 (mAP_sp_max)	  0.000 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	  0.875 (mF1_max_px)	  0.000 (mAUPRO_px)	  0.837 (mIoU_max_px)	
+2025-09-30 18:11:00,189 - ==> Metric Time for plastic_nut    :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.000 (mAP_sp_max)	  0.000 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	  0.854 (mF1_max_px)	  0.000 (mAUPRO_px)	  0.859 (mIoU_max_px)	
+2025-09-30 18:11:03,556 - ==> Metric Time for plastic_plug   :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.000 (mAP_sp_max)	  0.000 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	  0.856 (mF1_max_px)	  0.000 (mAUPRO_px)	  0.853 (mIoU_max_px)	
+2025-09-30 18:11:06,917 - ==> Metric Time for porcelain_doll :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.000 (mAP_sp_max)	  0.000 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	  0.854 (mF1_max_px)	  0.000 (mAUPRO_px)	  0.850 (mIoU_max_px)	
+2025-09-30 18:11:10,236 - ==> Metric Time for regulator      :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.000 (mAP_sp_max)	  0.000 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	  0.836 (mF1_max_px)	  0.000 (mAUPRO_px)	  0.830 (mIoU_max_px)	
+2025-09-30 18:11:13,652 - ==> Metric Time for rolled_strip_base:   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.000 (mAP_sp_max)	  0.000 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	  0.874 (mF1_max_px)	  0.000 (mAUPRO_px)	  0.844 (mIoU_max_px)	
+2025-09-30 18:11:17,294 - ==> Metric Time for sim_card_set   :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.000 (mAP_sp_max)	  0.000 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	  1.097 (mF1_max_px)	  0.000 (mAUPRO_px)	  0.890 (mIoU_max_px)	
+2025-09-30 18:11:20,684 - ==> Metric Time for switch         :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.000 (mAP_sp_max)	  0.000 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	  0.851 (mF1_max_px)	  0.000 (mAUPRO_px)	  0.847 (mIoU_max_px)	
+2025-09-30 18:11:24,137 - ==> Metric Time for tape           :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.000 (mAP_sp_max)	  0.000 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	  0.903 (mF1_max_px)	  0.000 (mAUPRO_px)	  0.861 (mIoU_max_px)	
+2025-09-30 18:11:27,583 - ==> Metric Time for terminalblock  :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.000 (mAP_sp_max)	  0.000 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	  0.875 (mF1_max_px)	  0.000 (mAUPRO_px)	  0.871 (mIoU_max_px)	
+2025-09-30 18:11:31,021 - ==> Metric Time for toothbrush     :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.000 (mAP_sp_max)	  0.000 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	  0.853 (mF1_max_px)	  0.000 (mAUPRO_px)	  0.839 (mIoU_max_px)	
+2025-09-30 18:11:34,356 - ==> Metric Time for toy            :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.000 (mAP_sp_max)	  0.000 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	  0.847 (mF1_max_px)	  0.000 (mAUPRO_px)	  0.830 (mIoU_max_px)	
+2025-09-30 18:11:37,683 - ==> Metric Time for toy_brick      :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.000 (mAP_sp_max)	  0.000 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	  0.830 (mF1_max_px)	  0.000 (mAUPRO_px)	  0.828 (mIoU_max_px)	
+2025-09-30 18:11:41,030 - ==> Metric Time for transistor1    :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.001 (mAP_sp_max)	  0.000 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	  0.852 (mF1_max_px)	  0.000 (mAUPRO_px)	  0.823 (mIoU_max_px)	
+2025-09-30 18:11:44,278 - ==> Metric Time for u_block        :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.000 (mAP_sp_max)	  0.000 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	  0.823 (mF1_max_px)	  0.000 (mAUPRO_px)	  0.825 (mIoU_max_px)	
+2025-09-30 18:11:47,628 - ==> Metric Time for usb            :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.000 (mAP_sp_max)	  0.000 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	  0.854 (mF1_max_px)	  0.000 (mAUPRO_px)	  0.832 (mIoU_max_px)	
+2025-09-30 18:11:51,116 - ==> Metric Time for usb_adaptor    :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.000 (mAP_sp_max)	  0.000 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	  0.886 (mF1_max_px)	  0.000 (mAUPRO_px)	  0.882 (mIoU_max_px)	
+2025-09-30 18:11:54,478 - ==> Metric Time for vcpill         :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.000 (mAP_sp_max)	  0.000 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	  0.855 (mF1_max_px)	  0.000 (mAUPRO_px)	  0.843 (mIoU_max_px)	
+2025-09-30 18:11:57,945 - ==> Metric Time for wooden_beads   :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.000 (mAP_sp_max)	  0.000 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	  0.892 (mF1_max_px)	  0.000 (mAUPRO_px)	  0.858 (mIoU_max_px)	
+2025-09-30 18:12:01,273 - ==> Metric Time for woodstick      :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.001 (mAP_sp_max)	  0.000 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	  0.852 (mF1_max_px)	  0.000 (mAUPRO_px)	  0.833 (mIoU_max_px)	
+2025-09-30 18:12:04,661 - ==> Metric Time for zipper         :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.000 (mAP_sp_max)	  0.000 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	  0.852 (mF1_max_px)	  0.000 (mAUPRO_px)	  0.838 (mIoU_max_px)	
+2025-09-30 18:12:04,673 - 
+|       Name        |  S_AUROC  |   S_AUROC (Max)    |  S_AUPR  |    S_AUPR (Max)    |  mAUROC_sp_max  |  mAUROC_sp_max (Max)  |  mAP_sp_max  |  mAP_sp_max (Max)  |  mF1_max_sp_max  |  mF1_max_sp_max (Max)  |  mAUROC_px  |  mAUROC_px (Max)   |  mAP_px  |    mAP_px (Max)    |  mF1_max_px  |  mF1_max_px (Max)  |  mAUPRO_px  |  mAUPRO_px (Max)   |  mIoU_max_px  |  mIoU_max_px (Max)  |
+|:-----------------:|:---------:|:------------------:|:--------:|:------------------:|:---------------:|:---------------------:|:------------:|:------------------:|:----------------:|:----------------------:|:-----------:|:------------------:|:--------:|:------------------:|:------------:|:------------------:|:-----------:|:------------------:|:-------------:|:-------------------:|
+|     audiojack     |  41.340   | 41.340 (100 epoch) |  59.193  | 59.193 (100 epoch) |     48.496      |  48.496 (100 epoch)   |    35.051    | 35.051 (100 epoch) |      54.582      |   54.582 (100 epoch)   |   95.451    | 95.451 (100 epoch) |  2.551   | 2.551 (100 epoch)  |    6.582     | 6.582 (100 epoch)  |   77.436    | 77.436 (100 epoch) |     3.403     |  3.403 (100 epoch)  |
+|    bottle_cap     |  69.118   | 69.118 (100 epoch) |  80.287  | 80.287 (100 epoch) |     61.293      |  61.293 (100 epoch)   |    50.200    | 50.200 (100 epoch) |      60.738      |   60.738 (100 epoch)   |   98.961    | 98.961 (100 epoch) |  10.849  | 10.849 (100 epoch) |    16.548    | 16.548 (100 epoch) |   95.389    | 95.389 (100 epoch) |     9.020     |  9.020 (100 epoch)  |
+|  button_battery   |  59.681   | 59.681 (100 epoch) |  77.420  | 77.420 (100 epoch) |     57.532      |  57.532 (100 epoch)   |    66.603    | 66.603 (100 epoch) |      76.639      |   76.639 (100 epoch)   |   93.726    | 93.726 (100 epoch) |  8.238   | 8.238 (100 epoch)  |    15.505    | 15.505 (100 epoch) |   82.013    | 82.013 (100 epoch) |     8.404     |  8.404 (100 epoch)  |
+|      end_cap      |  61.779   | 61.779 (100 epoch) |  79.022  | 79.022 (100 epoch) |     56.295      |  56.295 (100 epoch)   |    64.539    | 64.539 (100 epoch) |      73.379      |   73.379 (100 epoch)   |   85.824    | 85.824 (100 epoch) |  0.666   | 0.666 (100 epoch)  |    2.305     | 2.305 (100 epoch)  |   63.604    | 63.604 (100 epoch) |     1.166     |  1.166 (100 epoch)  |
+|      eraser       |  88.462   | 88.462 (100 epoch) |  95.353  | 95.353 (100 epoch) |     84.749      |  84.749 (100 epoch)   |    86.228    | 86.228 (100 epoch) |      77.707      |   77.707 (100 epoch)   |   98.735    | 98.735 (100 epoch) |  25.482  | 25.482 (100 epoch) |    35.315    | 35.315 (100 epoch) |   94.551    | 94.551 (100 epoch) |    21.444     | 21.444 (100 epoch)  |
+|     fire_hood     |  82.840   | 82.840 (100 epoch) |  91.397  | 91.397 (100 epoch) |     84.317      |  84.317 (100 epoch)   |    76.426    | 76.426 (100 epoch) |      73.134      |   73.134 (100 epoch)   |   98.731    | 98.731 (100 epoch) |  27.906  | 27.906 (100 epoch) |    37.842    | 37.842 (100 epoch) |   89.983    | 89.983 (100 epoch) |    23.337     | 23.337 (100 epoch)  |
+|       mint        |  66.710   | 66.710 (100 epoch) |  90.780  | 90.780 (100 epoch) |     55.705      |  55.705 (100 epoch)   |    56.991    | 56.991 (100 epoch) |      65.079      |   65.079 (100 epoch)   |   91.575    | 91.575 (100 epoch) |  4.000   | 4.000 (100 epoch)  |    8.501     | 8.501 (100 epoch)  |   75.369    | 75.369 (100 epoch) |     4.439     |  4.439 (100 epoch)  |
+|      mounts       |  83.333   | 83.333 (100 epoch) |  92.539  | 92.539 (100 epoch) |     68.725      |  68.725 (100 epoch)   |    55.563    | 55.563 (100 epoch) |      58.309      |   58.309 (100 epoch)   |   96.391    | 96.391 (100 epoch) |  11.396  | 11.396 (100 epoch) |    20.334    | 20.334 (100 epoch) |   90.420    | 90.420 (100 epoch) |    11.318     | 11.318 (100 epoch)  |
+|        pcb        |  59.125   | 59.125 (100 epoch) |  73.228  | 73.228 (100 epoch) |     51.006      |  51.006 (100 epoch)   |    62.592    | 62.592 (100 epoch) |      75.548      |   75.548 (100 epoch)   |   93.436    | 93.436 (100 epoch) |  2.557   | 2.557 (100 epoch)  |    6.773     | 6.773 (100 epoch)  |   77.349    | 77.349 (100 epoch) |     3.505     |  3.505 (100 epoch)  |
+|   phone_battery   |  66.299   | 66.299 (100 epoch) |  84.128  | 84.128 (100 epoch) |     59.958      |  59.958 (100 epoch)   |    57.421    | 57.421 (100 epoch) |      59.662      |   59.662 (100 epoch)   |   96.626    | 96.626 (100 epoch) |  14.665  | 14.665 (100 epoch) |    23.153    | 23.153 (100 epoch) |   87.868    | 87.868 (100 epoch) |    13.092     | 13.092 (100 epoch)  |
+|    plastic_nut    |  46.840   | 46.840 (100 epoch) |  71.356  | 71.356 (100 epoch) |     56.458      |  56.458 (100 epoch)   |    42.042    | 42.042 (100 epoch) |      52.294      |   52.294 (100 epoch)   |   95.746    | 95.746 (100 epoch) |  14.423  | 14.423 (100 epoch) |    21.711    | 21.711 (100 epoch) |   82.140    | 82.140 (100 epoch) |    12.178     | 12.178 (100 epoch)  |
+|   plastic_plug    |  53.268   | 53.268 (100 epoch) |  70.059  | 70.059 (100 epoch) |     65.979      |  65.979 (100 epoch)   |    53.596    | 53.596 (100 epoch) |      60.556      |   60.556 (100 epoch)   |   98.138    | 98.138 (100 epoch) |  16.006  | 16.006 (100 epoch) |    26.473    | 26.473 (100 epoch) |   92.687    | 92.687 (100 epoch) |    15.256     | 15.256 (100 epoch)  |
+|  porcelain_doll   |  75.531   | 75.531 (100 epoch) |  87.988  | 87.988 (100 epoch) |     69.769      |  69.769 (100 epoch)   |    61.496    | 61.496 (100 epoch) |      56.818      |   56.818 (100 epoch)   |   96.948    | 96.948 (100 epoch) |  11.210  | 11.210 (100 epoch) |    19.584    | 19.584 (100 epoch) |   89.862    | 89.862 (100 epoch) |    10.855     | 10.855 (100 epoch)  |
+|     regulator     |  30.088   | 30.088 (100 epoch) |  64.427  | 64.427 (100 epoch) |     40.577      |  40.577 (100 epoch)   |    22.102    | 22.102 (100 epoch) |      41.423      |   41.423 (100 epoch)   |   91.729    | 91.729 (100 epoch) |  0.248   | 0.248 (100 epoch)  |    1.336     | 1.336 (100 epoch)  |   77.055    | 77.055 (100 epoch) |     0.673     |  0.673 (100 epoch)  |
+| rolled_strip_base |  77.614   | 77.614 (100 epoch) |  88.451  | 88.451 (100 epoch) |     73.480      |  73.480 (100 epoch)   |    86.749    | 86.749 (100 epoch) |      81.994      |   81.994 (100 epoch)   |   98.598    | 98.598 (100 epoch) |  16.627  | 16.627 (100 epoch) |    23.590    | 23.590 (100 epoch) |   96.344    | 96.344 (100 epoch) |    13.372     | 13.372 (100 epoch)  |
+|   sim_card_set    |  31.875   | 31.875 (100 epoch) |  58.405  | 58.405 (100 epoch) |     61.752      |  61.752 (100 epoch)   |    59.528    | 59.528 (100 epoch) |      66.546      |   66.546 (100 epoch)   |   97.592    | 97.592 (100 epoch) |  12.780  | 12.780 (100 epoch) |    21.735    | 21.735 (100 epoch) |   87.208    | 87.208 (100 epoch) |    12.192     | 12.192 (100 epoch)  |
+|      switch       |  62.296   | 62.296 (100 epoch) |  80.078  | 80.078 (100 epoch) |     51.852      |  51.852 (100 epoch)   |    56.113    | 56.113 (100 epoch) |      68.421      |   68.421 (100 epoch)   |   81.312    | 81.312 (100 epoch) |  2.880   | 2.880 (100 epoch)  |    6.204     | 6.204 (100 epoch)  |   71.424    | 71.424 (100 epoch) |     3.201     |  3.201 (100 epoch)  |
+|       tape        |  89.885   | 89.885 (100 epoch) |  95.795  | 95.795 (100 epoch) |     90.387      |  90.387 (100 epoch)   |    88.822    | 88.822 (100 epoch) |      84.528      |   84.528 (100 epoch)   |   98.554    | 98.554 (100 epoch) |  31.034  | 31.034 (100 epoch) |    41.423    | 41.423 (100 epoch) |   95.947    | 95.947 (100 epoch) |    26.121     | 26.121 (100 epoch)  |
+|   terminalblock   |  62.220   | 62.220 (100 epoch) |  79.387  | 79.387 (100 epoch) |     54.063      |  54.063 (100 epoch)   |    58.777    | 58.777 (100 epoch) |      70.841      |   70.841 (100 epoch)   |   95.164    | 95.164 (100 epoch) |  2.056   | 2.056 (100 epoch)  |    4.063     | 4.063 (100 epoch)  |   86.255    | 86.255 (100 epoch) |     2.074     |  2.074 (100 epoch)  |
+|    toothbrush     |  62.337   | 62.337 (100 epoch) |  74.743  | 74.743 (100 epoch) |     46.250      |  46.250 (100 epoch)   |    55.061    | 55.061 (100 epoch) |      71.256      |   71.256 (100 epoch)   |   89.514    | 89.514 (100 epoch) |  3.582   | 3.582 (100 epoch)  |    7.509     | 7.509 (100 epoch)  |   70.215    | 70.215 (100 epoch) |     3.901     |  3.901 (100 epoch)  |
+|        toy        |  62.458   | 62.458 (100 epoch) |  80.944  | 80.944 (100 epoch) |     54.649      |  54.649 (100 epoch)   |    63.773    | 63.773 (100 epoch) |      73.852      |   73.852 (100 epoch)   |   88.828    | 88.828 (100 epoch) |  1.847   | 1.847 (100 epoch)  |    5.931     | 5.931 (100 epoch)  |   72.014    | 72.014 (100 epoch) |     3.056     |  3.056 (100 epoch)  |
+|     toy_brick     |  82.125   | 82.125 (100 epoch) |  91.752  | 91.752 (100 epoch) |     81.395      |  81.395 (100 epoch)   |    83.868    | 83.868 (100 epoch) |      73.955      |   73.955 (100 epoch)   |   98.357    | 98.357 (100 epoch) |  35.630  | 35.630 (100 epoch) |    43.835    | 43.835 (100 epoch) |   90.416    | 90.416 (100 epoch) |    28.069     | 28.069 (100 epoch)  |
+|    transistor1    |  65.500   | 65.500 (100 epoch) |  80.622  | 80.622 (100 epoch) |     63.315      |  63.315 (100 epoch)   |    69.874    | 69.874 (100 epoch) |      71.777      |   71.777 (100 epoch)   |   95.885    | 95.885 (100 epoch) |  13.395  | 13.395 (100 epoch) |    19.159    | 19.159 (100 epoch) |   85.206    | 85.206 (100 epoch) |    10.594     | 10.594 (100 epoch)  |
+|      u_block      |  60.332   | 60.332 (100 epoch) |  78.633  | 78.633 (100 epoch) |     70.425      |  70.425 (100 epoch)   |    56.819    | 56.819 (100 epoch) |      56.106      |   56.106 (100 epoch)   |   97.904    | 97.904 (100 epoch) |  19.814  | 19.814 (100 epoch) |    28.398    | 28.398 (100 epoch) |   93.655    | 93.655 (100 epoch) |    16.549     | 16.549 (100 epoch)  |
+|        usb        |  57.149   | 57.149 (100 epoch) |  77.991  | 77.991 (100 epoch) |     53.617      |  53.617 (100 epoch)   |    47.917    | 47.917 (100 epoch) |      60.595      |   60.595 (100 epoch)   |   93.562    | 93.562 (100 epoch) |  1.645   | 1.645 (100 epoch)  |    5.076     | 5.076 (100 epoch)  |   72.563    | 72.563 (100 epoch) |     2.604     |  2.604 (100 epoch)  |
+|    usb_adaptor    |  58.937   | 58.937 (100 epoch) |  81.552  | 81.552 (100 epoch) |     56.492      |  56.492 (100 epoch)   |    47.863    | 47.863 (100 epoch) |      55.535      |   55.535 (100 epoch)   |   94.837    | 94.837 (100 epoch) |  4.730   | 4.730 (100 epoch)  |    12.600    | 12.600 (100 epoch) |   80.989    | 80.989 (100 epoch) |     6.723     |  6.723 (100 epoch)  |
+|      vcpill       |  71.360   | 71.360 (100 epoch) |  84.669  | 84.669 (100 epoch) |     78.058      |  78.058 (100 epoch)   |    76.714    | 76.714 (100 epoch) |      68.485      |   68.485 (100 epoch)   |   97.293    | 97.293 (100 epoch) |  31.660  | 31.660 (100 epoch) |    34.245    | 34.245 (100 epoch) |   93.363    | 93.363 (100 epoch) |    20.660     | 20.660 (100 epoch)  |
+|   wooden_beads    |  61.310   | 61.310 (100 epoch) |  83.950  | 83.950 (100 epoch) |     64.620      |  64.620 (100 epoch)   |    63.469    | 63.469 (100 epoch) |      61.765      |   61.765 (100 epoch)   |   96.569    | 96.569 (100 epoch) |  13.436  | 13.436 (100 epoch) |    20.389    | 20.389 (100 epoch) |   91.750    | 91.750 (100 epoch) |    11.352     | 11.352 (100 epoch)  |
+|     woodstick     |  83.120   | 83.120 (100 epoch) |  92.089  | 92.089 (100 epoch) |     86.239      |  86.239 (100 epoch)   |    77.468    | 77.468 (100 epoch) |      70.642      |   70.642 (100 epoch)   |   95.893    | 95.893 (100 epoch) |  26.358  | 26.358 (100 epoch) |    37.597    | 37.597 (100 epoch) |   89.547    | 89.547 (100 epoch) |    23.150     | 23.150 (100 epoch)  |
+|      zipper       |  75.320   | 75.320 (100 epoch) |  88.737  | 88.737 (100 epoch) |     58.434      |  58.434 (100 epoch)   |    74.065    | 74.065 (100 epoch) |      75.208      |   75.208 (100 epoch)   |   91.948    | 91.948 (100 epoch) |  11.015  | 11.015 (100 epoch) |    12.762    | 12.762 (100 epoch) |   78.672    | 78.672 (100 epoch) |     6.816     |  6.816 (100 epoch)  |
+|        Avg        |  64.942   | 64.942 (100 epoch) |  81.166  | 81.166 (100 epoch) |     63.530      |  63.530 (100 epoch)   |    61.924    | 61.924 (100 epoch) |      66.579      |   66.579 (100 epoch)   |   94.794    | 94.794 (100 epoch) |  12.623  | 12.623 (100 epoch) |    18.883    | 18.883 (100 epoch) |   84.376    | 84.376 (100 epoch) |    10.951     | 10.951 (100 epoch)  |
+2025-09-30 18:12:04,714 - ==> Total time: 0:39:39	 Eta: 0:00:00 	Logged in 'runs/ConvnextRDTrainer_configs_z_realiad_subsample_convnextad_256_100e_20250930-173224'
+2025-09-30 18:12:05,060 - finish training

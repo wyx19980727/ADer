@@ -114,7 +114,8 @@ class cfg(cfg_common, cfg_dataset_default, cfg_model_cfa):
 		self.trainer.data.batch_size_per_gpu_test = self.batch_test_per
 
 		# ==> loss
-		self.loss.clip_grad = None
+		# self.loss.clip_grad = None
+		self.loss.clip_grad = 5.0
 
 		# ==> logging
 		self.logging.log_terms_train = [

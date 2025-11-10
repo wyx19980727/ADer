@@ -351,6 +351,7 @@ class RDMV(nn.Module):
 		return self
 
 	def forward(self, imgs):
+		#import ipdb; ipdb.set_trace()
 		feats_t = self.net_t(imgs)
 		feats_t = [f.detach() for f in feats_t]
   

@@ -1,0 +1,7 @@
+2025-09-30 22:19:26,712 - ==> Logging on master GPU: 0
+2025-09-30 22:19:26,712 - ==> Running Trainer: ConvnextRDTrainer
+2025-09-30 22:19:26,712 - ==> Using GPU: [0] for Training
+2025-09-30 22:19:26,712 - ==> Building model
+2025-09-30 22:19:27,092 - Loading pretrained weights from Hugging Face hub (timm/convnext_tiny.fb_in22k)
+2025-09-30 22:19:27,349 - [timm/convnext_tiny.fb_in22k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
+2025-09-30 22:19:27,365 - Missing keys (head.fc.weight, head.fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.

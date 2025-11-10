@@ -45,12 +45,15 @@
 
 ##################
 
-#CUDA_VISIBLE_DEVICES=0 python run.py -c configs/z_realiad/patchcore_256_100e.py -m train
-CUDA_VISIBLE_DEVICES=0 python run.py -c configs/z_realiad/draem_256_100e.py -m train
-#CUDA_VISIBLE_DEVICES=0 python run.py -c configs/z_realiad/cfa_256_100e.py -m test
-CUDA_VISIBLE_DEVICES=0 python run.py -c configs/z_realiad/cflow_256_100e.py -m train
-#CUDA_VISIBLE_DEVICES=0 python run.py -c configs/z_realiad/patchcore_256_100e.py -m train
+# #CUDA_VISIBLE_DEVICES=0 python run.py -c configs/z_realiad/patchcore_256_100e.py -m train
+# CUDA_VISIBLE_DEVICES=0 python run.py -c configs/z_realiad/draem_256_100e.py -m train
+# #CUDA_VISIBLE_DEVICES=0 python run.py -c configs/z_realiad/cfa_256_100e.py -m test
+# CUDA_VISIBLE_DEVICES=0 python run.py -c configs/z_realiad/cflow_256_100e.py -m train
+# #CUDA_VISIBLE_DEVICES=0 python run.py -c configs/z_realiad/patchcore_256_100e.py -m train
 
-CUDA_VISIBLE_DEVICES=0 python run.py -c runs_compare/rd/rd_256_100e.py -m test vis=True vis_dir=albus/visualization
+# CUDA_VISIBLE_DEVICES=0 python run.py -c runs_compare/rd/rd_256_100e.py -m test vis=True vis_dir=albus/visualization
+
+sleep 14400
+CUDA_VISIBLE_DEVICES=0 python run.py -c configs/z_realiad_subsample/rdepipolar_256_100e.py -m train
 
 

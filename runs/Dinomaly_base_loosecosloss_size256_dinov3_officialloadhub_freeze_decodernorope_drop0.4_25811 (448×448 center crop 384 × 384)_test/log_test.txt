@@ -1,0 +1,301 @@
+2025-10-30 14:14:29,087 - ==> Logging on master GPU: 0
+2025-10-30 14:14:29,087 - ==> Running Trainer: DinomalyTrainer
+2025-10-30 14:14:29,087 - ==> Using GPU: [0] for Training
+2025-10-30 14:14:29,087 - ==> Building model
+2025-10-30 14:14:29,087 - Ignored kwargs: {'layers_to_extract_from': [2, 5, 8, 11]}
+2025-10-30 14:14:29,092 - using base=100 for rope new
+2025-10-30 14:14:29,092 - using min_period=None for rope new
+2025-10-30 14:14:29,092 - using max_period=None for rope new
+2025-10-30 14:14:29,092 - using normalize_coords=separate for rope new
+2025-10-30 14:14:29,092 - using shift_coords=None for rope new
+2025-10-30 14:14:29,092 - using rescale_coords=2 for rope new
+2025-10-30 14:14:29,092 - using jitter_coords=None for rope new
+2025-10-30 14:14:29,092 - using dtype=fp32 for rope new
+2025-10-30 14:14:29,098 - using mlp layer as FFN
+2025-10-30 14:14:30,799 - ==> Load checkpoint: runs/Dinomaly_base_loosecosloss_size256_dinov3_officialloadhub_freeze_decodernorope_drop0.4_25811 (448×448 center crop 384 × 384)_train/net.pth
+2025-10-30 14:14:30,799 - ==> Creating optimizer
+2025-10-30 14:14:30,800 - ==> Loading dataset: RealIAD
+2025-10-30 14:14:31,102 - ==> ********** cfg ********** 
+fvcore_is                            : True                                
+fvcore_b                             : 1                                   
+fvcore_c                             : 3                                   
+epoch_full                           : 100                                 
+metrics                              : ['S_AUROC', 'S_AUPR', 'mAUROC_sp_max', 'mAP_sp_max', 'mF1_max_sp_max', 'mAUROC_px', 'mAP_px', 'mF1_max_px', 'mAUPRO_px', 'mIoU_max_px']
+use_adeval                           : True                                
+evaluator.kwargs                     : {'metrics': ['S_AUROC', 'S_AUPR', 'mAUROC_sp_max', 'mAP_sp_max', 'mF1_max_sp_max', 'mAUROC_px', 'mAP_px', 'mF1_max_px', 'mAUPRO_px', 'mIoU_max_px'], 'pooling_ks': [16, 16], 'max_step_aupro': 100, 'use_adeval': True}
+optim.lr                             : 5e-05                               
+optim.kwargs                         : {'name': 'adamw', 'betas': (0.9, 0.999), 'eps': 1e-08, 'weight_decay': 0.0001, 'amsgrad': False}
+trainer.name                         : DinomalyTrainer                     
+trainer.checkpoint                   : runs                                
+trainer.logdir_sub                   :                                     
+trainer.resume_dir                   :                                     
+trainer.cuda_deterministic           : False                               
+trainer.epoch_full                   : 100                                 
+trainer.scheduler_kwargs             : {'name': 'step', 'lr_noise': None, 'noise_pct': 0.67, 'noise_std': 1.0, 'noise_seed': 42, 'lr_min': 5e-07, 'warmup_lr': 5.0000000000000004e-08, 'warmup_iters': -1, 'cooldown_iters': 0, 'warmup_epochs': 0, 'cooldown_epochs': 0, 'use_iters': True, 'patience_iters': 0, 'patience_epochs': 0, 'decay_iters': 0, 'decay_epochs': 80, 'cycle_decay': 0.1, 'decay_rate': 0.1}
+trainer.mixup_kwargs                 : {'mixup_alpha': 0.8, 'cutmix_alpha': 1.0, 'cutmix_minmax': None, 'prob': 0.0, 'switch_prob': 0.5, 'mode': 'batch', 'correct_lam': True, 'label_smoothing': 0.1}
+trainer.test_start_epoch             : 100                                 
+trainer.test_per_epoch               : 100                                 
+trainer.find_unused_parameters       : False                               
+trainer.sync_BN                      : apex                                
+trainer.dist_BN                      :                                     
+trainer.scaler                       : none                                
+trainer.data.batch_size              : 4                                   
+trainer.data.batch_size_per_gpu      : 4                                   
+trainer.data.batch_size_test         : 4                                   
+trainer.data.batch_size_per_gpu_test : 4                                   
+trainer.data.num_workers_per_gpu     : 8                                   
+trainer.data.drop_last               : True                                
+trainer.data.pin_memory              : True                                
+trainer.data.persistent_workers      : False                               
+trainer.data.num_workers             : 8                                   
+trainer.iter                         : 0                                   
+trainer.epoch                        : 0                                   
+trainer.iter_full                    : 182300                              
+trainer.metric_recorder              : {'S_AUROC_audiojack': [], 'S_AUPR_audiojack': [], 'mAUROC_sp_max_audiojack': [], 'mAP_sp_max_audiojack': [], 'mF1_max_sp_max_audiojack': [], 'mAUROC_px_audiojack': [], 'mAP_px_audiojack': [], 'mF1_max_px_audiojack': [], 'mAUPRO_px_audiojack': [], 'mIoU_max_px_audiojack': [], 'S_AUROC_bottle_cap': [], 'S_AUPR_bottle_cap': [], 'mAUROC_sp_max_bottle_cap': [], 'mAP_sp_max_bottle_cap': [], 'mF1_max_sp_max_bottle_cap': [], 'mAUROC_px_bottle_cap': [], 'mAP_px_bottle_cap': [], 'mF1_max_px_bottle_cap': [], 'mAUPRO_px_bottle_cap': [], 'mIoU_max_px_bottle_cap': [], 'S_AUROC_button_battery': [], 'S_AUPR_button_battery': [], 'mAUROC_sp_max_button_battery': [], 'mAP_sp_max_button_battery': [], 'mF1_max_sp_max_button_battery': [], 'mAUROC_px_button_battery': [], 'mAP_px_button_battery': [], 'mF1_max_px_button_battery': [], 'mAUPRO_px_button_battery': [], 'mIoU_max_px_button_battery': [], 'S_AUROC_end_cap': [], 'S_AUPR_end_cap': [], 'mAUROC_sp_max_end_cap': [], 'mAP_sp_max_end_cap': [], 'mF1_max_sp_max_end_cap': [], 'mAUROC_px_end_cap': [], 'mAP_px_end_cap': [], 'mF1_max_px_end_cap': [], 'mAUPRO_px_end_cap': [], 'mIoU_max_px_end_cap': [], 'S_AUROC_eraser': [], 'S_AUPR_eraser': [], 'mAUROC_sp_max_eraser': [], 'mAP_sp_max_eraser': [], 'mF1_max_sp_max_eraser': [], 'mAUROC_px_eraser': [], 'mAP_px_eraser': [], 'mF1_max_px_eraser': [], 'mAUPRO_px_eraser': [], 'mIoU_max_px_eraser': [], 'S_AUROC_fire_hood': [], 'S_AUPR_fire_hood': [], 'mAUROC_sp_max_fire_hood': [], 'mAP_sp_max_fire_hood': [], 'mF1_max_sp_max_fire_hood': [], 'mAUROC_px_fire_hood': [], 'mAP_px_fire_hood': [], 'mF1_max_px_fire_hood': [], 'mAUPRO_px_fire_hood': [], 'mIoU_max_px_fire_hood': [], 'S_AUROC_mint': [], 'S_AUPR_mint': [], 'mAUROC_sp_max_mint': [], 'mAP_sp_max_mint': [], 'mF1_max_sp_max_mint': [], 'mAUROC_px_mint': [], 'mAP_px_mint': [], 'mF1_max_px_mint': [], 'mAUPRO_px_mint': [], 'mIoU_max_px_mint': [], 'S_AUROC_mounts': [], 'S_AUPR_mounts': [], 'mAUROC_sp_max_mounts': [], 'mAP_sp_max_mounts': [], 'mF1_max_sp_max_mounts': [], 'mAUROC_px_mounts': [], 'mAP_px_mounts': [], 'mF1_max_px_mounts': [], 'mAUPRO_px_mounts': [], 'mIoU_max_px_mounts': [], 'S_AUROC_pcb': [], 'S_AUPR_pcb': [], 'mAUROC_sp_max_pcb': [], 'mAP_sp_max_pcb': [], 'mF1_max_sp_max_pcb': [], 'mAUROC_px_pcb': [], 'mAP_px_pcb': [], 'mF1_max_px_pcb': [], 'mAUPRO_px_pcb': [], 'mIoU_max_px_pcb': [], 'S_AUROC_phone_battery': [], 'S_AUPR_phone_battery': [], 'mAUROC_sp_max_phone_battery': [], 'mAP_sp_max_phone_battery': [], 'mF1_max_sp_max_phone_battery': [], 'mAUROC_px_phone_battery': [], 'mAP_px_phone_battery': [], 'mF1_max_px_phone_battery': [], 'mAUPRO_px_phone_battery': [], 'mIoU_max_px_phone_battery': [], 'S_AUROC_plastic_nut': [], 'S_AUPR_plastic_nut': [], 'mAUROC_sp_max_plastic_nut': [], 'mAP_sp_max_plastic_nut': [], 'mF1_max_sp_max_plastic_nut': [], 'mAUROC_px_plastic_nut': [], 'mAP_px_plastic_nut': [], 'mF1_max_px_plastic_nut': [], 'mAUPRO_px_plastic_nut': [], 'mIoU_max_px_plastic_nut': [], 'S_AUROC_plastic_plug': [], 'S_AUPR_plastic_plug': [], 'mAUROC_sp_max_plastic_plug': [], 'mAP_sp_max_plastic_plug': [], 'mF1_max_sp_max_plastic_plug': [], 'mAUROC_px_plastic_plug': [], 'mAP_px_plastic_plug': [], 'mF1_max_px_plastic_plug': [], 'mAUPRO_px_plastic_plug': [], 'mIoU_max_px_plastic_plug': [], 'S_AUROC_porcelain_doll': [], 'S_AUPR_porcelain_doll': [], 'mAUROC_sp_max_porcelain_doll': [], 'mAP_sp_max_porcelain_doll': [], 'mF1_max_sp_max_porcelain_doll': [], 'mAUROC_px_porcelain_doll': [], 'mAP_px_porcelain_doll': [], 'mF1_max_px_porcelain_doll': [], 'mAUPRO_px_porcelain_doll': [], 'mIoU_max_px_porcelain_doll': [], 'S_AUROC_regulator': [], 'S_AUPR_regulator': [], 'mAUROC_sp_max_regulator': [], 'mAP_sp_max_regulator': [], 'mF1_max_sp_max_regulator': [], 'mAUROC_px_regulator': [], 'mAP_px_regulator': [], 'mF1_max_px_regulator': [], 'mAUPRO_px_regulator': [], 'mIoU_max_px_regulator': [], 'S_AUROC_rolled_strip_base': [], 'S_AUPR_rolled_strip_base': [], 'mAUROC_sp_max_rolled_strip_base': [], 'mAP_sp_max_rolled_strip_base': [], 'mF1_max_sp_max_rolled_strip_base': [], 'mAUROC_px_rolled_strip_base': [], 'mAP_px_rolled_strip_base': [], 'mF1_max_px_rolled_strip_base': [], 'mAUPRO_px_rolled_strip_base': [], 'mIoU_max_px_rolled_strip_base': [], 'S_AUROC_sim_card_set': [], 'S_AUPR_sim_card_set': [], 'mAUROC_sp_max_sim_card_set': [], 'mAP_sp_max_sim_card_set': [], 'mF1_max_sp_max_sim_card_set': [], 'mAUROC_px_sim_card_set': [], 'mAP_px_sim_card_set': [], 'mF1_max_px_sim_card_set': [], 'mAUPRO_px_sim_card_set': [], 'mIoU_max_px_sim_card_set': [], 'S_AUROC_switch': [], 'S_AUPR_switch': [], 'mAUROC_sp_max_switch': [], 'mAP_sp_max_switch': [], 'mF1_max_sp_max_switch': [], 'mAUROC_px_switch': [], 'mAP_px_switch': [], 'mF1_max_px_switch': [], 'mAUPRO_px_switch': [], 'mIoU_max_px_switch': [], 'S_AUROC_tape': [], 'S_AUPR_tape': [], 'mAUROC_sp_max_tape': [], 'mAP_sp_max_tape': [], 'mF1_max_sp_max_tape': [], 'mAUROC_px_tape': [], 'mAP_px_tape': [], 'mF1_max_px_tape': [], 'mAUPRO_px_tape': [], 'mIoU_max_px_tape': [], 'S_AUROC_terminalblock': [], 'S_AUPR_terminalblock': [], 'mAUROC_sp_max_terminalblock': [], 'mAP_sp_max_terminalblock': [], 'mF1_max_sp_max_terminalblock': [], 'mAUROC_px_terminalblock': [], 'mAP_px_terminalblock': [], 'mF1_max_px_terminalblock': [], 'mAUPRO_px_terminalblock': [], 'mIoU_max_px_terminalblock': [], 'S_AUROC_toothbrush': [], 'S_AUPR_toothbrush': [], 'mAUROC_sp_max_toothbrush': [], 'mAP_sp_max_toothbrush': [], 'mF1_max_sp_max_toothbrush': [], 'mAUROC_px_toothbrush': [], 'mAP_px_toothbrush': [], 'mF1_max_px_toothbrush': [], 'mAUPRO_px_toothbrush': [], 'mIoU_max_px_toothbrush': [], 'S_AUROC_toy': [], 'S_AUPR_toy': [], 'mAUROC_sp_max_toy': [], 'mAP_sp_max_toy': [], 'mF1_max_sp_max_toy': [], 'mAUROC_px_toy': [], 'mAP_px_toy': [], 'mF1_max_px_toy': [], 'mAUPRO_px_toy': [], 'mIoU_max_px_toy': [], 'S_AUROC_toy_brick': [], 'S_AUPR_toy_brick': [], 'mAUROC_sp_max_toy_brick': [], 'mAP_sp_max_toy_brick': [], 'mF1_max_sp_max_toy_brick': [], 'mAUROC_px_toy_brick': [], 'mAP_px_toy_brick': [], 'mF1_max_px_toy_brick': [], 'mAUPRO_px_toy_brick': [], 'mIoU_max_px_toy_brick': [], 'S_AUROC_transistor1': [], 'S_AUPR_transistor1': [], 'mAUROC_sp_max_transistor1': [], 'mAP_sp_max_transistor1': [], 'mF1_max_sp_max_transistor1': [], 'mAUROC_px_transistor1': [], 'mAP_px_transistor1': [], 'mF1_max_px_transistor1': [], 'mAUPRO_px_transistor1': [], 'mIoU_max_px_transistor1': [], 'S_AUROC_u_block': [], 'S_AUPR_u_block': [], 'mAUROC_sp_max_u_block': [], 'mAP_sp_max_u_block': [], 'mF1_max_sp_max_u_block': [], 'mAUROC_px_u_block': [], 'mAP_px_u_block': [], 'mF1_max_px_u_block': [], 'mAUPRO_px_u_block': [], 'mIoU_max_px_u_block': [], 'S_AUROC_usb': [], 'S_AUPR_usb': [], 'mAUROC_sp_max_usb': [], 'mAP_sp_max_usb': [], 'mF1_max_sp_max_usb': [], 'mAUROC_px_usb': [], 'mAP_px_usb': [], 'mF1_max_px_usb': [], 'mAUPRO_px_usb': [], 'mIoU_max_px_usb': [], 'S_AUROC_usb_adaptor': [], 'S_AUPR_usb_adaptor': [], 'mAUROC_sp_max_usb_adaptor': [], 'mAP_sp_max_usb_adaptor': [], 'mF1_max_sp_max_usb_adaptor': [], 'mAUROC_px_usb_adaptor': [], 'mAP_px_usb_adaptor': [], 'mF1_max_px_usb_adaptor': [], 'mAUPRO_px_usb_adaptor': [], 'mIoU_max_px_usb_adaptor': [], 'S_AUROC_vcpill': [], 'S_AUPR_vcpill': [], 'mAUROC_sp_max_vcpill': [], 'mAP_sp_max_vcpill': [], 'mF1_max_sp_max_vcpill': [], 'mAUROC_px_vcpill': [], 'mAP_px_vcpill': [], 'mF1_max_px_vcpill': [], 'mAUPRO_px_vcpill': [], 'mIoU_max_px_vcpill': [], 'S_AUROC_wooden_beads': [], 'S_AUPR_wooden_beads': [], 'mAUROC_sp_max_wooden_beads': [], 'mAP_sp_max_wooden_beads': [], 'mF1_max_sp_max_wooden_beads': [], 'mAUROC_px_wooden_beads': [], 'mAP_px_wooden_beads': [], 'mF1_max_px_wooden_beads': [], 'mAUPRO_px_wooden_beads': [], 'mIoU_max_px_wooden_beads': [], 'S_AUROC_woodstick': [], 'S_AUPR_woodstick': [], 'mAUROC_sp_max_woodstick': [], 'mAP_sp_max_woodstick': [], 'mF1_max_sp_max_woodstick': [], 'mAUROC_px_woodstick': [], 'mAP_px_woodstick': [], 'mF1_max_px_woodstick': [], 'mAUPRO_px_woodstick': [], 'mIoU_max_px_woodstick': [], 'S_AUROC_zipper': [], 'S_AUROC_Avg': [], 'S_AUPR_zipper': [], 'S_AUPR_Avg': [], 'mAUROC_sp_max_zipper': [], 'mAUROC_sp_max_Avg': [], 'mAP_sp_max_zipper': [], 'mAP_sp_max_Avg': [], 'mF1_max_sp_max_zipper': [], 'mF1_max_sp_max_Avg': [], 'mAUROC_px_zipper': [], 'mAUROC_px_Avg': [], 'mAP_px_zipper': [], 'mAP_px_Avg': [], 'mF1_max_px_zipper': [], 'mF1_max_px_Avg': [], 'mAUPRO_px_zipper': [], 'mAUPRO_px_Avg': [], 'mIoU_max_px_zipper': [], 'mIoU_max_px_Avg': []}
+loss.loss_terms                      : [{'type': 'CosLoss', 'name': 'cos', 'avg': False, 'lam': 1.0}]
+loss.clip_grad                       : 5.0                                 
+loss.create_graph                    : False                               
+loss.retain_graph                    : False                               
+adv                                  : False                               
+logging.log_terms_train              : [{'name': 'batch_t', 'fmt': ':>5.3f', 'add_name': 'avg'}, {'name': 'data_t', 'fmt': ':>5.3f'}, {'name': 'optim_t', 'fmt': ':>5.3f'}, {'name': 'lr', 'fmt': ':>7.6f'}, {'name': 'cos', 'suffixes': [''], 'fmt': ':>5.3f', 'add_name': 'avg'}]
+logging.log_terms_test               : [{'name': 'batch_t', 'fmt': ':>5.3f', 'add_name': 'avg'}, {'name': 'cos', 'suffixes': [''], 'fmt': ':>5.3f', 'add_name': 'avg'}]
+logging.train_reset_log_per          : 50                                  
+logging.train_log_per                : 50                                  
+logging.test_log_per                 : 50                                  
+data.sampler                         : naive                               
+data.loader_type                     : pil                                 
+data.loader_type_target              : pil_L                               
+data.type                            : RealIAD                             
+data.root                            : /home/albus/DataSets/REAL-IAD/realiad_256
+data.meta                            : meta.json                           
+data.cls_names                       : []                                  
+data.train_transforms                : [{'type': 'Resize', 'size': (448, 448), 'interpolation': <InterpolationMode.BILINEAR: 'bilinear'>}, {'type': 'CenterCrop', 'size': (384, 384)}, {'type': 'ToTensor'}, {'type': 'Normalize', 'mean': (0.485, 0.456, 0.406), 'std': (0.229, 0.224, 0.225), 'inplace': True}]
+data.test_transforms                 : [{'type': 'Resize', 'size': (448, 448), 'interpolation': <InterpolationMode.BILINEAR: 'bilinear'>}, {'type': 'CenterCrop', 'size': (384, 384)}, {'type': 'ToTensor'}, {'type': 'Normalize', 'mean': (0.485, 0.456, 0.406), 'std': (0.229, 0.224, 0.225), 'inplace': True}]
+data.target_transforms               : [{'type': 'Resize', 'size': (448, 448), 'interpolation': <InterpolationMode.BILINEAR: 'bilinear'>}, {'type': 'CenterCrop', 'size': (384, 384)}, {'type': 'ToTensor'}]
+data.use_sample                      : True                                
+data.views                           : []                                  
+data.train_size                      : 1823                                
+data.test_size                       : 5730                                
+data.train_length                    : 7293                                
+data.test_length                     : 22917                               
+model_t.name                         : timm_wide_resnet50_2                
+model_t.kwargs                       : {'pretrained': False, 'checkpoint_path': 'model/pretrain/wide_resnet50_racm-8234f177.pth', 'strict': False, 'features_only': True, 'out_indices': [1, 2, 3]}
+model_s.name                         : de_wide_resnet50_2                  
+model_s.kwargs                       : {'pretrained': False, 'checkpoint_path': '', 'strict': False}
+model.name                           : dinomaly                            
+model.kwargs                         : {'pretrained': True, 'checkpoint_path': 'runs/Dinomaly_base_loosecosloss_size256_dinov3_officialloadhub_freeze_decodernorope_drop0.4_25811 (448×448 center crop 384 × 384)_train/net.pth', 'strict': True, 'target_layers': [2, 5, 8, 11], 'fuse_layer_encoder': [[0], [1], [2], [3]], 'fuse_layer_decoder': [[0], [1], [2], [3]], 'num_decoder_blocks': 8}
+seed                                 : 42                                  
+size                                 : 448                                 
+crop_size                            : 384                                 
+warmup_epochs                        : 0                                   
+test_start_epoch                     : 100                                 
+test_per_epoch                       : 100                                 
+batch_train                          : 4                                   
+batch_test_per                       : 4                                   
+lr                                   : 5e-05                               
+weight_decay                         : 0.0001                              
+cfg_path                             : configs.z_realiad_subsample.dinomaly_256_100e
+mode                                 : test                                
+sleep                                : -1                                  
+memory                               : -1                                  
+dist_url                             : env://                              
+logger_rank                          : 0                                   
+opts                                 : []                                  
+command                              : python3 -m torch.distributed.launch --nproc_per_node=$nproc_per_node --nnodes=$nnodes --node_rank=$node_rank --master_addr=$master_addr --master_port=$master_port --use_env run.py -c configs.z_realiad_subsample.dinomaly_256_100e -m test --sleep -1 --memory -1 --dist_url env:// --logger_rank 0 
+task_start_time                      : 1280983.995477772                   
+dist                                 : False                               
+world_size                           : 1                                   
+rank                                 : 0                                   
+local_rank                           : 0                                   
+ngpus_per_node                       : 1                                   
+nnodes                               : 1                                   
+master                               : True                                
+logdir                               : runs/DinomalyTrainer_configs_z_realiad_subsample_dinomaly_256_100e_20251030-141429
+logger.filters                       : []                                  
+logger.name                          : root                                
+logger.level                         : 20                                  
+logger.parent                        : None                                
+logger.propagate                     : True                                
+logger.disabled                      : False                               
+logdir_train                         : runs/DinomalyTrainer_configs_z_realiad_subsample_dinomaly_256_100e_20251030-141429/show_train
+logdir_test                          : runs/DinomalyTrainer_configs_z_realiad_subsample_dinomaly_256_100e_20251030-141429/show_test
+2025-10-30 14:14:31,103 - ==> Starting testing with 1 nodes x 1 GPUs
+2025-10-30 14:14:51,618 - Test: 0.87% [50/5730] [batch_t 0.390 (0.408)] [cos 0.136 (0.138)]
+2025-10-30 14:15:11,167 - Test: 1.75% [100/5730] [batch_t 0.390 (0.399)] [cos 0.154 (0.145)]
+2025-10-30 14:15:30,764 - Test: 2.62% [150/5730] [batch_t 0.392 (0.397)] [cos 0.155 (0.149)]
+2025-10-30 14:15:50,441 - Test: 3.49% [200/5730] [batch_t 0.394 (0.396)] [cos 0.120 (0.149)]
+2025-10-30 14:16:10,206 - Test: 4.36% [250/5730] [batch_t 0.395 (0.396)] [cos 0.121 (0.144)]
+2025-10-30 14:16:30,022 - Test: 5.24% [300/5730] [batch_t 0.395 (0.396)] [cos 0.122 (0.141)]
+2025-10-30 14:16:49,837 - Test: 6.11% [350/5730] [batch_t 0.398 (0.396)] [cos 0.118 (0.138)]
+2025-10-30 14:17:09,713 - Test: 6.98% [400/5730] [batch_t 0.396 (0.396)] [cos 0.179 (0.137)]
+2025-10-30 14:17:29,621 - Test: 7.85% [450/5730] [batch_t 0.397 (0.396)] [cos 0.171 (0.140)]
+2025-10-30 14:17:49,540 - Test: 8.73% [500/5730] [batch_t 0.397 (0.397)] [cos 0.168 (0.142)]
+2025-10-30 14:18:10,316 - Test: 9.60% [550/5730] [batch_t 0.411 (0.398)] [cos 0.141 (0.143)]
+2025-10-30 14:18:35,105 - Test: 10.47% [600/5730] [batch_t 0.700 (0.406)] [cos 0.163 (0.144)]
+2025-10-30 14:19:02,622 - Test: 11.34% [650/5730] [batch_t 0.540 (0.417)] [cos 0.160 (0.145)]
+2025-10-30 14:19:25,397 - Test: 12.22% [700/5730] [batch_t 0.405 (0.420)] [cos 0.166 (0.147)]
+2025-10-30 14:19:46,744 - Test: 13.09% [750/5730] [batch_t 0.408 (0.421)] [cos 0.157 (0.147)]
+2025-10-30 14:20:07,254 - Test: 13.96% [800/5730] [batch_t 0.413 (0.420)] [cos 0.174 (0.149)]
+2025-10-30 14:20:27,881 - Test: 14.83% [850/5730] [batch_t 0.421 (0.420)] [cos 0.176 (0.150)]
+2025-10-30 14:20:49,006 - Test: 15.71% [900/5730] [batch_t 0.420 (0.420)] [cos 0.178 (0.152)]
+2025-10-30 14:21:10,186 - Test: 16.58% [950/5730] [batch_t 0.412 (0.420)] [cos 0.178 (0.153)]
+2025-10-30 14:21:32,511 - Test: 17.45% [1000/5730] [batch_t 0.442 (0.421)] [cos 0.150 (0.153)]
+2025-10-30 14:21:53,474 - Test: 18.32% [1050/5730] [batch_t 0.424 (0.421)] [cos 0.159 (0.153)]
+2025-10-30 14:22:17,793 - Test: 19.20% [1100/5730] [batch_t 0.438 (0.424)] [cos 0.141 (0.153)]
+2025-10-30 14:22:39,559 - Test: 20.07% [1150/5730] [batch_t 0.406 (0.425)] [cos 0.197 (0.153)]
+2025-10-30 14:23:00,590 - Test: 20.94% [1200/5730] [batch_t 0.417 (0.424)] [cos 0.197 (0.155)]
+2025-10-30 14:23:21,715 - Test: 21.82% [1250/5730] [batch_t 0.419 (0.424)] [cos 0.198 (0.157)]
+2025-10-30 14:23:43,049 - Test: 22.69% [1300/5730] [batch_t 0.416 (0.424)] [cos 0.205 (0.158)]
+2025-10-30 14:24:06,622 - Test: 23.56% [1350/5730] [batch_t 0.418 (0.426)] [cos 0.191 (0.160)]
+2025-10-30 14:24:27,600 - Test: 24.43% [1400/5730] [batch_t 0.415 (0.426)] [cos 0.162 (0.160)]
+2025-10-30 14:24:48,752 - Test: 25.31% [1450/5730] [batch_t 0.419 (0.426)] [cos 0.160 (0.160)]
+2025-10-30 14:25:09,691 - Test: 26.18% [1500/5730] [batch_t 0.419 (0.426)] [cos 0.164 (0.160)]
+2025-10-30 14:25:30,653 - Test: 27.05% [1550/5730] [batch_t 0.415 (0.425)] [cos 0.151 (0.160)]
+2025-10-30 14:25:52,281 - Test: 27.92% [1600/5730] [batch_t 0.420 (0.426)] [cos 0.166 (0.160)]
+2025-10-30 14:26:13,633 - Test: 28.80% [1650/5730] [batch_t 0.438 (0.426)] [cos 0.169 (0.160)]
+2025-10-30 14:26:38,409 - Test: 29.67% [1700/5730] [batch_t 0.575 (0.428)] [cos 0.163 (0.161)]
+2025-10-30 14:27:01,106 - Test: 30.54% [1750/5730] [batch_t 0.444 (0.428)] [cos 0.192 (0.161)]
+2025-10-30 14:27:24,214 - Test: 31.41% [1800/5730] [batch_t 0.406 (0.429)] [cos 0.202 (0.162)]
+2025-10-30 14:27:46,089 - Test: 32.29% [1850/5730] [batch_t 0.414 (0.430)] [cos 0.199 (0.163)]
+2025-10-30 14:28:07,001 - Test: 33.16% [1900/5730] [batch_t 0.419 (0.429)] [cos 0.187 (0.164)]
+2025-10-30 14:28:28,272 - Test: 34.03% [1950/5730] [batch_t 0.417 (0.429)] [cos 0.151 (0.164)]
+2025-10-30 14:28:52,173 - Test: 34.90% [2000/5730] [batch_t 0.418 (0.430)] [cos 0.152 (0.163)]
+2025-10-30 14:29:13,300 - Test: 35.78% [2050/5730] [batch_t 0.418 (0.430)] [cos 0.149 (0.163)]
+2025-10-30 14:29:34,297 - Test: 36.65% [2100/5730] [batch_t 0.419 (0.430)] [cos 0.143 (0.163)]
+2025-10-30 14:29:55,349 - Test: 37.52% [2150/5730] [batch_t 0.420 (0.430)] [cos 0.169 (0.163)]
+2025-10-30 14:30:16,640 - Test: 38.39% [2200/5730] [batch_t 0.419 (0.430)] [cos 0.165 (0.163)]
+2025-10-30 14:30:38,473 - Test: 39.27% [2250/5730] [batch_t 0.418 (0.430)] [cos 0.179 (0.163)]
+2025-10-30 14:30:59,902 - Test: 40.14% [2300/5730] [batch_t 0.425 (0.430)] [cos 0.148 (0.163)]
+2025-10-30 14:31:24,742 - Test: 41.01% [2350/5730] [batch_t 0.436 (0.431)] [cos 0.115 (0.162)]
+2025-10-30 14:31:46,709 - Test: 41.88% [2400/5730] [batch_t 0.444 (0.431)] [cos 0.117 (0.161)]
+2025-10-30 14:32:09,274 - Test: 42.76% [2450/5730] [batch_t 0.415 (0.432)] [cos 0.117 (0.160)]
+2025-10-30 14:32:31,530 - Test: 43.63% [2500/5730] [batch_t 0.790 (0.432)] [cos 0.164 (0.159)]
+2025-10-30 14:32:52,472 - Test: 44.50% [2550/5730] [batch_t 0.416 (0.432)] [cos 0.165 (0.159)]
+2025-10-30 14:33:15,111 - Test: 45.38% [2600/5730] [batch_t 0.753 (0.432)] [cos 0.161 (0.159)]
+2025-10-30 14:33:37,444 - Test: 46.25% [2650/5730] [batch_t 0.417 (0.432)] [cos 0.159 (0.159)]
+2025-10-30 14:33:58,473 - Test: 47.12% [2700/5730] [batch_t 0.419 (0.432)] [cos 0.170 (0.159)]
+2025-10-30 14:34:19,643 - Test: 47.99% [2750/5730] [batch_t 0.413 (0.432)] [cos 0.174 (0.160)]
+2025-10-30 14:34:41,005 - Test: 48.87% [2800/5730] [batch_t 0.454 (0.432)] [cos 0.157 (0.160)]
+2025-10-30 14:35:02,345 - Test: 49.74% [2850/5730] [batch_t 0.422 (0.432)] [cos 0.148 (0.160)]
+2025-10-30 14:35:23,772 - Test: 50.61% [2900/5730] [batch_t 0.413 (0.432)] [cos 0.249 (0.160)]
+2025-10-30 14:35:48,643 - Test: 51.48% [2950/5730] [batch_t 0.782 (0.433)] [cos 0.242 (0.161)]
+2025-10-30 14:36:11,460 - Test: 52.36% [3000/5730] [batch_t 0.427 (0.433)] [cos 0.247 (0.163)]
+2025-10-30 14:36:34,003 - Test: 53.23% [3050/5730] [batch_t 0.480 (0.434)] [cos 0.192 (0.164)]
+2025-10-30 14:36:57,044 - Test: 54.10% [3100/5730] [batch_t 0.429 (0.434)] [cos 0.134 (0.164)]
+2025-10-30 14:37:18,678 - Test: 54.97% [3150/5730] [batch_t 0.416 (0.434)] [cos 0.132 (0.163)]
+2025-10-30 14:37:39,657 - Test: 55.85% [3200/5730] [batch_t 0.422 (0.434)] [cos 0.131 (0.163)]
+2025-10-30 14:38:03,481 - Test: 56.72% [3250/5730] [batch_t 0.422 (0.434)] [cos 0.127 (0.162)]
+2025-10-30 14:38:24,536 - Test: 57.59% [3300/5730] [batch_t 0.416 (0.434)] [cos 0.137 (0.162)]
+2025-10-30 14:38:45,537 - Test: 58.46% [3350/5730] [batch_t 0.422 (0.434)] [cos 0.136 (0.161)]
+2025-10-30 14:39:06,807 - Test: 59.34% [3400/5730] [batch_t 0.416 (0.434)] [cos 0.134 (0.161)]
+2025-10-30 14:39:27,795 - Test: 60.21% [3450/5730] [batch_t 0.406 (0.434)] [cos 0.126 (0.160)]
+2025-10-30 14:39:49,136 - Test: 61.08% [3500/5730] [batch_t 0.418 (0.434)] [cos 0.167 (0.160)]
+2025-10-30 14:40:11,273 - Test: 61.95% [3550/5730] [batch_t 0.433 (0.434)] [cos 0.165 (0.161)]
+2025-10-30 14:40:36,530 - Test: 62.83% [3600/5730] [batch_t 0.425 (0.435)] [cos 0.174 (0.161)]
+2025-10-30 14:40:57,438 - Test: 63.70% [3650/5730] [batch_t 0.412 (0.435)] [cos 0.211 (0.161)]
+2025-10-30 14:41:20,655 - Test: 64.57% [3700/5730] [batch_t 0.413 (0.435)] [cos 0.196 (0.161)]
+2025-10-30 14:41:43,256 - Test: 65.45% [3750/5730] [batch_t 0.416 (0.435)] [cos 0.196 (0.162)]
+2025-10-30 14:42:04,582 - Test: 66.32% [3800/5730] [batch_t 0.419 (0.435)] [cos 0.174 (0.162)]
+2025-10-30 14:42:25,976 - Test: 67.19% [3850/5730] [batch_t 0.428 (0.435)] [cos 0.210 (0.162)]
+2025-10-30 14:42:48,589 - Test: 68.06% [3900/5730] [batch_t 0.422 (0.435)] [cos 0.205 (0.163)]
+2025-10-30 14:43:09,897 - Test: 68.94% [3950/5730] [batch_t 0.415 (0.435)] [cos 0.197 (0.163)]
+2025-10-30 14:43:30,846 - Test: 69.81% [4000/5730] [batch_t 0.421 (0.435)] [cos 0.188 (0.164)]
+2025-10-30 14:43:51,851 - Test: 70.68% [4050/5730] [batch_t 0.419 (0.435)] [cos 0.272 (0.165)]
+2025-10-30 14:44:13,282 - Test: 71.55% [4100/5730] [batch_t 0.425 (0.435)] [cos 0.266 (0.166)]
+2025-10-30 14:44:34,983 - Test: 72.43% [4150/5730] [batch_t 0.414 (0.435)] [cos 0.274 (0.167)]
+2025-10-30 14:44:59,465 - Test: 73.30% [4200/5730] [batch_t 0.770 (0.435)] [cos 0.251 (0.168)]
+2025-10-30 14:45:22,431 - Test: 74.17% [4250/5730] [batch_t 0.443 (0.436)] [cos 0.142 (0.168)]
+2025-10-30 14:45:45,487 - Test: 75.04% [4300/5730] [batch_t 0.512 (0.436)] [cos 0.148 (0.168)]
+2025-10-30 14:46:08,684 - Test: 75.92% [4350/5730] [batch_t 0.534 (0.436)] [cos 0.153 (0.168)]
+2025-10-30 14:46:31,150 - Test: 76.79% [4400/5730] [batch_t 0.416 (0.436)] [cos 0.140 (0.168)]
+2025-10-30 14:46:52,147 - Test: 77.66% [4450/5730] [batch_t 0.414 (0.436)] [cos 0.135 (0.167)]
+2025-10-30 14:47:15,638 - Test: 78.53% [4500/5730] [batch_t 0.418 (0.436)] [cos 0.141 (0.167)]
+2025-10-30 14:47:36,609 - Test: 79.41% [4550/5730] [batch_t 0.420 (0.436)] [cos 0.137 (0.167)]
+2025-10-30 14:47:58,081 - Test: 80.28% [4600/5730] [batch_t 0.426 (0.436)] [cos 0.160 (0.166)]
+2025-10-30 14:48:19,087 - Test: 81.15% [4650/5730] [batch_t 0.419 (0.436)] [cos 0.154 (0.166)]
+2025-10-30 14:48:40,210 - Test: 82.02% [4700/5730] [batch_t 0.428 (0.436)] [cos 0.156 (0.166)]
+2025-10-30 14:49:01,149 - Test: 82.90% [4750/5730] [batch_t 0.422 (0.436)] [cos 0.142 (0.166)]
+2025-10-30 14:49:25,246 - Test: 83.77% [4800/5730] [batch_t 0.432 (0.436)] [cos 0.189 (0.166)]
+2025-10-30 14:49:49,486 - Test: 84.64% [4850/5730] [batch_t 0.443 (0.437)] [cos 0.188 (0.166)]
+2025-10-30 14:50:11,663 - Test: 85.51% [4900/5730] [batch_t 0.602 (0.437)] [cos 0.191 (0.166)]
+2025-10-30 14:50:35,192 - Test: 86.39% [4950/5730] [batch_t 0.418 (0.437)] [cos 0.167 (0.166)]
+2025-10-30 14:50:58,581 - Test: 87.26% [5000/5730] [batch_t 0.420 (0.437)] [cos 0.147 (0.166)]
+2025-10-30 14:51:19,467 - Test: 88.13% [5050/5730] [batch_t 0.417 (0.437)] [cos 0.156 (0.166)]
+2025-10-30 14:51:41,541 - Test: 89.01% [5100/5730] [batch_t 0.431 (0.437)] [cos 0.149 (0.166)]
+2025-10-30 14:52:03,308 - Test: 89.88% [5150/5730] [batch_t 0.427 (0.437)] [cos 0.142 (0.166)]
+2025-10-30 14:52:24,581 - Test: 90.75% [5200/5730] [batch_t 0.442 (0.437)] [cos 0.153 (0.166)]
+2025-10-30 14:52:45,572 - Test: 91.62% [5250/5730] [batch_t 0.417 (0.437)] [cos 0.152 (0.166)]
+2025-10-30 14:53:06,844 - Test: 92.50% [5300/5730] [batch_t 0.420 (0.437)] [cos 0.136 (0.165)]
+2025-10-30 14:53:28,188 - Test: 93.37% [5350/5730] [batch_t 0.420 (0.437)] [cos 0.135 (0.165)]
+2025-10-30 14:53:50,677 - Test: 94.24% [5400/5730] [batch_t 0.769 (0.437)] [cos 0.276 (0.166)]
+2025-10-30 14:54:15,328 - Test: 95.11% [5450/5730] [batch_t 0.441 (0.437)] [cos 0.278 (0.167)]
+2025-10-30 14:54:37,190 - Test: 95.99% [5500/5730] [batch_t 0.446 (0.437)] [cos 0.255 (0.168)]
+2025-10-30 14:55:00,952 - Test: 96.86% [5550/5730] [batch_t 0.477 (0.438)] [cos 0.235 (0.169)]
+2025-10-30 14:55:24,684 - Test: 97.73% [5600/5730] [batch_t 0.521 (0.438)] [cos 0.242 (0.169)]
+2025-10-30 14:55:48,699 - Test: 98.60% [5650/5730] [batch_t 0.419 (0.438)] [cos 0.246 (0.170)]
+2025-10-30 14:56:11,898 - Test: 99.48% [5700/5730] [batch_t 0.491 (0.439)] [cos 0.172 (0.170)]
+2025-10-30 14:56:24,763 - Test: 100.00% [5730/5730] [batch_t 0.344 (0.439)] [cos 0.174 (0.170)]
+2025-10-30 14:58:22,303 - ==> Metric Time for audiojack      :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.006 (mAUROC_sp_max)	  0.001 (mAP_sp_max)	  0.001 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	 22.186 (mF1_max_px)	  0.000 (mAUPRO_px)	 21.326 (mIoU_max_px)	
+2025-10-30 14:59:54,795 - ==> Metric Time for bottle_cap     :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.006 (mAUROC_sp_max)	  0.001 (mAP_sp_max)	  0.001 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	 21.179 (mF1_max_px)	  0.000 (mAUPRO_px)	 20.314 (mIoU_max_px)	
+2025-10-30 15:01:25,083 - ==> Metric Time for button_battery :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.002 (mAUROC_sp_max)	  0.001 (mAP_sp_max)	  0.001 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	 20.706 (mF1_max_px)	  0.000 (mAUPRO_px)	 20.656 (mIoU_max_px)	
+2025-10-30 15:03:10,643 - ==> Metric Time for end_cap        :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.002 (mAUROC_sp_max)	  0.001 (mAP_sp_max)	  0.001 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	 21.286 (mF1_max_px)	  0.000 (mAUPRO_px)	 20.739 (mIoU_max_px)	
+2025-10-30 15:04:44,515 - ==> Metric Time for eraser         :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.005 (mAUROC_sp_max)	  0.001 (mAP_sp_max)	  0.001 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	 21.516 (mF1_max_px)	  0.000 (mAUPRO_px)	 21.235 (mIoU_max_px)	
+2025-10-30 15:06:16,132 - ==> Metric Time for fire_hood      :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.002 (mAUROC_sp_max)	  0.001 (mAP_sp_max)	  0.001 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	 20.878 (mF1_max_px)	  0.000 (mAUPRO_px)	 20.159 (mIoU_max_px)	
+2025-10-30 15:08:10,401 - ==> Metric Time for mint           :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.032 (mAUROC_sp_max)	  0.002 (mAP_sp_max)	  0.001 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	 24.659 (mF1_max_px)	  0.000 (mAUPRO_px)	 23.626 (mIoU_max_px)	
+2025-10-30 15:09:37,658 - ==> Metric Time for mounts         :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.002 (mAUROC_sp_max)	  0.001 (mAP_sp_max)	  0.001 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	 21.261 (mF1_max_px)	  0.000 (mAUPRO_px)	 21.054 (mIoU_max_px)	
+2025-10-30 15:11:12,095 - ==> Metric Time for pcb            :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.002 (mAUROC_sp_max)	  0.001 (mAP_sp_max)	  0.001 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	 21.093 (mF1_max_px)	  0.000 (mAUPRO_px)	 21.109 (mIoU_max_px)	
+2025-10-30 15:12:51,424 - ==> Metric Time for phone_battery  :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.018 (mAUROC_sp_max)	  0.001 (mAP_sp_max)	  0.001 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	 21.029 (mF1_max_px)	  0.000 (mAUPRO_px)	 21.692 (mIoU_max_px)	
+2025-10-30 15:14:22,721 - ==> Metric Time for plastic_nut    :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.002 (mAUROC_sp_max)	  0.001 (mAP_sp_max)	  0.001 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	 21.142 (mF1_max_px)	  0.000 (mAUPRO_px)	 20.869 (mIoU_max_px)	
+2025-10-30 15:15:53,546 - ==> Metric Time for plastic_plug   :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.002 (mAUROC_sp_max)	  0.001 (mAP_sp_max)	  0.001 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	 21.469 (mF1_max_px)	  0.000 (mAUPRO_px)	 20.659 (mIoU_max_px)	
+2025-10-30 15:17:30,807 - ==> Metric Time for porcelain_doll :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.005 (mAUROC_sp_max)	  0.001 (mAP_sp_max)	  0.001 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	 21.763 (mF1_max_px)	  0.000 (mAUPRO_px)	 21.262 (mIoU_max_px)	
+2025-10-30 15:19:06,025 - ==> Metric Time for regulator      :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.002 (mAUROC_sp_max)	  0.001 (mAP_sp_max)	  0.001 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	 22.669 (mF1_max_px)	  0.000 (mAUPRO_px)	 21.565 (mIoU_max_px)	
+2025-10-30 15:20:36,933 - ==> Metric Time for rolled_strip_base:   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.002 (mAUROC_sp_max)	  0.001 (mAP_sp_max)	  0.001 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	 22.674 (mF1_max_px)	  0.000 (mAUPRO_px)	 20.625 (mIoU_max_px)	
+2025-10-30 15:22:14,619 - ==> Metric Time for sim_card_set   :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.006 (mAUROC_sp_max)	  0.001 (mAP_sp_max)	  0.001 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	 22.089 (mF1_max_px)	  0.000 (mAUPRO_px)	 21.119 (mIoU_max_px)	
+2025-10-30 15:23:49,200 - ==> Metric Time for switch         :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.002 (mAUROC_sp_max)	  0.001 (mAP_sp_max)	  0.001 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	 21.030 (mF1_max_px)	  0.000 (mAUPRO_px)	 20.722 (mIoU_max_px)	
+2025-10-30 15:25:25,664 - ==> Metric Time for tape           :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.001 (mAP_sp_max)	  0.001 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	 25.363 (mF1_max_px)	  0.000 (mAUPRO_px)	 20.688 (mIoU_max_px)	
+2025-10-30 15:27:02,287 - ==> Metric Time for terminalblock  :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.051 (mAUROC_sp_max)	  0.002 (mAP_sp_max)	  0.001 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	 23.165 (mF1_max_px)	  0.000 (mAUPRO_px)	 21.451 (mIoU_max_px)	
+2025-10-30 15:28:38,165 - ==> Metric Time for toothbrush     :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.001 (mAP_sp_max)	  0.001 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	 21.112 (mF1_max_px)	  0.000 (mAUPRO_px)	 20.294 (mIoU_max_px)	
+2025-10-30 15:30:10,295 - ==> Metric Time for toy            :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.001 (mAP_sp_max)	  0.001 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	 20.865 (mF1_max_px)	  0.000 (mAUPRO_px)	 21.478 (mIoU_max_px)	
+2025-10-30 15:31:45,603 - ==> Metric Time for toy_brick      :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.038 (mAUROC_sp_max)	  0.002 (mAP_sp_max)	  0.001 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	 22.346 (mF1_max_px)	  0.000 (mAUPRO_px)	 20.255 (mIoU_max_px)	
+2025-10-30 15:33:23,273 - ==> Metric Time for transistor1    :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.001 (mAP_sp_max)	  0.001 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	 21.854 (mF1_max_px)	  0.000 (mAUPRO_px)	 20.813 (mIoU_max_px)	
+2025-10-30 15:34:55,392 - ==> Metric Time for u_block        :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.001 (mAP_sp_max)	  0.001 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	 22.099 (mF1_max_px)	  0.000 (mAUPRO_px)	 21.052 (mIoU_max_px)	
+2025-10-30 15:36:26,141 - ==> Metric Time for usb            :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.045 (mAUROC_sp_max)	  0.001 (mAP_sp_max)	  0.001 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	 21.229 (mF1_max_px)	  0.000 (mAUPRO_px)	 20.267 (mIoU_max_px)	
+2025-10-30 15:38:06,328 - ==> Metric Time for usb_adaptor    :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.001 (mAP_sp_max)	  0.001 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	 21.402 (mF1_max_px)	  0.000 (mAUPRO_px)	 21.336 (mIoU_max_px)	
+2025-10-30 15:39:41,736 - ==> Metric Time for vcpill         :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.002 (mAUROC_sp_max)	  0.001 (mAP_sp_max)	  0.001 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	 24.613 (mF1_max_px)	  0.000 (mAUPRO_px)	 20.642 (mIoU_max_px)	
+2025-10-30 15:41:19,371 - ==> Metric Time for wooden_beads   :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.029 (mAUROC_sp_max)	  0.001 (mAP_sp_max)	  0.001 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	 22.392 (mF1_max_px)	  0.000 (mAUPRO_px)	 21.198 (mIoU_max_px)	
+2025-10-30 15:42:54,282 - ==> Metric Time for woodstick      :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.001 (mAP_sp_max)	  0.001 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	 20.813 (mF1_max_px)	  0.000 (mAUPRO_px)	 20.101 (mIoU_max_px)	
+2025-10-30 15:44:38,396 - ==> Metric Time for zipper         :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.001 (mAP_sp_max)	  0.001 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	 21.641 (mF1_max_px)	  0.000 (mAUPRO_px)	 19.953 (mIoU_max_px)	
+2025-10-30 15:44:38,590 - 
+|       Name        |  S_AUROC  |   S_AUROC (Max)    |  S_AUPR  |    S_AUPR (Max)    |  mAUROC_sp_max  |  mAUROC_sp_max (Max)  |  mAP_sp_max  |  mAP_sp_max (Max)  |  mF1_max_sp_max  |  mF1_max_sp_max (Max)  |  mAUROC_px  |  mAUROC_px (Max)   |  mAP_px  |    mAP_px (Max)    |  mF1_max_px  |  mF1_max_px (Max)  |  mAUPRO_px  |  mAUPRO_px (Max)   |  mIoU_max_px  |  mIoU_max_px (Max)  |
+|:-----------------:|:---------:|:------------------:|:--------:|:------------------:|:---------------:|:---------------------:|:------------:|:------------------:|:----------------:|:----------------------:|:-----------:|:------------------:|:--------:|:------------------:|:------------:|:------------------:|:-----------:|:------------------:|:-------------:|:-------------------:|
+|     audiojack     |  90.008   | 90.008 (1   epoch) |  95.033  | 95.033 (1   epoch) |     88.168      |  88.168 (1   epoch)   |    84.825    | 84.825 (1   epoch) |      74.637      |   74.637 (1   epoch)   |   98.367    | 98.367 (1   epoch) |  48.750  | 48.750 (1   epoch) |    53.201    | 53.201 (1   epoch) |   89.993    | 89.993 (1   epoch) |    36.241     | 36.241 (1   epoch)  |
+|    bottle_cap     |  95.597   | 95.597 (1   epoch) |  98.160  | 98.160 (1   epoch) |     94.728      |  94.728 (1   epoch)   |    94.171    | 94.171 (1   epoch) |      85.881      |   85.881 (1   epoch)   |   99.466    | 99.466 (1   epoch) |  34.982  | 34.982 (1   epoch) |    37.554    | 37.554 (1   epoch) |   97.163    | 97.163 (1   epoch) |    23.118     | 23.118 (1   epoch)  |
+|  button_battery   |  86.976   | 86.976 (1   epoch) |  93.116  | 93.116 (1   epoch) |     85.997      |  85.997 (1   epoch)   |    89.175    | 89.175 (1   epoch) |      81.562      |   81.562 (1   epoch)   |   98.580    | 98.580 (1   epoch) |  50.699  | 50.699 (1   epoch) |    55.998    | 55.998 (1   epoch) |   90.107    | 90.107 (1   epoch) |    38.887     | 38.887 (1   epoch)  |
+|      end_cap      |  92.277   | 92.277 (1   epoch) |  95.996  | 95.996 (1   epoch) |     84.476      |  84.476 (1   epoch)   |    86.902    | 86.902 (1   epoch) |      81.037      |   81.037 (1   epoch)   |   98.252    | 98.252 (1   epoch) |  20.956  | 20.956 (1   epoch) |    29.062    | 29.062 (1   epoch) |   93.868    | 93.868 (1   epoch) |    17.002     | 17.002 (1   epoch)  |
+|      eraser       |  90.339   | 90.339 (1   epoch) |  95.242  | 95.242 (1   epoch) |     90.686      |  90.686 (1   epoch)   |    88.082    | 88.082 (1   epoch) |      78.634      |   78.634 (1   epoch)   |   99.401    | 99.401 (1   epoch) |  40.305  | 40.305 (1   epoch) |    44.167    | 44.167 (1   epoch) |   95.727    | 95.727 (1   epoch) |    28.343     | 28.343 (1   epoch)  |
+|     fire_hood     |  83.815   | 83.815 (1   epoch) |  91.013  | 91.013 (1   epoch) |     83.159      |  83.159 (1   epoch)   |    75.878    | 75.878 (1   epoch) |      69.660      |   69.660 (1   epoch)   |   98.815    | 98.815 (1   epoch) |  30.505  | 30.505 (1   epoch) |    38.815    | 38.815 (1   epoch) |   90.463    | 90.463 (1   epoch) |    24.081     | 24.081 (1   epoch)  |
+|       mint        |  72.364   | 72.364 (1   epoch) |  92.151  | 92.151 (1   epoch) |     69.627      |  69.627 (1   epoch)   |    69.584    | 69.584 (1   epoch) |      64.944      |   64.944 (1   epoch)   |   94.138    | 94.138 (1   epoch) |  23.303  | 23.303 (1   epoch) |    34.122    | 34.122 (1   epoch) |   66.839    | 66.839 (1   epoch) |    20.571     | 20.571 (1   epoch)  |
+|      mounts       |  99.187   | 99.187 (1   epoch) |  99.656  | 99.656 (1   epoch) |     88.931      |  88.931 (1   epoch)   |    80.836    | 80.836 (1   epoch) |      77.585      |   77.585 (1   epoch)   |   99.463    | 99.463 (1   epoch) |  43.101  | 43.101 (1   epoch) |    44.282    | 44.282 (1   epoch) |   96.775    | 96.775 (1   epoch) |    28.438     | 28.438 (1   epoch)  |
+|        pcb        |  92.146   | 92.146 (1   epoch) |  96.439  | 96.439 (1   epoch) |     92.100      |  92.100 (1   epoch)   |    95.387    | 95.387 (1   epoch) |      87.549      |   87.549 (1   epoch)   |   98.945    | 98.945 (1   epoch) |  54.886  | 54.886 (1   epoch) |    56.948    | 56.948 (1   epoch) |   93.384    | 93.384 (1   epoch) |    39.809     | 39.809 (1   epoch)  |
+|   phone_battery   |  91.988   | 91.988 (1   epoch) |  96.324  | 96.324 (1   epoch) |     93.892      |  93.892 (1   epoch)   |    92.427    | 92.427 (1   epoch) |      84.294      |   84.294 (1   epoch)   |   99.626    | 99.626 (1   epoch) |  57.497  | 57.497 (1   epoch) |    58.002    | 58.002 (1   epoch) |   96.734    | 96.734 (1   epoch) |    40.847     | 40.847 (1   epoch)  |
+|    plastic_nut    |  94.172   | 94.172 (1   epoch) |  97.330  | 97.330 (1   epoch) |     90.629      |  90.629 (1   epoch)   |    85.260    | 85.260 (1   epoch) |      77.006      |   77.006 (1   epoch)   |   99.516    | 99.516 (1   epoch) |  41.251  | 41.251 (1   epoch) |    43.930    | 43.930 (1   epoch) |   96.989    | 96.989 (1   epoch) |    28.148     | 28.148 (1   epoch)  |
+|   plastic_plug    |  93.163   | 93.163 (1   epoch) |  96.829  | 96.829 (1   epoch) |     90.009      |  90.009 (1   epoch)   |    86.609    | 86.609 (1   epoch) |      78.273      |   78.273 (1   epoch)   |   99.163    | 99.163 (1   epoch) |  33.313  | 33.313 (1   epoch) |    38.642    | 38.642 (1   epoch) |   95.594    | 95.594 (1   epoch) |    23.948     | 23.948 (1   epoch)  |
+|  porcelain_doll   |  95.507   | 95.507 (1   epoch) |  97.739  | 97.739 (1   epoch) |     89.308      |  89.308 (1   epoch)   |    84.119    | 84.119 (1   epoch) |      74.765      |   74.765 (1   epoch)   |   98.868    | 98.868 (1   epoch) |  36.456  | 36.456 (1   epoch) |    42.362    | 42.362 (1   epoch) |   94.504    | 94.504 (1   epoch) |    26.873     | 26.873 (1   epoch)  |
+|     regulator     |  84.669   | 84.669 (1   epoch) |  92.968  | 92.968 (1   epoch) |     79.492      |  79.492 (1   epoch)   |    72.208    | 72.208 (1   epoch) |      64.235      |   64.235 (1   epoch)   |   97.472    | 97.472 (1   epoch) |  35.308  | 35.308 (1   epoch) |    43.800    | 43.800 (1   epoch) |   89.062    | 89.062 (1   epoch) |    28.041     | 28.041 (1   epoch)  |
+| rolled_strip_base |  99.224   | 99.224 (1   epoch) |  99.650  | 99.650 (1   epoch) |     99.231      |  99.231 (1   epoch)   |    99.610    | 99.610 (1   epoch) |      97.146      |   97.146 (1   epoch)   |   99.781    | 99.781 (1   epoch) |  47.562  | 47.562 (1   epoch) |    50.570    | 50.570 (1   epoch) |   99.026    | 99.026 (1   epoch) |    33.842     | 33.842 (1   epoch)  |
+|   sim_card_set    |  97.850   | 97.850 (1   epoch) |  98.899  | 98.899 (1   epoch) |     96.529      |  96.529 (1   epoch)   |    96.927    | 96.927 (1   epoch) |      90.467      |   90.467 (1   epoch)   |   98.666    | 98.666 (1   epoch) |  55.092  | 55.092 (1   epoch) |    54.420    | 54.420 (1   epoch) |   91.734    | 91.734 (1   epoch) |    37.381     | 37.381 (1   epoch)  |
+|      switch       |  98.755   | 98.755 (1   epoch) |  99.477  | 99.477 (1   epoch) |     96.602      |  96.602 (1   epoch)   |    97.477    | 97.477 (1   epoch) |      92.249      |   92.249 (1   epoch)   |   96.864    | 96.864 (1   epoch) |  58.587  | 58.587 (1   epoch) |    59.563    | 59.563 (1   epoch) |   93.963    | 93.963 (1   epoch) |    42.412     | 42.412 (1   epoch)  |
+|       tape        |  99.623   | 99.623 (1   epoch) |  99.816  | 99.816 (1   epoch) |     97.356      |  97.356 (1   epoch)   |    96.049    | 96.049 (1   epoch) |      90.105      |   90.105 (1   epoch)   |   99.685    | 99.685 (1   epoch) |  51.883  | 51.883 (1   epoch) |    53.877    | 53.877 (1   epoch) |   98.312    | 98.312 (1   epoch) |    36.871     | 36.871 (1   epoch)  |
+|   terminalblock   |  97.994   | 97.994 (1   epoch) |  99.242  | 99.242 (1   epoch) |     98.201      |  98.201 (1   epoch)   |    98.633    | 98.633 (1   epoch) |      93.816      |   93.816 (1   epoch)   |   99.790    | 99.790 (1   epoch) |  50.955  | 50.955 (1   epoch) |    51.202    | 51.202 (1   epoch) |   98.803    | 98.803 (1   epoch) |    34.410     | 34.410 (1   epoch)  |
+|    toothbrush     |  95.615   | 95.615 (1   epoch) |  97.736  | 97.736 (1   epoch) |     88.453      |  88.453 (1   epoch)   |    89.841    | 89.841 (1   epoch) |      82.517      |   82.517 (1   epoch)   |   96.984    | 96.984 (1   epoch) |  40.719  | 40.719 (1   epoch) |    44.991    | 44.991 (1   epoch) |   90.097    | 90.097 (1   epoch) |    29.025     | 29.025 (1   epoch)  |
+|        toy        |  88.980   | 88.980 (1   epoch) |  94.334  | 94.334 (1   epoch) |     83.353      |  83.353 (1   epoch)   |    87.739    | 87.739 (1   epoch) |      79.873      |   79.873 (1   epoch)   |   92.074    | 92.074 (1   epoch) |  19.779  | 19.779 (1   epoch) |    27.710    | 27.710 (1   epoch) |   86.558    | 86.558 (1   epoch) |    16.083     | 16.083 (1   epoch)  |
+|     toy_brick     |  75.106   | 75.106 (1   epoch) |  84.787  | 84.787 (1   epoch) |     71.106      |  71.106 (1   epoch)   |    62.813    | 62.813 (1   epoch) |      62.469      |   62.469 (1   epoch)   |   96.372    | 96.372 (1   epoch) |  21.594  | 21.594 (1   epoch) |    28.850    | 28.850 (1   epoch) |   77.920    | 77.920 (1   epoch) |    16.856     | 16.856 (1   epoch)  |
+|    transistor1    |  98.511   | 98.511 (1   epoch) |  99.111  | 99.111 (1   epoch) |     95.643      |  95.643 (1   epoch)   |    96.923    | 96.923 (1   epoch) |      90.288      |   90.288 (1   epoch)   |   99.186    | 99.186 (1   epoch) |  51.955  | 51.955 (1   epoch) |    51.333    | 51.333 (1   epoch) |   95.981    | 95.981 (1   epoch) |    34.528     | 34.528 (1   epoch)  |
+|      u_block      |  97.536   | 97.536 (1   epoch) |  98.851  | 98.851 (1   epoch) |     90.922      |  90.922 (1   epoch)   |    87.909    | 87.909 (1   epoch) |      79.034      |   79.034 (1   epoch)   |   99.364    | 99.364 (1   epoch) |  51.025  | 51.025 (1   epoch) |    54.846    | 54.846 (1   epoch) |   95.682    | 95.682 (1   epoch) |    37.784     | 37.784 (1   epoch)  |
+|        usb        |  94.494   | 94.494 (1   epoch) |  97.441  | 97.441 (1   epoch) |     93.741      |  93.741 (1   epoch)   |    93.510    | 93.510 (1   epoch) |      85.983      |   85.983 (1   epoch)   |   99.057    | 99.057 (1   epoch) |  45.380  | 45.380 (1   epoch) |    48.971    | 48.971 (1   epoch) |   96.385    | 96.385 (1   epoch) |    32.425     | 32.425 (1   epoch)  |
+|    usb_adaptor    |  93.846   | 93.846 (1   epoch) |  96.997  | 96.997 (1   epoch) |     82.939      |  82.939 (1   epoch)   |    76.442    | 76.442 (1   epoch) |      69.900      |   69.900 (1   epoch)   |   98.426    | 98.426 (1   epoch) |  26.636  | 26.636 (1   epoch) |    34.777    | 34.777 (1   epoch) |   90.571    | 90.571 (1   epoch) |    21.049     | 21.049 (1   epoch)  |
+|      vcpill       |  96.997   | 96.997 (1   epoch) |  98.594  | 98.594 (1   epoch) |     92.328      |  92.328 (1   epoch)   |    91.635    | 91.635 (1   epoch) |      81.915      |   81.915 (1   epoch)   |   98.920    | 98.920 (1   epoch) |  67.534  | 67.534 (1   epoch) |    66.526    | 66.526 (1   epoch) |   92.443    | 92.443 (1   epoch) |    49.842     | 49.842 (1   epoch)  |
+|   wooden_beads    |  87.474   | 87.474 (1   epoch) |  95.033  | 95.033 (1   epoch) |     86.629      |  86.629 (1   epoch)   |    85.980    | 85.980 (1   epoch) |      76.265      |   76.265 (1   epoch)   |   98.357    | 98.357 (1   epoch) |  48.099  | 48.099 (1   epoch) |    50.872    | 50.872 (1   epoch) |   88.855    | 88.855 (1   epoch) |    34.113     | 34.113 (1   epoch)  |
+|     woodstick     |  77.843   | 77.843 (1   epoch) |  87.406  | 87.406 (1   epoch) |     80.572      |  80.572 (1   epoch)   |    67.033    | 67.033 (1   epoch) |      61.223      |   61.223 (1   epoch)   |   97.578    | 97.578 (1   epoch) |  40.757  | 40.757 (1   epoch) |    45.061    | 45.061 (1   epoch) |   84.292    | 84.292 (1   epoch) |    29.083     | 29.083 (1   epoch)  |
+|      zipper       |  99.904   | 99.904 (1   epoch) |  99.950  | 99.950 (1   epoch) |     99.442      |  99.442 (1   epoch)   |    99.647    | 99.647 (1   epoch) |      97.008      |   97.008 (1   epoch)   |   99.367    | 99.367 (1   epoch) |  68.598  | 68.598 (1   epoch) |    65.179    | 65.179 (1   epoch) |   97.314    | 97.314 (1   epoch) |    48.345     | 48.345 (1   epoch)  |
+|        Avg        |  92.065   | 92.065 (1   epoch) |  96.177  | 96.177 (1   epoch) |     89.142      |  89.142 (1   epoch)   |    87.121    | 87.121 (1   epoch) |      80.344      |   80.344 (1   epoch)   |   98.352    | 98.352 (1   epoch) |  43.249  | 43.249 (1   epoch) |    46.988    | 46.988 (1   epoch) |   92.171    | 92.171 (1   epoch) |    31.280     | 31.280 (1   epoch)  |

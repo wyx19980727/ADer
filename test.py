@@ -54,3 +54,5 @@ fundamental_matrix_results_test = torch.load(path_test)
 merged_results = {**fundamental_matrix_results_train, **fundamental_matrix_results_test}
 # Save the merged results to a new file
 torch.save(merged_results, './fundamental_matrix_results_merged.pth')
+
+from timm.layers.patch_embed import PatchEmbed

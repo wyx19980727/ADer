@@ -21,6 +21,7 @@ from .uniad import UniAD_decoder
 
 from einops import rearrange
 from argparse import Namespace
+import timm
 
 # ========== Decoder ==========
 def conv3x3(in_planes, out_planes, stride = 1, groups = 1, dilation = 1):
@@ -188,7 +189,7 @@ class DeResNet(nn.Module):
 
         # feature_b = self.layer2(x)  # 256*16*16->128*32*32
         # feature_c = self.layer3(feature_b)  # 128*32*32->64*64*64
-        # return [feature_c, feature_b]
+        # return [feature_c, feature_b, x]
         
 
     def forward(self, x):
@@ -446,6 +447,12 @@ class RDEpipolar(nn.Module):
     def __init__(self, model_t, model_s):
         super(RDEpipolar, self).__init__()
         self.net_t = get_model(model_t)
+        # self.net_t = timm.create_model('resnet50', pretrained=False, features_only=True, out_indices=(1, 2, 3))
+        # pth_path = "ader_weights/dino_resnet50_pretrain.pth"
+        # ckpt = torch.load(pth_path, map_location='cpu')
+        # self.net_t.load_state_dict(ckpt, strict=False)
+
+
         self.mff_oce = MFF_OCE(BasicBlock, 3)
         self.net_s = get_model(model_s)
 
@@ -493,7 +500,7 @@ class RDEpipolar(nn.Module):
                             neighbor_mask=None,
                             hidden_dim=256, pos_embed_type='learned', save_recon=Namespace(**{'save_dir': 'result_recon'}),
                             initializer={'method': 'xavier_uniform'}, nhead=8, num_encoder_layers=4,
-                            num_decoder_layers=4, dim_feedforward=1024, dropout=0.1, activation='relu',
+                            num_decoder_layers=4, dim_feedforward=1024, dropout=0.4, activation='relu',
                             normalize_before=False)
 
 
@@ -534,6 +541,7 @@ class RDEpipolar(nn.Module):
             feats_t = [f.detach() for f in feats_t]
             feats_t_grid = self.proj_layer(feats_t) # [B*num_views, C, H_feat, W_feat]
             mid = self.mff_oce(feats_t_grid)
+            # import ipdb; ipdb.set_trace()
 
             
             # # 2. Enhance by Epipolar Attention

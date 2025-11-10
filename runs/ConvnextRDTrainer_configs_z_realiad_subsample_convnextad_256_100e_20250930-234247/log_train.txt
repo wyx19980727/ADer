@@ -1,0 +1,4 @@
+2025-09-30 23:42:47,021 - ==> Logging on master GPU: 0
+2025-09-30 23:42:47,021 - ==> Running Trainer: ConvnextRDTrainer
+2025-09-30 23:42:47,021 - ==> Using GPU: [0] for Training
+2025-09-30 23:42:47,021 - ==> Building model

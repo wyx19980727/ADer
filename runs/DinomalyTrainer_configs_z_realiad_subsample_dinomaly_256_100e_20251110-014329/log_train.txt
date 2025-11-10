@@ -1,0 +1,14 @@
+2025-11-10 01:43:29,287 - ==> Logging on master GPU: 0
+2025-11-10 01:43:29,287 - ==> Running Trainer: DinomalyTrainer
+2025-11-10 01:43:29,287 - ==> Using GPU: [0] for Training
+2025-11-10 01:43:29,287 - ==> Building model
+2025-11-10 01:43:29,288 - Ignored kwargs: {'layers_to_extract_from': [2, 5, 8, 11]}
+2025-11-10 01:43:29,290 - using base=100 for rope new
+2025-11-10 01:43:29,290 - using min_period=None for rope new
+2025-11-10 01:43:29,290 - using max_period=None for rope new
+2025-11-10 01:43:29,290 - using normalize_coords=separate for rope new
+2025-11-10 01:43:29,290 - using shift_coords=None for rope new
+2025-11-10 01:43:29,290 - using rescale_coords=2 for rope new
+2025-11-10 01:43:29,290 - using jitter_coords=None for rope new
+2025-11-10 01:43:29,290 - using dtype=fp32 for rope new
+2025-11-10 01:43:29,290 - using mlp layer as FFN

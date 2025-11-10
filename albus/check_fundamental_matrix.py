@@ -1,6 +1,6 @@
 import torch
 
-path = './fundamental_matrix_results.pth'
+path = './fundamental_matrix_results_full.pth'
 fundamental_matrix_results = torch.load(path)
 
 for key, value in fundamental_matrix_results.items():

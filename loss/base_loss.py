@@ -439,8 +439,11 @@ class SupervisedContrastiveLoss(nn.Module):
 
     def forward(self, x, labels):
         # return self.loss(x, labels) * self.lam
+        # import ipdb; ipdb.set_trace()
         loss = [self.scl_loss(glo_feat, labels) for glo_feat in x]
         loss = sum(loss) / len(loss)
+
+        # loss = self.scl_loss(x, labels)
         return loss * self.lam
     
 

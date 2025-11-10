@@ -183,8 +183,8 @@ class Transformer(nn.Module):
 
         # ''''''
         # # 0. prepare
-        # self.num_views, H_img, W_img = 5, 256, 256
-        # self.C_feat, self.H_feat, self.W_feat = 256, 8, 8
+        # self.num_views, H_img, W_img = 5, 448, 448
+        # self.C_feat, self.H_feat, self.W_feat = 256, 14, 14
         # # self.C_feat, self.H_feat, self.W_feat = 256, 16, 16
         # self.patch_size_h, self.patch_size_w = H_img // self.H_feat, W_img // self.W_feat
         # self.num_query = self.H_feat * self.W_feat
@@ -210,7 +210,7 @@ class Transformer(nn.Module):
         # self.index_combinations = index_combinations[mask]
         
         # # 3. load saved fundamental_matrix
-        # path = './fundamental_matrix_results_full.pth'
+        # path = './matchanything_FM_RANSAC_fundamental_matrix_results_full.pth'
         # self.fundamental_matrix_results = torch.load(path)
         # ''''''
 
@@ -271,7 +271,6 @@ class Transformer(nn.Module):
         return mask
 
     def forward(self, src, pos_embed, img_path=None):
-        #import ipdb; ipdb.set_trace()
         _, batch_size, _ = src.shape
         pos_embed = torch.cat(
             [pos_embed.unsqueeze(1)] * batch_size, dim=1
@@ -291,7 +290,7 @@ class Transformer(nn.Module):
             src, mask=mask_enc, pos=pos_embed, img_path=img_path
         )  # (H X W) x B x C
         
-        
+        # #import ipdb; ipdb.set_trace()
         # B = output_encoder.shape[1] // self.num_views
         # mid = rearrange(output_encoder, "(h w) (b v) c -> b v c h w", h=self.H_feat, v=self.num_views)
 
@@ -317,7 +316,7 @@ class Transformer(nn.Module):
         #             batch_fundamental_matrix[b, idx] = self.fundamental_matrix_results[key]
         #             valid_mask[b, idx] = True
                     
-
+        # #import ipdb; ipdb.set_trace()
         # # 仅处理有效矩阵对
         # valid_indices = torch.nonzero(valid_mask)
         # b_ids, pair_ids = valid_indices[:, 0], valid_indices[:, 1]
@@ -332,6 +331,9 @@ class Transformer(nn.Module):
         # a, b, c = a.unsqueeze(2), b.unsqueeze(2), c.unsqueeze(2) # 各[num_valid, num_query, 1]
         
         # # 计算极线距离
+        # # eps = 1e-6  # 避免分母为0
+        # # denominator = (a**2 + b**2).clamp(min=eps).sqrt()  # 先clamp再开方，确保分母≥sqrt(eps)
+        # # dist = torch.abs(a * self.u2_coord + b * self.v2_coord + c) / denominator
         # dist = torch.abs(a * self.u2_coord + b * self.v2_coord + c) / (a**2 + b**2).sqrt() # [num_valid, num_query, H*W]
         # masks = dist < max(self.patch_size_h, self.patch_size_w) / 2  # [num_valid, num_query, H, W]
 
@@ -349,6 +351,10 @@ class Transformer(nn.Module):
         #         K[idx].unsqueeze(0).expand(self.num_query, -1, -1),
         #         attn_mask=attn_mask.unsqueeze(1)
         #     ).squeeze(1)
+        #     # # NAN check
+        #     # if torch.isnan(attn_out[idx]).any():
+        #     #     attn_out[idx] = Q[idx]
+
         # # attn_mask = ~masks
         # # attn_out = F.scaled_dot_product_attention(
         # #     Q.unsqueeze(2), 
@@ -448,6 +454,9 @@ class Transformer(nn.Module):
             memory_mask=mask_dec2,
             pos=pos_embed,
         )  # (H X W) x B x C
+
+        # if torch.isnan(output_decoder).any():
+        #     import ipdb; ipdb.set_trace()
 
         return output_decoder, output_encoder
 

@@ -1,0 +1,968 @@
+2025-09-11 22:29:07,743 - ==> Logging on master GPU: 0
+2025-09-11 22:29:07,743 - ==> Running Trainer: RDEpipolarTrainer
+2025-09-11 22:29:07,743 - ==> Using GPU: [0] for Training
+2025-09-11 22:29:07,743 - ==> Building model
+2025-09-11 22:29:07,923 - Loading pretrained weights from url (https://download.pytorch.org/models/resnet18-5c106cde.pth)
+2025-09-11 22:29:13,617 - 
+------------------------------------ RDEpipolar ------------------------------------
+| module                                             | #parameters or shape   | #flops       |
+|:---------------------------------------------------|:-----------------------|:-------------|
+| model                                              | 31.561M                | 5.207G       |
+|  net_t                                             |  2.783M                |  1.838G      |
+|   net_t.conv1                                      |   9.408K               |   0.154G     |
+|    net_t.conv1.weight                              |    (64, 3, 7, 7)       |              |
+|   net_t.bn1                                        |   0.128K               |   2.097M     |
+|    net_t.bn1.weight                                |    (64,)               |              |
+|    net_t.bn1.bias                                  |    (64,)               |              |
+|   net_t.layer1                                     |   0.148M               |   0.606G     |
+|    net_t.layer1.0                                  |    73.984K             |    0.303G    |
+|     net_t.layer1.0.conv1                           |     36.864K            |     0.151G   |
+|      net_t.layer1.0.conv1.weight                   |      (64, 64, 3, 3)    |              |
+|     net_t.layer1.0.bn1                             |     0.128K             |     0.524M   |
+|      net_t.layer1.0.bn1.weight                     |      (64,)             |              |
+|      net_t.layer1.0.bn1.bias                       |      (64,)             |              |
+|     net_t.layer1.0.conv2                           |     36.864K            |     0.151G   |
+|      net_t.layer1.0.conv2.weight                   |      (64, 64, 3, 3)    |              |
+|     net_t.layer1.0.bn2                             |     0.128K             |     0.524M   |
+|      net_t.layer1.0.bn2.weight                     |      (64,)             |              |
+|      net_t.layer1.0.bn2.bias                       |      (64,)             |              |
+|    net_t.layer1.1                                  |    73.984K             |    0.303G    |
+|     net_t.layer1.1.conv1                           |     36.864K            |     0.151G   |
+|      net_t.layer1.1.conv1.weight                   |      (64, 64, 3, 3)    |              |
+|     net_t.layer1.1.bn1                             |     0.128K             |     0.524M   |
+|      net_t.layer1.1.bn1.weight                     |      (64,)             |              |
+|      net_t.layer1.1.bn1.bias                       |      (64,)             |              |
+|     net_t.layer1.1.conv2                           |     36.864K            |     0.151G   |
+|      net_t.layer1.1.conv2.weight                   |      (64, 64, 3, 3)    |              |
+|     net_t.layer1.1.bn2                             |     0.128K             |     0.524M   |
+|      net_t.layer1.1.bn2.weight                     |      (64,)             |              |
+|      net_t.layer1.1.bn2.bias                       |      (64,)             |              |
+|   net_t.layer2                                     |   0.526M               |   0.538G     |
+|    net_t.layer2.0                                  |    0.23M               |    0.236G    |
+|     net_t.layer2.0.conv1                           |     73.728K            |     75.497M  |
+|      net_t.layer2.0.conv1.weight                   |      (128, 64, 3, 3)   |              |
+|     net_t.layer2.0.bn1                             |     0.256K             |     0.262M   |
+|      net_t.layer2.0.bn1.weight                     |      (128,)            |              |
+|      net_t.layer2.0.bn1.bias                       |      (128,)            |              |
+|     net_t.layer2.0.conv2                           |     0.147M             |     0.151G   |
+|      net_t.layer2.0.conv2.weight                   |      (128, 128, 3, 3)  |              |
+|     net_t.layer2.0.bn2                             |     0.256K             |     0.262M   |
+|      net_t.layer2.0.bn2.weight                     |      (128,)            |              |
+|      net_t.layer2.0.bn2.bias                       |      (128,)            |              |
+|     net_t.layer2.0.downsample                      |     8.448K             |     8.651M   |
+|      net_t.layer2.0.downsample.0                   |      8.192K            |      8.389M  |
+|      net_t.layer2.0.downsample.1                   |      0.256K            |      0.262M  |
+|    net_t.layer2.1                                  |    0.295M              |    0.303G    |
+|     net_t.layer2.1.conv1                           |     0.147M             |     0.151G   |
+|      net_t.layer2.1.conv1.weight                   |      (128, 128, 3, 3)  |              |
+|     net_t.layer2.1.bn1                             |     0.256K             |     0.262M   |
+|      net_t.layer2.1.bn1.weight                     |      (128,)            |              |
+|      net_t.layer2.1.bn1.bias                       |      (128,)            |              |
+|     net_t.layer2.1.conv2                           |     0.147M             |     0.151G   |
+|      net_t.layer2.1.conv2.weight                   |      (128, 128, 3, 3)  |              |
+|     net_t.layer2.1.bn2                             |     0.256K             |     0.262M   |
+|      net_t.layer2.1.bn2.weight                     |      (128,)            |              |
+|      net_t.layer2.1.bn2.bias                       |      (128,)            |              |
+|   net_t.layer3                                     |   2.1M                 |   0.538G     |
+|    net_t.layer3.0                                  |    0.919M              |    0.235G    |
+|     net_t.layer3.0.conv1                           |     0.295M             |     75.497M  |
+|      net_t.layer3.0.conv1.weight                   |      (256, 128, 3, 3)  |              |
+|     net_t.layer3.0.bn1                             |     0.512K             |     0.131M   |
+|      net_t.layer3.0.bn1.weight                     |      (256,)            |              |
+|      net_t.layer3.0.bn1.bias                       |      (256,)            |              |
+|     net_t.layer3.0.conv2                           |     0.59M              |     0.151G   |
+|      net_t.layer3.0.conv2.weight                   |      (256, 256, 3, 3)  |              |
+|     net_t.layer3.0.bn2                             |     0.512K             |     0.131M   |
+|      net_t.layer3.0.bn2.weight                     |      (256,)            |              |
+|      net_t.layer3.0.bn2.bias                       |      (256,)            |              |
+|     net_t.layer3.0.downsample                      |     33.28K             |     8.52M    |
+|      net_t.layer3.0.downsample.0                   |      32.768K           |      8.389M  |
+|      net_t.layer3.0.downsample.1                   |      0.512K            |      0.131M  |
+|    net_t.layer3.1                                  |    1.181M              |    0.302G    |
+|     net_t.layer3.1.conv1                           |     0.59M              |     0.151G   |
+|      net_t.layer3.1.conv1.weight                   |      (256, 256, 3, 3)  |              |
+|     net_t.layer3.1.bn1                             |     0.512K             |     0.131M   |
+|      net_t.layer3.1.bn1.weight                     |      (256,)            |              |
+|      net_t.layer3.1.bn1.bias                       |      (256,)            |              |
+|     net_t.layer3.1.conv2                           |     0.59M              |     0.151G   |
+|      net_t.layer3.1.conv2.weight                   |      (256, 256, 3, 3)  |              |
+|     net_t.layer3.1.bn2                             |     0.512K             |     0.131M   |
+|      net_t.layer3.1.bn2.weight                     |      (256,)            |              |
+|      net_t.layer3.1.bn2.bias                       |      (256,)            |              |
+|  mff_oce                                           |  16.401M               |  1.234G      |
+|   mff_oce.bn_layer                                 |   15.736M              |   1.007G     |
+|    mff_oce.bn_layer.0                              |    6.295M              |    0.403G    |
+|     mff_oce.bn_layer.0.conv1                       |     3.539M             |     0.226G   |
+|      mff_oce.bn_layer.0.conv1.weight               |      (512, 768, 3, 3)  |              |
+|     mff_oce.bn_layer.0.bn1                         |     1.024K             |     65.536K  |
+|      mff_oce.bn_layer.0.bn1.weight                 |      (512,)            |              |
+|      mff_oce.bn_layer.0.bn1.bias                   |      (512,)            |              |
+|     mff_oce.bn_layer.0.conv2                       |     2.359M             |     0.151G   |
+|      mff_oce.bn_layer.0.conv2.weight               |      (512, 512, 3, 3)  |              |
+|     mff_oce.bn_layer.0.bn2                         |     1.024K             |     65.536K  |
+|      mff_oce.bn_layer.0.bn2.weight                 |      (512,)            |              |
+|      mff_oce.bn_layer.0.bn2.bias                   |      (512,)            |              |
+|     mff_oce.bn_layer.0.downsample                  |     0.394M             |     25.231M  |
+|      mff_oce.bn_layer.0.downsample.0               |      0.393M            |      25.166M |
+|      mff_oce.bn_layer.0.downsample.1               |      1.024K            |      65.536K |
+|    mff_oce.bn_layer.1                              |    4.721M              |    0.302G    |
+|     mff_oce.bn_layer.1.conv1                       |     2.359M             |     0.151G   |
+|      mff_oce.bn_layer.1.conv1.weight               |      (512, 512, 3, 3)  |              |
+|     mff_oce.bn_layer.1.bn1                         |     1.024K             |     65.536K  |
+|      mff_oce.bn_layer.1.bn1.weight                 |      (512,)            |              |
+|      mff_oce.bn_layer.1.bn1.bias                   |      (512,)            |              |
+|     mff_oce.bn_layer.1.conv2                       |     2.359M             |     0.151G   |
+|      mff_oce.bn_layer.1.conv2.weight               |      (512, 512, 3, 3)  |              |
+|     mff_oce.bn_layer.1.bn2                         |     1.024K             |     65.536K  |
+|      mff_oce.bn_layer.1.bn2.weight                 |      (512,)            |              |
+|      mff_oce.bn_layer.1.bn2.bias                   |      (512,)            |              |
+|    mff_oce.bn_layer.2                              |    4.721M              |    0.302G    |
+|     mff_oce.bn_layer.2.conv1                       |     2.359M             |     0.151G   |
+|      mff_oce.bn_layer.2.conv1.weight               |      (512, 512, 3, 3)  |              |
+|     mff_oce.bn_layer.2.bn1                         |     1.024K             |     65.536K  |
+|      mff_oce.bn_layer.2.bn1.weight                 |      (512,)            |              |
+|      mff_oce.bn_layer.2.bn1.bias                   |      (512,)            |              |
+|     mff_oce.bn_layer.2.conv2                       |     2.359M             |     0.151G   |
+|      mff_oce.bn_layer.2.conv2.weight               |      (512, 512, 3, 3)  |              |
+|     mff_oce.bn_layer.2.bn2                         |     1.024K             |     65.536K  |
+|      mff_oce.bn_layer.2.bn2.weight                 |      (512,)            |              |
+|      mff_oce.bn_layer.2.bn2.bias                   |      (512,)            |              |
+|   mff_oce.conv1                                    |   73.728K              |   75.497M    |
+|    mff_oce.conv1.weight                            |    (128, 64, 3, 3)     |              |
+|   mff_oce.bn1                                      |   0.256K               |   0.262M     |
+|    mff_oce.bn1.weight                              |    (128,)              |              |
+|    mff_oce.bn1.bias                                |    (128,)              |              |
+|   mff_oce.conv2                                    |   0.295M               |   75.497M    |
+|    mff_oce.conv2.weight                            |    (256, 128, 3, 3)    |              |
+|   mff_oce.bn2                                      |   0.512K               |   0.131M     |
+|    mff_oce.bn2.weight                              |    (256,)              |              |
+|    mff_oce.bn2.bias                                |    (256,)              |              |
+|   mff_oce.conv3                                    |   0.295M               |   75.497M    |
+|    mff_oce.conv3.weight                            |    (256, 128, 3, 3)    |              |
+|   mff_oce.bn3                                      |   0.512K               |   0.131M     |
+|    mff_oce.bn3.weight                              |    (256,)              |              |
+|    mff_oce.bn3.bias                                |    (256,)              |              |
+|  net_s                                             |  3.703M                |  1.565G      |
+|   net_s.layer1                                     |   2.821M               |   0.521G     |
+|    net_s.layer1.0                                  |    1.64M               |    0.218G    |
+|     net_s.layer1.0.conv1                           |     0.524M             |     33.554M  |
+|      net_s.layer1.0.conv1.weight                   |      (512, 256, 2, 2)  |              |
+|     net_s.layer1.0.bn1                             |     0.512K             |     0.131M   |
+|      net_s.layer1.0.bn1.weight                     |      (256,)            |              |
+|      net_s.layer1.0.bn1.bias                       |      (256,)            |              |
+|     net_s.layer1.0.conv2                           |     0.59M              |     0.151G   |
+|      net_s.layer1.0.conv2.weight                   |      (256, 256, 3, 3)  |              |
+|     net_s.layer1.0.bn2                             |     0.512K             |     0.131M   |
+|      net_s.layer1.0.bn2.weight                     |      (256,)            |              |
+|      net_s.layer1.0.bn2.bias                       |      (256,)            |              |
+|     net_s.layer1.0.upsample                        |     0.525M             |     33.686M  |
+|      net_s.layer1.0.upsample.0                     |      0.524M            |      33.554M |
+|      net_s.layer1.0.upsample.1                     |      0.512K            |      0.131M  |
+|    net_s.layer1.1                                  |    1.181M              |    0.302G    |
+|     net_s.layer1.1.conv1                           |     0.59M              |     0.151G   |
+|      net_s.layer1.1.conv1.weight                   |      (256, 256, 3, 3)  |              |
+|     net_s.layer1.1.bn1                             |     0.512K             |     0.131M   |
+|      net_s.layer1.1.bn1.weight                     |      (256,)            |              |
+|      net_s.layer1.1.bn1.bias                       |      (256,)            |              |
+|     net_s.layer1.1.conv2                           |     0.59M              |     0.151G   |
+|      net_s.layer1.1.conv2.weight                   |      (256, 256, 3, 3)  |              |
+|     net_s.layer1.1.bn2                             |     0.512K             |     0.131M   |
+|      net_s.layer1.1.bn2.weight                     |      (256,)            |              |
+|      net_s.layer1.1.bn2.bias                       |      (256,)            |              |
+|   net_s.layer2                                     |   0.706M               |   0.521G     |
+|    net_s.layer2.0                                  |    0.41M               |    0.219G    |
+|     net_s.layer2.0.conv1                           |     0.131M             |     33.554M  |
+|      net_s.layer2.0.conv1.weight                   |      (256, 128, 2, 2)  |              |
+|     net_s.layer2.0.bn1                             |     0.256K             |     0.262M   |
+|      net_s.layer2.0.bn1.weight                     |      (128,)            |              |
+|      net_s.layer2.0.bn1.bias                       |      (128,)            |              |
+|     net_s.layer2.0.conv2                           |     0.147M             |     0.151G   |
+|      net_s.layer2.0.conv2.weight                   |      (128, 128, 3, 3)  |              |
+|     net_s.layer2.0.bn2                             |     0.256K             |     0.262M   |
+|      net_s.layer2.0.bn2.weight                     |      (128,)            |              |
+|      net_s.layer2.0.bn2.bias                       |      (128,)            |              |
+|     net_s.layer2.0.upsample                        |     0.131M             |     33.817M  |
+|      net_s.layer2.0.upsample.0                     |      0.131M            |      33.554M |
+|      net_s.layer2.0.upsample.1                     |      0.256K            |      0.262M  |
+|    net_s.layer2.1                                  |    0.295M              |    0.303G    |
+|     net_s.layer2.1.conv1                           |     0.147M             |     0.151G   |
+|      net_s.layer2.1.conv1.weight                   |      (128, 128, 3, 3)  |              |
+|     net_s.layer2.1.bn1                             |     0.256K             |     0.262M   |
+|      net_s.layer2.1.bn1.weight                     |      (128,)            |              |
+|      net_s.layer2.1.bn1.bias                       |      (128,)            |              |
+|     net_s.layer2.1.conv2                           |     0.147M             |     0.151G   |
+|      net_s.layer2.1.conv2.weight                   |      (128, 128, 3, 3)  |              |
+|     net_s.layer2.1.bn2                             |     0.256K             |     0.262M   |
+|      net_s.layer2.1.bn2.weight                     |      (128,)            |              |
+|      net_s.layer2.1.bn2.bias                       |      (128,)            |              |
+|   net_s.layer3                                     |   0.177M               |   0.523G     |
+|    net_s.layer3.0                                  |    0.103M              |    0.22G     |
+|     net_s.layer3.0.conv1                           |     32.768K            |     33.554M  |
+|      net_s.layer3.0.conv1.weight                   |      (128, 64, 2, 2)   |              |
+|     net_s.layer3.0.bn1                             |     0.128K             |     0.524M   |
+|      net_s.layer3.0.bn1.weight                     |      (64,)             |              |
+|      net_s.layer3.0.bn1.bias                       |      (64,)             |              |
+|     net_s.layer3.0.conv2                           |     36.864K            |     0.151G   |
+|      net_s.layer3.0.conv2.weight                   |      (64, 64, 3, 3)    |              |
+|     net_s.layer3.0.bn2                             |     0.128K             |     0.524M   |
+|      net_s.layer3.0.bn2.weight                     |      (64,)             |              |
+|      net_s.layer3.0.bn2.bias                       |      (64,)             |              |
+|     net_s.layer3.0.upsample                        |     32.896K            |     34.079M  |
+|      net_s.layer3.0.upsample.0                     |      32.768K           |      33.554M |
+|      net_s.layer3.0.upsample.1                     |      0.128K            |      0.524M  |
+|    net_s.layer3.1                                  |    73.984K             |    0.303G    |
+|     net_s.layer3.1.conv1                           |     36.864K            |     0.151G   |
+|      net_s.layer3.1.conv1.weight                   |      (64, 64, 3, 3)    |              |
+|     net_s.layer3.1.bn1                             |     0.128K             |     0.524M   |
+|      net_s.layer3.1.bn1.weight                     |      (64,)             |              |
+|      net_s.layer3.1.bn1.bias                       |      (64,)             |              |
+|     net_s.layer3.1.conv2                           |     36.864K            |     0.151G   |
+|      net_s.layer3.1.conv2.weight                   |      (64, 64, 3, 3)    |              |
+|     net_s.layer3.1.bn2                             |     0.128K             |     0.524M   |
+|      net_s.layer3.1.bn2.weight                     |      (64,)             |              |
+|      net_s.layer3.1.bn2.bias                       |      (64,)             |              |
+|  proj_layer                                        |  0.969M                |  0.57G       |
+|   proj_layer.proj_a.proj                           |   46.224K              |   0.191G     |
+|    proj_layer.proj_a.proj.0                        |    18.464K             |    75.497M   |
+|     proj_layer.proj_a.proj.0.weight                |     (32, 64, 3, 3)     |              |
+|     proj_layer.proj_a.proj.0.bias                  |     (32,)              |              |
+|    proj_layer.proj_a.proj.3                        |    4.624K              |    18.874M   |
+|     proj_layer.proj_a.proj.3.weight                |     (16, 32, 3, 3)     |              |
+|     proj_layer.proj_a.proj.3.bias                  |     (16,)              |              |
+|    proj_layer.proj_a.proj.6                        |    4.64K               |    18.874M   |
+|     proj_layer.proj_a.proj.6.weight                |     (32, 16, 3, 3)     |              |
+|     proj_layer.proj_a.proj.6.bias                  |     (32,)              |              |
+|    proj_layer.proj_a.proj.9                        |    18.496K             |    75.497M   |
+|     proj_layer.proj_a.proj.9.weight                |     (64, 32, 3, 3)     |              |
+|     proj_layer.proj_a.proj.9.bias                  |     (64,)              |              |
+|    proj_layer.proj_a.proj.1                        |                        |    0.524M    |
+|    proj_layer.proj_a.proj.4                        |                        |    0.262M    |
+|    proj_layer.proj_a.proj.7                        |                        |    0.524M    |
+|    proj_layer.proj_a.proj.10                       |                        |    1.049M    |
+|   proj_layer.proj_b.proj                           |   0.185M               |   0.19G      |
+|    proj_layer.proj_b.proj.0                        |    73.792K             |    75.497M   |
+|     proj_layer.proj_b.proj.0.weight                |     (64, 128, 3, 3)    |              |
+|     proj_layer.proj_b.proj.0.bias                  |     (64,)              |              |
+|    proj_layer.proj_b.proj.3                        |    18.464K             |    18.874M   |
+|     proj_layer.proj_b.proj.3.weight                |     (32, 64, 3, 3)     |              |
+|     proj_layer.proj_b.proj.3.bias                  |     (32,)              |              |
+|    proj_layer.proj_b.proj.6                        |    18.496K             |    18.874M   |
+|     proj_layer.proj_b.proj.6.weight                |     (64, 32, 3, 3)     |              |
+|     proj_layer.proj_b.proj.6.bias                  |     (64,)              |              |
+|    proj_layer.proj_b.proj.9                        |    73.856K             |    75.497M   |
+|     proj_layer.proj_b.proj.9.weight                |     (128, 64, 3, 3)    |              |
+|     proj_layer.proj_b.proj.9.bias                  |     (128,)             |              |
+|    proj_layer.proj_b.proj.1                        |                        |    0.262M    |
+|    proj_layer.proj_b.proj.4                        |                        |    0.131M    |
+|    proj_layer.proj_b.proj.7                        |                        |    0.262M    |
+|    proj_layer.proj_b.proj.10                       |                        |    0.524M    |
+|   proj_layer.proj_c.proj                           |   0.738M               |   0.189G     |
+|    proj_layer.proj_c.proj.0                        |    0.295M              |    75.497M   |
+|     proj_layer.proj_c.proj.0.weight                |     (128, 256, 3, 3)   |              |
+|     proj_layer.proj_c.proj.0.bias                  |     (128,)             |              |
+|    proj_layer.proj_c.proj.3                        |    73.792K             |    18.874M   |
+|     proj_layer.proj_c.proj.3.weight                |     (64, 128, 3, 3)    |              |
+|     proj_layer.proj_c.proj.3.bias                  |     (64,)              |              |
+|    proj_layer.proj_c.proj.6                        |    73.856K             |    18.874M   |
+|     proj_layer.proj_c.proj.6.weight                |     (128, 64, 3, 3)    |              |
+|     proj_layer.proj_c.proj.6.bias                  |     (128,)             |              |
+|    proj_layer.proj_c.proj.9                        |    0.295M              |    75.497M   |
+|     proj_layer.proj_c.proj.9.weight                |     (256, 128, 3, 3)   |              |
+|     proj_layer.proj_c.proj.9.bias                  |     (256,)             |              |
+|    proj_layer.proj_c.proj.1                        |                        |    0.131M    |
+|    proj_layer.proj_c.proj.4                        |                        |    65.536K   |
+|    proj_layer.proj_c.proj.7                        |                        |    0.131M    |
+|    proj_layer.proj_c.proj.10                       |                        |    0.262M    |
+|  net_ad                                            |  7.706M                |              |
+|   net_ad.pos_embed                                 |   2.048K               |              |
+|    net_ad.pos_embed.row_embed                      |    1.024K              |              |
+|     net_ad.pos_embed.row_embed.weight              |     (8, 128)           |              |
+|    net_ad.pos_embed.col_embed                      |    1.024K              |              |
+|     net_ad.pos_embed.col_embed.weight              |     (8, 128)           |              |
+|   net_ad.transformer                               |   7.441M               |              |
+|    net_ad.transformer.encoder.layers               |    3.161M              |              |
+|     net_ad.transformer.encoder.layers.0            |     0.79M              |              |
+|      net_ad.transformer.encoder.layers.0.self_attn |      0.263M            |              |
+|      net_ad.transformer.encoder.layers.0.linear1   |      0.263M            |              |
+|      net_ad.transformer.encoder.layers.0.linear2   |      0.262M            |              |
+|      net_ad.transformer.encoder.layers.0.norm1     |      0.512K            |              |
+|      net_ad.transformer.encoder.layers.0.norm2     |      0.512K            |              |
+|      net_ad.transformer.encoder.layers.0.norm_mid  |      0.512K            |              |
+|     net_ad.transformer.encoder.layers.1            |     0.79M              |              |
+|      net_ad.transformer.encoder.layers.1.self_attn |      0.263M            |              |
+|      net_ad.transformer.encoder.layers.1.linear1   |      0.263M            |              |
+|      net_ad.transformer.encoder.layers.1.linear2   |      0.262M            |              |
+|      net_ad.transformer.encoder.layers.1.norm1     |      0.512K            |              |
+|      net_ad.transformer.encoder.layers.1.norm2     |      0.512K            |              |
+|      net_ad.transformer.encoder.layers.1.norm_mid  |      0.512K            |              |
+|     net_ad.transformer.encoder.layers.2            |     0.79M              |              |
+|      net_ad.transformer.encoder.layers.2.self_attn |      0.263M            |              |
+|      net_ad.transformer.encoder.layers.2.linear1   |      0.263M            |              |
+|      net_ad.transformer.encoder.layers.2.linear2   |      0.262M            |              |
+|      net_ad.transformer.encoder.layers.2.norm1     |      0.512K            |              |
+|      net_ad.transformer.encoder.layers.2.norm2     |      0.512K            |              |
+|      net_ad.transformer.encoder.layers.2.norm_mid  |      0.512K            |              |
+|     net_ad.transformer.encoder.layers.3            |     0.79M              |              |
+|      net_ad.transformer.encoder.layers.3.self_attn |      0.263M            |              |
+|      net_ad.transformer.encoder.layers.3.linear1   |      0.263M            |              |
+|      net_ad.transformer.encoder.layers.3.linear2   |      0.262M            |              |
+|      net_ad.transformer.encoder.layers.3.norm1     |      0.512K            |              |
+|      net_ad.transformer.encoder.layers.3.norm2     |      0.512K            |              |
+|      net_ad.transformer.encoder.layers.3.norm_mid  |      0.512K            |              |
+|    net_ad.transformer.decoder                      |    4.28M               |              |
+|     net_ad.transformer.decoder.layers              |     4.279M             |              |
+|      net_ad.transformer.decoder.layers.0           |      1.07M             |              |
+|      net_ad.transformer.decoder.layers.1           |      1.07M             |              |
+|      net_ad.transformer.decoder.layers.2           |      1.07M             |              |
+|      net_ad.transformer.decoder.layers.3           |      1.07M             |              |
+|     net_ad.transformer.decoder.norm                |     0.512K             |              |
+|      net_ad.transformer.decoder.norm.weight        |      (256,)            |              |
+|      net_ad.transformer.decoder.norm.bias          |      (256,)            |              |
+|   net_ad.input_proj                                |   0.131M               |              |
+|    net_ad.input_proj.weight                        |    (256, 512)          |              |
+|    net_ad.input_proj.bias                          |    (256,)              |              |
+|   net_ad.output_proj                               |   0.132M               |              |
+|    net_ad.output_proj.weight                       |    (512, 256)          |              |
+|    net_ad.output_proj.bias                         |    (512,)              |              |
+------------------------------------------------------------------------------------
+2025-09-11 22:29:13,618 - ==> Creating optimizer
+2025-09-11 22:29:13,619 - ==> Loading dataset: RealIAD
+2025-09-11 22:29:13,644 - ==> ********** cfg ********** 
+fvcore_is                            : True                                
+fvcore_b                             : 1                                   
+fvcore_c                             : 3                                   
+epoch_full                           : 100                                 
+metrics                              : ['S_AUROC', 'S_AUPR', 'mAUROC_sp_max', 'mAP_sp_max', 'mF1_max_sp_max', 'mAUROC_px', 'mAP_px', 'mF1_max_px', 'mAUPRO_px', 'mIoU_max_px']
+use_adeval                           : True                                
+evaluator.kwargs                     : {'metrics': ['S_AUROC', 'S_AUPR', 'mAUROC_sp_max', 'mAP_sp_max', 'mF1_max_sp_max', 'mAUROC_px', 'mAP_px', 'mF1_max_px', 'mAUPRO_px', 'mIoU_max_px'], 'pooling_ks': [16, 16], 'max_step_aupro': 100, 'use_adeval': True}
+optim.lr                             : 5e-05                               
+optim.kwargs                         : {'name': 'adamw', 'betas': (0.9, 0.999), 'eps': 1e-08, 'weight_decay': 0.0001, 'amsgrad': False}
+trainer.name                         : RDEpipolarTrainer                   
+trainer.checkpoint                   : runs                                
+trainer.logdir_sub                   :                                     
+trainer.resume_dir                   :                                     
+trainer.cuda_deterministic           : False                               
+trainer.epoch_full                   : 100                                 
+trainer.scheduler_kwargs             : {'name': 'step', 'lr_noise': None, 'noise_pct': 0.67, 'noise_std': 1.0, 'noise_seed': 42, 'lr_min': 5e-07, 'warmup_lr': 5.0000000000000004e-08, 'warmup_iters': -1, 'cooldown_iters': 0, 'warmup_epochs': 0, 'cooldown_epochs': 0, 'use_iters': True, 'patience_iters': 0, 'patience_epochs': 0, 'decay_iters': 0, 'decay_epochs': 80, 'cycle_decay': 0.1, 'decay_rate': 0.1}
+trainer.mixup_kwargs                 : {'mixup_alpha': 0.8, 'cutmix_alpha': 1.0, 'cutmix_minmax': None, 'prob': 0.0, 'switch_prob': 0.5, 'mode': 'batch', 'correct_lam': True, 'label_smoothing': 0.1}
+trainer.test_start_epoch             : 100                                 
+trainer.test_per_epoch               : 100                                 
+trainer.find_unused_parameters       : False                               
+trainer.sync_BN                      : apex                                
+trainer.dist_BN                      :                                     
+trainer.scaler                       : native                              
+trainer.data.batch_size              : 4                                   
+trainer.data.batch_size_per_gpu      : 4                                   
+trainer.data.batch_size_test         : 4                                   
+trainer.data.batch_size_per_gpu_test : 4                                   
+trainer.data.num_workers_per_gpu     : 8                                   
+trainer.data.drop_last               : True                                
+trainer.data.pin_memory              : True                                
+trainer.data.persistent_workers      : False                               
+trainer.data.num_workers             : 8                                   
+trainer.iter                         : 0                                   
+trainer.epoch                        : 0                                   
+trainer.iter_full                    : 17900                               
+trainer.metric_recorder              : {'S_AUROC_audiojack': [], 'S_AUPR_audiojack': [], 'mAUROC_sp_max_audiojack': [], 'mAP_sp_max_audiojack': [], 'mF1_max_sp_max_audiojack': [], 'mAUROC_px_audiojack': [], 'mAP_px_audiojack': [], 'mF1_max_px_audiojack': [], 'mAUPRO_px_audiojack': [], 'mIoU_max_px_audiojack': [], 'S_AUROC_bottle_cap': [], 'S_AUPR_bottle_cap': [], 'mAUROC_sp_max_bottle_cap': [], 'mAP_sp_max_bottle_cap': [], 'mF1_max_sp_max_bottle_cap': [], 'mAUROC_px_bottle_cap': [], 'mAP_px_bottle_cap': [], 'mF1_max_px_bottle_cap': [], 'mAUPRO_px_bottle_cap': [], 'mIoU_max_px_bottle_cap': [], 'S_AUROC_button_battery': [], 'S_AUPR_button_battery': [], 'mAUROC_sp_max_button_battery': [], 'mAP_sp_max_button_battery': [], 'mF1_max_sp_max_button_battery': [], 'mAUROC_px_button_battery': [], 'mAP_px_button_battery': [], 'mF1_max_px_button_battery': [], 'mAUPRO_px_button_battery': [], 'mIoU_max_px_button_battery': [], 'S_AUROC_end_cap': [], 'S_AUPR_end_cap': [], 'mAUROC_sp_max_end_cap': [], 'mAP_sp_max_end_cap': [], 'mF1_max_sp_max_end_cap': [], 'mAUROC_px_end_cap': [], 'mAP_px_end_cap': [], 'mF1_max_px_end_cap': [], 'mAUPRO_px_end_cap': [], 'mIoU_max_px_end_cap': [], 'S_AUROC_eraser': [], 'S_AUPR_eraser': [], 'mAUROC_sp_max_eraser': [], 'mAP_sp_max_eraser': [], 'mF1_max_sp_max_eraser': [], 'mAUROC_px_eraser': [], 'mAP_px_eraser': [], 'mF1_max_px_eraser': [], 'mAUPRO_px_eraser': [], 'mIoU_max_px_eraser': [], 'S_AUROC_fire_hood': [], 'S_AUPR_fire_hood': [], 'mAUROC_sp_max_fire_hood': [], 'mAP_sp_max_fire_hood': [], 'mF1_max_sp_max_fire_hood': [], 'mAUROC_px_fire_hood': [], 'mAP_px_fire_hood': [], 'mF1_max_px_fire_hood': [], 'mAUPRO_px_fire_hood': [], 'mIoU_max_px_fire_hood': [], 'S_AUROC_mint': [], 'S_AUPR_mint': [], 'mAUROC_sp_max_mint': [], 'mAP_sp_max_mint': [], 'mF1_max_sp_max_mint': [], 'mAUROC_px_mint': [], 'mAP_px_mint': [], 'mF1_max_px_mint': [], 'mAUPRO_px_mint': [], 'mIoU_max_px_mint': [], 'S_AUROC_mounts': [], 'S_AUPR_mounts': [], 'mAUROC_sp_max_mounts': [], 'mAP_sp_max_mounts': [], 'mF1_max_sp_max_mounts': [], 'mAUROC_px_mounts': [], 'mAP_px_mounts': [], 'mF1_max_px_mounts': [], 'mAUPRO_px_mounts': [], 'mIoU_max_px_mounts': [], 'S_AUROC_pcb': [], 'S_AUPR_pcb': [], 'mAUROC_sp_max_pcb': [], 'mAP_sp_max_pcb': [], 'mF1_max_sp_max_pcb': [], 'mAUROC_px_pcb': [], 'mAP_px_pcb': [], 'mF1_max_px_pcb': [], 'mAUPRO_px_pcb': [], 'mIoU_max_px_pcb': [], 'S_AUROC_phone_battery': [], 'S_AUPR_phone_battery': [], 'mAUROC_sp_max_phone_battery': [], 'mAP_sp_max_phone_battery': [], 'mF1_max_sp_max_phone_battery': [], 'mAUROC_px_phone_battery': [], 'mAP_px_phone_battery': [], 'mF1_max_px_phone_battery': [], 'mAUPRO_px_phone_battery': [], 'mIoU_max_px_phone_battery': [], 'S_AUROC_plastic_nut': [], 'S_AUPR_plastic_nut': [], 'mAUROC_sp_max_plastic_nut': [], 'mAP_sp_max_plastic_nut': [], 'mF1_max_sp_max_plastic_nut': [], 'mAUROC_px_plastic_nut': [], 'mAP_px_plastic_nut': [], 'mF1_max_px_plastic_nut': [], 'mAUPRO_px_plastic_nut': [], 'mIoU_max_px_plastic_nut': [], 'S_AUROC_plastic_plug': [], 'S_AUPR_plastic_plug': [], 'mAUROC_sp_max_plastic_plug': [], 'mAP_sp_max_plastic_plug': [], 'mF1_max_sp_max_plastic_plug': [], 'mAUROC_px_plastic_plug': [], 'mAP_px_plastic_plug': [], 'mF1_max_px_plastic_plug': [], 'mAUPRO_px_plastic_plug': [], 'mIoU_max_px_plastic_plug': [], 'S_AUROC_porcelain_doll': [], 'S_AUPR_porcelain_doll': [], 'mAUROC_sp_max_porcelain_doll': [], 'mAP_sp_max_porcelain_doll': [], 'mF1_max_sp_max_porcelain_doll': [], 'mAUROC_px_porcelain_doll': [], 'mAP_px_porcelain_doll': [], 'mF1_max_px_porcelain_doll': [], 'mAUPRO_px_porcelain_doll': [], 'mIoU_max_px_porcelain_doll': [], 'S_AUROC_regulator': [], 'S_AUPR_regulator': [], 'mAUROC_sp_max_regulator': [], 'mAP_sp_max_regulator': [], 'mF1_max_sp_max_regulator': [], 'mAUROC_px_regulator': [], 'mAP_px_regulator': [], 'mF1_max_px_regulator': [], 'mAUPRO_px_regulator': [], 'mIoU_max_px_regulator': [], 'S_AUROC_rolled_strip_base': [], 'S_AUPR_rolled_strip_base': [], 'mAUROC_sp_max_rolled_strip_base': [], 'mAP_sp_max_rolled_strip_base': [], 'mF1_max_sp_max_rolled_strip_base': [], 'mAUROC_px_rolled_strip_base': [], 'mAP_px_rolled_strip_base': [], 'mF1_max_px_rolled_strip_base': [], 'mAUPRO_px_rolled_strip_base': [], 'mIoU_max_px_rolled_strip_base': [], 'S_AUROC_sim_card_set': [], 'S_AUPR_sim_card_set': [], 'mAUROC_sp_max_sim_card_set': [], 'mAP_sp_max_sim_card_set': [], 'mF1_max_sp_max_sim_card_set': [], 'mAUROC_px_sim_card_set': [], 'mAP_px_sim_card_set': [], 'mF1_max_px_sim_card_set': [], 'mAUPRO_px_sim_card_set': [], 'mIoU_max_px_sim_card_set': [], 'S_AUROC_switch': [], 'S_AUPR_switch': [], 'mAUROC_sp_max_switch': [], 'mAP_sp_max_switch': [], 'mF1_max_sp_max_switch': [], 'mAUROC_px_switch': [], 'mAP_px_switch': [], 'mF1_max_px_switch': [], 'mAUPRO_px_switch': [], 'mIoU_max_px_switch': [], 'S_AUROC_tape': [], 'S_AUPR_tape': [], 'mAUROC_sp_max_tape': [], 'mAP_sp_max_tape': [], 'mF1_max_sp_max_tape': [], 'mAUROC_px_tape': [], 'mAP_px_tape': [], 'mF1_max_px_tape': [], 'mAUPRO_px_tape': [], 'mIoU_max_px_tape': [], 'S_AUROC_terminalblock': [], 'S_AUPR_terminalblock': [], 'mAUROC_sp_max_terminalblock': [], 'mAP_sp_max_terminalblock': [], 'mF1_max_sp_max_terminalblock': [], 'mAUROC_px_terminalblock': [], 'mAP_px_terminalblock': [], 'mF1_max_px_terminalblock': [], 'mAUPRO_px_terminalblock': [], 'mIoU_max_px_terminalblock': [], 'S_AUROC_toothbrush': [], 'S_AUPR_toothbrush': [], 'mAUROC_sp_max_toothbrush': [], 'mAP_sp_max_toothbrush': [], 'mF1_max_sp_max_toothbrush': [], 'mAUROC_px_toothbrush': [], 'mAP_px_toothbrush': [], 'mF1_max_px_toothbrush': [], 'mAUPRO_px_toothbrush': [], 'mIoU_max_px_toothbrush': [], 'S_AUROC_toy': [], 'S_AUPR_toy': [], 'mAUROC_sp_max_toy': [], 'mAP_sp_max_toy': [], 'mF1_max_sp_max_toy': [], 'mAUROC_px_toy': [], 'mAP_px_toy': [], 'mF1_max_px_toy': [], 'mAUPRO_px_toy': [], 'mIoU_max_px_toy': [], 'S_AUROC_toy_brick': [], 'S_AUPR_toy_brick': [], 'mAUROC_sp_max_toy_brick': [], 'mAP_sp_max_toy_brick': [], 'mF1_max_sp_max_toy_brick': [], 'mAUROC_px_toy_brick': [], 'mAP_px_toy_brick': [], 'mF1_max_px_toy_brick': [], 'mAUPRO_px_toy_brick': [], 'mIoU_max_px_toy_brick': [], 'S_AUROC_transistor1': [], 'S_AUPR_transistor1': [], 'mAUROC_sp_max_transistor1': [], 'mAP_sp_max_transistor1': [], 'mF1_max_sp_max_transistor1': [], 'mAUROC_px_transistor1': [], 'mAP_px_transistor1': [], 'mF1_max_px_transistor1': [], 'mAUPRO_px_transistor1': [], 'mIoU_max_px_transistor1': [], 'S_AUROC_u_block': [], 'S_AUPR_u_block': [], 'mAUROC_sp_max_u_block': [], 'mAP_sp_max_u_block': [], 'mF1_max_sp_max_u_block': [], 'mAUROC_px_u_block': [], 'mAP_px_u_block': [], 'mF1_max_px_u_block': [], 'mAUPRO_px_u_block': [], 'mIoU_max_px_u_block': [], 'S_AUROC_usb': [], 'S_AUPR_usb': [], 'mAUROC_sp_max_usb': [], 'mAP_sp_max_usb': [], 'mF1_max_sp_max_usb': [], 'mAUROC_px_usb': [], 'mAP_px_usb': [], 'mF1_max_px_usb': [], 'mAUPRO_px_usb': [], 'mIoU_max_px_usb': [], 'S_AUROC_usb_adaptor': [], 'S_AUPR_usb_adaptor': [], 'mAUROC_sp_max_usb_adaptor': [], 'mAP_sp_max_usb_adaptor': [], 'mF1_max_sp_max_usb_adaptor': [], 'mAUROC_px_usb_adaptor': [], 'mAP_px_usb_adaptor': [], 'mF1_max_px_usb_adaptor': [], 'mAUPRO_px_usb_adaptor': [], 'mIoU_max_px_usb_adaptor': [], 'S_AUROC_vcpill': [], 'S_AUPR_vcpill': [], 'mAUROC_sp_max_vcpill': [], 'mAP_sp_max_vcpill': [], 'mF1_max_sp_max_vcpill': [], 'mAUROC_px_vcpill': [], 'mAP_px_vcpill': [], 'mF1_max_px_vcpill': [], 'mAUPRO_px_vcpill': [], 'mIoU_max_px_vcpill': [], 'S_AUROC_wooden_beads': [], 'S_AUPR_wooden_beads': [], 'mAUROC_sp_max_wooden_beads': [], 'mAP_sp_max_wooden_beads': [], 'mF1_max_sp_max_wooden_beads': [], 'mAUROC_px_wooden_beads': [], 'mAP_px_wooden_beads': [], 'mF1_max_px_wooden_beads': [], 'mAUPRO_px_wooden_beads': [], 'mIoU_max_px_wooden_beads': [], 'S_AUROC_woodstick': [], 'S_AUPR_woodstick': [], 'mAUROC_sp_max_woodstick': [], 'mAP_sp_max_woodstick': [], 'mF1_max_sp_max_woodstick': [], 'mAUROC_px_woodstick': [], 'mAP_px_woodstick': [], 'mF1_max_px_woodstick': [], 'mAUPRO_px_woodstick': [], 'mIoU_max_px_woodstick': [], 'S_AUROC_zipper': [], 'S_AUROC_Avg': [], 'S_AUPR_zipper': [], 'S_AUPR_Avg': [], 'mAUROC_sp_max_zipper': [], 'mAUROC_sp_max_Avg': [], 'mAP_sp_max_zipper': [], 'mAP_sp_max_Avg': [], 'mF1_max_sp_max_zipper': [], 'mF1_max_sp_max_Avg': [], 'mAUROC_px_zipper': [], 'mAUROC_px_Avg': [], 'mAP_px_zipper': [], 'mAP_px_Avg': [], 'mF1_max_px_zipper': [], 'mF1_max_px_Avg': [], 'mAUPRO_px_zipper': [], 'mAUPRO_px_Avg': [], 'mIoU_max_px_zipper': [], 'mIoU_max_px_Avg': []}
+loss.loss_terms                      : [{'type': 'CosLoss', 'name': 'cos', 'avg': False, 'lam': 1.0}]
+loss.clip_grad                       : 5.0                                 
+loss.create_graph                    : False                               
+loss.retain_graph                    : False                               
+adv                                  : False                               
+logging.log_terms_train              : [{'name': 'batch_t', 'fmt': ':>5.3f', 'add_name': 'avg'}, {'name': 'data_t', 'fmt': ':>5.3f'}, {'name': 'optim_t', 'fmt': ':>5.3f'}, {'name': 'lr', 'fmt': ':>7.6f'}, {'name': 'cos', 'suffixes': [''], 'fmt': ':>5.3f', 'add_name': 'avg'}]
+logging.log_terms_test               : [{'name': 'batch_t', 'fmt': ':>5.3f', 'add_name': 'avg'}, {'name': 'cos', 'suffixes': [''], 'fmt': ':>5.3f', 'add_name': 'avg'}]
+logging.train_reset_log_per          : 50                                  
+logging.train_log_per                : 50                                  
+logging.test_log_per                 : 50                                  
+data.sampler                         : naive                               
+data.loader_type                     : pil                                 
+data.loader_type_target              : pil_L                               
+data.type                            : RealIAD                             
+data.root                            : /home/albus/DataSets/REAL-IAD/realiad_256
+data.meta                            : meta.json                           
+data.cls_names                       : []                                  
+data.train_transforms                : [{'type': 'ToTensor'}, {'type': 'Normalize', 'mean': (0.485, 0.456, 0.406), 'std': (0.229, 0.224, 0.225), 'inplace': True}]
+data.test_transforms                 : [{'type': 'ToTensor'}, {'type': 'Normalize', 'mean': (0.485, 0.456, 0.406), 'std': (0.229, 0.224, 0.225), 'inplace': True}]
+data.target_transforms               : [{'type': 'ToTensor'}]              
+data.use_sample                      : True                                
+data.views                           : []                                  
+data.train_size                      : 179                                 
+data.test_size                       : 567                                 
+data.train_length                    : 717                                 
+data.test_length                     : 2266                                
+model_t.name                         : timm_resnet18                       
+model_t.kwargs                       : {'pretrained': True, 'checkpoint_path': '', 'strict': False, 'features_only': True, 'out_indices': [1, 2, 3]}
+model_s.name                         : de_resnet18                         
+model_s.kwargs                       : {'pretrained': False, 'checkpoint_path': '', 'strict': False}
+model.name                           : rdepipolar                          
+model.kwargs                         : {'pretrained': False, 'checkpoint_path': '', 'strict': True, 'model_t': Namespace(kwargs={'pretrained': True, 'checkpoint_path': '', 'strict': False, 'features_only': True, 'out_indices': [1, 2, 3]}, name='timm_resnet18'), 'model_s': Namespace(kwargs={'pretrained': False, 'checkpoint_path': '', 'strict': False}, name='de_resnet18')}
+seed                                 : 42                                  
+size                                 : 256                                 
+warmup_epochs                        : 0                                   
+test_start_epoch                     : 100                                 
+test_per_epoch                       : 100                                 
+batch_train                          : 4                                   
+batch_test_per                       : 4                                   
+lr                                   : 5e-05                               
+weight_decay                         : 0.0001                              
+cfg_path                             : configs.z_realiad_subsample.rdepipolar_256_100e
+mode                                 : train                               
+sleep                                : -1                                  
+memory                               : -1                                  
+dist_url                             : env://                              
+logger_rank                          : 0                                   
+opts                                 : []                                  
+command                              : python3 -m torch.distributed.launch --nproc_per_node=$nproc_per_node --nnodes=$nnodes --node_rank=$node_rank --master_addr=$master_addr --master_port=$master_port --use_env run.py -c configs.z_realiad_subsample.rdepipolar_256_100e -m train --sleep -1 --memory -1 --dist_url env:// --logger_rank 0 
+task_start_time                      : 2622038.655338086                   
+dist                                 : False                               
+world_size                           : 1                                   
+rank                                 : 0                                   
+local_rank                           : 0                                   
+ngpus_per_node                       : 1                                   
+nnodes                               : 1                                   
+master                               : True                                
+logdir                               : runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907
+logger.filters                       : []                                  
+logger.name                          : root                                
+logger.level                         : 20                                  
+logger.parent                        : None                                
+logger.propagate                     : True                                
+logger.disabled                      : False                               
+logdir_train                         : runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907/show_train
+logdir_test                          : runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907/show_test
+2025-09-11 22:29:13,645 - ==> Starting training with 1 nodes x 1 GPUs
+2025-09-11 22:29:19,971 - Train: 0.28% [50/17900]  [0.3/100.0] [batch_t 0.107 (0.123)] [data_t 0.002] [optim_t 0.106] [lr 0.000050] [cos 1.315 (1.556)]
+2025-09-11 22:29:25,036 - Train: 0.56% [100/17900]  [0.6/100.0] [batch_t 0.102 (0.101)] [data_t 0.002] [optim_t 0.100] [lr 0.000050] [cos 1.122 (1.186)]
+2025-09-11 22:29:30,101 - Train: 0.84% [150/17900]  [0.8/100.0] [batch_t 0.100 (0.101)] [data_t 0.002] [optim_t 0.098] [lr 0.000050] [cos 1.043 (1.057)]
+2025-09-11 22:29:32,967 - ==> Total time: 0:00:25	 Eta: 0:41:37 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:29:35,609 - Train: 1.12% [200/17900]  [1.1/100.0] [batch_t 0.102 (0.108)] [data_t 0.002] [optim_t 0.100] [lr 0.000050] [cos 0.962 (0.965)]
+2025-09-11 22:29:40,705 - Train: 1.40% [250/17900]  [1.4/100.0] [batch_t 0.100 (0.102)] [data_t 0.002] [optim_t 0.099] [lr 0.000050] [cos 0.900 (0.947)]
+2025-09-11 22:29:45,772 - Train: 1.68% [300/17900]  [1.7/100.0] [batch_t 0.101 (0.101)] [data_t 0.002] [optim_t 0.099] [lr 0.000050] [cos 0.883 (0.910)]
+2025-09-11 22:29:50,844 - Train: 1.96% [350/17900]  [2.0/100.0] [batch_t 0.096 (0.101)] [data_t 0.002] [optim_t 0.095] [lr 0.000050] [cos 0.848 (0.882)]
+2025-09-11 22:29:51,624 - ==> Total time: 0:00:43	 Eta: 0:35:50 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:29:56,397 - Train: 2.23% [400/17900]  [2.2/100.0] [batch_t 0.102 (0.103)] [data_t 0.002] [optim_t 0.100] [lr 0.000050] [cos 0.817 (0.859)]
+2025-09-11 22:30:01,521 - Train: 2.51% [450/17900]  [2.5/100.0] [batch_t 0.102 (0.102)] [data_t 0.002] [optim_t 0.100] [lr 0.000050] [cos 0.849 (0.836)]
+2025-09-11 22:30:06,589 - Train: 2.79% [500/17900]  [2.8/100.0] [batch_t 0.101 (0.101)] [data_t 0.002] [optim_t 0.099] [lr 0.000050] [cos 0.868 (0.826)]
+2025-09-11 22:30:10,300 - ==> Total time: 0:01:02	 Eta: 0:33:42 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:30:12,117 - Train: 3.07% [550/17900]  [3.1/100.0] [batch_t 0.100 (0.104)] [data_t 0.002] [optim_t 0.098] [lr 0.000050] [cos 0.806 (0.787)]
+2025-09-11 22:30:17,182 - Train: 3.35% [600/17900]  [3.4/100.0] [batch_t 0.100 (0.101)] [data_t 0.002] [optim_t 0.098] [lr 0.000050] [cos 0.822 (0.779)]
+2025-09-11 22:30:22,280 - Train: 3.63% [650/17900]  [3.6/100.0] [batch_t 0.100 (0.102)] [data_t 0.002] [optim_t 0.098] [lr 0.000050] [cos 0.771 (0.770)]
+2025-09-11 22:30:27,403 - Train: 3.91% [700/17900]  [3.9/100.0] [batch_t 0.103 (0.102)] [data_t 0.002] [optim_t 0.101] [lr 0.000050] [cos 0.707 (0.761)]
+2025-09-11 22:30:28,988 - ==> Total time: 0:01:21	 Eta: 0:32:29 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:30:32,955 - Train: 4.19% [750/17900]  [4.2/100.0] [batch_t 0.099 (0.103)] [data_t 0.002] [optim_t 0.098] [lr 0.000050] [cos 0.741 (0.745)]
+2025-09-11 22:30:38,033 - Train: 4.47% [800/17900]  [4.5/100.0] [batch_t 0.100 (0.102)] [data_t 0.002] [optim_t 0.098] [lr 0.000050] [cos 0.763 (0.725)]
+2025-09-11 22:30:43,125 - Train: 4.75% [850/17900]  [4.7/100.0] [batch_t 0.101 (0.102)] [data_t 0.002] [optim_t 0.099] [lr 0.000050] [cos 0.642 (0.705)]
+2025-09-11 22:30:47,655 - ==> Total time: 0:01:39	 Eta: 0:31:38 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:30:48,695 - Train: 5.03% [900/17900]  [5.0/100.0] [batch_t 0.104 (0.127)] [data_t 0.002] [optim_t 0.102] [lr 0.000050] [cos 0.636 (0.691)]
+2025-09-11 22:30:53,878 - Train: 5.31% [950/17900]  [5.3/100.0] [batch_t 0.105 (0.104)] [data_t 0.002] [optim_t 0.103] [lr 0.000050] [cos 0.675 (0.683)]
+2025-09-11 22:30:59,067 - Train: 5.59% [1000/17900]  [5.6/100.0] [batch_t 0.102 (0.104)] [data_t 0.002] [optim_t 0.100] [lr 0.000050] [cos 0.688 (0.664)]
+2025-09-11 22:31:04,241 - Train: 5.87% [1050/17900]  [5.9/100.0] [batch_t 0.102 (0.103)] [data_t 0.002] [optim_t 0.100] [lr 0.000050] [cos 0.643 (0.667)]
+2025-09-11 22:31:06,640 - ==> Total time: 0:01:58	 Eta: 0:31:02 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:31:09,853 - Train: 6.15% [1100/17900]  [6.1/100.0] [batch_t 0.105 (0.107)] [data_t 0.002] [optim_t 0.103] [lr 0.000050] [cos 0.666 (0.650)]
+2025-09-11 22:31:15,018 - Train: 6.42% [1150/17900]  [6.4/100.0] [batch_t 0.101 (0.103)] [data_t 0.002] [optim_t 0.099] [lr 0.000050] [cos 0.650 (0.631)]
+2025-09-11 22:31:20,185 - Train: 6.70% [1200/17900]  [6.7/100.0] [batch_t 0.114 (0.103)] [data_t 0.002] [optim_t 0.113] [lr 0.000050] [cos 0.630 (0.632)]
+2025-09-11 22:31:25,271 - Train: 6.98% [1250/17900]  [7.0/100.0] [batch_t 0.097 (0.102)] [data_t 0.002] [optim_t 0.095] [lr 0.000050] [cos 0.595 (0.620)]
+2025-09-11 22:31:25,565 - ==> Total time: 0:02:17	 Eta: 0:30:31 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:31:30,832 - Train: 7.26% [1300/17900]  [7.3/100.0] [batch_t 0.105 (0.103)] [data_t 0.002] [optim_t 0.104] [lr 0.000050] [cos 0.629 (0.612)]
+2025-09-11 22:31:35,875 - Train: 7.54% [1350/17900]  [7.5/100.0] [batch_t 0.100 (0.101)] [data_t 0.002] [optim_t 0.098] [lr 0.000050] [cos 0.603 (0.612)]
+2025-09-11 22:31:40,858 - Train: 7.82% [1400/17900]  [7.8/100.0] [batch_t 0.099 (0.100)] [data_t 0.002] [optim_t 0.097] [lr 0.000050] [cos 0.680 (0.594)]
+2025-09-11 22:31:44,006 - ==> Total time: 0:02:36	 Eta: 0:29:57 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:31:46,314 - Train: 8.10% [1450/17900]  [8.1/100.0] [batch_t 0.098 (0.104)] [data_t 0.002] [optim_t 0.097] [lr 0.000050] [cos 0.623 (0.586)]
+2025-09-11 22:31:51,305 - Train: 8.38% [1500/17900]  [8.4/100.0] [batch_t 0.098 (0.100)] [data_t 0.002] [optim_t 0.097] [lr 0.000050] [cos 0.550 (0.572)]
+2025-09-11 22:31:56,306 - Train: 8.66% [1550/17900]  [8.7/100.0] [batch_t 0.099 (0.100)] [data_t 0.002] [optim_t 0.098] [lr 0.000050] [cos 0.698 (0.587)]
+2025-09-11 22:32:01,293 - Train: 8.94% [1600/17900]  [8.9/100.0] [batch_t 0.097 (0.100)] [data_t 0.002] [optim_t 0.095] [lr 0.000050] [cos 0.546 (0.581)]
+2025-09-11 22:32:02,360 - ==> Total time: 0:02:54	 Eta: 0:29:25 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:32:06,818 - Train: 9.22% [1650/17900]  [9.2/100.0] [batch_t 0.099 (0.104)] [data_t 0.002] [optim_t 0.097] [lr 0.000050] [cos 0.540 (0.571)]
+2025-09-11 22:32:11,964 - Train: 9.50% [1700/17900]  [9.5/100.0] [batch_t 0.101 (0.103)] [data_t 0.002] [optim_t 0.099] [lr 0.000050] [cos 0.526 (0.563)]
+2025-09-11 22:32:17,110 - Train: 9.78% [1750/17900]  [9.8/100.0] [batch_t 0.100 (0.103)] [data_t 0.002] [optim_t 0.098] [lr 0.000050] [cos 0.482 (0.562)]
+2025-09-11 22:32:21,146 - ==> Total time: 0:03:13	 Eta: 0:29:00 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:32:22,657 - Train: 10.06% [1800/17900]  [10.1/100.0] [batch_t 0.103 (0.111)] [data_t 0.002] [optim_t 0.102] [lr 0.000050] [cos 0.612 (0.554)]
+2025-09-11 22:32:27,744 - Train: 10.34% [1850/17900]  [10.3/100.0] [batch_t 0.101 (0.102)] [data_t 0.002] [optim_t 0.099] [lr 0.000050] [cos 0.550 (0.545)]
+2025-09-11 22:32:32,801 - Train: 10.61% [1900/17900]  [10.6/100.0] [batch_t 0.101 (0.101)] [data_t 0.002] [optim_t 0.099] [lr 0.000050] [cos 0.479 (0.540)]
+2025-09-11 22:32:37,884 - Train: 10.89% [1950/17900]  [10.9/100.0] [batch_t 0.104 (0.102)] [data_t 0.002] [optim_t 0.102] [lr 0.000050] [cos 0.526 (0.543)]
+2025-09-11 22:32:39,750 - ==> Total time: 0:03:32	 Eta: 0:28:35 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:32:43,486 - Train: 11.17% [2000/17900]  [11.2/100.0] [batch_t 0.103 (0.107)] [data_t 0.002] [optim_t 0.101] [lr 0.000050] [cos 0.426 (0.536)]
+2025-09-11 22:32:48,665 - Train: 11.45% [2050/17900]  [11.5/100.0] [batch_t 0.101 (0.104)] [data_t 0.002] [optim_t 0.100] [lr 0.000050] [cos 0.510 (0.526)]
+2025-09-11 22:32:53,840 - Train: 11.73% [2100/17900]  [11.7/100.0] [batch_t 0.102 (0.103)] [data_t 0.002] [optim_t 0.100] [lr 0.000050] [cos 0.522 (0.537)]
+2025-09-11 22:32:58,715 - ==> Total time: 0:03:50	 Eta: 0:28:13 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:32:59,441 - Train: 12.01% [2150/17900]  [12.0/100.0] [batch_t 0.105 (0.152)] [data_t 0.002] [optim_t 0.103] [lr 0.000050] [cos 0.442 (0.452)]
+2025-09-11 22:33:04,689 - Train: 12.29% [2200/17900]  [12.3/100.0] [batch_t 0.104 (0.105)] [data_t 0.002] [optim_t 0.102] [lr 0.000050] [cos 0.498 (0.528)]
+2025-09-11 22:33:09,876 - Train: 12.57% [2250/17900]  [12.6/100.0] [batch_t 0.105 (0.104)] [data_t 0.002] [optim_t 0.103] [lr 0.000050] [cos 0.473 (0.510)]
+2025-09-11 22:33:15,052 - Train: 12.85% [2300/17900]  [12.8/100.0] [batch_t 0.103 (0.103)] [data_t 0.002] [optim_t 0.101] [lr 0.000050] [cos 0.504 (0.525)]
+2025-09-11 22:33:17,775 - ==> Total time: 0:04:10	 Eta: 0:27:53 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:33:20,834 - Train: 13.13% [2350/17900]  [13.1/100.0] [batch_t 0.101 (0.114)] [data_t 0.002] [optim_t 0.099] [lr 0.000050] [cos 0.493 (0.490)]
+2025-09-11 22:33:25,892 - Train: 13.41% [2400/17900]  [13.4/100.0] [batch_t 0.100 (0.101)] [data_t 0.002] [optim_t 0.099] [lr 0.000050] [cos 0.484 (0.507)]
+2025-09-11 22:33:30,906 - Train: 13.69% [2450/17900]  [13.7/100.0] [batch_t 0.100 (0.100)] [data_t 0.002] [optim_t 0.098] [lr 0.000050] [cos 0.535 (0.506)]
+2025-09-11 22:33:35,876 - Train: 13.97% [2500/17900]  [14.0/100.0] [batch_t 0.097 (0.099)] [data_t 0.002] [optim_t 0.095] [lr 0.000050] [cos 0.483 (0.509)]
+2025-09-11 22:33:36,459 - ==> Total time: 0:04:28	 Eta: 0:27:30 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:33:41,476 - Train: 14.25% [2550/17900]  [14.2/100.0] [batch_t 0.101 (0.104)] [data_t 0.002] [optim_t 0.099] [lr 0.000050] [cos 0.437 (0.499)]
+2025-09-11 22:33:46,622 - Train: 14.53% [2600/17900]  [14.5/100.0] [batch_t 0.100 (0.103)] [data_t 0.002] [optim_t 0.098] [lr 0.000050] [cos 0.465 (0.486)]
+2025-09-11 22:33:51,800 - Train: 14.80% [2650/17900]  [14.8/100.0] [batch_t 0.101 (0.104)] [data_t 0.002] [optim_t 0.099] [lr 0.000050] [cos 0.478 (0.493)]
+2025-09-11 22:33:55,309 - ==> Total time: 0:04:47	 Eta: 0:27:09 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:33:57,353 - Train: 15.08% [2700/17900]  [15.1/100.0] [batch_t 0.100 (0.106)] [data_t 0.002] [optim_t 0.099] [lr 0.000050] [cos 0.426 (0.489)]
+2025-09-11 22:34:02,515 - Train: 15.36% [2750/17900]  [15.4/100.0] [batch_t 0.101 (0.103)] [data_t 0.002] [optim_t 0.099] [lr 0.000050] [cos 0.499 (0.490)]
+2025-09-11 22:34:07,686 - Train: 15.64% [2800/17900]  [15.6/100.0] [batch_t 0.115 (0.103)] [data_t 0.002] [optim_t 0.114] [lr 0.000050] [cos 0.537 (0.484)]
+2025-09-11 22:34:12,852 - Train: 15.92% [2850/17900]  [15.9/100.0] [batch_t 0.097 (0.103)] [data_t 0.002] [optim_t 0.095] [lr 0.000050] [cos 0.458 (0.479)]
+2025-09-11 22:34:14,222 - ==> Total time: 0:05:06	 Eta: 0:26:49 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:34:18,484 - Train: 16.20% [2900/17900]  [16.2/100.0] [batch_t 0.108 (0.107)] [data_t 0.002] [optim_t 0.106] [lr 0.000050] [cos 0.436 (0.488)]
+2025-09-11 22:34:23,680 - Train: 16.48% [2950/17900]  [16.5/100.0] [batch_t 0.101 (0.104)] [data_t 0.002] [optim_t 0.099] [lr 0.000050] [cos 0.437 (0.475)]
+2025-09-11 22:34:28,897 - Train: 16.76% [3000/17900]  [16.8/100.0] [batch_t 0.103 (0.104)] [data_t 0.002] [optim_t 0.101] [lr 0.000050] [cos 0.431 (0.476)]
+2025-09-11 22:34:33,274 - ==> Total time: 0:05:25	 Eta: 0:26:29 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:34:34,511 - Train: 17.04% [3050/17900]  [17.0/100.0] [batch_t 0.102 (0.120)] [data_t 0.002] [optim_t 0.100] [lr 0.000050] [cos 0.481 (0.472)]
+2025-09-11 22:34:39,627 - Train: 17.32% [3100/17900]  [17.3/100.0] [batch_t 0.102 (0.102)] [data_t 0.002] [optim_t 0.101] [lr 0.000050] [cos 0.459 (0.470)]
+2025-09-11 22:34:44,775 - Train: 17.60% [3150/17900]  [17.6/100.0] [batch_t 0.101 (0.103)] [data_t 0.002] [optim_t 0.100] [lr 0.000050] [cos 0.581 (0.473)]
+2025-09-11 22:34:49,983 - Train: 17.88% [3200/17900]  [17.9/100.0] [batch_t 0.121 (0.104)] [data_t 0.002] [optim_t 0.119] [lr 0.000050] [cos 0.576 (0.474)]
+2025-09-11 22:34:52,158 - ==> Total time: 0:05:44	 Eta: 0:26:09 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:34:55,605 - Train: 18.16% [3250/17900]  [18.2/100.0] [batch_t 0.101 (0.108)] [data_t 0.002] [optim_t 0.099] [lr 0.000050] [cos 0.423 (0.459)]
+2025-09-11 22:35:00,781 - Train: 18.44% [3300/17900]  [18.4/100.0] [batch_t 0.102 (0.103)] [data_t 0.002] [optim_t 0.100] [lr 0.000050] [cos 0.450 (0.458)]
+2025-09-11 22:35:05,957 - Train: 18.72% [3350/17900]  [18.7/100.0] [batch_t 0.101 (0.103)] [data_t 0.002] [optim_t 0.100] [lr 0.000050] [cos 0.513 (0.470)]
+2025-09-11 22:35:11,065 - Train: 18.99% [3400/17900]  [19.0/100.0] [batch_t 0.097 (0.102)] [data_t 0.002] [optim_t 0.095] [lr 0.000050] [cos 0.411 (0.451)]
+2025-09-11 22:35:11,164 - ==> Total time: 0:06:03	 Eta: 0:25:49 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:35:16,780 - Train: 19.27% [3450/17900]  [19.3/100.0] [batch_t 0.101 (0.106)] [data_t 0.002] [optim_t 0.099] [lr 0.000050] [cos 0.462 (0.462)]
+2025-09-11 22:35:21,984 - Train: 19.55% [3500/17900]  [19.6/100.0] [batch_t 0.118 (0.104)] [data_t 0.002] [optim_t 0.116] [lr 0.000050] [cos 0.467 (0.454)]
+2025-09-11 22:35:27,148 - Train: 19.83% [3550/17900]  [19.8/100.0] [batch_t 0.102 (0.103)] [data_t 0.002] [optim_t 0.101] [lr 0.000050] [cos 0.388 (0.452)]
+2025-09-11 22:35:30,156 - ==> Total time: 0:06:22	 Eta: 0:25:29 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:35:32,749 - Train: 20.11% [3600/17900]  [20.1/100.0] [batch_t 0.101 (0.106)] [data_t 0.002] [optim_t 0.099] [lr 0.000050] [cos 0.443 (0.449)]
+2025-09-11 22:35:37,879 - Train: 20.39% [3650/17900]  [20.4/100.0] [batch_t 0.101 (0.103)] [data_t 0.002] [optim_t 0.099] [lr 0.000050] [cos 0.410 (0.444)]
+2025-09-11 22:35:42,911 - Train: 20.67% [3700/17900]  [20.7/100.0] [batch_t 0.100 (0.101)] [data_t 0.002] [optim_t 0.098] [lr 0.000050] [cos 0.487 (0.447)]
+2025-09-11 22:35:47,912 - Train: 20.95% [3750/17900]  [20.9/100.0] [batch_t 0.096 (0.100)] [data_t 0.002] [optim_t 0.094] [lr 0.000050] [cos 0.454 (0.449)]
+2025-09-11 22:35:48,793 - ==> Total time: 0:06:41	 Eta: 0:25:08 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:35:53,433 - Train: 21.23% [3800/17900]  [21.2/100.0] [batch_t 0.104 (0.103)] [data_t 0.002] [optim_t 0.102] [lr 0.000050] [cos 0.423 (0.439)]
+2025-09-11 22:35:58,566 - Train: 21.51% [3850/17900]  [21.5/100.0] [batch_t 0.103 (0.103)] [data_t 0.002] [optim_t 0.101] [lr 0.000050] [cos 0.486 (0.455)]
+2025-09-11 22:36:03,700 - Train: 21.79% [3900/17900]  [21.8/100.0] [batch_t 0.102 (0.103)] [data_t 0.002] [optim_t 0.100] [lr 0.000050] [cos 0.494 (0.436)]
+2025-09-11 22:36:07,509 - ==> Total time: 0:06:59	 Eta: 0:24:48 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:36:09,275 - Train: 22.07% [3950/17900]  [22.1/100.0] [batch_t 0.103 (0.109)] [data_t 0.002] [optim_t 0.101] [lr 0.000050] [cos 0.439 (0.435)]
+2025-09-11 22:36:14,534 - Train: 22.35% [4000/17900]  [22.3/100.0] [batch_t 0.103 (0.105)] [data_t 0.002] [optim_t 0.101] [lr 0.000050] [cos 0.390 (0.440)]
+2025-09-11 22:36:19,800 - Train: 22.63% [4050/17900]  [22.6/100.0] [batch_t 0.118 (0.105)] [data_t 0.002] [optim_t 0.116] [lr 0.000050] [cos 0.380 (0.431)]
+2025-09-11 22:36:25,048 - Train: 22.91% [4100/17900]  [22.9/100.0] [batch_t 0.103 (0.105)] [data_t 0.002] [optim_t 0.101] [lr 0.000050] [cos 0.464 (0.436)]
+2025-09-11 22:36:26,746 - ==> Total time: 0:07:19	 Eta: 0:24:29 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:36:30,608 - Train: 23.18% [4150/17900]  [23.2/100.0] [batch_t 0.101 (0.105)] [data_t 0.002] [optim_t 0.099] [lr 0.000050] [cos 0.436 (0.447)]
+2025-09-11 22:36:35,681 - Train: 23.46% [4200/17900]  [23.5/100.0] [batch_t 0.101 (0.101)] [data_t 0.002] [optim_t 0.099] [lr 0.000050] [cos 0.398 (0.430)]
+2025-09-11 22:36:40,758 - Train: 23.74% [4250/17900]  [23.7/100.0] [batch_t 0.101 (0.101)] [data_t 0.002] [optim_t 0.099] [lr 0.000050] [cos 0.338 (0.434)]
+2025-09-11 22:36:45,371 - ==> Total time: 0:07:37	 Eta: 0:24:09 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:36:46,301 - Train: 24.02% [4300/17900]  [24.0/100.0] [batch_t 0.114 (0.127)] [data_t 0.002] [optim_t 0.112] [lr 0.000050] [cos 0.395 (0.432)]
+2025-09-11 22:36:51,607 - Train: 24.30% [4350/17900]  [24.3/100.0] [batch_t 0.101 (0.106)] [data_t 0.002] [optim_t 0.099] [lr 0.000050] [cos 0.354 (0.424)]
+2025-09-11 22:36:56,669 - Train: 24.58% [4400/17900]  [24.6/100.0] [batch_t 0.101 (0.101)] [data_t 0.002] [optim_t 0.099] [lr 0.000050] [cos 0.420 (0.430)]
+2025-09-11 22:37:01,735 - Train: 24.86% [4450/17900]  [24.9/100.0] [batch_t 0.101 (0.101)] [data_t 0.002] [optim_t 0.099] [lr 0.000050] [cos 0.455 (0.429)]
+2025-09-11 22:37:04,209 - ==> Total time: 0:07:56	 Eta: 0:23:49 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:37:07,309 - Train: 25.14% [4500/17900]  [25.1/100.0] [batch_t 0.103 (0.108)] [data_t 0.002] [optim_t 0.101] [lr 0.000050] [cos 0.486 (0.434)]
+2025-09-11 22:37:12,491 - Train: 25.42% [4550/17900]  [25.4/100.0] [batch_t 0.102 (0.104)] [data_t 0.002] [optim_t 0.100] [lr 0.000050] [cos 0.412 (0.418)]
+2025-09-11 22:37:17,675 - Train: 25.70% [4600/17900]  [25.7/100.0] [batch_t 0.116 (0.104)] [data_t 0.002] [optim_t 0.114] [lr 0.000050] [cos 0.343 (0.423)]
+2025-09-11 22:37:22,776 - Train: 25.98% [4650/17900]  [26.0/100.0] [batch_t 0.102 (0.102)] [data_t 0.002] [optim_t 0.101] [lr 0.000050] [cos 0.399 (0.422)]
+2025-09-11 22:37:23,173 - ==> Total time: 0:08:15	 Eta: 0:23:30 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:37:28,467 - Train: 26.26% [4700/17900]  [26.3/100.0] [batch_t 0.104 (0.106)] [data_t 0.002] [optim_t 0.102] [lr 0.000050] [cos 0.551 (0.408)]
+2025-09-11 22:37:33,616 - Train: 26.54% [4750/17900]  [26.5/100.0] [batch_t 0.100 (0.103)] [data_t 0.002] [optim_t 0.098] [lr 0.000050] [cos 0.433 (0.421)]
+2025-09-11 22:37:38,581 - Train: 26.82% [4800/17900]  [26.8/100.0] [batch_t 0.098 (0.099)] [data_t 0.002] [optim_t 0.097] [lr 0.000050] [cos 0.383 (0.421)]
+2025-09-11 22:37:41,820 - ==> Total time: 0:08:34	 Eta: 0:23:09 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:37:44,025 - Train: 27.09% [4850/17900]  [27.1/100.0] [batch_t 0.105 (0.106)] [data_t 0.002] [optim_t 0.103] [lr 0.000050] [cos 0.358 (0.430)]
+2025-09-11 22:37:49,056 - Train: 27.37% [4900/17900]  [27.4/100.0] [batch_t 0.100 (0.101)] [data_t 0.002] [optim_t 0.098] [lr 0.000050] [cos 0.405 (0.406)]
+2025-09-11 22:37:54,176 - Train: 27.65% [4950/17900]  [27.7/100.0] [batch_t 0.102 (0.102)] [data_t 0.002] [optim_t 0.100] [lr 0.000050] [cos 0.379 (0.404)]
+2025-09-11 22:37:59,254 - Train: 27.93% [5000/17900]  [27.9/100.0] [batch_t 0.096 (0.102)] [data_t 0.002] [optim_t 0.094] [lr 0.000050] [cos 0.335 (0.419)]
+2025-09-11 22:38:00,418 - ==> Total time: 0:08:52	 Eta: 0:22:49 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:38:04,739 - Train: 28.21% [5050/17900]  [28.2/100.0] [batch_t 0.103 (0.103)] [data_t 0.002] [optim_t 0.101] [lr 0.000050] [cos 0.372 (0.415)]
+2025-09-11 22:38:09,725 - Train: 28.49% [5100/17900]  [28.5/100.0] [batch_t 0.100 (0.100)] [data_t 0.002] [optim_t 0.098] [lr 0.000050] [cos 0.426 (0.400)]
+2025-09-11 22:38:14,704 - Train: 28.77% [5150/17900]  [28.8/100.0] [batch_t 0.099 (0.100)] [data_t 0.002] [optim_t 0.097] [lr 0.000050] [cos 0.420 (0.406)]
+2025-09-11 22:38:18,750 - ==> Total time: 0:09:11	 Eta: 0:22:29 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:38:20,190 - Train: 29.05% [5200/17900]  [29.1/100.0] [batch_t 0.099 (0.112)] [data_t 0.002] [optim_t 0.097] [lr 0.000050] [cos 0.380 (0.378)]
+2025-09-11 22:38:25,237 - Train: 29.33% [5250/17900]  [29.3/100.0] [batch_t 0.099 (0.101)] [data_t 0.002] [optim_t 0.097] [lr 0.000050] [cos 0.413 (0.412)]
+2025-09-11 22:38:30,286 - Train: 29.61% [5300/17900]  [29.6/100.0] [batch_t 0.098 (0.101)] [data_t 0.002] [optim_t 0.097] [lr 0.000050] [cos 0.407 (0.401)]
+2025-09-11 22:38:35,327 - Train: 29.89% [5350/17900]  [29.9/100.0] [batch_t 0.098 (0.101)] [data_t 0.002] [optim_t 0.096] [lr 0.000050] [cos 0.378 (0.399)]
+2025-09-11 22:38:37,276 - ==> Total time: 0:09:29	 Eta: 0:22:08 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:38:40,854 - Train: 30.17% [5400/17900]  [30.2/100.0] [batch_t 0.100 (0.105)] [data_t 0.002] [optim_t 0.098] [lr 0.000050] [cos 0.443 (0.402)]
+2025-09-11 22:38:45,921 - Train: 30.45% [5450/17900]  [30.4/100.0] [batch_t 0.101 (0.101)] [data_t 0.002] [optim_t 0.099] [lr 0.000050] [cos 0.391 (0.391)]
+2025-09-11 22:38:50,979 - Train: 30.73% [5500/17900]  [30.7/100.0] [batch_t 0.102 (0.101)] [data_t 0.002] [optim_t 0.100] [lr 0.000050] [cos 0.437 (0.401)]
+2025-09-11 22:38:55,871 - ==> Total time: 0:09:48	 Eta: 0:21:49 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:38:56,491 - Train: 31.01% [5550/17900]  [31.0/100.0] [batch_t 0.186 (0.186)] [data_t 0.065] [optim_t 0.121] [lr 0.000050] [cos 0.434 (0.434)]
+2025-09-11 22:39:01,442 - Train: 31.28% [5600/17900]  [31.3/100.0] [batch_t 0.100 (0.099)] [data_t 0.002] [optim_t 0.098] [lr 0.000050] [cos 0.441 (0.392)]
+2025-09-11 22:39:06,382 - Train: 31.56% [5650/17900]  [31.6/100.0] [batch_t 0.098 (0.099)] [data_t 0.002] [optim_t 0.097] [lr 0.000050] [cos 0.396 (0.398)]
+2025-09-11 22:39:11,327 - Train: 31.84% [5700/17900]  [31.8/100.0] [batch_t 0.099 (0.099)] [data_t 0.002] [optim_t 0.097] [lr 0.000050] [cos 0.409 (0.390)]
+2025-09-11 22:39:14,048 - ==> Total time: 0:10:06	 Eta: 0:21:28 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:39:16,735 - Train: 32.12% [5750/17900]  [32.1/100.0] [batch_t 0.099 (0.103)] [data_t 0.002] [optim_t 0.097] [lr 0.000050] [cos 0.431 (0.393)]
+2025-09-11 22:39:21,697 - Train: 32.40% [5800/17900]  [32.4/100.0] [batch_t 0.098 (0.099)] [data_t 0.002] [optim_t 0.096] [lr 0.000050] [cos 0.347 (0.405)]
+2025-09-11 22:39:26,662 - Train: 32.68% [5850/17900]  [32.7/100.0] [batch_t 0.100 (0.099)] [data_t 0.002] [optim_t 0.098] [lr 0.000050] [cos 0.439 (0.387)]
+2025-09-11 22:39:31,584 - Train: 32.96% [5900/17900]  [33.0/100.0] [batch_t 0.095 (0.098)] [data_t 0.002] [optim_t 0.093] [lr 0.000050] [cos 0.491 (0.386)]
+2025-09-11 22:39:32,253 - ==> Total time: 0:10:24	 Eta: 0:21:07 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:39:37,145 - Train: 33.24% [5950/17900]  [33.2/100.0] [batch_t 0.115 (0.104)] [data_t 0.002] [optim_t 0.113] [lr 0.000050] [cos 0.406 (0.388)]
+2025-09-11 22:39:42,192 - Train: 33.52% [6000/17900]  [33.5/100.0] [batch_t 0.099 (0.101)] [data_t 0.002] [optim_t 0.097] [lr 0.000050] [cos 0.414 (0.390)]
+2025-09-11 22:39:47,236 - Train: 33.80% [6050/17900]  [33.8/100.0] [batch_t 0.099 (0.101)] [data_t 0.002] [optim_t 0.097] [lr 0.000050] [cos 0.318 (0.384)]
+2025-09-11 22:39:50,846 - ==> Total time: 0:10:43	 Eta: 0:20:48 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:39:52,762 - Train: 34.08% [6100/17900]  [34.1/100.0] [batch_t 0.098 (0.108)] [data_t 0.002] [optim_t 0.096] [lr 0.000050] [cos 0.320 (0.366)]
+2025-09-11 22:39:57,751 - Train: 34.36% [6150/17900]  [34.4/100.0] [batch_t 0.099 (0.100)] [data_t 0.002] [optim_t 0.098] [lr 0.000050] [cos 0.458 (0.377)]
+2025-09-11 22:40:02,692 - Train: 34.64% [6200/17900]  [34.6/100.0] [batch_t 0.098 (0.099)] [data_t 0.002] [optim_t 0.096] [lr 0.000050] [cos 0.457 (0.389)]
+2025-09-11 22:40:07,626 - Train: 34.92% [6250/17900]  [34.9/100.0] [batch_t 0.095 (0.099)] [data_t 0.002] [optim_t 0.093] [lr 0.000050] [cos 0.408 (0.391)]
+2025-09-11 22:40:09,066 - ==> Total time: 0:11:01	 Eta: 0:20:28 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:40:13,248 - Train: 35.20% [6300/17900]  [35.2/100.0] [batch_t 0.099 (0.107)] [data_t 0.002] [optim_t 0.097] [lr 0.000050] [cos 0.385 (0.380)]
+2025-09-11 22:40:18,206 - Train: 35.47% [6350/17900]  [35.5/100.0] [batch_t 0.099 (0.099)] [data_t 0.002] [optim_t 0.097] [lr 0.000050] [cos 0.361 (0.381)]
+2025-09-11 22:40:23,156 - Train: 35.75% [6400/17900]  [35.8/100.0] [batch_t 0.103 (0.099)] [data_t 0.002] [optim_t 0.101] [lr 0.000050] [cos 0.399 (0.384)]
+2025-09-11 22:40:27,459 - ==> Total time: 0:11:19	 Eta: 0:20:08 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:40:28,554 - Train: 36.03% [6450/17900]  [36.0/100.0] [batch_t 0.100 (0.109)] [data_t 0.002] [optim_t 0.098] [lr 0.000050] [cos 0.358 (0.367)]
+2025-09-11 22:40:33,587 - Train: 36.31% [6500/17900]  [36.3/100.0] [batch_t 0.102 (0.101)] [data_t 0.002] [optim_t 0.100] [lr 0.000050] [cos 0.347 (0.385)]
+2025-09-11 22:40:38,610 - Train: 36.59% [6550/17900]  [36.6/100.0] [batch_t 0.100 (0.100)] [data_t 0.002] [optim_t 0.098] [lr 0.000050] [cos 0.402 (0.389)]
+2025-09-11 22:40:43,626 - Train: 36.87% [6600/17900]  [36.9/100.0] [batch_t 0.100 (0.100)] [data_t 0.002] [optim_t 0.098] [lr 0.000050] [cos 0.406 (0.379)]
+2025-09-11 22:40:45,883 - ==> Total time: 0:11:38	 Eta: 0:19:48 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:40:49,097 - Train: 37.15% [6650/17900]  [37.2/100.0] [batch_t 0.098 (0.103)] [data_t 0.002] [optim_t 0.096] [lr 0.000050] [cos 0.391 (0.387)]
+2025-09-11 22:40:54,027 - Train: 37.43% [6700/17900]  [37.4/100.0] [batch_t 0.101 (0.099)] [data_t 0.002] [optim_t 0.099] [lr 0.000050] [cos 0.367 (0.372)]
+2025-09-11 22:40:58,956 - Train: 37.71% [6750/17900]  [37.7/100.0] [batch_t 0.100 (0.099)] [data_t 0.002] [optim_t 0.098] [lr 0.000050] [cos 0.380 (0.374)]
+2025-09-11 22:41:03,842 - Train: 37.99% [6800/17900]  [38.0/100.0] [batch_t 0.094 (0.098)] [data_t 0.002] [optim_t 0.093] [lr 0.000050] [cos 0.372 (0.378)]
+2025-09-11 22:41:04,036 - ==> Total time: 0:11:56	 Eta: 0:19:28 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:41:09,385 - Train: 38.27% [6850/17900]  [38.3/100.0] [batch_t 0.101 (0.103)] [data_t 0.002] [optim_t 0.099] [lr 0.000050] [cos 0.327 (0.376)]
+2025-09-11 22:41:14,420 - Train: 38.55% [6900/17900]  [38.5/100.0] [batch_t 0.099 (0.101)] [data_t 0.002] [optim_t 0.098] [lr 0.000050] [cos 0.408 (0.383)]
+2025-09-11 22:41:19,405 - Train: 38.83% [6950/17900]  [38.8/100.0] [batch_t 0.099 (0.100)] [data_t 0.002] [optim_t 0.097] [lr 0.000050] [cos 0.413 (0.367)]
+2025-09-11 22:41:22,433 - ==> Total time: 0:12:14	 Eta: 0:19:09 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:41:24,821 - Train: 39.11% [7000/17900]  [39.1/100.0] [batch_t 0.099 (0.103)] [data_t 0.002] [optim_t 0.097] [lr 0.000050] [cos 0.383 (0.384)]
+2025-09-11 22:41:29,795 - Train: 39.39% [7050/17900]  [39.4/100.0] [batch_t 0.099 (0.099)] [data_t 0.002] [optim_t 0.097] [lr 0.000050] [cos 0.379 (0.368)]
+2025-09-11 22:41:34,776 - Train: 39.66% [7100/17900]  [39.7/100.0] [batch_t 0.099 (0.100)] [data_t 0.002] [optim_t 0.097] [lr 0.000050] [cos 0.355 (0.378)]
+2025-09-11 22:41:39,719 - Train: 39.94% [7150/17900]  [39.9/100.0] [batch_t 0.096 (0.099)] [data_t 0.002] [optim_t 0.094] [lr 0.000050] [cos 0.380 (0.369)]
+2025-09-11 22:41:40,678 - ==> Total time: 0:12:32	 Eta: 0:18:49 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:41:45,165 - Train: 40.22% [7200/17900]  [40.2/100.0] [batch_t 0.099 (0.102)] [data_t 0.002] [optim_t 0.097] [lr 0.000050] [cos 0.341 (0.359)]
+2025-09-11 22:41:50,133 - Train: 40.50% [7250/17900]  [40.5/100.0] [batch_t 0.100 (0.099)] [data_t 0.002] [optim_t 0.098] [lr 0.000050] [cos 0.373 (0.361)]
+2025-09-11 22:41:55,215 - Train: 40.78% [7300/17900]  [40.8/100.0] [batch_t 0.100 (0.102)] [data_t 0.002] [optim_t 0.098] [lr 0.000050] [cos 0.448 (0.382)]
+2025-09-11 22:41:59,135 - ==> Total time: 0:12:51	 Eta: 0:18:30 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:42:00,774 - Train: 41.06% [7350/17900]  [41.1/100.0] [batch_t 0.099 (0.111)] [data_t 0.002] [optim_t 0.098] [lr 0.000050] [cos 0.401 (0.369)]
+2025-09-11 22:42:05,848 - Train: 41.34% [7400/17900]  [41.3/100.0] [batch_t 0.100 (0.101)] [data_t 0.002] [optim_t 0.098] [lr 0.000050] [cos 0.399 (0.358)]
+2025-09-11 22:42:10,930 - Train: 41.62% [7450/17900]  [41.6/100.0] [batch_t 0.115 (0.102)] [data_t 0.002] [optim_t 0.113] [lr 0.000050] [cos 0.359 (0.365)]
+2025-09-11 22:42:16,132 - Train: 41.90% [7500/17900]  [41.9/100.0] [batch_t 0.102 (0.104)] [data_t 0.002] [optim_t 0.100] [lr 0.000050] [cos 0.333 (0.374)]
+2025-09-11 22:42:17,919 - ==> Total time: 0:13:10	 Eta: 0:18:11 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:42:21,711 - Train: 42.18% [7550/17900]  [42.2/100.0] [batch_t 0.104 (0.105)] [data_t 0.002] [optim_t 0.102] [lr 0.000050] [cos 0.361 (0.361)]
+2025-09-11 22:42:26,825 - Train: 42.46% [7600/17900]  [42.5/100.0] [batch_t 0.102 (0.102)] [data_t 0.002] [optim_t 0.101] [lr 0.000050] [cos 0.255 (0.368)]
+2025-09-11 22:42:31,921 - Train: 42.74% [7650/17900]  [42.7/100.0] [batch_t 0.101 (0.102)] [data_t 0.002] [optim_t 0.099] [lr 0.000050] [cos 0.366 (0.369)]
+2025-09-11 22:42:36,619 - ==> Total time: 0:13:28	 Eta: 0:17:52 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:42:37,433 - Train: 43.02% [7700/17900]  [43.0/100.0] [batch_t 0.102 (0.133)] [data_t 0.002] [optim_t 0.101] [lr 0.000050] [cos 0.428 (0.361)]
+2025-09-11 22:42:42,450 - Train: 43.30% [7750/17900]  [43.3/100.0] [batch_t 0.101 (0.100)] [data_t 0.002] [optim_t 0.099] [lr 0.000050] [cos 0.343 (0.369)]
+2025-09-11 22:42:47,534 - Train: 43.58% [7800/17900]  [43.6/100.0] [batch_t 0.102 (0.102)] [data_t 0.002] [optim_t 0.101] [lr 0.000050] [cos 0.335 (0.364)]
+2025-09-11 22:42:52,606 - Train: 43.85% [7850/17900]  [43.9/100.0] [batch_t 0.100 (0.101)] [data_t 0.002] [optim_t 0.098] [lr 0.000050] [cos 0.409 (0.368)]
+2025-09-11 22:42:55,152 - ==> Total time: 0:13:47	 Eta: 0:17:33 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:42:58,096 - Train: 44.13% [7900/17900]  [44.1/100.0] [batch_t 0.100 (0.104)] [data_t 0.002] [optim_t 0.099] [lr 0.000050] [cos 0.326 (0.353)]
+2025-09-11 22:43:03,194 - Train: 44.41% [7950/17900]  [44.4/100.0] [batch_t 0.102 (0.102)] [data_t 0.002] [optim_t 0.101] [lr 0.000050] [cos 0.348 (0.372)]
+2025-09-11 22:43:08,296 - Train: 44.69% [8000/17900]  [44.7/100.0] [batch_t 0.102 (0.102)] [data_t 0.002] [optim_t 0.100] [lr 0.000050] [cos 0.322 (0.359)]
+2025-09-11 22:43:13,312 - Train: 44.97% [8050/17900]  [45.0/100.0] [batch_t 0.098 (0.100)] [data_t 0.002] [optim_t 0.096] [lr 0.000050] [cos 0.334 (0.354)]
+2025-09-11 22:43:13,803 - ==> Total time: 0:14:06	 Eta: 0:17:14 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:43:18,867 - Train: 45.25% [8100/17900]  [45.3/100.0] [batch_t 0.102 (0.104)] [data_t 0.002] [optim_t 0.101] [lr 0.000050] [cos 0.421 (0.359)]
+2025-09-11 22:43:24,008 - Train: 45.53% [8150/17900]  [45.5/100.0] [batch_t 0.105 (0.103)] [data_t 0.002] [optim_t 0.104] [lr 0.000050] [cos 0.307 (0.359)]
+2025-09-11 22:43:29,085 - Train: 45.81% [8200/17900]  [45.8/100.0] [batch_t 0.100 (0.101)] [data_t 0.002] [optim_t 0.099] [lr 0.000050] [cos 0.328 (0.358)]
+2025-09-11 22:43:32,471 - ==> Total time: 0:14:24	 Eta: 0:16:55 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:43:34,810 - Train: 46.09% [8250/17900]  [46.1/100.0] [batch_t 0.117 (0.120)] [data_t 0.002] [optim_t 0.115] [lr 0.000050] [cos 0.313 (0.345)]
+2025-09-11 22:43:39,891 - Train: 46.37% [8300/17900]  [46.4/100.0] [batch_t 0.102 (0.102)] [data_t 0.002] [optim_t 0.100] [lr 0.000050] [cos 0.282 (0.359)]
+2025-09-11 22:43:44,977 - Train: 46.65% [8350/17900]  [46.6/100.0] [batch_t 0.102 (0.102)] [data_t 0.002] [optim_t 0.100] [lr 0.000050] [cos 0.342 (0.355)]
+2025-09-11 22:43:50,047 - Train: 46.93% [8400/17900]  [46.9/100.0] [batch_t 0.100 (0.101)] [data_t 0.002] [optim_t 0.098] [lr 0.000050] [cos 0.375 (0.356)]
+2025-09-11 22:43:51,335 - ==> Total time: 0:14:43	 Eta: 0:16:36 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:43:55,561 - Train: 47.21% [8450/17900]  [47.2/100.0] [batch_t 0.100 (0.102)] [data_t 0.002] [optim_t 0.099] [lr 0.000050] [cos 0.301 (0.345)]
+2025-09-11 22:44:00,614 - Train: 47.49% [8500/17900]  [47.5/100.0] [batch_t 0.100 (0.101)] [data_t 0.002] [optim_t 0.099] [lr 0.000050] [cos 0.334 (0.363)]
+2025-09-11 22:44:05,659 - Train: 47.77% [8550/17900]  [47.8/100.0] [batch_t 0.102 (0.101)] [data_t 0.002] [optim_t 0.101] [lr 0.000050] [cos 0.318 (0.355)]
+2025-09-11 22:44:09,884 - ==> Total time: 0:15:02	 Eta: 0:16:17 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:44:11,221 - Train: 48.04% [8600/17900]  [48.0/100.0] [batch_t 0.100 (0.116)] [data_t 0.002] [optim_t 0.098] [lr 0.000050] [cos 0.383 (0.363)]
+2025-09-11 22:44:16,371 - Train: 48.32% [8650/17900]  [48.3/100.0] [batch_t 0.102 (0.103)] [data_t 0.002] [optim_t 0.100] [lr 0.000050] [cos 0.382 (0.357)]
+2025-09-11 22:44:21,489 - Train: 48.60% [8700/17900]  [48.6/100.0] [batch_t 0.100 (0.102)] [data_t 0.002] [optim_t 0.098] [lr 0.000050] [cos 0.311 (0.349)]
+2025-09-11 22:44:26,548 - Train: 48.88% [8750/17900]  [48.9/100.0] [batch_t 0.101 (0.101)] [data_t 0.002] [optim_t 0.099] [lr 0.000050] [cos 0.307 (0.345)]
+2025-09-11 22:44:28,609 - ==> Total time: 0:15:20	 Eta: 0:15:58 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:44:32,000 - Train: 49.16% [8800/17900]  [49.2/100.0] [batch_t 0.099 (0.102)] [data_t 0.002] [optim_t 0.097] [lr 0.000050] [cos 0.373 (0.348)]
+2025-09-11 22:44:36,990 - Train: 49.44% [8850/17900]  [49.4/100.0] [batch_t 0.100 (0.100)] [data_t 0.002] [optim_t 0.098] [lr 0.000050] [cos 0.386 (0.344)]
+2025-09-11 22:44:41,971 - Train: 49.72% [8900/17900]  [49.7/100.0] [batch_t 0.099 (0.100)] [data_t 0.002] [optim_t 0.097] [lr 0.000050] [cos 0.313 (0.355)]
+2025-09-11 22:44:46,889 - Train: 50.00% [8950/17900]  [50.0/100.0] [batch_t 0.095 (0.098)] [data_t 0.002] [optim_t 0.093] [lr 0.000050] [cos 0.291 (0.349)]
+2025-09-11 22:44:46,890 - ==> Total time: 0:15:39	 Eta: 0:15:39 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:44:52,381 - Train: 50.28% [9000/17900]  [50.3/100.0] [batch_t 0.099 (0.101)] [data_t 0.002] [optim_t 0.098] [lr 0.000050] [cos 0.324 (0.347)]
+2025-09-11 22:44:57,343 - Train: 50.56% [9050/17900]  [50.6/100.0] [batch_t 0.099 (0.099)] [data_t 0.002] [optim_t 0.097] [lr 0.000050] [cos 0.358 (0.348)]
+2025-09-11 22:45:02,294 - Train: 50.84% [9100/17900]  [50.8/100.0] [batch_t 0.099 (0.099)] [data_t 0.002] [optim_t 0.097] [lr 0.000050] [cos 0.342 (0.355)]
+2025-09-11 22:45:05,122 - ==> Total time: 0:15:57	 Eta: 0:15:19 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:45:07,743 - Train: 51.12% [9150/17900]  [51.1/100.0] [batch_t 0.100 (0.106)] [data_t 0.002] [optim_t 0.098] [lr 0.000050] [cos 0.406 (0.343)]
+2025-09-11 22:45:12,796 - Train: 51.40% [9200/17900]  [51.4/100.0] [batch_t 0.098 (0.101)] [data_t 0.002] [optim_t 0.096] [lr 0.000050] [cos 0.433 (0.348)]
+2025-09-11 22:45:17,768 - Train: 51.68% [9250/17900]  [51.7/100.0] [batch_t 0.099 (0.099)] [data_t 0.002] [optim_t 0.097] [lr 0.000050] [cos 0.415 (0.347)]
+2025-09-11 22:45:22,798 - Train: 51.96% [9300/17900]  [52.0/100.0] [batch_t 0.096 (0.101)] [data_t 0.002] [optim_t 0.094] [lr 0.000050] [cos 0.309 (0.344)]
+2025-09-11 22:45:23,584 - ==> Total time: 0:16:15	 Eta: 0:15:00 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:45:28,321 - Train: 52.23% [9350/17900]  [52.2/100.0] [batch_t 0.101 (0.103)] [data_t 0.002] [optim_t 0.099] [lr 0.000050] [cos 0.268 (0.339)]
+2025-09-11 22:45:33,352 - Train: 52.51% [9400/17900]  [52.5/100.0] [batch_t 0.102 (0.101)] [data_t 0.002] [optim_t 0.100] [lr 0.000050] [cos 0.262 (0.350)]
+2025-09-11 22:45:38,386 - Train: 52.79% [9450/17900]  [52.8/100.0] [batch_t 0.100 (0.101)] [data_t 0.002] [optim_t 0.098] [lr 0.000050] [cos 0.292 (0.342)]
+2025-09-11 22:45:42,064 - ==> Total time: 0:16:34	 Eta: 0:14:41 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:45:43,931 - Train: 53.07% [9500/17900]  [53.1/100.0] [batch_t 0.105 (0.112)] [data_t 0.002] [optim_t 0.103] [lr 0.000050] [cos 0.322 (0.339)]
+2025-09-11 22:45:49,073 - Train: 53.35% [9550/17900]  [53.4/100.0] [batch_t 0.103 (0.103)] [data_t 0.002] [optim_t 0.101] [lr 0.000050] [cos 0.329 (0.347)]
+2025-09-11 22:45:54,216 - Train: 53.63% [9600/17900]  [53.6/100.0] [batch_t 0.102 (0.103)] [data_t 0.002] [optim_t 0.100] [lr 0.000050] [cos 0.277 (0.336)]
+2025-09-11 22:45:59,385 - Train: 53.91% [9650/17900]  [53.9/100.0] [batch_t 0.102 (0.103)] [data_t 0.002] [optim_t 0.100] [lr 0.000050] [cos 0.281 (0.345)]
+2025-09-11 22:46:00,982 - ==> Total time: 0:16:53	 Eta: 0:14:23 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:46:04,970 - Train: 54.19% [9700/17900]  [54.2/100.0] [batch_t 0.100 (0.105)] [data_t 0.002] [optim_t 0.099] [lr 0.000050] [cos 0.288 (0.352)]
+2025-09-11 22:46:10,069 - Train: 54.47% [9750/17900]  [54.5/100.0] [batch_t 0.102 (0.102)] [data_t 0.002] [optim_t 0.100] [lr 0.000050] [cos 0.377 (0.347)]
+2025-09-11 22:46:15,161 - Train: 54.75% [9800/17900]  [54.7/100.0] [batch_t 0.104 (0.102)] [data_t 0.002] [optim_t 0.102] [lr 0.000050] [cos 0.280 (0.333)]
+2025-09-11 22:46:19,731 - ==> Total time: 0:17:11	 Eta: 0:14:04 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:46:20,716 - Train: 55.03% [9850/17900]  [55.0/100.0] [batch_t 0.101 (0.116)] [data_t 0.002] [optim_t 0.100] [lr 0.000050] [cos 0.274 (0.317)]
+2025-09-11 22:46:25,839 - Train: 55.31% [9900/17900]  [55.3/100.0] [batch_t 0.105 (0.102)] [data_t 0.002] [optim_t 0.103] [lr 0.000050] [cos 0.394 (0.347)]
+2025-09-11 22:46:30,867 - Train: 55.59% [9950/17900]  [55.6/100.0] [batch_t 0.100 (0.101)] [data_t 0.002] [optim_t 0.098] [lr 0.000050] [cos 0.331 (0.336)]
+2025-09-11 22:46:35,900 - Train: 55.87% [10000/17900]  [55.9/100.0] [batch_t 0.099 (0.101)] [data_t 0.002] [optim_t 0.098] [lr 0.000050] [cos 0.373 (0.338)]
+2025-09-11 22:46:38,249 - ==> Total time: 0:17:30	 Eta: 0:13:45 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:46:41,426 - Train: 56.15% [10050/17900]  [56.1/100.0] [batch_t 0.113 (0.104)] [data_t 0.002] [optim_t 0.111] [lr 0.000050] [cos 0.286 (0.334)]
+2025-09-11 22:46:46,493 - Train: 56.42% [10100/17900]  [56.4/100.0] [batch_t 0.099 (0.101)] [data_t 0.002] [optim_t 0.097] [lr 0.000050] [cos 0.368 (0.339)]
+2025-09-11 22:46:51,552 - Train: 56.70% [10150/17900]  [56.7/100.0] [batch_t 0.100 (0.101)] [data_t 0.002] [optim_t 0.098] [lr 0.000050] [cos 0.364 (0.331)]
+2025-09-11 22:46:56,562 - Train: 56.98% [10200/17900]  [57.0/100.0] [batch_t 0.096 (0.100)] [data_t 0.002] [optim_t 0.094] [lr 0.000050] [cos 0.371 (0.344)]
+2025-09-11 22:46:56,852 - ==> Total time: 0:17:49	 Eta: 0:13:26 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:47:02,287 - Train: 57.26% [10250/17900]  [57.3/100.0] [batch_t 0.098 (0.106)] [data_t 0.002] [optim_t 0.097] [lr 0.000050] [cos 0.397 (0.338)]
+2025-09-11 22:47:07,379 - Train: 57.54% [10300/17900]  [57.5/100.0] [batch_t 0.102 (0.102)] [data_t 0.002] [optim_t 0.100] [lr 0.000050] [cos 0.366 (0.338)]
+2025-09-11 22:47:12,451 - Train: 57.82% [10350/17900]  [57.8/100.0] [batch_t 0.113 (0.101)] [data_t 0.002] [optim_t 0.111] [lr 0.000050] [cos 0.307 (0.339)]
+2025-09-11 22:47:15,599 - ==> Total time: 0:18:07	 Eta: 0:13:07 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:47:17,935 - Train: 58.10% [10400/17900]  [58.1/100.0] [batch_t 0.100 (0.106)] [data_t 0.002] [optim_t 0.098] [lr 0.000050] [cos 0.314 (0.339)]
+2025-09-11 22:47:22,990 - Train: 58.38% [10450/17900]  [58.4/100.0] [batch_t 0.100 (0.101)] [data_t 0.002] [optim_t 0.098] [lr 0.000050] [cos 0.374 (0.333)]
+2025-09-11 22:47:28,033 - Train: 58.66% [10500/17900]  [58.7/100.0] [batch_t 0.101 (0.101)] [data_t 0.002] [optim_t 0.099] [lr 0.000050] [cos 0.365 (0.332)]
+2025-09-11 22:47:33,063 - Train: 58.94% [10550/17900]  [58.9/100.0] [batch_t 0.099 (0.101)] [data_t 0.002] [optim_t 0.097] [lr 0.000050] [cos 0.383 (0.333)]
+2025-09-11 22:47:34,138 - ==> Total time: 0:18:26	 Eta: 0:12:48 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:47:38,600 - Train: 59.22% [10600/17900]  [59.2/100.0] [batch_t 0.100 (0.104)] [data_t 0.002] [optim_t 0.098] [lr 0.000050] [cos 0.317 (0.333)]
+2025-09-11 22:47:43,601 - Train: 59.50% [10650/17900]  [59.5/100.0] [batch_t 0.100 (0.100)] [data_t 0.002] [optim_t 0.098] [lr 0.000050] [cos 0.382 (0.327)]
+2025-09-11 22:47:48,592 - Train: 59.78% [10700/17900]  [59.8/100.0] [batch_t 0.100 (0.100)] [data_t 0.002] [optim_t 0.098] [lr 0.000050] [cos 0.290 (0.337)]
+2025-09-11 22:47:52,578 - ==> Total time: 0:18:44	 Eta: 0:12:29 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:47:54,114 - Train: 60.06% [10750/17900]  [60.1/100.0] [batch_t 0.101 (0.113)] [data_t 0.002] [optim_t 0.099] [lr 0.000050] [cos 0.333 (0.326)]
+2025-09-11 22:47:59,258 - Train: 60.34% [10800/17900]  [60.3/100.0] [batch_t 0.101 (0.103)] [data_t 0.002] [optim_t 0.100] [lr 0.000050] [cos 0.232 (0.337)]
+2025-09-11 22:48:04,329 - Train: 60.61% [10850/17900]  [60.6/100.0] [batch_t 0.104 (0.101)] [data_t 0.002] [optim_t 0.102] [lr 0.000050] [cos 0.278 (0.327)]
+2025-09-11 22:48:09,377 - Train: 60.89% [10900/17900]  [60.9/100.0] [batch_t 0.103 (0.101)] [data_t 0.002] [optim_t 0.101] [lr 0.000050] [cos 0.322 (0.331)]
+2025-09-11 22:48:11,239 - ==> Total time: 0:19:03	 Eta: 0:12:11 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:48:14,948 - Train: 61.17% [10950/17900]  [61.2/100.0] [batch_t 0.102 (0.105)] [data_t 0.002] [optim_t 0.100] [lr 0.000050] [cos 0.365 (0.335)]
+2025-09-11 22:48:20,168 - Train: 61.45% [11000/17900]  [61.5/100.0] [batch_t 0.100 (0.104)] [data_t 0.002] [optim_t 0.098] [lr 0.000050] [cos 0.364 (0.334)]
+2025-09-11 22:48:25,311 - Train: 61.73% [11050/17900]  [61.7/100.0] [batch_t 0.109 (0.103)] [data_t 0.002] [optim_t 0.107] [lr 0.000050] [cos 0.332 (0.324)]
+2025-09-11 22:48:30,170 - ==> Total time: 0:19:22	 Eta: 0:11:52 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:48:30,906 - Train: 62.01% [11100/17900]  [62.0/100.0] [batch_t 0.103 (0.137)] [data_t 0.002] [optim_t 0.101] [lr 0.000050] [cos 0.360 (0.319)]
+2025-09-11 22:48:35,930 - Train: 62.29% [11150/17900]  [62.3/100.0] [batch_t 0.102 (0.100)] [data_t 0.002] [optim_t 0.100] [lr 0.000050] [cos 0.345 (0.329)]
+2025-09-11 22:48:40,892 - Train: 62.57% [11200/17900]  [62.6/100.0] [batch_t 0.098 (0.099)] [data_t 0.002] [optim_t 0.097] [lr 0.000050] [cos 0.360 (0.329)]
+2025-09-11 22:48:45,845 - Train: 62.85% [11250/17900]  [62.8/100.0] [batch_t 0.099 (0.099)] [data_t 0.002] [optim_t 0.097] [lr 0.000050] [cos 0.319 (0.332)]
+2025-09-11 22:48:48,465 - ==> Total time: 0:19:40	 Eta: 0:11:33 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:48:51,294 - Train: 63.13% [11300/17900]  [63.1/100.0] [batch_t 0.100 (0.103)] [data_t 0.002] [optim_t 0.098] [lr 0.000050] [cos 0.283 (0.323)]
+2025-09-11 22:48:56,245 - Train: 63.41% [11350/17900]  [63.4/100.0] [batch_t 0.098 (0.099)] [data_t 0.002] [optim_t 0.096] [lr 0.000050] [cos 0.381 (0.329)]
+2025-09-11 22:49:01,203 - Train: 63.69% [11400/17900]  [63.7/100.0] [batch_t 0.100 (0.099)] [data_t 0.002] [optim_t 0.098] [lr 0.000050] [cos 0.337 (0.322)]
+2025-09-11 22:49:06,133 - Train: 63.97% [11450/17900]  [64.0/100.0] [batch_t 0.096 (0.099)] [data_t 0.002] [optim_t 0.094] [lr 0.000050] [cos 0.302 (0.332)]
+2025-09-11 22:49:06,707 - ==> Total time: 0:19:58	 Eta: 0:11:14 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:49:11,686 - Train: 64.25% [11500/17900]  [64.2/100.0] [batch_t 0.100 (0.104)] [data_t 0.002] [optim_t 0.098] [lr 0.000050] [cos 0.305 (0.330)]
+2025-09-11 22:49:16,759 - Train: 64.53% [11550/17900]  [64.5/100.0] [batch_t 0.100 (0.101)] [data_t 0.002] [optim_t 0.098] [lr 0.000050] [cos 0.355 (0.318)]
+2025-09-11 22:49:21,786 - Train: 64.80% [11600/17900]  [64.8/100.0] [batch_t 0.100 (0.101)] [data_t 0.002] [optim_t 0.098] [lr 0.000050] [cos 0.326 (0.329)]
+2025-09-11 22:49:25,249 - ==> Total time: 0:20:17	 Eta: 0:10:55 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:49:27,314 - Train: 65.08% [11650/17900]  [65.1/100.0] [batch_t 0.099 (0.109)] [data_t 0.002] [optim_t 0.097] [lr 0.000050] [cos 0.256 (0.329)]
+2025-09-11 22:49:32,388 - Train: 65.36% [11700/17900]  [65.4/100.0] [batch_t 0.103 (0.101)] [data_t 0.002] [optim_t 0.102] [lr 0.000050] [cos 0.304 (0.321)]
+2025-09-11 22:49:37,495 - Train: 65.64% [11750/17900]  [65.6/100.0] [batch_t 0.101 (0.102)] [data_t 0.002] [optim_t 0.100] [lr 0.000050] [cos 0.246 (0.329)]
+2025-09-11 22:49:42,565 - Train: 65.92% [11800/17900]  [65.9/100.0] [batch_t 0.097 (0.101)] [data_t 0.002] [optim_t 0.095] [lr 0.000050] [cos 0.310 (0.320)]
+2025-09-11 22:49:43,940 - ==> Total time: 0:20:36	 Eta: 0:10:36 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:49:48,133 - Train: 66.20% [11850/17900]  [66.2/100.0] [batch_t 0.103 (0.105)] [data_t 0.002] [optim_t 0.101] [lr 0.000050] [cos 0.387 (0.329)]
+2025-09-11 22:49:53,229 - Train: 66.48% [11900/17900]  [66.5/100.0] [batch_t 0.101 (0.102)] [data_t 0.002] [optim_t 0.099] [lr 0.000050] [cos 0.389 (0.317)]
+2025-09-11 22:49:58,270 - Train: 66.76% [11950/17900]  [66.8/100.0] [batch_t 0.100 (0.101)] [data_t 0.002] [optim_t 0.098] [lr 0.000050] [cos 0.363 (0.327)]
+2025-09-11 22:50:02,536 - ==> Total time: 0:20:54	 Eta: 0:10:18 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:50:03,789 - Train: 67.04% [12000/17900]  [67.0/100.0] [batch_t 0.101 (0.120)] [data_t 0.002] [optim_t 0.100] [lr 0.000050] [cos 0.328 (0.357)]
+2025-09-11 22:50:08,990 - Train: 67.32% [12050/17900]  [67.3/100.0] [batch_t 0.105 (0.104)] [data_t 0.002] [optim_t 0.103] [lr 0.000050] [cos 0.292 (0.319)]
+2025-09-11 22:50:14,141 - Train: 67.60% [12100/17900]  [67.6/100.0] [batch_t 0.102 (0.103)] [data_t 0.002] [optim_t 0.100] [lr 0.000050] [cos 0.311 (0.327)]
+2025-09-11 22:50:19,240 - Train: 67.88% [12150/17900]  [67.9/100.0] [batch_t 0.100 (0.102)] [data_t 0.002] [optim_t 0.098] [lr 0.000050] [cos 0.353 (0.321)]
+2025-09-11 22:50:21,438 - ==> Total time: 0:21:13	 Eta: 0:09:59 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:50:25,075 - Train: 68.16% [12200/17900]  [68.2/100.0] [batch_t 0.119 (0.115)] [data_t 0.002] [optim_t 0.117] [lr 0.000050] [cos 0.295 (0.307)]
+2025-09-11 22:50:30,326 - Train: 68.44% [12250/17900]  [68.4/100.0] [batch_t 0.102 (0.105)] [data_t 0.002] [optim_t 0.100] [lr 0.000050] [cos 0.279 (0.314)]
+2025-09-11 22:50:35,591 - Train: 68.72% [12300/17900]  [68.7/100.0] [batch_t 0.105 (0.105)] [data_t 0.002] [optim_t 0.103] [lr 0.000050] [cos 0.311 (0.326)]
+2025-09-11 22:50:40,598 - Train: 68.99% [12350/17900]  [69.0/100.0] [batch_t 0.097 (0.100)] [data_t 0.002] [optim_t 0.095] [lr 0.000050] [cos 0.364 (0.332)]
+2025-09-11 22:50:40,697 - ==> Total time: 0:21:32	 Eta: 0:09:40 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:50:46,226 - Train: 69.27% [12400/17900]  [69.3/100.0] [batch_t 0.101 (0.104)] [data_t 0.002] [optim_t 0.099] [lr 0.000050] [cos 0.414 (0.327)]
+2025-09-11 22:50:51,320 - Train: 69.55% [12450/17900]  [69.6/100.0] [batch_t 0.101 (0.102)] [data_t 0.002] [optim_t 0.099] [lr 0.000050] [cos 0.301 (0.304)]
+2025-09-11 22:50:56,420 - Train: 69.83% [12500/17900]  [69.8/100.0] [batch_t 0.101 (0.102)] [data_t 0.002] [optim_t 0.100] [lr 0.000050] [cos 0.303 (0.326)]
+2025-09-11 22:50:59,420 - ==> Total time: 0:21:51	 Eta: 0:09:22 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:51:01,976 - Train: 70.11% [12550/17900]  [70.1/100.0] [batch_t 0.100 (0.106)] [data_t 0.002] [optim_t 0.099] [lr 0.000050] [cos 0.326 (0.319)]
+2025-09-11 22:51:07,055 - Train: 70.39% [12600/17900]  [70.4/100.0] [batch_t 0.100 (0.102)] [data_t 0.002] [optim_t 0.099] [lr 0.000050] [cos 0.264 (0.320)]
+2025-09-11 22:51:12,137 - Train: 70.67% [12650/17900]  [70.7/100.0] [batch_t 0.101 (0.102)] [data_t 0.002] [optim_t 0.099] [lr 0.000050] [cos 0.269 (0.310)]
+2025-09-11 22:51:17,195 - Train: 70.95% [12700/17900]  [70.9/100.0] [batch_t 0.120 (0.101)] [data_t 0.002] [optim_t 0.118] [lr 0.000050] [cos 0.341 (0.327)]
+2025-09-11 22:51:18,066 - ==> Total time: 0:22:10	 Eta: 0:09:03 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:51:22,704 - Train: 71.23% [12750/17900]  [71.2/100.0] [batch_t 0.101 (0.103)] [data_t 0.002] [optim_t 0.099] [lr 0.000050] [cos 0.351 (0.325)]
+2025-09-11 22:51:27,785 - Train: 71.51% [12800/17900]  [71.5/100.0] [batch_t 0.102 (0.102)] [data_t 0.002] [optim_t 0.100] [lr 0.000050] [cos 0.244 (0.317)]
+2025-09-11 22:51:32,854 - Train: 71.79% [12850/17900]  [71.8/100.0] [batch_t 0.100 (0.101)] [data_t 0.002] [optim_t 0.098] [lr 0.000050] [cos 0.301 (0.312)]
+2025-09-11 22:51:36,627 - ==> Total time: 0:22:28	 Eta: 0:08:44 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:51:38,388 - Train: 72.07% [12900/17900]  [72.1/100.0] [batch_t 0.099 (0.108)] [data_t 0.002] [optim_t 0.098] [lr 0.000050] [cos 0.228 (0.306)]
+2025-09-11 22:51:43,491 - Train: 72.35% [12950/17900]  [72.3/100.0] [batch_t 0.102 (0.102)] [data_t 0.002] [optim_t 0.100] [lr 0.000050] [cos 0.286 (0.314)]
+2025-09-11 22:51:48,560 - Train: 72.63% [13000/17900]  [72.6/100.0] [batch_t 0.103 (0.101)] [data_t 0.002] [optim_t 0.101] [lr 0.000050] [cos 0.316 (0.313)]
+2025-09-11 22:51:53,626 - Train: 72.91% [13050/17900]  [72.9/100.0] [batch_t 0.099 (0.101)] [data_t 0.002] [optim_t 0.097] [lr 0.000050] [cos 0.356 (0.320)]
+2025-09-11 22:51:55,285 - ==> Total time: 0:22:47	 Eta: 0:08:25 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:51:59,154 - Train: 73.18% [13100/17900]  [73.2/100.0] [batch_t 0.105 (0.105)] [data_t 0.002] [optim_t 0.103] [lr 0.000050] [cos 0.262 (0.313)]
+2025-09-11 22:52:04,241 - Train: 73.46% [13150/17900]  [73.5/100.0] [batch_t 0.101 (0.102)] [data_t 0.002] [optim_t 0.100] [lr 0.000050] [cos 0.353 (0.324)]
+2025-09-11 22:52:09,331 - Train: 73.74% [13200/17900]  [73.7/100.0] [batch_t 0.103 (0.102)] [data_t 0.002] [optim_t 0.101] [lr 0.000050] [cos 0.256 (0.307)]
+2025-09-11 22:52:13,965 - ==> Total time: 0:23:06	 Eta: 0:08:07 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:52:14,862 - Train: 74.02% [13250/17900]  [74.0/100.0] [batch_t 0.101 (0.118)] [data_t 0.002] [optim_t 0.100] [lr 0.000050] [cos 0.363 (0.326)]
+2025-09-11 22:52:19,946 - Train: 74.30% [13300/17900]  [74.3/100.0] [batch_t 0.102 (0.102)] [data_t 0.002] [optim_t 0.100] [lr 0.000050] [cos 0.359 (0.311)]
+2025-09-11 22:52:25,026 - Train: 74.58% [13350/17900]  [74.6/100.0] [batch_t 0.101 (0.102)] [data_t 0.002] [optim_t 0.099] [lr 0.000050] [cos 0.232 (0.314)]
+2025-09-11 22:52:30,067 - Train: 74.86% [13400/17900]  [74.9/100.0] [batch_t 0.100 (0.101)] [data_t 0.002] [optim_t 0.098] [lr 0.000050] [cos 0.341 (0.312)]
+2025-09-11 22:52:32,542 - ==> Total time: 0:23:24	 Eta: 0:07:48 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:52:35,601 - Train: 75.14% [13450/17900]  [75.1/100.0] [batch_t 0.102 (0.106)] [data_t 0.002] [optim_t 0.101] [lr 0.000050] [cos 0.289 (0.315)]
+2025-09-11 22:52:40,706 - Train: 75.42% [13500/17900]  [75.4/100.0] [batch_t 0.103 (0.102)] [data_t 0.002] [optim_t 0.101] [lr 0.000050] [cos 0.302 (0.306)]
+2025-09-11 22:52:45,835 - Train: 75.70% [13550/17900]  [75.7/100.0] [batch_t 0.102 (0.103)] [data_t 0.002] [optim_t 0.100] [lr 0.000050] [cos 0.390 (0.318)]
+2025-09-11 22:52:50,813 - Train: 75.98% [13600/17900]  [76.0/100.0] [batch_t 0.096 (0.100)] [data_t 0.002] [optim_t 0.094] [lr 0.000050] [cos 0.319 (0.314)]
+2025-09-11 22:52:51,199 - ==> Total time: 0:23:43	 Eta: 0:07:29 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:52:56,344 - Train: 76.26% [13650/17900]  [76.3/100.0] [batch_t 0.099 (0.102)] [data_t 0.002] [optim_t 0.097] [lr 0.000050] [cos 0.359 (0.312)]
+2025-09-11 22:53:01,333 - Train: 76.54% [13700/17900]  [76.5/100.0] [batch_t 0.100 (0.100)] [data_t 0.002] [optim_t 0.098] [lr 0.000050] [cos 0.310 (0.302)]
+2025-09-11 22:53:06,324 - Train: 76.82% [13750/17900]  [76.8/100.0] [batch_t 0.099 (0.100)] [data_t 0.002] [optim_t 0.097] [lr 0.000050] [cos 0.315 (0.315)]
+2025-09-11 22:53:09,572 - ==> Total time: 0:24:01	 Eta: 0:07:10 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:53:11,832 - Train: 77.09% [13800/17900]  [77.1/100.0] [batch_t 0.104 (0.109)] [data_t 0.002] [optim_t 0.102] [lr 0.000050] [cos 0.299 (0.314)]
+2025-09-11 22:53:16,938 - Train: 77.37% [13850/17900]  [77.4/100.0] [batch_t 0.103 (0.102)] [data_t 0.002] [optim_t 0.101] [lr 0.000050] [cos 0.363 (0.306)]
+2025-09-11 22:53:21,992 - Train: 77.65% [13900/17900]  [77.7/100.0] [batch_t 0.100 (0.101)] [data_t 0.002] [optim_t 0.098] [lr 0.000050] [cos 0.251 (0.311)]
+2025-09-11 22:53:27,015 - Train: 77.93% [13950/17900]  [77.9/100.0] [batch_t 0.098 (0.100)] [data_t 0.002] [optim_t 0.096] [lr 0.000050] [cos 0.322 (0.313)]
+2025-09-11 22:53:28,180 - ==> Total time: 0:24:20	 Eta: 0:06:51 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:53:32,559 - Train: 78.21% [14000/17900]  [78.2/100.0] [batch_t 0.101 (0.104)] [data_t 0.002] [optim_t 0.099] [lr 0.000050] [cos 0.311 (0.309)]
+2025-09-11 22:53:37,547 - Train: 78.49% [14050/17900]  [78.5/100.0] [batch_t 0.104 (0.100)] [data_t 0.002] [optim_t 0.102] [lr 0.000050] [cos 0.342 (0.304)]
+2025-09-11 22:53:42,533 - Train: 78.77% [14100/17900]  [78.8/100.0] [batch_t 0.099 (0.100)] [data_t 0.002] [optim_t 0.097] [lr 0.000050] [cos 0.273 (0.313)]
+2025-09-11 22:53:46,571 - ==> Total time: 0:24:38	 Eta: 0:06:33 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:53:48,131 - Train: 79.05% [14150/17900]  [79.1/100.0] [batch_t 0.100 (0.128)] [data_t 0.002] [optim_t 0.099] [lr 0.000050] [cos 0.276 (0.297)]
+2025-09-11 22:53:53,239 - Train: 79.33% [14200/17900]  [79.3/100.0] [batch_t 0.100 (0.102)] [data_t 0.002] [optim_t 0.099] [lr 0.000050] [cos 0.338 (0.305)]
+2025-09-11 22:53:58,356 - Train: 79.61% [14250/17900]  [79.6/100.0] [batch_t 0.114 (0.102)] [data_t 0.002] [optim_t 0.112] [lr 0.000050] [cos 0.315 (0.307)]
+2025-09-11 22:54:03,373 - Train: 79.89% [14300/17900]  [79.9/100.0] [batch_t 0.100 (0.100)] [data_t 0.002] [optim_t 0.098] [lr 0.000050] [cos 0.358 (0.307)]
+2025-09-11 22:54:05,341 - ==> Total time: 0:24:57	 Eta: 0:06:14 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:54:08,908 - Train: 80.17% [14350/17900]  [80.2/100.0] [batch_t 0.104 (0.105)] [data_t 0.002] [optim_t 0.102] [lr 0.000005] [cos 0.348 (0.312)]
+2025-09-11 22:54:13,964 - Train: 80.45% [14400/17900]  [80.4/100.0] [batch_t 0.102 (0.101)] [data_t 0.002] [optim_t 0.100] [lr 0.000005] [cos 0.294 (0.300)]
+2025-09-11 22:54:19,022 - Train: 80.73% [14450/17900]  [80.7/100.0] [batch_t 0.104 (0.101)] [data_t 0.002] [optim_t 0.102] [lr 0.000005] [cos 0.266 (0.302)]
+2025-09-11 22:54:23,910 - ==> Total time: 0:25:16	 Eta: 0:05:55 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:54:24,541 - Train: 81.01% [14500/17900]  [81.0/100.0] [batch_t 0.161 (0.161)] [data_t 0.041] [optim_t 0.120] [lr 0.000005] [cos 0.343 (0.343)]
+2025-09-11 22:54:29,623 - Train: 81.28% [14550/17900]  [81.3/100.0] [batch_t 0.101 (0.102)] [data_t 0.002] [optim_t 0.099] [lr 0.000005] [cos 0.367 (0.297)]
+2025-09-11 22:54:34,785 - Train: 81.56% [14600/17900]  [81.6/100.0] [batch_t 0.104 (0.103)] [data_t 0.002] [optim_t 0.102] [lr 0.000005] [cos 0.300 (0.302)]
+2025-09-11 22:54:40,065 - Train: 81.84% [14650/17900]  [81.8/100.0] [batch_t 0.103 (0.106)] [data_t 0.002] [optim_t 0.101] [lr 0.000005] [cos 0.336 (0.304)]
+2025-09-11 22:54:42,893 - ==> Total time: 0:25:35	 Eta: 0:05:36 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:54:45,646 - Train: 82.12% [14700/17900]  [82.1/100.0] [batch_t 0.103 (0.106)] [data_t 0.002] [optim_t 0.101] [lr 0.000005] [cos 0.273 (0.289)]
+2025-09-11 22:54:50,755 - Train: 82.40% [14750/17900]  [82.4/100.0] [batch_t 0.101 (0.102)] [data_t 0.002] [optim_t 0.099] [lr 0.000005] [cos 0.214 (0.301)]
+2025-09-11 22:54:55,825 - Train: 82.68% [14800/17900]  [82.7/100.0] [batch_t 0.104 (0.101)] [data_t 0.002] [optim_t 0.102] [lr 0.000005] [cos 0.387 (0.301)]
+2025-09-11 22:55:00,887 - Train: 82.96% [14850/17900]  [83.0/100.0] [batch_t 0.097 (0.101)] [data_t 0.002] [optim_t 0.095] [lr 0.000005] [cos 0.257 (0.306)]
+2025-09-11 22:55:01,599 - ==> Total time: 0:25:53	 Eta: 0:05:18 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:55:06,457 - Train: 83.24% [14900/17900]  [83.2/100.0] [batch_t 0.100 (0.103)] [data_t 0.002] [optim_t 0.099] [lr 0.000005] [cos 0.293 (0.299)]
+2025-09-11 22:55:11,522 - Train: 83.52% [14950/17900]  [83.5/100.0] [batch_t 0.102 (0.101)] [data_t 0.002] [optim_t 0.100] [lr 0.000005] [cos 0.293 (0.303)]
+2025-09-11 22:55:16,593 - Train: 83.80% [15000/17900]  [83.8/100.0] [batch_t 0.101 (0.101)] [data_t 0.002] [optim_t 0.099] [lr 0.000005] [cos 0.318 (0.302)]
+2025-09-11 22:55:20,195 - ==> Total time: 0:26:12	 Eta: 0:04:59 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:55:22,155 - Train: 84.08% [15050/17900]  [84.1/100.0] [batch_t 0.103 (0.107)] [data_t 0.002] [optim_t 0.102] [lr 0.000005] [cos 0.282 (0.295)]
+2025-09-11 22:55:27,359 - Train: 84.36% [15100/17900]  [84.4/100.0] [batch_t 0.104 (0.104)] [data_t 0.002] [optim_t 0.102] [lr 0.000005] [cos 0.319 (0.301)]
+2025-09-11 22:55:32,523 - Train: 84.64% [15150/17900]  [84.6/100.0] [batch_t 0.102 (0.103)] [data_t 0.002] [optim_t 0.101] [lr 0.000005] [cos 0.316 (0.305)]
+2025-09-11 22:55:37,659 - Train: 84.92% [15200/17900]  [84.9/100.0] [batch_t 0.097 (0.103)] [data_t 0.002] [optim_t 0.095] [lr 0.000005] [cos 0.352 (0.291)]
+2025-09-11 22:55:39,138 - ==> Total time: 0:26:31	 Eta: 0:04:40 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:55:43,267 - Train: 85.20% [15250/17900]  [85.2/100.0] [batch_t 0.099 (0.104)] [data_t 0.002] [optim_t 0.097] [lr 0.000005] [cos 0.333 (0.299)]
+2025-09-11 22:55:48,504 - Train: 85.47% [15300/17900]  [85.5/100.0] [batch_t 0.105 (0.105)] [data_t 0.002] [optim_t 0.103] [lr 0.000005] [cos 0.316 (0.295)]
+2025-09-11 22:55:53,720 - Train: 85.75% [15350/17900]  [85.8/100.0] [batch_t 0.103 (0.104)] [data_t 0.002] [optim_t 0.101] [lr 0.000005] [cos 0.335 (0.304)]
+2025-09-11 22:55:58,214 - ==> Total time: 0:26:50	 Eta: 0:04:22 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:55:59,360 - Train: 86.03% [15400/17900]  [86.0/100.0] [batch_t 0.100 (0.117)] [data_t 0.002] [optim_t 0.099] [lr 0.000005] [cos 0.251 (0.313)]
+2025-09-11 22:56:04,416 - Train: 86.31% [15450/17900]  [86.3/100.0] [batch_t 0.102 (0.101)] [data_t 0.002] [optim_t 0.100] [lr 0.000005] [cos 0.367 (0.314)]
+2025-09-11 22:56:09,556 - Train: 86.59% [15500/17900]  [86.6/100.0] [batch_t 0.101 (0.103)] [data_t 0.002] [optim_t 0.099] [lr 0.000005] [cos 0.319 (0.296)]
+2025-09-11 22:56:14,705 - Train: 86.87% [15550/17900]  [86.9/100.0] [batch_t 0.102 (0.103)] [data_t 0.002] [optim_t 0.100] [lr 0.000005] [cos 0.342 (0.293)]
+2025-09-11 22:56:16,995 - ==> Total time: 0:27:09	 Eta: 0:04:03 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:56:20,311 - Train: 87.15% [15600/17900]  [87.2/100.0] [batch_t 0.101 (0.107)] [data_t 0.002] [optim_t 0.099] [lr 0.000005] [cos 0.335 (0.310)]
+2025-09-11 22:56:25,489 - Train: 87.43% [15650/17900]  [87.4/100.0] [batch_t 0.102 (0.104)] [data_t 0.002] [optim_t 0.100] [lr 0.000005] [cos 0.319 (0.303)]
+2025-09-11 22:56:30,686 - Train: 87.71% [15700/17900]  [87.7/100.0] [batch_t 0.116 (0.104)] [data_t 0.002] [optim_t 0.114] [lr 0.000005] [cos 0.265 (0.293)]
+2025-09-11 22:56:35,816 - Train: 87.99% [15750/17900]  [88.0/100.0] [batch_t 0.099 (0.103)] [data_t 0.002] [optim_t 0.098] [lr 0.000005] [cos 0.365 (0.292)]
+2025-09-11 22:56:36,021 - ==> Total time: 0:27:28	 Eta: 0:03:44 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:56:41,605 - Train: 88.27% [15800/17900]  [88.3/100.0] [batch_t 0.103 (0.108)] [data_t 0.002] [optim_t 0.101] [lr 0.000005] [cos 0.314 (0.304)]
+2025-09-11 22:56:46,791 - Train: 88.55% [15850/17900]  [88.5/100.0] [batch_t 0.103 (0.104)] [data_t 0.002] [optim_t 0.101] [lr 0.000005] [cos 0.335 (0.296)]
+2025-09-11 22:56:51,920 - Train: 88.83% [15900/17900]  [88.8/100.0] [batch_t 0.104 (0.103)] [data_t 0.002] [optim_t 0.102] [lr 0.000005] [cos 0.295 (0.296)]
+2025-09-11 22:56:55,062 - ==> Total time: 0:27:47	 Eta: 0:03:26 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:56:57,538 - Train: 89.11% [15950/17900]  [89.1/100.0] [batch_t 0.100 (0.109)] [data_t 0.002] [optim_t 0.099] [lr 0.000005] [cos 0.329 (0.302)]
+2025-09-11 22:57:02,672 - Train: 89.39% [16000/17900]  [89.4/100.0] [batch_t 0.102 (0.103)] [data_t 0.002] [optim_t 0.100] [lr 0.000005] [cos 0.279 (0.295)]
+2025-09-11 22:57:07,817 - Train: 89.66% [16050/17900]  [89.7/100.0] [batch_t 0.100 (0.103)] [data_t 0.002] [optim_t 0.098] [lr 0.000005] [cos 0.328 (0.301)]
+2025-09-11 22:57:12,895 - Train: 89.94% [16100/17900]  [89.9/100.0] [batch_t 0.096 (0.102)] [data_t 0.002] [optim_t 0.094] [lr 0.000005] [cos 0.318 (0.300)]
+2025-09-11 22:57:13,872 - ==> Total time: 0:28:06	 Eta: 0:03:07 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:57:18,557 - Train: 90.22% [16150/17900]  [90.2/100.0] [batch_t 0.099 (0.106)] [data_t 0.002] [optim_t 0.097] [lr 0.000005] [cos 0.272 (0.305)]
+2025-09-11 22:57:23,603 - Train: 90.50% [16200/17900]  [90.5/100.0] [batch_t 0.099 (0.101)] [data_t 0.002] [optim_t 0.097] [lr 0.000005] [cos 0.289 (0.292)]
+2025-09-11 22:57:28,670 - Train: 90.78% [16250/17900]  [90.8/100.0] [batch_t 0.099 (0.101)] [data_t 0.002] [optim_t 0.097] [lr 0.000005] [cos 0.326 (0.299)]
+2025-09-11 22:57:32,534 - ==> Total time: 0:28:24	 Eta: 0:02:48 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:57:34,098 - Train: 91.06% [16300/17900]  [91.1/100.0] [batch_t 0.099 (0.103)] [data_t 0.002] [optim_t 0.097] [lr 0.000005] [cos 0.250 (0.296)]
+2025-09-11 22:57:39,076 - Train: 91.34% [16350/17900]  [91.3/100.0] [batch_t 0.099 (0.100)] [data_t 0.002] [optim_t 0.097] [lr 0.000005] [cos 0.342 (0.295)]
+2025-09-11 22:57:44,041 - Train: 91.62% [16400/17900]  [91.6/100.0] [batch_t 0.101 (0.099)] [data_t 0.002] [optim_t 0.099] [lr 0.000005] [cos 0.314 (0.308)]
+2025-09-11 22:57:49,028 - Train: 91.90% [16450/17900]  [91.9/100.0] [batch_t 0.103 (0.100)] [data_t 0.002] [optim_t 0.101] [lr 0.000005] [cos 0.294 (0.290)]
+2025-09-11 22:57:50,780 - ==> Total time: 0:28:43	 Eta: 0:02:29 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:57:54,583 - Train: 92.18% [16500/17900]  [92.2/100.0] [batch_t 0.101 (0.106)] [data_t 0.002] [optim_t 0.099] [lr 0.000005] [cos 0.297 (0.304)]
+2025-09-11 22:57:59,683 - Train: 92.46% [16550/17900]  [92.5/100.0] [batch_t 0.105 (0.102)] [data_t 0.002] [optim_t 0.103] [lr 0.000005] [cos 0.317 (0.296)]
+2025-09-11 22:58:04,716 - Train: 92.74% [16600/17900]  [92.7/100.0] [batch_t 0.100 (0.101)] [data_t 0.002] [optim_t 0.098] [lr 0.000005] [cos 0.329 (0.295)]
+2025-09-11 22:58:09,397 - ==> Total time: 0:29:01	 Eta: 0:02:11 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:58:10,188 - Train: 93.02% [16650/17900]  [93.0/100.0] [batch_t 0.105 (0.122)] [data_t 0.002] [optim_t 0.103] [lr 0.000005] [cos 0.280 (0.298)]
+2025-09-11 22:58:15,195 - Train: 93.30% [16700/17900]  [93.3/100.0] [batch_t 0.100 (0.100)] [data_t 0.002] [optim_t 0.098] [lr 0.000005] [cos 0.312 (0.298)]
+2025-09-11 22:58:20,202 - Train: 93.58% [16750/17900]  [93.6/100.0] [batch_t 0.100 (0.100)] [data_t 0.002] [optim_t 0.098] [lr 0.000005] [cos 0.312 (0.297)]
+2025-09-11 22:58:25,206 - Train: 93.85% [16800/17900]  [93.9/100.0] [batch_t 0.100 (0.100)] [data_t 0.002] [optim_t 0.098] [lr 0.000005] [cos 0.342 (0.304)]
+2025-09-11 22:58:27,755 - ==> Total time: 0:29:20	 Eta: 0:01:52 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:58:30,819 - Train: 94.13% [16850/17900]  [94.1/100.0] [batch_t 0.104 (0.109)] [data_t 0.002] [optim_t 0.102] [lr 0.000005] [cos 0.320 (0.305)]
+2025-09-11 22:58:36,100 - Train: 94.41% [16900/17900]  [94.4/100.0] [batch_t 0.102 (0.106)] [data_t 0.002] [optim_t 0.100] [lr 0.000005] [cos 0.283 (0.291)]
+2025-09-11 22:58:41,177 - Train: 94.69% [16950/17900]  [94.7/100.0] [batch_t 0.101 (0.101)] [data_t 0.002] [optim_t 0.099] [lr 0.000005] [cos 0.359 (0.298)]
+2025-09-11 22:58:46,198 - Train: 94.97% [17000/17900]  [95.0/100.0] [batch_t 0.096 (0.100)] [data_t 0.002] [optim_t 0.094] [lr 0.000005] [cos 0.313 (0.302)]
+2025-09-11 22:58:46,679 - ==> Total time: 0:29:38	 Eta: 0:01:33 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:58:51,762 - Train: 95.25% [17050/17900]  [95.3/100.0] [batch_t 0.102 (0.104)] [data_t 0.002] [optim_t 0.100] [lr 0.000005] [cos 0.357 (0.305)]
+2025-09-11 22:58:56,876 - Train: 95.53% [17100/17900]  [95.5/100.0] [batch_t 0.100 (0.102)] [data_t 0.002] [optim_t 0.098] [lr 0.000005] [cos 0.294 (0.293)]
+2025-09-11 22:59:02,001 - Train: 95.81% [17150/17900]  [95.8/100.0] [batch_t 0.101 (0.102)] [data_t 0.002] [optim_t 0.099] [lr 0.000005] [cos 0.269 (0.294)]
+2025-09-11 22:59:05,403 - ==> Total time: 0:29:57	 Eta: 0:01:14 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:59:07,530 - Train: 96.09% [17200/17900]  [96.1/100.0] [batch_t 0.100 (0.107)] [data_t 0.002] [optim_t 0.098] [lr 0.000005] [cos 0.370 (0.308)]
+2025-09-11 22:59:12,576 - Train: 96.37% [17250/17900]  [96.4/100.0] [batch_t 0.100 (0.101)] [data_t 0.002] [optim_t 0.098] [lr 0.000005] [cos 0.295 (0.298)]
+2025-09-11 22:59:17,556 - Train: 96.65% [17300/17900]  [96.6/100.0] [batch_t 0.099 (0.100)] [data_t 0.002] [optim_t 0.097] [lr 0.000005] [cos 0.355 (0.302)]
+2025-09-11 22:59:22,582 - Train: 96.93% [17350/17900]  [96.9/100.0] [batch_t 0.096 (0.100)] [data_t 0.002] [optim_t 0.095] [lr 0.000005] [cos 0.263 (0.296)]
+2025-09-11 22:59:23,851 - ==> Total time: 0:30:16	 Eta: 0:00:56 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:59:28,148 - Train: 97.21% [17400/17900]  [97.2/100.0] [batch_t 0.102 (0.104)] [data_t 0.002] [optim_t 0.100] [lr 0.000005] [cos 0.274 (0.306)]
+2025-09-11 22:59:33,282 - Train: 97.49% [17450/17900]  [97.5/100.0] [batch_t 0.102 (0.103)] [data_t 0.002] [optim_t 0.100] [lr 0.000005] [cos 0.205 (0.296)]
+2025-09-11 22:59:38,414 - Train: 97.77% [17500/17900]  [97.8/100.0] [batch_t 0.102 (0.103)] [data_t 0.002] [optim_t 0.100] [lr 0.000005] [cos 0.294 (0.300)]
+2025-09-11 22:59:42,661 - ==> Total time: 0:30:34	 Eta: 0:00:37 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 22:59:44,007 - Train: 98.04% [17550/17900]  [98.0/100.0] [batch_t 0.104 (0.115)] [data_t 0.002] [optim_t 0.102] [lr 0.000005] [cos 0.242 (0.322)]
+2025-09-11 22:59:49,186 - Train: 98.32% [17600/17900]  [98.3/100.0] [batch_t 0.102 (0.104)] [data_t 0.002] [optim_t 0.101] [lr 0.000005] [cos 0.298 (0.290)]
+2025-09-11 22:59:54,274 - Train: 98.60% [17650/17900]  [98.6/100.0] [batch_t 0.113 (0.102)] [data_t 0.002] [optim_t 0.111] [lr 0.000005] [cos 0.280 (0.302)]
+2025-09-11 22:59:59,343 - Train: 98.88% [17700/17900]  [98.9/100.0] [batch_t 0.100 (0.101)] [data_t 0.002] [optim_t 0.098] [lr 0.000005] [cos 0.363 (0.293)]
+2025-09-11 23:00:01,386 - ==> Total time: 0:30:53	 Eta: 0:00:18 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 23:00:04,778 - Train: 99.16% [17750/17900]  [99.2/100.0] [batch_t 0.098 (0.101)] [data_t 0.002] [optim_t 0.096] [lr 0.000005] [cos 0.315 (0.300)]
+2025-09-11 23:00:09,732 - Train: 99.44% [17800/17900]  [99.4/100.0] [batch_t 0.104 (0.099)] [data_t 0.002] [optim_t 0.102] [lr 0.000005] [cos 0.252 (0.298)]
+2025-09-11 23:00:14,755 - Train: 99.72% [17850/17900]  [99.7/100.0] [batch_t 0.100 (0.100)] [data_t 0.002] [optim_t 0.099] [lr 0.000005] [cos 0.259 (0.290)]
+2025-09-11 23:00:19,725 - Train: 100.00% [17900/17900]  [100.0/100.0] [batch_t 0.096 (0.099)] [data_t 0.002] [optim_t 0.094] [lr 0.000005] [cos 0.272 (0.302)]
+2025-09-11 23:00:24,399 - Test: 8.82% [50/567] [batch_t 0.083 (0.090)] [cos 0.362 (0.274)]
+2025-09-11 23:00:28,441 - Test: 17.64% [100/567] [batch_t 0.083 (0.085)] [cos 0.192 (0.272)]
+2025-09-11 23:00:32,497 - Test: 26.46% [150/567] [batch_t 0.081 (0.084)] [cos 0.241 (0.276)]
+2025-09-11 23:00:36,557 - Test: 35.27% [200/567] [batch_t 0.081 (0.083)] [cos 0.386 (0.305)]
+2025-09-11 23:00:40,606 - Test: 44.09% [250/567] [batch_t 0.082 (0.083)] [cos 0.358 (0.301)]
+2025-09-11 23:00:44,670 - Test: 52.91% [300/567] [batch_t 0.080 (0.082)] [cos 0.476 (0.309)]
+2025-09-11 23:00:48,715 - Test: 61.73% [350/567] [batch_t 0.080 (0.082)] [cos 0.261 (0.303)]
+2025-09-11 23:00:52,784 - Test: 70.55% [400/567] [batch_t 0.082 (0.082)] [cos 0.371 (0.311)]
+2025-09-11 23:00:56,813 - Test: 79.37% [450/567] [batch_t 0.080 (0.082)] [cos 0.232 (0.311)]
+2025-09-11 23:01:00,864 - Test: 88.18% [500/567] [batch_t 0.081 (0.082)] [cos 0.233 (0.313)]
+2025-09-11 23:01:04,926 - Test: 97.00% [550/567] [batch_t 0.081 (0.082)] [cos 0.320 (0.314)]
+2025-09-11 23:01:06,421 - Test: 100.00% [567/567] [batch_t 0.244 (0.082)] [cos 0.504 (0.317)]
+2025-09-11 23:01:10,219 - ==> Metric Time for audiojack      :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.002 (mAUROC_sp_max)	  0.001 (mAP_sp_max)	  0.000 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	  0.897 (mF1_max_px)	  0.000 (mAUPRO_px)	  0.829 (mIoU_max_px)	
+2025-09-11 23:01:13,598 - ==> Metric Time for bottle_cap     :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.000 (mAP_sp_max)	  0.000 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	  0.865 (mF1_max_px)	  0.000 (mAUPRO_px)	  0.867 (mIoU_max_px)	
+2025-09-11 23:01:17,019 - ==> Metric Time for button_battery :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.000 (mAP_sp_max)	  0.000 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	  0.867 (mF1_max_px)	  0.000 (mAUPRO_px)	  0.868 (mIoU_max_px)	
+2025-09-11 23:01:20,420 - ==> Metric Time for end_cap        :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.000 (mAP_sp_max)	  0.000 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	  0.899 (mF1_max_px)	  0.000 (mAUPRO_px)	  0.819 (mIoU_max_px)	
+2025-09-11 23:01:23,845 - ==> Metric Time for eraser         :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.000 (mAP_sp_max)	  0.000 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	  0.860 (mF1_max_px)	  0.000 (mAUPRO_px)	  0.872 (mIoU_max_px)	
+2025-09-11 23:01:27,132 - ==> Metric Time for fire_hood      :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.000 (mAP_sp_max)	  0.000 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	  0.815 (mF1_max_px)	  0.000 (mAUPRO_px)	  0.806 (mIoU_max_px)	
+2025-09-11 23:01:31,125 - ==> Metric Time for mint           :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.000 (mAP_sp_max)	  0.000 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	  0.999 (mF1_max_px)	  0.000 (mAUPRO_px)	  0.950 (mIoU_max_px)	
+2025-09-11 23:01:34,503 - ==> Metric Time for mounts         :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.000 (mAP_sp_max)	  0.000 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	  0.860 (mF1_max_px)	  0.000 (mAUPRO_px)	  0.865 (mIoU_max_px)	
+2025-09-11 23:01:37,824 - ==> Metric Time for pcb            :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.000 (mAP_sp_max)	  0.000 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	  0.826 (mF1_max_px)	  0.000 (mAUPRO_px)	  0.816 (mIoU_max_px)	
+2025-09-11 23:01:41,543 - ==> Metric Time for phone_battery  :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.000 (mAP_sp_max)	  0.000 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	  1.023 (mF1_max_px)	  0.000 (mAUPRO_px)	  1.019 (mIoU_max_px)	
+2025-09-11 23:01:44,931 - ==> Metric Time for plastic_nut    :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.001 (mAP_sp_max)	  0.000 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	  0.863 (mF1_max_px)	  0.000 (mAUPRO_px)	  0.876 (mIoU_max_px)	
+2025-09-11 23:01:48,301 - ==> Metric Time for plastic_plug   :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.000 (mAP_sp_max)	  0.000 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	  0.851 (mF1_max_px)	  0.000 (mAUPRO_px)	  0.841 (mIoU_max_px)	
+2025-09-11 23:01:51,669 - ==> Metric Time for porcelain_doll :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.001 (mAP_sp_max)	  0.000 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	  0.866 (mF1_max_px)	  0.000 (mAUPRO_px)	  0.835 (mIoU_max_px)	
+2025-09-11 23:01:55,085 - ==> Metric Time for regulator      :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.000 (mAP_sp_max)	  0.000 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	  0.880 (mF1_max_px)	  0.000 (mAUPRO_px)	  0.876 (mIoU_max_px)	
+2025-09-11 23:01:58,489 - ==> Metric Time for rolled_strip_base:   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.000 (mAP_sp_max)	  0.000 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	  0.858 (mF1_max_px)	  0.000 (mAUPRO_px)	  0.840 (mIoU_max_px)	
+2025-09-11 23:02:01,790 - ==> Metric Time for sim_card_set   :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.000 (mAP_sp_max)	  0.000 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	  0.802 (mF1_max_px)	  0.000 (mAUPRO_px)	  0.836 (mIoU_max_px)	
+2025-09-11 23:02:05,204 - ==> Metric Time for switch         :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.001 (mAP_sp_max)	  0.000 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	  0.862 (mF1_max_px)	  0.000 (mAUPRO_px)	  0.850 (mIoU_max_px)	
+2025-09-11 23:02:08,665 - ==> Metric Time for tape           :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.001 (mAP_sp_max)	  0.000 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	  0.890 (mF1_max_px)	  0.000 (mAUPRO_px)	  0.867 (mIoU_max_px)	
+2025-09-11 23:02:12,116 - ==> Metric Time for terminalblock  :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.000 (mAP_sp_max)	  0.000 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	  0.866 (mF1_max_px)	  0.000 (mAUPRO_px)	  0.870 (mIoU_max_px)	
+2025-09-11 23:02:15,633 - ==> Metric Time for toothbrush     :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.000 (mAP_sp_max)	  0.000 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	  0.858 (mF1_max_px)	  0.000 (mAUPRO_px)	  0.844 (mIoU_max_px)	
+2025-09-11 23:02:19,006 - ==> Metric Time for toy            :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.000 (mAP_sp_max)	  0.000 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	  0.859 (mF1_max_px)	  0.000 (mAUPRO_px)	  0.842 (mIoU_max_px)	
+2025-09-11 23:02:22,371 - ==> Metric Time for toy_brick      :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.000 (mAP_sp_max)	  0.000 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	  0.844 (mF1_max_px)	  0.000 (mAUPRO_px)	  0.842 (mIoU_max_px)	
+2025-09-11 23:02:25,740 - ==> Metric Time for transistor1    :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.000 (mAP_sp_max)	  0.000 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	  0.852 (mF1_max_px)	  0.000 (mAUPRO_px)	  0.838 (mIoU_max_px)	
+2025-09-11 23:02:29,001 - ==> Metric Time for u_block        :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.000 (mAP_sp_max)	  0.000 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	  0.816 (mF1_max_px)	  0.000 (mAUPRO_px)	  0.834 (mIoU_max_px)	
+2025-09-11 23:02:32,376 - ==> Metric Time for usb            :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.000 (mAP_sp_max)	  0.000 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	  0.855 (mF1_max_px)	  0.000 (mAUPRO_px)	  0.843 (mIoU_max_px)	
+2025-09-11 23:02:35,870 - ==> Metric Time for usb_adaptor    :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.000 (mAP_sp_max)	  0.000 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	  0.901 (mF1_max_px)	  0.000 (mAUPRO_px)	  0.863 (mIoU_max_px)	
+2025-09-11 23:02:39,277 - ==> Metric Time for vcpill         :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.000 (mAP_sp_max)	  0.000 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	  0.856 (mF1_max_px)	  0.000 (mAUPRO_px)	  0.875 (mIoU_max_px)	
+2025-09-11 23:02:42,752 - ==> Metric Time for wooden_beads   :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.001 (mAP_sp_max)	  0.000 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	  0.879 (mF1_max_px)	  0.000 (mAUPRO_px)	  0.864 (mIoU_max_px)	
+2025-09-11 23:02:46,230 - ==> Metric Time for woodstick      :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.000 (mAP_sp_max)	  0.000 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	  0.871 (mF1_max_px)	  0.000 (mAUPRO_px)	  0.958 (mIoU_max_px)	
+2025-09-11 23:02:49,672 - ==> Metric Time for zipper         :   0.000 (S_AUROC)	  0.000 (S_AUPR)	  0.001 (mAUROC_sp_max)	  0.000 (mAP_sp_max)	  0.000 (mF1_max_sp_max)	  0.000 (mAUROC_px)	  0.000 (mAP_px)	  0.860 (mF1_max_px)	  0.000 (mAUPRO_px)	  0.873 (mIoU_max_px)	
+2025-09-11 23:02:49,685 - 
+|       Name        |  S_AUROC  |   S_AUROC (Max)    |  S_AUPR  |    S_AUPR (Max)    |  mAUROC_sp_max  |  mAUROC_sp_max (Max)  |  mAP_sp_max  |  mAP_sp_max (Max)  |  mF1_max_sp_max  |  mF1_max_sp_max (Max)  |  mAUROC_px  |  mAUROC_px (Max)   |  mAP_px  |    mAP_px (Max)    |  mF1_max_px  |  mF1_max_px (Max)  |  mAUPRO_px  |  mAUPRO_px (Max)   |  mIoU_max_px  |  mIoU_max_px (Max)  |
+|:-----------------:|:---------:|:------------------:|:--------:|:------------------:|:---------------:|:---------------------:|:------------:|:------------------:|:----------------:|:----------------------:|:-----------:|:------------------:|:--------:|:------------------:|:------------:|:------------------:|:-----------:|:------------------:|:-------------:|:-------------------:|
+|     audiojack     |  90.564   | 90.564 (100 epoch) |  95.568  | 95.568 (100 epoch) |     74.087      |  74.087 (100 epoch)   |    59.358    | 59.358 (100 epoch) |      64.972      |   64.972 (100 epoch)   |   95.667    | 95.667 (100 epoch) |  10.286  | 10.286 (100 epoch) |    18.435    | 18.435 (100 epoch) |   76.373    | 76.373 (100 epoch) |    10.153     | 10.153 (100 epoch)  |
+|    bottle_cap     |  92.688   | 92.688 (100 epoch) |  96.245  | 96.245 (100 epoch) |     84.009      |  84.009 (100 epoch)   |    83.962    | 83.962 (100 epoch) |      78.176      |   78.176 (100 epoch)   |   98.940    | 98.940 (100 epoch) |  33.342  | 33.342 (100 epoch) |    36.096    | 36.096 (100 epoch) |   94.610    | 94.610 (100 epoch) |    22.022     | 22.022 (100 epoch)  |
+|  button_battery   |  68.873   | 68.873 (100 epoch) |  85.228  | 85.228 (100 epoch) |     69.064      |  69.064 (100 epoch)   |    78.436    | 78.436 (100 epoch) |      78.246      |   78.246 (100 epoch)   |   93.775    | 93.775 (100 epoch) |  30.638  | 30.638 (100 epoch) |    38.245    | 38.245 (100 epoch) |   76.444    | 76.444 (100 epoch) |    23.644     | 23.644 (100 epoch)  |
+|      end_cap      |  60.457   | 60.457 (100 epoch) |  77.270  | 77.270 (100 epoch) |     60.637      |  60.637 (100 epoch)   |    64.627    | 64.627 (100 epoch) |      74.377      |   74.377 (100 epoch)   |   88.515    | 88.515 (100 epoch) |  4.483   | 4.483 (100 epoch)  |    11.316    | 11.316 (100 epoch) |   70.254    | 70.254 (100 epoch) |     5.997     |  5.997 (100 epoch)  |
+|      eraser       |  89.663   | 89.663 (100 epoch) |  95.842  | 95.842 (100 epoch) |     86.394      |  86.394 (100 epoch)   |    84.055    | 84.055 (100 epoch) |      75.862      |   75.862 (100 epoch)   |   98.586    | 98.586 (100 epoch) |  25.831  | 25.831 (100 epoch) |    30.782    | 30.782 (100 epoch) |   91.955    | 91.955 (100 epoch) |    18.191     | 18.191 (100 epoch)  |
+|     fire_hood     |  84.200   | 84.200 (100 epoch) |  92.874  | 92.874 (100 epoch) |     78.541      |  78.541 (100 epoch)   |    74.720    | 74.720 (100 epoch) |      64.286      |   64.286 (100 epoch)   |   98.360    | 98.360 (100 epoch) |  29.294  | 29.294 (100 epoch) |    36.387    | 36.387 (100 epoch) |   85.906    | 85.906 (100 epoch) |    22.240     | 22.240 (100 epoch)  |
+|       mint        |  71.875   | 71.875 (100 epoch) |  92.711  | 92.711 (100 epoch) |     63.495      |  63.495 (100 epoch)   |    63.606    | 63.606 (100 epoch) |      66.234      |   66.234 (100 epoch)   |   93.364    | 93.364 (100 epoch) |  8.365   | 8.365 (100 epoch)  |    17.598    | 17.598 (100 epoch) |   63.935    | 63.935 (100 epoch) |     9.648     |  9.648 (100 epoch)  |
+|      mounts       |  95.670   | 95.670 (100 epoch) |  97.942  | 97.942 (100 epoch) |     82.192      |  82.192 (100 epoch)   |    71.448    | 71.448 (100 epoch) |      68.966      |   68.966 (100 epoch)   |   98.405    | 98.405 (100 epoch) |  31.497  | 31.497 (100 epoch) |    35.389    | 35.389 (100 epoch) |   91.362    | 91.362 (100 epoch) |    21.498     | 21.498 (100 epoch)  |
+|        pcb        |  72.875   | 72.875 (100 epoch) |  83.020  | 83.020 (100 epoch) |     70.364      |  70.364 (100 epoch)   |    79.804    | 79.804 (100 epoch) |      75.722      |   75.722 (100 epoch)   |   93.947    | 93.947 (100 epoch) |  3.415   | 3.415 (100 epoch)  |    9.016     | 9.016 (100 epoch)  |   72.718    | 72.718 (100 epoch) |     4.721     |  4.721 (100 epoch)  |
+|   phone_battery   |  99.918   | 99.918 (100 epoch) |  99.963  | 99.963 (100 epoch) |     80.652      |  80.652 (100 epoch)   |    74.975    | 74.975 (100 epoch) |      71.935      |   71.935 (100 epoch)   |   96.300    | 96.300 (100 epoch) |  18.587  | 18.587 (100 epoch) |    26.388    | 26.388 (100 epoch) |   86.353    | 86.353 (100 epoch) |    15.199     | 15.199 (100 epoch)  |
+|    plastic_nut    |  81.800   | 81.800 (100 epoch) |  87.699  | 87.699 (100 epoch) |     80.298      |  80.298 (100 epoch)   |    63.274    | 63.274 (100 epoch) |      66.431      |   66.431 (100 epoch)   |   97.898    | 97.898 (100 epoch) |  15.894  | 15.894 (100 epoch) |    21.180    | 21.180 (100 epoch) |   88.785    | 88.785 (100 epoch) |    11.844     | 11.844 (100 epoch)  |
+|   plastic_plug    |  77.451   | 77.451 (100 epoch) |  89.502  | 89.502 (100 epoch) |     78.801      |  78.801 (100 epoch)   |    69.021    | 69.021 (100 epoch) |      67.913      |   67.913 (100 epoch)   |   97.878    | 97.878 (100 epoch) |  7.124   | 7.124 (100 epoch)  |    16.669    | 16.669 (100 epoch) |   89.820    | 89.820 (100 epoch) |     9.093     |  9.093 (100 epoch)  |
+|  porcelain_doll   |  75.940   | 75.940 (100 epoch) |  81.362  | 81.362 (100 epoch) |     68.240      |  68.240 (100 epoch)   |    47.765    | 47.765 (100 epoch) |      56.000      |   56.000 (100 epoch)   |   95.847    | 95.847 (100 epoch) |  3.322   | 3.322 (100 epoch)  |    9.177     | 9.177 (100 epoch)  |   84.710    | 84.710 (100 epoch) |     4.809     |  4.809 (100 epoch)  |
+|     regulator     |  66.506   | 66.506 (100 epoch) |  84.005  | 84.005 (100 epoch) |     37.248      |  37.248 (100 epoch)   |    19.894    | 19.894 (100 epoch) |      41.438      |   41.438 (100 epoch)   |   87.275    | 87.275 (100 epoch) |  0.171   | 0.171 (100 epoch)  |    0.492     | 0.492 (100 epoch)  |   59.920    | 59.920 (100 epoch) |     0.247     |  0.247 (100 epoch)  |
+| rolled_strip_base |  99.837   | 99.837 (100 epoch) |  99.926  | 99.926 (100 epoch) |     96.618      |  96.618 (100 epoch)   |    98.536    | 98.536 (100 epoch) |      94.257      |   94.257 (100 epoch)   |   99.145    | 99.145 (100 epoch) |  26.403  | 26.403 (100 epoch) |    32.649    | 32.649 (100 epoch) |   97.486    | 97.486 (100 epoch) |    19.509     | 19.509 (100 epoch)  |
+|   sim_card_set    |  94.750   | 94.750 (100 epoch) |  97.649  | 97.649 (100 epoch) |     84.566      |  84.566 (100 epoch)   |    82.276    | 82.276 (100 epoch) |      80.337      |   80.337 (100 epoch)   |   97.936    | 97.936 (100 epoch) |  13.849  | 13.849 (100 epoch) |    22.642    | 22.642 (100 epoch) |   87.243    | 87.243 (100 epoch) |    12.766     | 12.766 (100 epoch)  |
+|      switch       |  92.688   | 92.688 (100 epoch) |  96.086  | 96.086 (100 epoch) |     79.168      |  79.168 (100 epoch)   |    83.215    | 83.215 (100 epoch) |      74.217      |   74.217 (100 epoch)   |   97.147    | 97.147 (100 epoch) |  47.133  | 47.133 (100 epoch) |    52.602    | 52.602 (100 epoch) |   86.726    | 86.726 (100 epoch) |    35.688     | 35.688 (100 epoch)  |
+|       tape        |  97.346   | 97.346 (100 epoch) |  98.606  | 98.606 (100 epoch) |     92.019      |  92.019 (100 epoch)   |    90.418    | 90.418 (100 epoch) |      84.091      |   84.091 (100 epoch)   |   99.074    | 99.074 (100 epoch) |  30.143  | 30.143 (100 epoch) |    37.176    | 37.176 (100 epoch) |   96.197    | 96.197 (100 epoch) |    22.832     | 22.832 (100 epoch)  |
+|   terminalblock   |  96.314   | 96.314 (100 epoch) |  98.241  | 98.241 (100 epoch) |     85.895      |  85.895 (100 epoch)   |    88.636    | 88.636 (100 epoch) |      82.192      |   82.192 (100 epoch)   |   98.938    | 98.938 (100 epoch) |  31.175  | 31.175 (100 epoch) |    38.668    | 38.668 (100 epoch) |   95.158    | 95.158 (100 epoch) |    23.968     | 23.968 (100 epoch)  |
+|    toothbrush     |  92.075   | 92.075 (100 epoch) |  95.749  | 95.749 (100 epoch) |     80.745      |  80.745 (100 epoch)   |    83.644    | 83.644 (100 epoch) |      79.279      |   79.279 (100 epoch)   |   94.164    | 94.164 (100 epoch) |  16.355  | 16.355 (100 epoch) |    25.861    | 25.861 (100 epoch) |   80.849    | 80.849 (100 epoch) |    14.851     | 14.851 (100 epoch)  |
+|        toy        |  62.583   | 62.583 (100 epoch) |  80.557  | 80.557 (100 epoch) |     55.931      |  55.931 (100 epoch)   |    62.156    | 62.156 (100 epoch) |      73.830      |   73.830 (100 epoch)   |   89.415    | 89.415 (100 epoch) |  1.166   | 1.166 (100 epoch)  |    3.737     | 3.737 (100 epoch)  |   70.378    | 70.378 (100 epoch) |     1.904     |  1.904 (100 epoch)  |
+|     toy_brick     |  87.208   | 87.208 (100 epoch) |  91.573  | 91.573 (100 epoch) |     71.446      |  71.446 (100 epoch)   |    64.102    | 64.102 (100 epoch) |      68.464      |   68.464 (100 epoch)   |   96.802    | 96.802 (100 epoch) |  7.253   | 7.253 (100 epoch)  |    14.441    | 14.441 (100 epoch) |   82.185    | 82.185 (100 epoch) |     7.782     |  7.782 (100 epoch)  |
+|    transistor1    |  98.500   | 98.500 (100 epoch) |  99.294  | 99.294 (100 epoch) |     93.678      |  93.678 (100 epoch)   |    94.976    | 94.976 (100 epoch) |      87.615      |   87.615 (100 epoch)   |   98.552    | 98.552 (100 epoch) |  22.615  | 22.615 (100 epoch) |    27.604    | 27.604 (100 epoch) |   93.067    | 93.067 (100 epoch) |    16.012     | 16.012 (100 epoch)  |
+|      u_block      |  86.650   | 86.650 (100 epoch) |  93.676  | 93.676 (100 epoch) |     72.099      |  72.099 (100 epoch)   |    58.802    | 58.802 (100 epoch) |      60.417      |   60.417 (100 epoch)   |   98.177    | 98.177 (100 epoch) |  13.741  | 13.741 (100 epoch) |    16.268    | 16.268 (100 epoch) |   91.596    | 91.596 (100 epoch) |     8.854     |  8.854 (100 epoch)  |
+|        usb        |  67.320   | 67.320 (100 epoch) |  77.280  | 77.280 (100 epoch) |     75.593      |  75.593 (100 epoch)   |    69.371    | 69.371 (100 epoch) |      67.039      |   67.039 (100 epoch)   |   96.680    | 96.680 (100 epoch) |  8.234   | 8.234 (100 epoch)  |    13.707    | 13.707 (100 epoch) |   82.781    | 82.781 (100 epoch) |     7.358     |  7.358 (100 epoch)  |
+|    usb_adaptor    |  90.660   | 90.660 (100 epoch) |  96.223  | 96.223 (100 epoch) |     76.220      |  76.220 (100 epoch)   |    70.927    | 70.927 (100 epoch) |      65.605      |   65.605 (100 epoch)   |   97.080    | 97.080 (100 epoch) |  13.610  | 13.610 (100 epoch) |    22.617    | 22.617 (100 epoch) |   86.155    | 86.155 (100 epoch) |    12.750     | 12.750 (100 epoch)  |
+|      vcpill       |  95.320   | 95.320 (100 epoch) |  97.911  | 97.911 (100 epoch) |     74.601      |  74.601 (100 epoch)   |    68.978    | 68.978 (100 epoch) |      67.101      |   67.101 (100 epoch)   |   96.498    | 96.498 (100 epoch) |  12.394  | 12.394 (100 epoch) |    19.615    | 19.615 (100 epoch) |   85.421    | 85.421 (100 epoch) |    10.874     | 10.874 (100 epoch)  |
+|   wooden_beads    |  91.284   | 91.284 (100 epoch) |  96.948  | 96.948 (100 epoch) |     80.376      |  80.376 (100 epoch)   |    76.758    | 76.758 (100 epoch) |      71.688      |   71.688 (100 epoch)   |   96.530    | 96.530 (100 epoch) |  15.779  | 15.779 (100 epoch) |    20.743    | 20.743 (100 epoch) |   84.182    | 84.182 (100 epoch) |    11.572     | 11.572 (100 epoch)  |
+|     woodstick     |  75.200   | 75.200 (100 epoch) |  87.481  | 87.481 (100 epoch) |     78.749      |  78.749 (100 epoch)   |    69.016    | 69.016 (100 epoch) |      61.240      |   61.240 (100 epoch)   |   95.025    | 95.025 (100 epoch) |  28.223  | 28.223 (100 epoch) |    35.144    | 35.144 (100 epoch) |   80.121    | 80.121 (100 epoch) |    21.318     | 21.318 (100 epoch)  |
+|      zipper       |  99.480   | 99.480 (100 epoch) |  99.727  | 99.727 (100 epoch) |     92.894      |  92.894 (100 epoch)   |    94.534    | 94.534 (100 epoch) |      91.703      |   91.703 (100 epoch)   |   94.752    | 94.752 (100 epoch) |  8.226   | 8.226 (100 epoch)  |    15.824    | 15.824 (100 epoch) |   82.705    | 82.705 (100 epoch) |     8.592     |  8.592 (100 epoch)  |
+|        Avg        |  85.190   | 85.190 (100 epoch) |  92.205  | 92.205 (100 epoch) |     76.821      |  76.821 (100 epoch)   |    73.043    | 73.043 (100 epoch) |      71.988      |   71.988 (100 epoch)   |   96.022    | 96.022 (100 epoch) |  17.285  | 17.285 (100 epoch) |    23.549    | 23.549 (100 epoch) |   83.847    | 83.847 (100 epoch) |    13.865     | 13.865 (100 epoch)  |
+2025-09-11 23:02:49,734 - ==> Total time: 0:33:41	 Eta: 0:00:00 	Logged in 'runs/RDEpipolarTrainer_configs_z_realiad_subsample_rdepipolar_256_100e_20250911-222907'
+2025-09-11 23:02:50,204 - finish training
